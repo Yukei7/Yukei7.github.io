@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Applied Linear Regression Model Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear">
+<meta name="keywords" content="Regression">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用回归分析">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;index.html">
+<meta property="og:site_name" content="Yukei">
+<meta property="og:description" content="Applied Linear Regression Model Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-14-48-16.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-15-11-39.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-09-08-28-32.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-23-55-07.png">
+<meta property="og:updated_time" content="2019-10-29T23:06:01.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-14-48-16.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/10/30/20191030regression/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>应用回归分析 | Yukei</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yukei</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/20191030regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yukei Yim">
+      <meta itemprop="description" content="学数学本是逆天而行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          应用回归分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-10-30 07:05:46 / 修改时间：07:06:01" itemprop="dateCreated datePublished" datetime="2019-10-30T07:05:46+08:00">2019-10-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Maths/" itemprop="url" rel="index">
+                    <span itemprop="name">Maths</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="applied-linear-regression-model">Applied Linear Regression Model</h1>
+<h2 id="chap1-linear-regression-with-one-predictor-variable">Chap1 Linear Regression with One Predictor Variable</h2>
+<p>Outline:</p>
+<ul>
+<li>Relations between variables</li>
+<li>Concepts in Regression Models
+<ul>
+<li>random error</li>
+<li>residuals</li>
+</ul></li>
+<li>Simple Linear Regression Model with Distribution of Error Terms Unspecified
+<ul>
+<li>Least square estimators(LSEs)</li>
+<li>Properties of LSEs</li>
+</ul></li>
+<li>Normal Error Regression Model</li>
+</ul>
+<h3 id="relations-between-variables">1.1 Relations between Variables</h3>
+<p><strong>Functional Relation:</strong> <span class="math inline">\(Y=f(X)\)</span></p>
+<p><strong>Statistical Realtion:</strong> <span class="math inline">\(Y=f(X)+\epsilon\)</span></p>
+<h3 id="concepts-in-regression-models">1.2 Concepts in Regression models</h3>
+<p>A regression model is a formal means of expressing the two essential ingredients of a statistical relation:</p>
+<ol type="1">
+<li>A tendency of the response variable <span class="math inline">\(Y\)</span> to vary with the predictor variable <span class="math inline">\(X\)</span> in a systematic fashion (There is a probability distribution of <span class="math inline">\(Y\)</span> for each level of <span class="math inline">\(X\)</span>)</li>
+<li>A scattering of points around the curve of statistical relationship (The means of these probability distributions vary in some systematic fashion with <span class="math inline">\(X\)</span>)</li>
+</ol>
+<figure>
+<img src="assets/2019-10-29-14-48-16.png" alt="1.2" /><figcaption>1.2</figcaption>
+</figure>
+<p><span class="math display">\[Y=\alpha+\beta X+\epsilon,\quad\epsilon\sim N(0,\sigma^2)\]</span></p>
+<p><strong>Two distinct goals:</strong></p>
+<ol type="1">
+<li>(Estimation) Understanding the relationship between predictor variables and response variables</li>
+<li>(Prediction) Predicting the future response given the new observed predictors</li>
+</ol>
+<p><strong>Note:</strong> Always need to consider scope of the model, and statistical relationship generally does not imply causality.</p>
+<h3 id="simple-linear-regression-model-with-distribution-of-error-terms-unspecified">1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified</h3>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1 X_i+\epsilon_i,i=1,2,...,n\]</span></p>
+<p>where <span class="math inline">\(\epsilon_i\sim N(0,\sigma^2)\)</span>, <span class="math inline">\(\epsilon_i\)</span> and <span class="math inline">\(\epsilon_j\)</span> are uncorrelated. <span class="math inline">\(X_i\)</span> is a fixed known constant and <span class="math inline">\(\beta_0,\beta_1,\sigma^2\)</span> are unknown parameters.</p>
+<p>The response <span class="math inline">\(Y_i\)</span> = deterministic term + random term, which implies that <span class="math inline">\(Y_i\)</span> is a random variable:</p>
+<p><span class="math display">\[E(Y_i)=\beta_0+\beta_1 X_i,\quad Var(Y_i)=\sigma^2,\quad cov(Y_i,Y_j)=cov(\epsilon_i,\epsilon_j)=0\]</span></p>
+<p>Alternative form:</p>
+<p><span class="math display">\[Y_i=(\beta_0+\beta_1\bar{X})+\beta_1(X_i-\bar{X})+\epsilon_i\]</span></p>
+<h3 id="data-for-regression-analysis">1.4 Data for Regression Analysis</h3>
+<ul>
+<li>Obeservational Data</li>
+<li>Experimental Data</li>
+<li>Completely Randomized Design</li>
+</ul>
+<h3 id="overview-of-steps-in-regression-analysis">1.5 Overview of Steps in Regression Analysis</h3>
+<figure>
+<img src="assets/2019-10-29-15-11-39.png" alt="1.5" /><figcaption>1.5</figcaption>
+</figure>
+<h3 id="estimation-of-regression-function">1.6 Estimation of Regression Function</h3>
+<h4 id="method-of-least-squares">1.6.1 Method of Least Squares</h4>
+<p>We are aiming to make <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(\beta_0+\beta_1 X_i\)</span> close for all <span class="math inline">\(i\)</span>, here we use <em>Least Squares Estimation</em>, which is</p>
+<p><span class="math display">\[Q(b_0,b_1)=\min_{\beta_0,\beta_1}\sum_{i=1}^n\epsilon_i^2=\min_{\beta_0,\beta_1}\sum_{i=1}^n(Y_i-\beta_0-\beta_1 X_i)^2\]</span></p>
+<p><span class="math display">\[SS_{XX}=\sum_{i=1}^n(X_i-\bar{X})^2=\sum_{i=1}^nX_i^2-n\bar{X}^2\]</span></p>
+<p><span class="math display">\[SS_{YY}=\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^nY_i^2-n\bar{Y}^2\]</span></p>
+<p><span class="math display">\[SS_{XY}=\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})=\sum_{i=1}^nX_iY_i-n\bar{X}\bar{Y}\]</span></p>
+<p>Then find the least square estimators <span class="math inline">\(b_0,b_1\)</span> that minimize <span class="math inline">\(Q\)</span></p>
+<p><span class="math display">\[\frac{\partial Q}{\partial\beta_0}=\frac{\partial Q}{\partial\beta_1}=0\]</span></p>
+<p>Then we can find the estimators</p>
+<p><span class="math display">\[b_1=\frac{SS_{XY}}{SS_{XX}},\quad b_0=\bar{Y}-b_1\bar{X}\]</span></p>
+<p>True regression line is <span class="math inline">\(Y=\beta_0+\beta_1X\)</span>, we have <span class="math inline">\(\hat{Y}=b_0+b_1X\)</span>, and <span class="math inline">\(E(b_0)=\beta_0,E(b_1)=\beta_1\)</span></p>
+<p><strong>Residual:</strong> the difference between the observed and fitted predicted value. <span class="math inline">\(e_i=Y_i-\hat{Y_i}=Y_i-(b_0+b_1X_i)\)</span>.</p>
+<p><strong>Model error:</strong> <span class="math inline">\(\epsilon_i=Y_i-E(Y_i)=Y_i-(\beta_0+\beta_1X_i)\)</span></p>
+<p><strong>Sum of Squared Residuals:</strong> <span class="math inline">\(SSE=\sum_{i=1}^ne_i^2=\sum_{i=1}^n(Y_i-\hat{Y_i})^2\)</span></p>
+<p>The fitted values are calculated by</p>
+<p><span class="math display">\[\hat{Y_i}=b_0+b_1X_i=(\bar{Y}-\frac{SS_{XY}}{SS_{XX}}\bar{X})+\frac{SS_{XY}}{SS_{XX}}X_i=\bar{Y}+\frac{SS_{XY}}{SS_{XX}}(X_i-\bar{X})\]</span></p>
+<h4 id="properties-of-fitted-regression-line">1.6.2 Properties of Fitted Regression Line</h4>
+<ol type="1">
+<li><span class="math inline">\(\sum_{i=1}^ne_i=0\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^ne_i^2\)</span> is minimized</li>
+<li><span class="math inline">\(\sum_{i=1}^nY_i=\sum_{i=1}^n\hat{Y_i}\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^nX_ie_i=0\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^n\hat{Y_i}e_i=0\)</span></li>
+</ol>
+<p><strong>Proof:</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\(\sum_{i=1}^ne_i=\sum_{i=1}^n[Y_i-\bar{Y}-b_1(X_i-\bar{X})]=0\Rightarrow\)</span> (3) <span class="math inline">\(\sum_{i=1}^nY_i=\sum_{i=1}^n\hat{Y_i}\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{i=1}^nX_ie_i=\sum_{i=1}^n(X_i-\bar{X})e_i=\sum_{i=1}^n(X_i-\bar{X})[Y_i-\bar{Y}-b_1(X_i-\bar{X})]=SS_{XY}-b_1SS_{XX}=0\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{i=1}^n\hat{Y_i}e_i=\sum_{i=1}^ne_i[\bar{Y}+b_1(X_i-\bar{X})]=\bar{Y}\sum_{i=1}^ne_i+b_1\sum_{i=1}^ne_i(X_i-\bar{X})=0\)</span></p></li>
+</ol>
+<h3 id="estimation-of-error-terms-variance-sigma2">1.7 Estimation of Error Terms Variance <span class="math inline">\(\sigma^2\)</span></h3>
+<p><span class="math display">\[\sigma^2=Var(\epsilon)=E(\epsilon^2)\]</span></p>
+<p><span class="math inline">\(\epsilon\)</span> is unobservable, so we use residual <span class="math inline">\(e\)</span> to estimate <span class="math inline">\(\epsilon\)</span></p>
+<p><span class="math display">\[s^2=\frac{1}{n-2}\sum_{i=1}^ne_i^2=\frac{1}{n-2}\sum_{i=1}^n(Y_i-\hat{Y_i})^2=\frac{SSE}{n-2}=MSE\]</span></p>
+<p><strong>Properties of Estimators:</strong></p>
+<p>Under linear regression model in which the errors have expectation zero and are uncorrelated and have equal variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<ol type="1">
+<li>Least squares estimators <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are linear combinations of <span class="math inline">\(\left\{Y_i\right\}\)</span></li>
+<li>(Gauss-Markov theorem) Least squares estimators <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are BLUE (best linear unbiased estimators) of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> respectively</li>
+<li>MSE is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>, i.e.<span class="math inline">\(E(MSE)=\sigma^2\)</span></li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>1- Linear combinations of <span class="math inline">\(Y_i\)</span></p>
+<p><span class="math display">\[b_1=\frac{SS_{XY}}{SS_{XX}}=\frac{\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})}{SS_{XX}}=\sum_{i=1}^n\frac{(X_i-\bar{X})}{SS_{XX}}Y_i=\sum_{i=1}^nk_iY_i\]</span></p>
+<p><span class="math display">\[b_0=\bar{Y}-b_1\bar{X}=\sum_{i=1}^n(\frac{1}{n}-k_i\bar{X})Y_i=\sum_{i=1}^nl_iY_i\]</span></p>
+<p>here we have</p>
+<p><span class="math display">\[k_i=\frac{X_i-\bar{X}}{SS_{XX}}\]</span></p>
+<p><span class="math display">\[l_i=\frac{1}{n}-k_i\bar{X}\]</span></p>
+<p>2- Best Linear Unbiased Estimator</p>
+<p>Denote <span class="math inline">\(k_i=\frac{X_i-\bar{X}}{SS_{XX}}\)</span>, note that <span class="math inline">\(\sum_{i=1}^nk_i=0,\sum_{i=1}^nk_iX_i=1,\sum_{i=1}^nk_i^2=\frac{1}{SS_{XX}}\)</span>.</p>
+<p><span class="math inline">\(E(b_1)=\sum_{i=1}^nk_iE(Y_i)=\sum_{i=1}^nk_i(\beta_0+\beta_1X_i)=\beta_0\sum_{i=1}^nk_i+\beta_1\sum_{i=1}^nk_iX_i=\beta_1\)</span></p>
+<p><span class="math inline">\(E(b_0)=E(\bar{Y}-b_1\bar{X})=(\beta_0+\beta_1\bar{X})-\beta_1\bar{X}=\beta_0\)</span></p>
+<p>So <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are unbiased estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+<p><span class="math inline">\(var(b_1)=\sum_{i=1}^nk_i^2var(Y_i)=\sigma^2\sum_{i=1}^nk_i^2=\frac{\sigma^2}{SS_{XX}}\)</span></p>
+<p><span class="math inline">\(cov(b_1,Y_i)=cov(\sum_{i=1}^nk_iY_i,Y_i)=cov(k_iY_i,Y_i)=k_i\sigma^2\)</span></p>
+<p><span class="math inline">\(cov(b_1,\bar{Y})=cov(b_1,\sum_{i=1}^n\frac{1}{n}Y_i)=\frac{1}{n}\sum_{i=1}^nk_i\sigma^2=0\)</span></p>
+<p><span class="math inline">\(var(b_0)=var(\bar{Y}-b_1\bar{X})=var(\bar{Y})+\bar{X}^2var(b_1)-2\bar{X}cov(\bar{Y},b_1)=\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})\)</span></p>
+<p><span class="math inline">\(cov(b_0,b_1)=cov(\bar{Y}-b_1\bar{X},b_1)=-\bar{X}var(b_1)=-\frac{\bar{X}}{SS_{XX}}\sigma^2\)</span></p>
+<p>The variance matirx of <span class="math inline">\((b_0,b_1)\)</span> is</p>
+<p><span class="math display">\[
+\frac{\sigma^2}{SS_{XX}}\left(\begin{matrix}
+    \frac{1}{n}\sum_{i=1}^nX_i^2 &amp; -\bar{X}\\
+    -\bar{X} &amp; 1
+\end{matrix}\right)
+\]</span></p>
+<p>Among all unbiased linear estimators of the form <span class="math inline">\(\hat{\beta_1}=\sum c_iY_i\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    E(\hat{\beta_1}) &amp;=\sum c_iE(Y_i)=\sum c_i(\beta_0+\beta_1X_i)\\
+    &amp;=\beta_0\sum c_i+\beta_1\sum c_iX_i=\beta_1
+\end{aligned}
+\]</span></p>
+<p>so that it must be the case that <span class="math inline">\(\sum c_i=0\)</span> and <span class="math inline">\(\sum c_iX_i=1\)</span>.</p>
+<p>Define <span class="math inline">\(d_i=c_i-k_i\)</span>, where <span class="math inline">\(k_i=\frac{X_i-\bar{X}}{SS_{XX}}\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    var(\hat{\beta_1}) &amp;= \sum c_i^2var(Y_i)=\sigma^2\sum(k_i+d_i)^2\\
+    &amp;= \sigma^2(\sum k_i^2+\sum d_i^2 +2\sum k_id_i)
+\end{aligned}
+\]</span></p>
+<p>Now by showing that</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \sum k_id_i &amp;= \sum k_i(c_i-k_i)=\sum k_ic_i-\sum k_i^2\\
+    &amp;= \sum c_i(\frac{X_i-\bar{X}}{SS_{XX}})-\frac{1}{SS_{XX}}\\
+    &amp;=\frac{\sum c_iX_i-\bar{X}\sum c_i-1}{SS_{XX}}=0
+\end{aligned}
+\]</span></p>
+<p>So that</p>
+<p><span class="math display">\[var(\hat{\beta_1})=var(b_1)+\sigma^2(\sum d_i^2)\]</span></p>
+<p>when <span class="math inline">\(d_i=0\)</span>, the variance is minimized.</p>
+<p>#TODO:Similarly, we can show <span class="math inline">\(b_0\)</span> is BLUE of <span class="math inline">\(\beta_0\)</span>.</p>
+<p>3- <span class="math inline">\(E(MSE)=\sigma^2\)</span></p>
+<p><span class="math inline">\(e_i=Y_i-\hat{Y_i}=(Y_i-\bar{Y})-b_1(X_i-\bar{X})\)</span></p>
+<p><span class="math inline">\(E(e_i)=E(Y_i-b_0-b_1X_i)=\beta_0+\beta_1X_i-\beta_0-\beta_1X_i=0\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
+&amp;= var(Y_i)+var(\bar{Y})+(X_i-\bar{X})^2var(b_1)-2cov(Y_i,\bar{Y})\\
+&amp;\quad-2(X_i-\bar{X})[cov(Y_i,b_1)-cov(\bar{Y},b_1)]\\
+&amp;=\sigma^2+\frac{\sigma^2}{n}+\frac{(X_i-\bar{X})^2\sigma^2}{SS_{XX}}-\frac{2\sigma^2}{n}-\frac{2(X_i-\bar{X})^2\sigma^2}{SS_{XX}}\\
+&amp;=\frac{(n-1)\sigma^2}{n}-\frac{(X_i-\bar{X})^2\sigma^2}{SS_{XX}}
+\end{aligned}\]</span></p>
+<p><span class="math inline">\(E(SSE)=\sum_{i=1}^nE(e_i^2)=\sum_{i=1}^nvar(e_i)=(n-1)\sigma^2-\sigma^2=(n-2)\sigma^2\)</span></p>
+<p><span class="math inline">\(E(MSE)=\frac{E(SSE)}{n-2}=\sigma^2\)</span></p>
+<p><strong>Note:</strong> For any <span class="math inline">\(i\not ={j}\)</span>, <span class="math inline">\(\epsilon_i\)</span> and <span class="math inline">\(\epsilon_j\)</span> are uncorrelated, but <span class="math inline">\(e_i\)</span> and <span class="math inline">\(e_j\)</span> are correlated.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    0 &amp;= var(\sum_{i=1}^ne_i)=\sum_{i=1}^nvar(e_i)+\sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)\\
+    &amp;\Rightarrow \sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)=-\sum_{i=1}^n var(e_i)=-(n-2)\sigma^2
+\end{aligned}
+\]</span></p>
+<p>It can be proved that</p>
+<p><span class="math display">\[cov(e_i,e_j)=-\frac{\sigma^2}{n}-\frac{(X_i-\bar{X})(X_j-\bar{X})\sigma^2}{SS_{XX}}\]</span></p>
+<p><span class="math display">\[0=[\sum_{i=1}^n(X_i-\bar{X})]^2=SS_{XX}+\sum_{i,j=1,j\not ={i}}^n(X_i-\bar{X})(X_j-\bar{X})\]</span></p>
+<p>So that</p>
+<p><span class="math display">\[\sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)=-(n-1)\sigma^2+\sigma^2=-(n-2)\sigma^2\]</span></p>
+<h3 id="normal-error-regression-model">1.8 Normal Error Regression Model</h3>
+<h4 id="method-of-least-sqaures">1.8.1 Method of Least Sqaures</h4>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1X_i+\epsilon_i,i=1,2,...,n\]</span></p>
+<p>where <span class="math inline">\(\epsilon_i\)</span> are i.i.d and <span class="math inline">\(\epsilon_i\sim N(0,\sigma^2)\)</span>, so that <span class="math inline">\(Y_i\sim N(\beta_0+\beta_1X_i,\sigma^2)\)</span> and <span class="math inline">\(\left\{Y_i\right\}\)</span> are independent</p>
+<p><span class="math display">\[f(y_i)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{(y_i-(\beta_0+\beta_1X_i))^2}{2\sigma^2}\right\}\]</span></p>
+<p>Likelihood:</p>
+<p><span class="math display">\[L(\beta_0,\beta_1,\sigma^2)=\prod_{i=1}^nf(y_i)=(2\pi\sigma^2)^{-n/2}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(y_i-(\beta_0+\beta_1X_i))^2\right\}\]</span></p>
+<p>Use method of least square to find the Maximum Likelihood Estimators (MLEs):</p>
+<p><span class="math display">\[(\hat{\beta_0},\hat{\beta_1})=\argmax_{\beta_0,\beta_1}(\ln L)=\argmin_{\beta_0,\beta_1}\sum_{i=1}^n[y_i-(\beta_0+\beta_1X_i)]^2=(b_0,b_1)\]</span></p>
+<p>then the MLEs are</p>
+<p><span class="math display">\[\hat{\beta_1}=b_1=\frac{SS_{XY}}{SS_{XX}}\]</span></p>
+<p><span class="math display">\[\hat{\beta_0}=b_0=\bar{Y}-\hat{\beta_1}\bar{X}\]</span></p>
+<p><span class="math display">\[\hat{\sigma}^2=\frac{1}{n}\sum(Y_i-\bar{Y_i})^2=\frac{SSE}{n}=\frac{n-2}{n}MSE\]</span></p>
+<h4 id="properties-of-mles">1.8.2 Properties of MLEs</h4>
+<p>1- MLEs of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are same with LSE estimators <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. They are linear combinations of <span class="math inline">\(\left\{Y_i\right\}\)</span></p>
+<p>2- MLEs of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are BLUEs and normal distributed</p>
+<p><span class="math display">\[
+\left(\begin{matrix}
+    \hat{\beta_0}\\\hat{\beta_1}
+\end{matrix}\right)
+\sim N\left(\left(
+    \begin{matrix}
+    \beta_0\\\beta_1
+    \end{matrix}\right),
+    \frac{\sigma^2}{SS_{XX}}
+    \left(\begin{matrix}
+    \frac{1}{n}\sum X_i^2 &amp; -\bar{X}\\
+    -\bar{X} &amp; 1
+    \end{matrix}\right)\right)
+\]</span> 3- MLE of <span class="math inline">\(\sigma^2\)</span> is a biased estimator with</p>
+<p><span class="math display">\[
+\frac{n\hat{\sigma}^2}{\sigma^2}=\frac{SSE}{\sigma^2}\sim\chi^2(n-2)\quad\text{and}\quad E(\hat{\sigma}^2)=\frac{n-2}{n}\sigma^2\rightarrow\sigma^2
+\]</span></p>
+<p>3- <span class="math inline">\((\hat{\beta_0},\hat{\beta_1},\bar{Y})\)</span> and <span class="math inline">\(\sigma^2\)</span> are independent.</p>
+<p><strong>Proof:</strong></p>
+<p>4- This can be derived by Fisher's theorem</p>
+<p><span class="math display">\[\mu_i=E(Y_i)=\beta_0+\beta_1X_i=\beta_0^*+\beta_1(X_i-\bar{X}),\beta_0^*=\beta_0+\beta_1\bar{X}\]</span></p>
+<p><span class="math display">\[\hat{\beta_0^*}=\bar{Y}\sim N(\beta_0^*,\sigma^2/n),\hat{\beta_1}=\frac{SS_{XY}}{SS_{XX}}\sim N(\beta_1,\sigma^2/SS_{XX})\]</span></p>
+<p>then we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \sum(Y_i-\mu_i)^2 &amp;=\sum(\hat{Y_i}-\mu_i)^2+\sum(Y_i-\hat{Y_i})^2\\
+    &amp;= \sum[\hat{\beta_0^*}+\hat{\beta_1}(X_i-\bar{X})-\beta_0^*-\beta_1(X_i-\bar{X})]^2+SSE\\
+    &amp;= n(\hat{\beta_0^*}-\beta_0^*)^2+(\hat{\beta_1}-\beta_1)^2SS_{XX}+n\hat{\sigma}^2\\
+\end{aligned}
+\]</span></p>
+<p>With the Fisher's theorem</p>
+<p><span class="math display">\[Q/\sigma^2=Q_1/\sigma^2+Q_2/\sigma^2+Q_3/\sigma^2\]</span></p>
+<p><span class="math display">\[\chi^2_n=\chi^2_1+\chi^2_1+\chi^2_{n-2}\]</span></p>
+<h2 id="chap2-inference-in-regression-and-correlation-analysis">Chap2 Inference in Regression and Correlation Analysis</h2>
+<p>Outline:</p>
+<ul>
+<li>Inferences Concerning <span class="math inline">\(\beta_1,\beta_0\)</span> and <span class="math inline">\(EY\)</span> in Normal Error Regression Model</li>
+<li>Prediction Interval of New Observation</li>
+<li>Confidence Band for Regression Line</li>
+<li>Analysis of Variance (ANOVA) approach to Regression Analysis</li>
+<li>General linear test approach</li>
+<li>Normal Correlation Models and Inferences</li>
+</ul>
+<h3 id="inferences-concerning-beta_1">2.1 Inferences Concerning <span class="math inline">\(\beta_1\)</span></h3>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1X_i+\epsilon_i,i=1,2,...,n\]</span></p>
+<p>with <span class="math inline">\(\epsilon_i\)</span> are i.i.d and <span class="math inline">\(\epsilon_i\sim N(0,\sigma^2)\)</span>.</p>
+<p><span class="math display">\[b_1\sim N(\beta_1,\frac{\sigma^2}{SS_{XX}})\Rightarrow \frac{b_1-\beta_1}{\sqrt{\sigma^2/SS_{XX}}}=\frac{b_1-\beta_1}{\sigma\left\{b_1\right\}}\sim N(0,1)\]</span></p>
+<p>since</p>
+<p><span class="math display">\[\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad b_1\perp MSE\]</span></p>
+<p><span class="math display">\[\Rightarrow\frac{(b_1-\beta_1)/\sqrt{\sigma^2/SS_{XX}}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}}/(n-2)}=\frac{b_1-\beta_1}{\sqrt{MSE/SS_{XX}}}=\frac{b_1-\beta_1}{s\left\{b_1\right\}}\sim t_{n-2}\]</span></p>
+<p>where <span class="math inline">\(\sigma\left\{b_1\right\}=\sqrt{\sigma^2/SS_{XX}},s\left\{b_1\right\}=\sqrt{MSE/SS_{XX}}\)</span></p>
+<h3 id="inferences-concerning-beta_0">2.2 Inferences Concerning <span class="math inline">\(\beta_0\)</span></h3>
+<p><span class="math display">\[b_0=\bar{Y}-b_1\bar{X}\sim N\left(\beta_0,\sigma^2\frac{\sum X_i^2}{nSS_{XX}}\right)=N\left(\beta_0,\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})\right)\]</span></p>
+<p>since</p>
+<p><span class="math display">\[\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad b_0\perp MSE\]</span></p>
+<p><span class="math display">\[\Rightarrow\frac{(b_0-\beta_0)/\sqrt{\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}/(n-2)}}=\frac{b_0-\beta_0}{\sqrt{MSE(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}}=\frac{b_0-\beta_0}{s\left\{b_0\right\}}\sim t_{n-2}\]</span></p>
+<p>where <span class="math inline">\(\sigma\left\{b_0\right\}=\sqrt{\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})},s\left\{b_1\right\}=\sqrt{MSE(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}\)</span></p>
+<h3 id="some-considerations-on-making-inferences">2.3 Some Considerations on Making Inferences</h3>
+<ul>
+<li>Effects of departures from normality of the <span class="math inline">\(Y_i\)</span></li>
+<li>Spacing of the <span class="math inline">\(X\)</span> levels</li>
+<li>Power of Tests</li>
+</ul>
+<h3 id="interval-estimaton-of-elefty_hright">2.4 Interval Estimaton of <span class="math inline">\(E\left\{Y_h\right\}\)</span></h3>
+<p>Intersted in estimating the mean response for particular <span class="math inline">\(X_h\)</span></p>
+<p><span class="math display">\[E\left\{Y_h\right\}=\beta_0+\beta_1X_h\]</span></p>
+<p>The unbiased point estimator of <span class="math inline">\(E\left\{Y_h\right\}\)</span></p>
+<p><span class="math inline">\(\hat{Y_h}=b_0+b_1X_h=\bar{Y}+b_1(X_h-\bar{X})\)</span></p>
+<p><span class="math inline">\(E(\hat{Y_h})=\beta_0+\beta_1X_h=E(Y_h)\)</span></p>
+<p><span class="math inline">\(var(\hat{Y_h})=var(\bar{Y})+(X_h-\bar{X})^2var(b_1)=\sigma^2(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})\)</span></p>
+<p>So we have</p>
+<p><span class="math display">\[\hat{Y_h}=\bar{Y}+b_1(X_h-\bar{X})\sim N\left(\beta_0+\beta_1X_h,\sigma^2[\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)\]</span></p>
+<p>since</p>
+<p><span class="math display">\[\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad (b_0,b_1,\hat{Y_h})\perp MSE\]</span></p>
+<p><span class="math display">\[\Rightarrow \frac{(\hat{Y_h}-E(Y_h))/\sqrt{\sigma^2(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}/(n-2)}}=\frac{\hat{Y_h}-E(Y_h)}{\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}=\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\sim t_{n-2}\]</span></p>
+<p>where <span class="math inline">\(s\left\{\hat{Y_h}\right\}=\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}\)</span></p>
+<h3 id="prediction-of-new-observation">2.5 Prediction of New Observation</h3>
+<p>Intersted in predicting new observation when <span class="math inline">\(X=X_h\)</span></p>
+<p><span class="math display">\[Y_{hn}=\beta_0+\beta_1X_h+\epsilon_{hn}\]</span></p>
+<p>here <span class="math inline">\(Y_{hn}\perp\left\{Y_1,...,Y_n\right\}\)</span> and</p>
+<p><span class="math display">\[Y_{hn}\sim N(\beta_0+\beta_1X_h,\sigma^2)\]</span></p>
+<p>Prediction of <span class="math inline">\(Y_{hn}\)</span></p>
+<p><span class="math display">\[\hat{Y_h}=b_0+b_1X_h\sim N\left(\beta_0+\beta_1X_h,\sigma^2[\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)\]</span></p>
+<p>Prediction error</p>
+<p><span class="math display">\[Y_{hn}-\hat{Y_h}\sim N\left(0,\sigma^2[1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)\]</span></p>
+<p>since</p>
+<p><span class="math display">\[\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad (Y_{hn},\hat{Y_h})\perp MSE\]</span></p>
+<p><span class="math display">\[\Rightarrow \frac{Y_{hn}-\hat{Y_h}}{\sqrt{MSE(1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}=\frac{Y_{hn}-\hat{Y_h}}{s\left\{Y_{hn}-\hat{Y_h}\right\}}=\frac{Y_{hn}-\hat{Y_h}}{s\left\{pred\right\}}\sim t_{n-2}\]</span></p>
+<p>where <span class="math inline">\(s\left\{pred\right\}=\sqrt{MSE(1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}=\sqrt{MSE+s^2\left\{\hat{Y_h}\right\}}\)</span></p>
+<h3 id="confidence-band-for-regression-line">2.6 Confidence Band for Regression Line</h3>
+<p>The <span class="math inline">\((1-\alpha)\times100\%\)</span> Confidence interval of <span class="math inline">\(E(Y_h)=\beta_0+\beta_1X_h\)</span></p>
+<p><span class="math display">\[s\left\{\hat{Y_h}\right\}=\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}\]</span></p>
+<p>The Working-Hotelling Confidence Band</p>
+<p>Replace <span class="math inline">\(t(1-\alpha/2,n-2)\)</span> with Working-Hotelling value <span class="math inline">\(W\)</span> in each confidence interval</p>
+<p><span class="math display">\[W=\sqrt{2F(1-\alpha;2,n-2)}\Rightarrow\hat{Y_h}\pm W\times s\left\{\hat{Y_h}\right\}\]</span></p>
+<p>#TODO: It can be proved that</p>
+<p><span class="math display">\[\max_{x_h}\left(\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\right)^2=\frac{(\bar{Y}-E\bar{Y})^2}{MSE/n}+\frac{(\hat{\beta_1}-\beta_1)^2}{MSE/SS_{XX}}\]</span></p>
+<p><span class="math display">\[\frac{1}{2}\max_{x_h}\left(\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\right)^2\sim F(2,n-2)\]</span></p>
+<h3 id="anova-approach-to-regression">2.7 ANOVA Approach to Regression</h3>
+<p><span class="math display">\[Y_i-\bar{Y}=(Y_i-\hat{Y_i})+(\hat{Y_i}-\bar{Y})\]</span></p>
+<p><strong>ANOVA:</strong> Analysis of Variance, it can be described with the deviation of observation <span class="math inline">\(Y_i\)</span> around the fitted line (i.e.<span class="math inline">\(Y_i-\hat{Y_i}\)</span>) and the deviation of fitted value <span class="math inline">\(\hat{Y_i}\)</span> around the mean (i.e.<span class="math inline">\(\hat{Y_i}-\bar{Y}\)</span>).</p>
+<figure>
+<img src="assets/2019-10-09-08-28-32.png" alt="2.7" /><figcaption>2.7</figcaption>
+</figure>
+<h4 id="partitioning-of-total-sum-of-squares">2.7.1 Partitioning of Total Sum of Squares</h4>
+<p><span class="math display">\[\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2+\sum_{i=1}^n(Y_i-\hat{Y_i})^2+2\sum_{i=1}^n(Y_i-\hat{Y_i})(\hat{Y_i}-\bar{Y})
+\]</span></p>
+<p>Because we have</p>
+<p><span class="math display">\[\sum_{i=1}^n(Y_i-\hat{Y_i})(\hat{Y_i}-\bar{Y})=\sum_{i=1}^ne_i(\hat{Y_i}-\bar{Y})=\sum_{i=1}^ne_i\hat{Y_i}-\bar{Y}\sum_{i=1}^ne_i=0\]</span></p>
+<p>then</p>
+<p><span class="math display">\[\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2+\sum_{i=1}^n(Y_i-\hat{Y_i})^2\\
+\]</span></p>
+<p><strong>SSTO:</strong> The total sum of squares</p>
+<p><span class="math display">\[SSTO=\sum_{i=1}^n(Y_i-\bar{Y})^2\]</span></p>
+<p><strong>SSR:</strong> The sum squares explained by regression</p>
+<p><span class="math display">\[SSR=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2=b_1^2SS_{XX}\]</span></p>
+<p><strong>SSE:</strong> The sum squares explained by residual</p>
+<p><span class="math display">\[SSE=\sum_{i=1}^n(Y_i-\hat{Y_i})^2\]</span></p>
+<p><span class="math display">\[SSTO=SSR+SSE\]</span></p>
+<p>In normal error regression model, we have</p>
+<p><span class="math display">\[b_1\sim N(\beta_1,\frac{\sigma^2}{SS_{XX}})\Rightarrow \frac{b_1-\beta_1}{\sqrt{\sigma^2/SS_{XX}}}\sim N(0,1)\]</span></p>
+<p><span class="math display">\[(b_0,b_1,\bar{Y})\perp SSE\Rightarrow SSR\perp SSE\]</span></p>
+<p>Under <span class="math inline">\(H_0:\beta_1=0\)</span></p>
+<p><span class="math display">\[\frac{SSE}{\sigma^2}=\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad \frac{SSTO}{\sigma^2}\sim\chi_{n-1}^2\]</span></p>
+<p><span class="math display">\[\frac{SSR}{\sigma^2}=\frac{b_1^2SS_{XX}}{\sigma^2}=\left(\frac{b_1-0}{\sqrt{\sigma^2/SS_{XX}}}\right)^2\sim\chi^2_1\]</span></p>
+<p>Generally,</p>
+<p>1- <span class="math inline">\(\dfrac{SSE}{\sigma^2}\sim\chi^2_{n-2,0}\)</span></p>
+<p>2- <span class="math inline">\(\dfrac{SSR}{\sigma^2}=\dfrac{b_1^2}{\sigma^2/SS_{XX}}\sim\chi^2_{1,\delta}\)</span>, where <span class="math inline">\(\delta=\dfrac{\beta_1^2}{\sigma^2/SS_{XX}}\)</span>, since <span class="math inline">\(b_1\sim N\left(\beta_1,\frac{\sigma^2}{SS_{XX}}\right)\)</span></p>
+<p>3- <span class="math inline">\(SSR\perp SSE\)</span></p>
+<p>So that <span class="math inline">\(\dfrac{SSTO}{\sigma^2}\sim\chi^2_{n-1,\delta}\)</span></p>
+<h4 id="mean-squares">2.7.2 Mean Squares</h4>
+<p><span class="math display">\[MSR=SSR/1\]</span> <span class="math inline">\(E(MSR)=E(SSR)=E(b_1^2SS_{XX})=SS_{XX}(\frac{\sigma^2}{SS_{XX}}+\beta_1^2)=\sigma^2+\beta_1^2SS_{XX}\)</span></p>
+<p><span class="math display">\[MSE=\frac{SSE}{n-2}\]</span> <span class="math inline">\(E(MSE)=\sigma^2\)</span></p>
+<p><span class="math display">\[F^*=\frac{SSR/1}{SSE/(n-2)}=\frac{MSR}{MSE}\sim F_{1,n-2,\delta=\beta_1^2SS_{XX}/\sigma^2}\]</span></p>
+<h4 id="f-test">2.7.3 F test</h4>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\beta_1=0\quad v.s.\quad H_1:\beta_1\not ={0}\)</span></p>
+<p><span class="math display">\[F^*=\frac{MSR}{MSE}\stackrel{H_0}{\sim}F_{1,n-2}\]</span></p>
+<p>When <span class="math inline">\(H_0\)</span> is false, <span class="math inline">\(MSR&gt;MSE\)</span>. Reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(F^*\)</span> large.</p>
+<figure>
+<img src="assets/2019-10-29-23-55-07.png" alt="2.7.3" /><figcaption>2.7.3</figcaption>
+</figure>
+<h4 id="equivalence-of-f-test-and-two-sided-t-test">2.7.4 Equivalence of F test and two-sided t-test</h4>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\beta_1=0\quad v.s.\quad H_1:\beta_1\not ={0}\)</span></p>
+<p><span class="math display">\[F^*=\frac{MSR}{MSE}=\frac{b_1^2SS_{XX}}{MSE}=\left(\frac{b_1}{\sqrt{MSE/SS_{XX}}}\right)^2=(\frac{b_1}{s(b_1)})^2=(t^*)^2\]</span></p>
+<p>In addition:</p>
+<p><span class="math display">\[t^2_{n-2}\sim F_{1,n-2}\Rightarrow t^2_{1-\alpha/2;n-2}=F_{1-\alpha;1,n-2}\]</span></p>
+<p>Equivalence of rejection regions:</p>
+<p><span class="math display">\[F^*&gt;F_{1-\alpha;1,n-2}\Leftrightarrow |t^*|&gt;t^2_{1-\alpha/2;n-2}\]</span></p>
+<h3 id="general-linear-test-approach">2.8 General Linear Test Approach</h3>
+<p><strong>Full/unrestricted model:</strong> <span class="math inline">\(Y_i=\beta_0+\beta_1X_i+\epsilon_i\)</span></p>
+<p><strong>Reduced/restricted model:</strong> <span class="math inline">\(Y_i=\beta_0+\epsilon_i\quad Y_i\sim N(\beta_0,\sigma^2)\)</span></p>
+<p><strong>Intuition:</strong> Compare the SSE's of the two models to find out which model fits better. If SSE(F) not much smaller than SSE(R), full model doesn't better explain Y.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\text{Reduced model}\quad v.s.\quad H_1:\text{Full model}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[F^*=\frac{(SSE(R)-SSE(F))/(df_R-df_F)}{SSE(F)/df_F}\stackrel{H_0}{\sim}F_{df_R-df_F,df_F}\]</span></p>
+<p>since <span class="math inline">\(SSE(R)=(SSE(R)-SSE(F))+SSE(F)\)</span>, the degree of freedom can be calculate with Fisher's Theorem.</p>
+<p><strong>Note:</strong> General linear test is equal to ANOVA test</p>
+<p><span class="math inline">\(SSE(F)=SSE\)</span></p>
+<p><span class="math inline">\(SSE(R)=\sum(Y_i-\hat{Y_i}(R))^2=\sum(Y_i-\bar{Y})^2=SSTO,df_R=n-1\)</span></p>
+<p><span class="math display">\[F^*=\frac{(SSE(R)-SSE(F))/(df_R-df_F)}{SSE(F)/df_F}=\frac{(SSTO-SSE)/1}{SSE/(n-2)}=\frac{MSR}{MSE}\]</span></p>
+<h3 id="descriptive-measures-of-linear-association">2.9 Descriptive Measures of Linear Association</h3>
+<p><strong>Coefficient of Determination:</strong></p>
+<p><span class="math display">\[R^2=\frac{SSR}{SSTO}\]</span></p>
+<p>which is the proportion of total variation <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span></p>
+<p><strong>Pearson's Correlation Coefficient:</strong></p>
+<p><span class="math display">\[\rho=corr(X,Y)=\frac{cov(X,Y)}{\sqrt{var(X)var(Y)}}\]</span></p>
+<p>which measures the strength of the linear relationship between two variables</p>
+<p><span class="math inline">\(\rho\)</span> can be estimated by</p>
+<p><span class="math display">\[r=\frac{\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})}{\sqrt{\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2\frac{1}{n}\sum_{i=1}^n(Y_i-\bar{Y})^2}}=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}\]</span></p>
+<p>For simple linear regression</p>
+<p><span class="math display">\[b_1=\frac{SS_{XY}}{SS_{XX}}\Rightarrow R^2=\frac{SSR}{SSTO}=\frac{b_1^2SS_{XX}}{SS_{YY}}=\frac{SS_{XY}^2}{SS_{XX}SS_{YY}}\]</span></p>
+<p><span class="math display">\[r=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}=\sqrt{\frac{SS_{XX}}{SS_{YY}}}b_1=\frac{S_X}{S_Y}b_1\]</span></p>
+<h3 id="normal-correlation-model">2.11 Normal correlation model</h3>
+<p><strong>Note:</strong> In normal error regression model, we assume that the X values are known constants. A correlation model, takes each variable as random.</p>
+<h4 id="bivariate-normal-distribution">2.11.1 Bivariate Normal Distribution</h4>
+<p>The normal correlation model for the case of two variables is based on the <em>bivariate normal distribution</em> <span class="math inline">\(N(\mu_1,\mu_2,\sigma^2_1,\sigma^2_2,\rho)\)</span>.</p>
+<p><strong>Density function:</strong> <span class="math display">\[f(Y_1,Y_2)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho_{12}^2}}\exp \left\{-\frac{1}{2(1-\rho_{12}^2)}[(\frac{y_1-\mu_1}{\sigma_1})^2-2\rho_{12}(\frac{y_1-\mu_1}{\sigma_1})(\frac{y_2-\mu_2}{\sigma_2})+(\frac{y_2-\mu_2}{\sigma_2})^2]\right\}\]</span></p>
+<p><strong>Marginal Distribution:</strong><span class="math inline">\(Y_1\sim N(\mu_1,\sigma_1^2), Y_2\sim N(\mu_2,\sigma_2^2)\)</span></p>
+<p><strong>Conditional Probability:</strong> <span class="math display">\[(Y_1|Y_2=y_2)\sim N(\mu_1+\rho_{12}\frac{\sigma_1}{\sigma_2}(y_2-\mu_2),\sigma_1^2(1-\rho_{12}^2))\]</span></p>
+<h4 id="inference-on-rho_12">2.11.2 Inference on <span class="math inline">\(\rho_{12}\)</span></h4>
+<p>Under bivariate normal assumption, the MLE of <span class="math inline">\(\rho_{12}\)</span></p>
+<p><span class="math display">\[\hat{\rho_{12}}=r_{12}=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}\]</span></p>
+<p>Interst in testing <span class="math inline">\(H_0:\rho_{12}=0 \Leftrightarrow\beta_{12}=\beta_{21}=0\)</span></p>
+<p><span class="math display">\[\frac{r_{12}}{\sqrt{(1-r_{12}^2)/(n-2)}}=\frac{\frac{S_X}{S_Y}b_1}{\sqrt{\frac{SSE}{SSTO}/(n-2)}}=\frac{b_1}{\sqrt{MSE/SS_{XX}}}=\frac{b_1}{s(b_1)}\stackrel{H_0}{\sim}t_{n-2}\]</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[t^*=\frac{r_{12}\sqrt{n-2}}{\sqrt{1-r_{12}^2}}\]</span></p>
+<p><strong>Interval Estimation:</strong> (when <span class="math inline">\(\rho_{12}\not ={0}\)</span>)</p>
+<p><span class="math display">\[z&#39;=\frac{1}{2}\ln(\frac{1+r_{12}}{1-r_{12}})\stackrel{approx}{\sim}N(\zeta,\frac{1}{n-3})\]</span></p>
+<p><span class="math display">\[\zeta=\frac{1}{2}\ln(\frac{1+\rho_{12}}{1-\rho_{12}})\]</span></p>
+<p>CI for <span class="math inline">\(\zeta=z&#39;\pm z_{1-\alpha/2}\sqrt{\frac{1}{n-3}}=(c_1,c_2)\)</span></p>
+<p>CI for <span class="math inline">\(\rho_{12}=(\frac{e^{2c_1}-1}{e^{2c_1}+1},\frac{e^{2c_2}-1}{e^{2c_2}+1})\)</span></p>
+<h4 id="spearmans-correlation-method">2.11.3 Spearman's correlation method</h4>
+<p>Rank <span class="math inline">\((Y_{11},...,Y_{n1})\)</span> from 1 to n and label:<span class="math inline">\((R_{11},...,R_{n1})\)</span>, rank <span class="math inline">\((Y_{12},...,Y_{n2})\)</span> from 1 to n and label:<span class="math inline">\((R_{12},...,R_{n2})\)</span>.</p>
+<p><span class="math display">\[r_s=\frac{\sum_{i=1}^n(R_{i1}-\bar{R_1})(R_{i2}-\bar{R_2})}{\sqrt{\sum_{i=1}^n(R_{i1}-\bar{R_1})^2\sum_{i=1}^n(R_{i2}-\bar{R_2})^2}}\]</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0\)</span>: No Association Between <span class="math inline">\(Y_1,Y_2\quad\)</span>v.s.<span class="math inline">\(\quad H_A\)</span>: Association Exists</p>
+<p><strong>Test Statistic(when there is no tie):</strong> <span class="math display">\[t^*=\frac{r_s\sqrt{n-2}}{\sqrt{1-r_s^2}}\stackrel{H_0}{\sim}t(n-2)\]</span></p>
+<h2 id="chap3-diagnostics-and-remedial-measures">Chap3 Diagnostics and Remedial Measures</h2>
+<h3 id="diagnostics-for-predictor-variable">3.1 Diagnostics for Predictor Variable</h3>
+<ul>
+<li>Scatterplot</li>
+<li>Dot plot or bar plot</li>
+<li>Histogram or stem-and-leaf plot</li>
+<li>Box plot</li>
+<li>Sequence plot</li>
+</ul>
+<h3 id="residuals">3.2 Residuals</h3>
+<h2 id="appendix">Appendix</h2>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Regression/" rel="tag"># Regression</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/28/20191026matlab/" rel="next" title="数学实验与数学软件课件">
+                  <i class="fa fa-chevron-left"></i> 数学实验与数学软件课件
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#applied-linear-regression-model"><span class="nav-number">1.</span> <span class="nav-text">Applied Linear Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chap1-linear-regression-with-one-predictor-variable"><span class="nav-number">1.1.</span> <span class="nav-text">Chap1 Linear Regression with One Predictor Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relations-between-variables"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Relations between Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concepts-in-regression-models"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Concepts in Regression models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simple-linear-regression-model-with-distribution-of-error-terms-unspecified"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-for-regression-analysis"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Data for Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overview-of-steps-in-regression-analysis"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Overview of Steps in Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-regression-function"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 Estimation of Regression Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-squares"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">1.6.1 Method of Least Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-fitted-regression-line"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">1.6.2 Properties of Fitted Regression Line</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-error-terms-variance-sigma2"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 Estimation of Error Terms Variance \(\sigma^2\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-error-regression-model"><span class="nav-number">1.1.8.</span> <span class="nav-text">1.8 Normal Error Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-sqaures"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">1.8.1 Method of Least Sqaures</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-mles"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">1.8.2 Properties of MLEs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap2-inference-in-regression-and-correlation-analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Chap2 Inference in Regression and Correlation Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_1"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Inferences Concerning \(\beta_1\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_0"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Inferences Concerning \(\beta_0\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-considerations-on-making-inferences"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Some Considerations on Making Inferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interval-estimaton-of-elefty_hright"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 Interval Estimaton of \(E\left\{Y_h\right\}\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prediction-of-new-observation"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 Prediction of New Observation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-band-for-regression-line"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 Confidence Band for Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anova-approach-to-regression"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 ANOVA Approach to Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#partitioning-of-total-sum-of-squares"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">2.7.1 Partitioning of Total Sum of Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-squares"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">2.7.2 Mean Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-test"><span class="nav-number">1.2.7.3.</span> <span class="nav-text">2.7.3 F test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#equivalence-of-f-test-and-two-sided-t-test"><span class="nav-number">1.2.7.4.</span> <span class="nav-text">2.7.4 Equivalence of F test and two-sided t-test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test-approach"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 General Linear Test Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#descriptive-measures-of-linear-association"><span class="nav-number">1.2.9.</span> <span class="nav-text">2.9 Descriptive Measures of Linear Association</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-correlation-model"><span class="nav-number">1.2.10.</span> <span class="nav-text">2.11 Normal correlation model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bivariate-normal-distribution"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">2.11.1 Bivariate Normal Distribution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inference-on-rho_12"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">2.11.2 Inference on \(\rho_{12}\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spearmans-correlation-method"><span class="nav-number">1.2.10.3.</span> <span class="nav-text">2.11.3 Spearman&#39;s correlation method</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap3-diagnostics-and-remedial-measures"><span class="nav-number">1.3.</span> <span class="nav-text">Chap3 Diagnostics and Remedial Measures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-for-predictor-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Diagnostics for Predictor Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#residuals"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Residuals</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#appendix"><span class="nav-number">1.4.</span> <span class="nav-text">Appendix</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Yukei Yim"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Yukei Yim</p>
+  <div class="site-description" itemprop="description">学数学本是逆天而行</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yukei Yim</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
