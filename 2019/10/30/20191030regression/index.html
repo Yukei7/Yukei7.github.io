@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.0.0">
@@ -50,19 +50,19 @@
   };
 </script>
 
-  <meta name="description" content="Applied Linear Regression Model Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear">
+  <meta name="description" content="Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear Regression Model with Distributi">
 <meta name="keywords" content="Regression">
 <meta property="og:type" content="article">
 <meta property="og:title" content="应用回归分析">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;index.html">
 <meta property="og:site_name" content="Yukei">
-<meta property="og:description" content="Applied Linear Regression Model Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear">
+<meta property="og:description" content="Chap1 Linear Regression with One Predictor Variable Outline:  Relations between variables Concepts in Regression Models  random error residuals  Simple Linear Regression Model with Distributi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-14-48-16.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-15-11-39.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-09-08-28-32.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-23-55-07.png">
-<meta property="og:updated_time" content="2019-10-29T23:06:01.185Z">
+<meta property="og:updated_time" content="2019-10-30T14:56:22.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030regression&#x2F;assets&#x2F;2019-10-29-14-48-16.png">
 
@@ -109,12 +109,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,7 +213,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-10-30 07:05:46 / 修改时间：07:06:01" itemprop="dateCreated datePublished" datetime="2019-10-30T07:05:46+08:00">2019-10-30</time>
+              <time title="创建时间：2019-10-30 07:05:46 / 修改时间：22:56:22" itemprop="dateCreated datePublished" datetime="2019-10-30T07:05:46+08:00">2019-10-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,8 +238,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="applied-linear-regression-model">Applied Linear Regression Model</h1>
-<h2 id="chap1-linear-regression-with-one-predictor-variable">Chap1 Linear Regression with One Predictor Variable</h2>
+        <h2 id="chap1-linear-regression-with-one-predictor-variable">Chap1 Linear Regression with One Predictor Variable</h2>
 <p>Outline:</p>
 <ul>
 <li>Relations between variables</li>
@@ -255,6 +254,7 @@
 </ul></li>
 <li>Normal Error Regression Model</li>
 </ul>
+<a id="more"></a>
 <h3 id="relations-between-variables">1.1 Relations between Variables</h3>
 <p><strong>Functional Relation:</strong> <span class="math inline">\(Y=f(X)\)</span></p>
 <p><strong>Statistical Realtion:</strong> <span class="math inline">\(Y=f(X)+\epsilon\)</span></p>
@@ -416,7 +416,7 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
 <p>Likelihood:</p>
 <p><span class="math display">\[L(\beta_0,\beta_1,\sigma^2)=\prod_{i=1}^nf(y_i)=(2\pi\sigma^2)^{-n/2}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(y_i-(\beta_0+\beta_1X_i))^2\right\}\]</span></p>
 <p>Use method of least square to find the Maximum Likelihood Estimators (MLEs):</p>
-<p><span class="math display">\[(\hat{\beta_0},\hat{\beta_1})=\argmax_{\beta_0,\beta_1}(\ln L)=\argmin_{\beta_0,\beta_1}\sum_{i=1}^n[y_i-(\beta_0+\beta_1X_i)]^2=(b_0,b_1)\]</span></p>
+<p><span class="math display">\[(\hat{\beta_0},\hat{\beta_1})=arg\max_{\beta_0,\beta_1}(\ln L)=arg\min_{\beta_0,\beta_1}\sum_{i=1}^n[y_i-(\beta_0+\beta_1X_i)]^2=(b_0,b_1)\]</span></p>
 <p>then the MLEs are</p>
 <p><span class="math display">\[\hat{\beta_1}=b_1=\frac{SS_{XY}}{SS_{XX}}\]</span></p>
 <p><span class="math display">\[\hat{\beta_0}=b_0=\bar{Y}-\hat{\beta_1}\bar{X}\]</span></p>
@@ -655,6 +655,9 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/30/20191030biostat/" rel="prev" title="生物统计">
+                  生物统计 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -693,7 +696,7 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#applied-linear-regression-model"><span class="nav-number">1.</span> <span class="nav-text">Applied Linear Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chap1-linear-regression-with-one-predictor-variable"><span class="nav-number">1.1.</span> <span class="nav-text">Chap1 Linear Regression with One Predictor Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relations-between-variables"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Relations between Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concepts-in-regression-models"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Concepts in Regression models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simple-linear-regression-model-with-distribution-of-error-terms-unspecified"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-for-regression-analysis"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Data for Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overview-of-steps-in-regression-analysis"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Overview of Steps in Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-regression-function"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 Estimation of Regression Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-squares"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">1.6.1 Method of Least Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-fitted-regression-line"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">1.6.2 Properties of Fitted Regression Line</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-error-terms-variance-sigma2"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 Estimation of Error Terms Variance \(\sigma^2\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-error-regression-model"><span class="nav-number">1.1.8.</span> <span class="nav-text">1.8 Normal Error Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-sqaures"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">1.8.1 Method of Least Sqaures</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-mles"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">1.8.2 Properties of MLEs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap2-inference-in-regression-and-correlation-analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Chap2 Inference in Regression and Correlation Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_1"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Inferences Concerning \(\beta_1\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_0"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Inferences Concerning \(\beta_0\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-considerations-on-making-inferences"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Some Considerations on Making Inferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interval-estimaton-of-elefty_hright"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 Interval Estimaton of \(E\left\{Y_h\right\}\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prediction-of-new-observation"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 Prediction of New Observation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-band-for-regression-line"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 Confidence Band for Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anova-approach-to-regression"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 ANOVA Approach to Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#partitioning-of-total-sum-of-squares"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">2.7.1 Partitioning of Total Sum of Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-squares"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">2.7.2 Mean Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-test"><span class="nav-number">1.2.7.3.</span> <span class="nav-text">2.7.3 F test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#equivalence-of-f-test-and-two-sided-t-test"><span class="nav-number">1.2.7.4.</span> <span class="nav-text">2.7.4 Equivalence of F test and two-sided t-test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test-approach"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 General Linear Test Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#descriptive-measures-of-linear-association"><span class="nav-number">1.2.9.</span> <span class="nav-text">2.9 Descriptive Measures of Linear Association</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-correlation-model"><span class="nav-number">1.2.10.</span> <span class="nav-text">2.11 Normal correlation model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bivariate-normal-distribution"><span class="nav-number">1.2.10.1.</span> <span class="nav-text">2.11.1 Bivariate Normal Distribution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inference-on-rho_12"><span class="nav-number">1.2.10.2.</span> <span class="nav-text">2.11.2 Inference on \(\rho_{12}\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spearmans-correlation-method"><span class="nav-number">1.2.10.3.</span> <span class="nav-text">2.11.3 Spearman&#39;s correlation method</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap3-diagnostics-and-remedial-measures"><span class="nav-number">1.3.</span> <span class="nav-text">Chap3 Diagnostics and Remedial Measures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-for-predictor-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Diagnostics for Predictor Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#residuals"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Residuals</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#appendix"><span class="nav-number">1.4.</span> <span class="nav-text">Appendix</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chap1-linear-regression-with-one-predictor-variable"><span class="nav-number">1.</span> <span class="nav-text">Chap1 Linear Regression with One Predictor Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#relations-between-variables"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Relations between Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concepts-in-regression-models"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Concepts in Regression models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simple-linear-regression-model-with-distribution-of-error-terms-unspecified"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data-for-regression-analysis"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Data for Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overview-of-steps-in-regression-analysis"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Overview of Steps in Regression Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-regression-function"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Estimation of Regression Function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-squares"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.6.1 Method of Least Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-fitted-regression-line"><span class="nav-number">1.6.2.</span> <span class="nav-text">1.6.2 Properties of Fitted Regression Line</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-error-terms-variance-sigma2"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 Estimation of Error Terms Variance \(\sigma^2\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-error-regression-model"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 Normal Error Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#method-of-least-sqaures"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.8.1 Method of Least Sqaures</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#properties-of-mles"><span class="nav-number">1.8.2.</span> <span class="nav-text">1.8.2 Properties of MLEs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap2-inference-in-regression-and-correlation-analysis"><span class="nav-number">2.</span> <span class="nav-text">Chap2 Inference in Regression and Correlation Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_1"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Inferences Concerning \(\beta_1\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inferences-concerning-beta_0"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Inferences Concerning \(\beta_0\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-considerations-on-making-inferences"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Some Considerations on Making Inferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interval-estimaton-of-elefty_hright"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Interval Estimaton of \(E\left\{Y_h\right\}\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prediction-of-new-observation"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Prediction of New Observation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confidence-band-for-regression-line"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Confidence Band for Regression Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anova-approach-to-regression"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 ANOVA Approach to Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#partitioning-of-total-sum-of-squares"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 Partitioning of Total Sum of Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-squares"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 Mean Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-test"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 F test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#equivalence-of-f-test-and-two-sided-t-test"><span class="nav-number">2.7.4.</span> <span class="nav-text">2.7.4 Equivalence of F test and two-sided t-test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#general-linear-test-approach"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 General Linear Test Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#descriptive-measures-of-linear-association"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 Descriptive Measures of Linear Association</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normal-correlation-model"><span class="nav-number">2.10.</span> <span class="nav-text">2.11 Normal correlation model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bivariate-normal-distribution"><span class="nav-number">2.10.1.</span> <span class="nav-text">2.11.1 Bivariate Normal Distribution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#inference-on-rho_12"><span class="nav-number">2.10.2.</span> <span class="nav-text">2.11.2 Inference on \(\rho_{12}\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spearmans-correlation-method"><span class="nav-number">2.10.3.</span> <span class="nav-text">2.11.3 Spearman&#39;s correlation method</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chap3-diagnostics-and-remedial-measures"><span class="nav-number">3.</span> <span class="nav-text">Chap3 Diagnostics and Remedial Measures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#diagnostics-for-predictor-variable"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Diagnostics for Predictor Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#residuals"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Residuals</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#appendix"><span class="nav-number">4.</span> <span class="nav-text">Appendix</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -709,7 +712,7 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -718,7 +721,7 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -848,7 +851,7 @@ var(e_i)&amp;=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
   NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
     MathJax.Hub.Typeset();
   }, window.MathJax);
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
 

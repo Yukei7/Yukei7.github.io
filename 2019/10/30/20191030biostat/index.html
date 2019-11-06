@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Lecture 1 Intro 1.1 Randomized Clinical Trial (RCT) Definition: RCT is a type of research design used for comparing different treatments(especially to those samples with small size), in which patien">
+<meta name="keywords" content="Biostatistics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生物统计">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030biostat&#x2F;index.html">
+<meta property="og:site_name" content="Yukei">
+<meta property="og:description" content="Lecture 1 Intro 1.1 Randomized Clinical Trial (RCT) Definition: RCT is a type of research design used for comparing different treatments(especially to those samples with small size), in which patien">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;assets&#x2F;2019-10-20-23-22-45.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030biostat&#x2F;assets&#x2F;2019-10-20-23-45-00.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;20191030biostat&#x2F;assets&#x2F;2019-10-21-00-20-03.png">
+<meta property="og:updated_time" content="2019-11-06T11:47:42.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;assets&#x2F;2019-10-20-23-22-45.png">
+
+<link rel="canonical" href="http://yoursite.com/2019/10/30/20191030biostat/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>生物统计 | Yukei</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yukei</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/20191030biostat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yukei Yim">
+      <meta itemprop="description" content="学数学本是逆天而行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          生物统计
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-30 22:57:54" itemprop="dateCreated datePublished" datetime="2019-10-30T22:57:54+08:00">2019-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-06 19:47:42" itemprop="dateModified" datetime="2019-11-06T19:47:42+08:00">2019-11-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Maths/" itemprop="url" rel="index">
+                    <span itemprop="name">Maths</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="lecture-1-intro">Lecture 1 Intro</h2>
+<h3 id="randomized-clinical-trial-rct">1.1 Randomized Clinical Trial (RCT)</h3>
+<p><strong>Definition:</strong> RCT is a type of research design used for comparing different treatments(especially to those samples with small size), in which patients are assigned to a particular treatment by some random mechanism to make sure that the characteristics of treatment groups are comparable.</p>
+<a id="more"></a>
+<h4 id="block-randomization">1.1.1 Block Randomization</h4>
+<p><strong>Defination:</strong> Block randomization is defined as follows in clinical trials comparing two treatments(A and B). A block size of <span class="math inline">\(2n\)</span> is determined in advance according to the sample size, then assigned randomly <span class="math inline">\(n\)</span> patients to treatment A, <span class="math inline">\(n\)</span> patients to treatment B. (this can also be used in clinical trials with more than two treatment groups)</p>
+<p>By doing so, we can obtain equal size treatment groups and this ensures comparability of treatment groups. One should be aware that the size of the block should be hidden, because one may know the treatment when the block size is fixed. (or use random-size blocks to avoid this)</p>
+<h4 id="strafication">1.1.2 Strafication</h4>
+<p><strong>Defination:</strong> Strafication is the procedure that patients are subdivided into subgroups according to some important features, and separate randomization lists are maintained for each subgroup to ensure patient populations within each stratum.</p>
+<h4 id="blinding">1.1.3 Blinding</h4>
+<p>Deal with Placebo effect.</p>
+<h3 id="descriptive-statistics">1.2 Descriptive Statistics</h3>
+<h4 id="measures-of-location">1.2.1 Measures of Location</h4>
+<p>Mean: <span class="math inline">\(\bar{x}=\frac{1}{n}\sum_{l=1}^nx_l\)</span></p>
+<p>Median = $ \begin{cases} X_{((n+1)/2)}&amp;\ (X_{(n/2)}+X_{(n/2+1)})&amp; \end{cases} $</p>
+<p>Mode: the most frequently occurring value</p>
+<p>Geometric Mean: <span class="math inline">\(\overline{\log x}=\frac{1}{n}\sum_{l=1}^n\log x_l\)</span></p>
+<h4 id="measures-of-spread">1.2.2 Measures of Spread</h4>
+<p>Range: <span class="math inline">\(x_{\max}-x_{\min}\)</span></p>
+<p>Quantiles = $ \begin{cases} X_{(np)}&amp;\ (X_{(np)}+X_{(np+1)})/2 &amp;  \end{cases} $</p>
+<p>Variance: <span class="math inline">\(s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}\)</span></p>
+<p>Standard Deviation: <span class="math inline">\(s=\sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}\)</span></p>
+<p>The Coefficient of Variation: <span class="math inline">\(CV=\dfrac{s}{\bar{x}}\times 100\%\)</span></p>
+<h4 id="graphic-methods">1.2.3 Graphic Methods</h4>
+<ul>
+<li>Bar Graphs</li>
+<li>Box Plots</li>
+<li>Scatter Plots</li>
+</ul>
+<h3 id="roc-curve">1.3 ROC curve</h3>
+<h4 id="hypothesis-testing">1.3.1 Hypothesis Testing</h4>
+<p>Hypothesis testing is concerned with making decisions using data. The null hypothesis is assumed true and statistical evidence is required to reject it in favor of a research of alternative hypothesis.</p>
+<p>There are four possible outcomes:</p>
+<center>
+<p><img src="/assets/2019-10-20-23-22-45.png" /></p>
+</center>
+<p>The general aim in hypothesis testing is to use statistical tests that make <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> as small as possible.(genral strategy is to fix <span class="math inline">\(\alpha\)</span> at some specific level and use the test that minimizes <span class="math inline">\(\beta\)</span>)</p>
+<ul>
+<li>making <span class="math inline">\(\alpha\)</span> small involves rejecting <span class="math inline">\(H_0\)</span> less often</li>
+<li>making <span class="math inline">\(\beta\)</span> small involves accepting <span class="math inline">\(H_0\)</span> less often</li>
+</ul>
+<h4 id="sensitivity-and-specificity">1.3.2 Sensitivity and Specificity</h4>
+<p>When assessing the diagnostic performance, &quot;accuracy&quot; number can be very misleading due to the low probability of occurance for some rare diseases. The probability of symptom is present that the person has a disease should be taken into account.</p>
+<center>
+<figure>
+<img src="assets/2019-10-20-23-45-00.png" alt="1.3.2" /><figcaption>1.3.2</figcaption>
+</figure>
+</center>
+<p><strong>Sensitivity:</strong> the probability that the symptom is present given that the person has a disease. i.e.sensitivity = <span class="math inline">\(P(rejected|H_1)=\dfrac{B}{B+D}\)</span>, proportion of correctly rejected case to all H1 cases</p>
+<p><strong>Specificity:</strong> the probability that the symptom is not present given that the person does not have a disease. i.e. specificity = <span class="math inline">\(P(not\ rejected|H_0)=\dfrac{C}{A+C}\)</span>, proportion of correctly accepted case to all H0 cases</p>
+<p>e.g. Disease: lung canser, Symptom: cigarette smoking.</p>
+<p>If we assume that 90% of people with lung cancer and 30% of people without lung cancer are smokers, then sensitivity=.9, specificity=.7</p>
+<p><strong>False negative:</strong> a negative test result when the disease or condition being tested for is actually present.(<span class="math inline">\(\beta\)</span>, i.e. the test failed to identify the negative outcome, accept H0 when the truth is H1)</p>
+<p><strong>False positive:</strong> a positive test result when the disease or condition being tested for is not actually present.(<span class="math inline">\(\alpha\)</span>, i.e. the test failed to identify the positive outcome, reject H0 when the the truth is H0)</p>
+<p><strong>Positive Predictive Value(PPV):</strong> <span class="math inline">\(PPV=P(H_1|rejected)=\dfrac{B}{A+B}\)</span></p>
+<p><strong>Negative Predictive Value(NPV):</strong> <span class="math inline">\(NPV=P(H_0|not\ rejected)=\dfrac{C}{C+D}\)</span></p>
+<p><strong>Prevalence:</strong> probability of currently having the disease.(#people have the disease/#number of people in the study)</p>
+<p><strong>As prevalence increases, PPV increases and NPV decreases.</strong></p>
+<p><strong>Note:</strong> Positive test = reject H0, Negative test = accept H0</p>
+<center>
+<figure>
+<img src="assets/2019-10-21-00-20-03.png" alt="1.3.2" /><figcaption>1.3.2</figcaption>
+</figure>
+</center>
+<p>The measure with &quot;true positive fraction&quot; and &quot;false positive fraction&quot; are more meaningful than &quot;accuracy&quot; because they depend on the arbitrary selection of a decision threshold.</p>
+<h4 id="roc-curve-1">1.3.3 ROC Curve</h4>
+<p><strong>Receiver Operating Characteristic(ROC) curve:</strong> indicating all possible combinations of the relative frequencies of the various konds of correct and incorrect decisions. ROC Curve is a plot of <em>the sensitivity versus (1-specificity)</em>, where the different points on the cureve correspond to different cutoff points used to designate test-positive.</p>
+<p><strong>Area Under Curve(AUC):</strong> Describe the &quot;degree of separation&quot;, a summary of the overall diagnostic accuracy of the test.</p>
+<p>AUC = 0.5 <span class="math inline">\(\Leftrightarrow\)</span> random chance</p>
+<p>AUC = 1.0 <span class="math inline">\(\Leftrightarrow\)</span> all true-positives have higher values than any true-negatives</p>
+<h2 id="lecture-2-hypothesis-testing">Lecture 2 Hypothesis Testing</h2>
+<p>Outline:</p>
+<ul>
+<li>Recap</li>
+<li>Hypothesis test under normal distribution</li>
+<li>Hypothesis test for binomial proportions</li>
+<li>Hypothesis test for the Poisson Distribution</li>
+</ul>
+<h3 id="recap">2.1 Recap</h3>
+<p><strong>P-value:</strong> the probability under the null hypothesis of obtaining evidence as extreme or more extreme thant would be observed by chance alone. If the P-value is small, then either <span class="math inline">\(H_0\)</span> is true and we have observed a rare event or <span class="math inline">\(H_0\)</span> is false.(set a level of <span class="math inline">\(\alpha\)</span> to judge the significance)</p>
+<p><strong>Power:</strong> <span class="math inline">\(1-\beta = P(\text{reject}\ H_0|H_1)\)</span></p>
+<h3 id="hypothesis-test-under-normal-distribution">2.2 Hypothesis test under normal distribution</h3>
+<h4 id="one-sample-test-for-the-mean">2.2.1 One-sample test for the mean</h4>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<ul>
+<li>t test: <span class="math inline">\(t=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\)</span> (with <span class="math inline">\(\sigma\)</span> unknown)</li>
+<li>z test: <span class="math inline">\(t=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\)</span> (with <span class="math inline">\(\sigma\)</span> known)</li>
+</ul>
+<p><strong>Power for z-test</strong> (with <span class="math inline">\(\sigma\)</span> known)</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta &amp;= P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}&gt;z_{1-\alpha/2}|\mu=\mu_1)\\
+  &amp;= P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}&gt;z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}&lt;z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &amp;=1-\Phi(z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+\Phi(z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &amp;=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}})+\Phi(-z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &amp;\approx\Phi(-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}})
+\end{aligned}
+\]</span></p>
+<p><strong>Sample-size for z-test</strong> (with <span class="math inline">\(\sigma\)</span> known)</p>
+<p><span class="math display">\[z_{1-\beta}=-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}}\]</span></p>
+<p><span class="math display">\[n=\frac{\sigma^2(z_{1-\beta}+z_{1-\alpha/2})^2}{(\mu_0-\mu_1)^2}\]</span></p>
+<p><strong>Power for t-test</strong> (with <span class="math inline">\(\sigma\)</span> unknown)</p>
+<p>Since we have <span class="math inline">\(\frac{S}{\sigma}=\sqrt{\frac{(n-1)S^2}{\sigma^2}/(n-1)}=\sqrt{V/r}\sim\chi^2(n-1)\)</span> and <span class="math inline">\(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}\sim N(0,1)\)</span></p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}=\frac{\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}}{S/\sigma}\stackrel{H_1}{\sim}t_{n-1,ncp}\]</span></p>
+<p>where <span class="math inline">\(ncp=\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta&amp;=P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}&gt;t_{1-\alpha/2}(n-1)|\mu=\mu_1)\\
+  &amp;=P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}&gt;t_{1-\alpha/2}(n-1)|\mu=\mu_1)+P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}&lt;t_{\alpha/2}(n-1)|\mu=\mu_1)\\
+  &amp;=1-t_{n-1,ncp}(t_{1-\alpha/2}(n-1))+t_{n-1,ncp}(t_{\alpha/2}(n-1))
+\end{aligned}
+\]</span></p>
+<p>Usually, we take only one tail to calculate the power. We have</p>
+<p><span class="math display">\[1-\beta \approx 1-t_{n-1,ncp}(t_{1-\alpha}(n-1))\]</span></p>
+<p><strong>Sample-size for t-test</strong> (with <span class="math inline">\(\sigma\)</span> unknown)</p>
+<p>With the required <span class="math inline">\(\beta\)</span>, solve <span class="math inline">\(t_{\beta,ncp}(n-1)=t_{1-\alpha}(n-1)\)</span> to obtain the sample size.</p>
+<p><strong>CI width:</strong> Calculated based on <span class="math inline">\(CI=\bar{x}\pm \frac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1),\ L=\frac{2s}{\sqrt{n}}t_{1-\alpha/2}(n-1)\)</span> (similarly to z-test)</p>
+<h4 id="one-sample-test-for-the-variance">2.2.2 One-sample test for the Variance</h4>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\sigma^2=\sigma^2_0\quad v.s.\quad H_1:\sigma^2\not ={\sigma^2_0}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[X^2=\frac{(n-1)s^2}{\sigma^2}\sim\chi^2(n-1)\]</span></p>
+<h3 id="hypothesis-test-for-binomial-proportions">2.3 Hypothesis test for binomial proportions</h3>
+<p>Assume that <span class="math inline">\(X_i\sim B(n,p)\)</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p=p_0\quad v.s.\quad H_1:p\not ={p_0}\)</span></p>
+<p><strong>The Score test statistic:</strong></p>
+<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\sim N(0,1)\]</span></p>
+<p><strong>The Wald test statistic:</strong></p>
+<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{\hat{p}(1-\hat{p})/n}}\sim \chi^2(1)\]</span></p>
+<p><strong>Exact binomial tests:</strong> Consider calculating an exact P-value.</p>
+<p><strong>Remark:</strong> The difference of the Score test and the Wald test:</p>
+<ul>
+<li>the Score test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var(\theta_0)}}\)</span></li>
+<li>the Wald test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var\hat{\theta}}}\)</span></li>
+</ul>
+<h3 id="hypothesis-test-for-the-poisson-distribution">2.4 Hypothesis test for the Poisson Distribution</h3>
+<p>Assume that <span class="math inline">\(X_i\sim Poi(\mu)\)</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[X^2=\frac{(x-\mu_0)^2}{\mu_0}\stackrel{H_0}{\sim}\chi^2(1)\]</span></p>
+<h2 id="lecture-3-hypothesis-testing-two-sample-inference">Lecture 3 Hypothesis Testing: Two-sample Inference</h2>
+<p>Outline:</p>
+<ul>
+<li>Introduction</li>
+<li>Paired sample</li>
+<li>Two independent groups
+<ul>
+<li>Two sample t-test with equal variances</li>
+<li>Testing for the equality of two variances</li>
+<li>Two sample t-test with unequal variances</li>
+</ul></li>
+<li>Power analysis and Sample-size determination</li>
+</ul>
+<h3 id="introduction">3.1 Introduction</h3>
+<p>In a two-sample hypothesis testing problem, the underlying parameters of two different populations, neither of whose values is assumed known, are compared.</p>
+<p><strong>Longitudinal Study:</strong> (follow-up study)same group of people is followed overtime. i.e.<em>paired sample</em></p>
+<p><strong>Cross-Sectional Study:</strong> the participants are seen only one point in time. i.e.<em>independent sample</em></p>
+<h3 id="paired-samplethe-paired-t-test">3.2 Paired sample(The paired t-test)</h3>
+<p>Denote <span class="math inline">\(d=X_1-X_2\)</span> and do a one-sample t-test.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\Delta=0\quad v.s.\quad H_1:\Delta\not ={0}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[t=\frac{\bar{d}}{s_d\sqrt{n}}\stackrel{H_0}{\sim}t(n-1)\]</span></p>
+<p>where <span class="math inline">\(s_d\)</span> is the sample standard deviation of the observed differences. <span class="math display">\[s_d=\sqrt{\dfrac{\sum_{i=1}^nd_i^2-\frac{(\sum_{i=1}^nd_i)^2}{n}}{n-1}}\]</span></p>
+<h3 id="two-independent-groups">3.3 Two independent groups</h3>
+<h4 id="two-sample-t-test-with-equal-variances">3.3.1 Two-sample t-test with equal variances</h4>
+<p>Assume that the underlying variances in the two groups are the same. <span class="math display">\[\sigma_1^2=\sigma_2^2=\sigma^2\]</span></p>
+<p>Then we have <span class="math inline">\(\bar{X_1}-\bar{X_2}\sim N[\mu_1-\mu_2,\sigma^2(\frac{1}{n_1}+\frac{1}{n_2})]\)</span>. We use the pooled estimate of the variance <span class="math inline">\(s^2\)</span> instead of the unknown <span class="math inline">\(\sigma^2\)</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[t=\frac{\bar{X_1}-\bar{X_2}}{S\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\stackrel{H_0}{\sim}t(n_1+n_2-2)\]</span></p>
+<p>where <span class="math inline">\(S^2\)</span> is the pooled estimate of variance,</p>
+<p><span class="math display">\[S^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\]</span></p>
+<h4 id="testing-for-the-equility-of-two-variances">3.3.2 Testing for the equility of two variances</h4>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(\sigma_1^2=\sigma_2^2\quad v.s.\quad H_1:\sigma_1^2\not ={\sigma_2^2}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[F = \frac{s_1^2}{s_2^2}\stackrel{H_0}{\sim}F_{n_1-1,n_2-1}\]</span></p>
+<p>It can be shown that</p>
+<p><span class="math display">\[F_{d_1,d_2,p}=\frac{1}{F_{d_2,d_1,1-p}}\]</span></p>
+<h4 id="two-sample-t-test-with-unequal-variances">3.3.3 Two sample t-test with unequal variances</h4>
+<p>Assume that the two variances are significantly different.</p>
+<p>Then we have <span class="math inline">\(\bar{X_1}-\bar{X_2}\sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2})\)</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[t=\frac{\bar{X_1}-\bar{X_2}}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}\stackrel{H_0}{\sim}t(d&#39;)\]</span></p>
+<p>the approximate degrees of freedom <span class="math inline">\(d&#39;\)</span> is</p>
+<p><span class="math display">\[d&#39;=\dfrac{(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2})^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}\]</span></p>
+<h3 id="power-analysis-and-sample-size-determination">3.4 Power analysis and Sample-size determination</h3>
+<p>Denote <span class="math inline">\(|\mu_1-\mu_2|=\Delta\)</span>, with significance level <span class="math inline">\(\alpha\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta&amp;=P(\frac{|\bar{X_1}-\bar{X_2}|}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&gt;z_{1-\alpha/2}|H_1)\\
+  &amp;=P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&gt;z_{1-\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&lt;z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
+  &amp;=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+\Phi(z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
+  &amp;\approx\Phi(-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})
+\end{aligned}
+\]</span></p>
+<p>then we have <span class="math inline">\(z_{1-\beta}=-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\)</span>, suppose that <span class="math inline">\(n_2=kn_1\)</span>, it can be shown that</p>
+<p><span class="math display">\[n_1=\frac{(\sigma_1^2+\frac{1}{k}\sigma_2^2))(z_{1-\alpha/2}+z_{1-\beta})^2}{\Delta^2}\]</span></p>
+<h2 id="lecture-4-nonparametric-methods">Lecture 4 Nonparametric Methods</h2>
+<p>Outline:</p>
+<ul>
+<li>Types of data</li>
+<li>Nonparametric tests</li>
+<li>Sign test</li>
+<li>Wilcoxon Signed-rank test</li>
+<li>Sign sum test</li>
+<li>Sample size calculation</li>
+</ul>
+<h3 id="types-of-data">4.1 Types of Data</h3>
+<p><strong>Cardinal data:</strong> on a scale where it is meaningful to measure the distance between possible data values. <strong>Interval scale</strong> data have the arbitrary zero point. (e.g.temperature) <strong>Ratio scale</strong> data have a fixed zero point. (e.g.weight)</p>
+<p><strong>Ordinal data:</strong> can be ordered but not have specific numeric values.</p>
+<p><strong>Categorical data:</strong> (Nominal data) data values can be classified into categories but the categories have no specific ordering.</p>
+<h3 id="the-sign-test">4.2 The Sign Test</h3>
+<p><strong>Situation:</strong> Exact value is not available (but which is better is known)</p>
+<p><strong>Target:</strong> Compare the performance of two groups</p>
+<p><strong>Intuition:</strong> Let <span class="math inline">\(d_i=a_i-b_i\)</span>, denote <span class="math inline">\(C=\sum_iI(d_i&gt;0)\)</span> the number of whom <span class="math inline">\(d_i&gt;0\)</span> out of the total of <span class="math inline">\(n\)</span> people with nonzero <span class="math inline">\(d_i\)</span>, then C is binomial(n,p). If the two groups have similar performance, then the distribution of <span class="math inline">\(d_i\)</span> should be <strong>symmetry</strong>.</p>
+<p>Let <span class="math inline">\(\Delta\)</span> be the population <strong>median</strong> of the <span class="math inline">\(d_i\)</span>.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\Delta=0 \quad v.s.\quad H_1:\Delta\not ={0}\)</span></p>
+<h4 id="normal-theory-method">4.2.1 Normal-Theory Method</h4>
+<p><span class="math display">\[E(C)=\frac{n}{2}, \quad Var(C)=\frac{n}{4}\]</span></p>
+<p>Test statistic:</p>
+<p><span class="math display">\[Z=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)\]</span></p>
+<p>Test statistic with continuity correction:</p>
+<p><span class="math display">\[Z=\frac{C-\frac{n}{2}-0.5}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)\]</span></p>
+<p><strong>Note:</strong> Use this test only when <span class="math inline">\(n\geq 20\)</span>.</p>
+<h4 id="exact-method">4.2.2 Exact Method</h4>
+<p>If <span class="math inline">\(C&gt;\frac{n}{2},\quad p=2\times\sum_{k=C}^n\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
+<p>If <span class="math inline">\(C&lt;\frac{n}{2},\quad p=2\times\sum_{k=0}^C\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
+<p>If <span class="math inline">\(C=\frac{n}{2},\quad p=1.0\)</span>.</p>
+<h3 id="wilcoxon-signed-rank-test">4.3 Wilcoxon Signed-rank test</h3>
+<p><strong>Situation:</strong> Exact value is available. Two groups of samples(paired)</p>
+<p><strong>Target:</strong> Compare the performance of two groups. Take &quot;distance&quot; into account.</p>
+<p><strong>Intuition:</strong> Let <span class="math inline">\(R_i=|d_i|=|a_i-b_i|\)</span> and rank these values. Consider the rank sum of which <span class="math inline">\(d_i&gt;0\)</span>. Since the rank sum outcome has equal probability, if the two groups have similar performance, the positive rank sum should be half of the total rank sum.</p>
+<p>Denote <span class="math inline">\(W_+=\sum_{i=1}^nR_i\phi_i\)</span>, where <span class="math inline">\(R_i=|d_i|, \phi_i=I(d_i&gt;0)\)</span>.</p>
+<p>Since <span class="math inline">\(W=W_++W_-=\dfrac{n(n+1)}{2}\)</span>, under <span class="math inline">\(H_0\)</span> with no ties :</p>
+<p><span class="math display">\[E(W_+)=\frac{n(n+1)}{4},\quad Var(W_+)=\frac{n(n+1)(2n+1)}{24}\]</span></p>
+<p>If there are ties :</p>
+<p><span class="math display">\[Var(W_+)=\frac{n(n+1)(2n+1)}{24}-\sum_{g=1}^g\frac{t_i^3-t_i}{48}\]</span></p>
+<h3 id="wilcoxon-rank-sum-test-mann-whitney-test">4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</h3>
+<p><strong>Situation:</strong> Two groups of samples(not paired). Treatment effect.</p>
+<p><strong>Target:</strong> Compare if a certain feature of the sample is significantly different.(if treatment effect exists)</p>
+<p><strong>Intuition:</strong> Discard the labels and rank all the observations. If treatment effect doesn't exist, the sum of the ranks in the first and the second treatment would be proportioned by the sample size.</p>
+<p>Let <span class="math inline">\(X_1,X_2,...,X_{n_1}\sim F,Y_1,Y_2,...,Y_{n_2}\sim G\)</span>, denote the statistic</p>
+<p><span class="math display">\[
+\begin{aligned}
+  W_X&amp;=\sum_{i=1}^{n_1}rank(X_i)\\
+  &amp;=\sum_{i=1}^{n_1}(\sum_{j=1}^{n_1}I(X_j\leq X_i)+\sum_{j=1}^{n_2}I(Y_j\leq X_i))\\
+  &amp;=\frac{n_1(n_1+1)}{2}+\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)
+\end{aligned}
+\]</span></p>
+<p>Here we have Mann-Whitney Statistic:</p>
+<p><span class="math display">\[W_{YX}=\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)\]</span></p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:F(x)=G(x),\forall x \quad v.s.\quad H_1:F(x)\not =G(x), \exist x\)</span></p>
+<p>Under <span class="math inline">\(H_0\)</span>, if there are no ties:</p>
+<p><span class="math display">\[E(W_X)=\frac{n_1(n_1+n_2+1)}{2}, Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}\]</span></p>
+<p>If there are ties:</p>
+<p><span class="math display">\[Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}-\sum_{i=1}^g\frac{n_1n_2(t_i^3-t_i)}{12(n_1+n_2)(n_1+n_2+1)}\]</span></p>
+<p><strong>Note:</strong> Normal approximate should be used only if both <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are at least 10.</p>
+<p><strong>Remark:</strong> Comparision of the Wilcoxon Signed rank test and Wilcoxon Rank sum test</p>
+<ul>
+<li>Singed rank: <span class="math inline">\(f(·)\)</span> is symmetric around <span class="math inline">\(\Delta\)</span></li>
+<li>Rank sum: <span class="math inline">\(G(x)=F(x-\Delta)\)</span> or <span class="math inline">\(Y=X+\Delta\)</span></li>
+<li>Hypothesis: <span class="math inline">\(H_0:\Delta=0\quad vs.\quad H_1:\Delta\not ={0}\)</span></li>
+</ul>
+<h3 id="sample-size-calculation">4.5 Sample-size Calculation</h3>
+<h4 id="sign-test">4.5.1 Sign test</h4>
+<p>One-sample case: <span class="math inline">\(Z_1,Z_2,...,Z_n\sim f\)</span>, let <span class="math inline">\(\theta\)</span> be the population median of the <span class="math inline">\(f(x)\)</span>.</p>
+<p><span class="math display">\[H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}\]</span></p>
+<p><span class="math display">\[\Leftrightarrow H_0:p=P(Z&gt;0|Z\not ={0})=0.5 \quad v.s. \quad H_1:p\not ={0.5}\]</span></p>
+<p><span class="math display">\[C=\sum_{i=1}^nI(Z_i&gt;0)\]</span> <span class="math display">\[T=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{H_0}{\sim}N(0,1)\]</span></p>
+<p>Under <span class="math inline">\(H_1\)</span>, <span class="math inline">\(C\sim B(n,p_1)\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta&amp;=P(T&gt;z_{1-\frac{\alpha}{2}}|p=p_1)\\
+  &amp;=P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}&gt;\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{1-\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &amp;\quad +P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}&lt;\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &amp;=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}-\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})+\Phi(\frac{z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &amp;\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n|0.5-p_1|}{\sqrt{np_1(1-p_1)}})
+\end{aligned}
+\]</span></p>
+<h4 id="wilcoxon-signed-rank-test-1">4.5.2 Wilcoxon Signed Rank test</h4>
+<p>One-sample case: <span class="math inline">\(Z_1,Z_2,...,Z_n\sim f\)</span>,<span class="math inline">\(f(·)\)</span> is symmetric around <span class="math inline">\(\theta\)</span></p>
+<p><span class="math display">\[H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}\]</span></p>
+<p>Under <span class="math inline">\(H_1\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta &amp;= P(|W^*|&gt;z_{1-\frac{\alpha}{2}}|\theta\not ={0})\\
+  &amp;=P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}&gt;\frac{z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &amp;\qquad +P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}&lt;\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &amp;=\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}-n_1n_2(0.5-p_1)}{\sigma_W})+\Phi(\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &amp;\approx\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2|0.5-p_1|}{\sigma_W})
+\end{aligned}
+\]</span></p>
+<h3 id="some-other-topics">4.6 Some other topics</h3>
+<p><span class="math display">\[AUC = \frac{U}{n_1n_2}\]</span></p>
+<p>Where U is the Mann-Whitney Statistic.</p>
+<p>For random variables <span class="math inline">\(\xi=(X_1,...,X_{n_1},Y_1,...,Y_{n_2})\)</span> and Z,</p>
+<p><span class="math inline">\(c-index = P(\xi_1&lt;\xi_2|Z_1&lt;Z_2)\Leftrightarrow P(\xi_1&lt;\xi_2|Z_1=0,Z_2=1)\Leftrightarrow P(X_1&lt;Y_1)\)</span></p>
+<h2 id="lecture-5-categorical-data">Lecture 5 Categorical Data</h2>
+<p>Outline:</p>
+<ul>
+<li>Two sample test for Binominal propotions
+<ul>
+<li>Normal theory approach</li>
+<li>Contingency table approach</li>
+</ul></li>
+<li>Fisher's exact test</li>
+<li>McNemar's test</li>
+<li>Sample size and power estimation</li>
+<li><span class="math inline">\(R\times C\)</span> contingency tables</li>
+<li>Goodness of Fit</li>
+<li>The Kappa Statistic</li>
+</ul>
+<h3 id="two-sample-test-for-binomial-proportions">5.1 Two-Sample Test for Binomial Proportions</h3>
+<p><strong>Situation:</strong> Categorical data</p>
+<p><strong>Target:</strong> Figure out whether the difference is significant between two categories.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}\)</span></p>
+<h4 id="normal-theory-method-1">5.1.1 Normal-Theory Method</h4>
+<p><strong>Intuition:</strong> Compare the difference between the sample proportions <span class="math inline">\((\hat{p_1}-\hat{p_2})\)</span>. If <span class="math inline">\(H_0\)</span> is true, the difference should be small. The samples will be assumed large enough so that <em>normal approximation</em> is valid.</p>
+<p>Under <span class="math inline">\(H_0\)</span> : <span class="math display">\[E(\hat{p_1}-\hat{p_2})=0 \quad std(\hat{p_1}-\hat{p_2})=\sqrt{pq(\frac{1}{n_1}+\frac{1}{n_2})}\]</span></p>
+<p><strong>Test statistic:</strong> <span class="math display">\[z=\frac{|\hat{p_1}-\hat{p_2}|}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</span></p>
+<p>where <span class="math inline">\(\hat{p}=\dfrac{n_1\hat{p_1}+n_2\hat{p_2}}{n_1+n_2}=\dfrac{x_1+x_2}{n_1+n_2}, \hat{q}=1-\hat{p}.\)</span></p>
+<p>Test statistic with continutiy correction :</p>
+<p><span class="math display">\[z=\frac{|\hat{p_1}-\hat{p_2}|-(\frac{1}{2n_1}+\frac{1}{2n_2})}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</span></p>
+<p><strong>Note:</strong> Use this test only when <span class="math inline">\(n_1\hat{p}\hat{q}\geq5\)</span> and <span class="math inline">\(n_2\hat{p}\hat{q}\geq5\)</span>.</p>
+<h4 id="contingency-table-approach">5.1.2 Contingency table approach</h4>
+<p><strong>Intuition:</strong> Set up contingency table, apply chi-squared test.</p>
+<ul>
+<li>This test is called a <em>test for homogeneity of binomial proportions</em>. In this situation, one set of margins is fixed and the number of successes in each row is a random variable.</li>
+</ul>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Exposed</th>
+<th style="text-align: center;">Unexposed</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Case</td>
+<td style="text-align: center;"><span class="math inline">\(O_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(O_{12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{1.}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Control</td>
+<td style="text-align: center;"><span class="math inline">\(O_{21}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(O_{22}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{2.}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(n_{.1}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{.2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{..}\)</span></td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>The expected number of units in the <span class="math inline">\((i,j)\)</span> cell :</p>
+<p><span class="math display">\[E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}}\]</span></p>
+<p><strong>Test statistics:</strong></p>
+<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
+<p>Test statistics with Yates' continuity correction :</p>
+<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(|O_{ij}-E_{ij}|-0.5)^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
+<p>Alternative form:</p>
+<p><span class="math display">\[\chi^2=\frac{n_{..}(n_{11}n_{22}-n_{12}n_{21})^2}{n_{.1}n_{.2}n_{1.}n_{2.}}\]</span></p>
+<p><strong>Note:</strong> The test is used only when <span class="math inline">\(E_{ij}&gt;5,\forall i,j.\)</span></p>
+<h4 id="more-details-about-chi-squared">5.1.3 More details about chi-squared</h4>
+<ul>
+<li>The <span class="math inline">\(\chi^2\)</span> statistic can be used
+<ul>
+<li>the rows are fixed (binomial)</li>
+<li>the colomns are fixed (binomial)</li>
+<li>the total sample size is fixed (multinomial)</li>
+<li>none are fixed (Poisson)</li>
+</ul></li>
+<li>For a given set of data, any of these assumptions results in the same value for the statistic.</li>
+<li><span class="math inline">\(df=n_{..}-1\)</span></li>
+</ul>
+<h3 id="fishers-exact-test">5.2 Fisher's Exact Test</h3>
+<p><strong>Situation:</strong> Categorical data, small samples</p>
+<p><strong>Target:</strong> Figure out whether the difference is significant between two categories.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}\)</span></p>
+<p>Exact Probability of Obeserving a Table with a certain cell :</p>
+<p><span class="math display">\[Pr(n_{11},n_{12},n_{21},n_{22})=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!n_{11}!n_{12}!n_{21}!n_{22}!}\]</span></p>
+<p>Suppose we consider all possible tables with fixed row margins and fixed column margins. Then <strong>rearrange the rows and columns</strong> so that <span class="math inline">\(n_{1.}\leq n_{2.}, n_{.1}\leq n_{.2}\)</span>.</p>
+<p>The random variable <span class="math inline">\(X\)</span> denote the cell count in <span class="math inline">\((1,1)\)</span> : <span class="math display">\[Pr(X=a)=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!a!(n_{1.}-a)!(n_{.1}-a)!(n_{.2}-n_{1.}+a)!}\stackrel{H_0}{\sim}Hypergeometric(n_{1.},n_{2.},n_{..})\]</span></p>
+<p>Also, under <span class="math inline">\(H_0\)</span> :</p>
+<p><span class="math display">\[E(X)=\frac{n_{1.}n_{.1}}{n_{..}},\quad Var(X)=\frac{n_{1.}n_{2.}n_{.1}n_{.2}}{n_{..}^2(n_{..}-1)}\]</span></p>
+<p>Enumerate all possible tables and compute the exact probability of each table using the formula above. Calculate the p-value(two-tailed test) :</p>
+<p><span class="math display">\[p-value = 2\times \min [Pr(0)+Pr(1)+...+Pr(a),Pr(a)+Pr(a+1)+...+Pr(k),0.5]\]</span></p>
+<h3 id="mcnemars-test">5.3 McNemar's test</h3>
+<p><strong>Situation:</strong> Samples are paired and dependent.</p>
+<p><strong>Target:</strong> Figure out whether the difference is significant between two categories. Here, the two categories are dependent.</p>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type A/Type B</th>
+<th style="text-align: center;">Case</th>
+<th style="text-align: center;">Control</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Case</td>
+<td style="text-align: center;"><span class="math inline">\(n_{11}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{12}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Control</td>
+<td style="text-align: center;"><span class="math inline">\(n_{21}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{22}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(m_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(m_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
+</tr>
+</tbody>
+</table>
+</center>
+<ul>
+<li>Concordant pair : matched pair in which the outcome is the same for each member of the pair. i.e. <span class="math inline">\(n_{11}\)</span> and <span class="math inline">\(n_{22}\)</span>.</li>
+<li>Discordant pair : matched pair in which the outcomes differ for the member of the pair, which <strong>shows the difference between the categories</strong>. i.e. <span class="math inline">\(n_{12}\)</span> and <span class="math inline">\(n_{21}\)</span>.</li>
+</ul>
+<p>Suppose that of <span class="math inline">\(n_D\)</span> discordant pairs, <span class="math inline">\(n_A\)</span> are type A.</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0 : p=\frac{1}{2} \quad v.s. \quad H_1:p\not ={\frac{1}{2}}\)</span>, where <span class="math inline">\(p=\dfrac{n_A}{n_D}\)</span>.</p>
+<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(n_A\sim Binomial(n_D,0.5)\)</span> :</p>
+<p><span class="math display">\[E(n_A)=\frac{n_D}{2},\quad Var(n_A)=\frac{n_D}{4}\]</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[\chi^2=\frac{(n_A-\frac{n_D}{2})^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
+<p>Alternative form:</p>
+<p><span class="math display">\[\chi^2=\frac{(n_A-n_B)^2}{n_D}\]</span></p>
+<p>Test statistic with continutiy correction :</p>
+<p><span class="math display">\[\chi^2=\frac{(|n_A-\frac{n_D}{2}|-0.5)^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
+<p><strong>Note:</strong> Use this test only if <span class="math inline">\(n_D\geq20\)</span>.</p>
+<h3 id="sample-size-and-power-estimation">5.4 Sample size and power estimation</h3>
+<h4 id="two-proportions-comparision">5.4.1 Two proportions comparision</h4>
+<p>Denote <span class="math inline">\(\Delta=|p_2-p_1|\)</span>, <span class="math inline">\(p_1,p_2\)</span> = projected true probabilities of success in the two groups, suppose that <span class="math inline">\(n_2=kn_1\)</span>, then <span class="math inline">\(\bar{p}=\frac{p_1+kp_2}{1+k}\)</span>, with significance level <span class="math inline">\(\alpha\)</span>, the power is</p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta&amp;=P(\frac{|\hat{p_1}-\hat{p_2}|}{\sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1}+\frac{1}{n_2})}}&gt;z_{1-\alpha/2}|H_1)\\
+  &amp;=P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}&gt;z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &amp;\qquad +P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}&lt;z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &amp;=\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})+\Phi(z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &amp;\approx\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})
+\end{aligned}
+\]</span></p>
+<p>We have <span class="math inline">\(z_{1-\beta}=\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}\)</span>, it can be shown that</p>
+<p><span class="math display">\[n_1=\frac{[\sqrt{\bar{p}\bar{q}(1+\frac{1}{k})}z_{1-\alpha/2}+\sqrt{p_1q_2\dfrac{p_2q_2}{k}}z_{1-\beta}]^2}{\Delta^2}\]</span></p>
+<h4 id="paired-samples">5.4.2 Paired samples</h4>
+<p>Denote the specific alternative <span class="math inline">\(p=p_A\)</span>, with significance level <span class="math inline">\(\alpha\)</span></p>
+<p>Since <span class="math inline">\(\hat{p_A}\sim N(p_A,\frac{p_Aq_A}{n_D})\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  1-\beta&amp;=P(\frac{|n_A-\frac{n_D}{2}|}{\sqrt{\frac{n_D}{4}}}&gt;z_{1-\alpha/2}|H_1)\\
+  &amp;=P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}&gt;z_{1-\alpha/2}|H_1)+P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}&lt;z_{\alpha/2}|H_1)\\
+  &amp;=P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}&gt;\frac{z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}&lt;\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
+  &amp;=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}-\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+\Phi(\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
+  &amp;\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}})
+\end{aligned}
+\]</span></p>
+<p>We have <span class="math inline">\(z_{1-\beta}=\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}}\)</span>, it can be shown that</p>
+<p><span class="math display">\[n=\frac{(z_{1-\alpha/2}+2z_{1-\beta}\sqrt{p_Aq_A})^2}{4(p_A-0.5)^2p_D}\]</span></p>
+<p>where <span class="math inline">\(p_D=\frac{n_D}{n}\)</span> is projected proportion of discordant pairs among all pairs. <span class="math inline">\(n\)</span> matched pairs are required.</p>
+<h4 id="compliance">5.4.3 Compliance</h4>
+<p><strong>Definition:</strong> Compliance describes the degree to which a patient correctly follows medical advice.</p>
+<p>Two types of noncompliance to consider:</p>
+<ul>
+<li>dropout rate <span class="math inline">\(\lambda_1\)</span>: the proportion of participants who fail to actually receive the active treatment</li>
+<li>drop-in rate <span class="math inline">\(\lambda_2\)</span>: the proportion of participants in the placebo group who actually receive the active treatment outside the study protocol</li>
+</ul>
+<p>under the assumption of perfect compliance:</p>
+<ul>
+<li><span class="math inline">\(p_1\)</span>=incidence of disease among participants who actually receive treatment</li>
+<li><span class="math inline">\(p_2\)</span>=incidence of disease among participants who don't receive treatment</li>
+</ul>
+<p>Assuming that compliance is not perfect:</p>
+<ul>
+<li><span class="math inline">\(p_1^*\)</span>=observed rate of disease in the treatment groups</li>
+<li><span class="math inline">\(p_2^*\)</span>=observed rate of disease in the placebo groups</li>
+</ul>
+<p>then we have</p>
+<p><span class="math display">\[p_1^*=p_1(1-\lambda_1)+p_2\lambda_1,\quad p_2^*=p_2(1-\lambda_2)+p_1\lambda_2\]</span></p>
+<h3 id="rtimes-c-contingency-tables">5.5 <span class="math inline">\(R\times C\)</span> contingency tables</h3>
+<h3 id="goodness-of-fit">5.6 Goodness of Fit</h3>
+<h3 id="the-kappa-statistic">5.7 The Kappa Statistic</h3>
+<h2 id="lecture-6-regression-and-correlation-methods">Lecture 6 Regression and Correlation Methods</h2>
+<p>Outline:</p>
+<ul>
+<li>Regression Topic</li>
+<li>Correlation coefficient
+<ul>
+<li>Pearson correlation coefficient</li>
+<li>Spearman rank correlation coefficient</li>
+<li>Kendall's Tau</li>
+</ul></li>
+</ul>
+<h3 id="regression-topic">6.1 Regression Topic</h3>
+<p>Refer to Applied Linear Regression course.</p>
+<h3 id="correaltion-coefficient">6.2 Correaltion coefficient</h3>
+<h4 id="pearson-correlation-coefficient">6.2.1 Pearson correlation coefficient</h4>
+<p>The sample Pearson correlation coefficient is defined by</p>
+<p><span class="math display">\[r=\frac{L_{xy}}{\sqrt{L_{xx}L_{yy}}}\]</span></p>
+<p>where <span class="math inline">\(L_{xy}=\sum(x_i-\bar{x})(y_i-\bar{y}), L_{xx}=\sum(x_i-\bar{x})^2, L_{yy}=\sum(y_i-\bar{y})^2\)</span></p>
+<p>Also</p>
+<p><span class="math display">\[r=\frac{s_{xy}}{\sqrt{s_{xx}s_{yy}}}\]</span></p>
+<p>The regression model <span class="math inline">\(Y=\beta_0+\beta_1X\)</span>, then</p>
+<p><span class="math display">\[\beta_1=\frac{L_{xy}}{L_{xx}}=\sqrt{\frac{L_{yy}}{L_{xx}}}\times r\]</span></p>
+<p><strong>Note:</strong></p>
+<ol type="1">
+<li>The regression coefficient is based on the normal distribution assumption, which means that the <span class="math inline">\(Y_i\)</span> should follow a normal distribution. Also, the relationship between correlation coefficient and regression coefficient depends on that.</li>
+<li>r does not change if the units of measurement are changed, while <span class="math inline">\(\beta_1\)</span> depends.</li>
+</ol>
+<ul>
+<li>Predict one variable from another <span class="math inline">\(\Rightarrow\)</span> regressioon coefficient</li>
+<li>Describe the linear relationship between two variables <span class="math inline">\(\Rightarrow\)</span> correlation coefficient</li>
+</ul>
+<h4 id="spearman-rank-correlation-coefficient">6.2.2 Spearman rank correlation coefficient</h4>
+<p><span class="math display">\[r_s=\frac{R_{xy}}{\sqrt{R_{xx}\times R_{yy}}}\]</span></p>
+<p>where the R's are computed from the ranks rather than from the actual scores</p>
+<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\rho=0\quad v.s. \quad H_1:\rho\not ={0}\)</span></p>
+<p><strong>Test statistic:</strong></p>
+<p><span class="math display">\[t_s=\frac{r_s\sqrt{n-2}}{\sqrt{1-r_s^2}}\stackrel{H_0}{\sim}t_{n-2}\]</span></p>
+<h4 id="kendalls-tau">6.2.3 Kendall's Tau</h4>
+<p>The Kendall's Tau is based on the number of concordant and discordant pairs.(describe the trend of the paired data)</p>
+<p><span class="math display">\[\hat{\tau}=\frac{\sum_{1\leq i&lt;j&lt;n}sign((X_j-X_i)(Y_j-Y_i))}{\frac{n(n-1)}{2}}\]</span></p>
+<p>another form:</p>
+<p><span class="math display">\[\tau=\frac{K_1-K_2}{\frac{n(n-1)}{2}}\]</span></p>
+<p>where <span class="math inline">\(K_1\)</span> is the number of concordant pairs and <span class="math inline">\(K_2\)</span> is the number of discordant paris</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Biostatistics/" rel="tag"># Biostatistics</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/30/20191030regression/" rel="next" title="应用回归分析">
+                  <i class="fa fa-chevron-left"></i> 应用回归分析
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/30/20191030nonpara/" rel="prev" title="非参数统计">
+                  非参数统计 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-intro"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1 Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#randomized-clinical-trial-rct"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Randomized Clinical Trial (RCT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#block-randomization"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 Block Randomization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strafication"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 Strafication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blinding"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 Blinding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#descriptive-statistics"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Descriptive Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#measures-of-location"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 Measures of Location</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#measures-of-spread"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Measures of Spread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graphic-methods"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 Graphic Methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roc-curve"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 ROC curve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hypothesis-testing"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 Hypothesis Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sensitivity-and-specificity"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 Sensitivity and Specificity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc-curve-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.3.3 ROC Curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-hypothesis-testing"><span class="nav-number">2.</span> <span class="nav-text">Lecture 2 Hypothesis Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#recap"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Recap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-under-normal-distribution"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Hypothesis test under normal distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#one-sample-test-for-the-mean"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 One-sample test for the mean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#one-sample-test-for-the-variance"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 One-sample test for the Variance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-for-binomial-proportions"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Hypothesis test for binomial proportions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-for-the-poisson-distribution"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Hypothesis test for the Poisson Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-hypothesis-testing-two-sample-inference"><span class="nav-number">3.</span> <span class="nav-text">Lecture 3 Hypothesis Testing: Two-sample Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#paired-samplethe-paired-t-test"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Paired sample(The paired t-test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-independent-groups"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Two independent groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#two-sample-t-test-with-equal-variances"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 Two-sample t-test with equal variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#testing-for-the-equility-of-two-variances"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 Testing for the equility of two variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#two-sample-t-test-with-unequal-variances"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 Two sample t-test with unequal variances</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-analysis-and-sample-size-determination"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Power analysis and Sample-size determination</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-4-nonparametric-methods"><span class="nav-number">4.</span> <span class="nav-text">Lecture 4 Nonparametric Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#types-of-data"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Types of Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-sign-test"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 The Sign Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-theory-method"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exact-method"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 Exact Method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wilcoxon-signed-rank-test"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Wilcoxon Signed-rank test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wilcoxon-rank-sum-test-mann-whitney-test"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-size-calculation"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 Sample-size Calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sign-test"><span class="nav-number">4.5.1.</span> <span class="nav-text">4.5.1 Sign test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wilcoxon-signed-rank-test-1"><span class="nav-number">4.5.2.</span> <span class="nav-text">4.5.2 Wilcoxon Signed Rank test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-other-topics"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Some other topics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-5-categorical-data"><span class="nav-number">5.</span> <span class="nav-text">Lecture 5 Categorical Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#two-sample-test-for-binomial-proportions"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Two-Sample Test for Binomial Proportions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-theory-method-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contingency-table-approach"><span class="nav-number">5.1.2.</span> <span class="nav-text">5.1.2 Contingency table approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more-details-about-chi-squared"><span class="nav-number">5.1.3.</span> <span class="nav-text">5.1.3 More details about chi-squared</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fishers-exact-test"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Fisher&#39;s Exact Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mcnemars-test"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 McNemar&#39;s test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-size-and-power-estimation"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 Sample size and power estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#two-proportions-comparision"><span class="nav-number">5.4.1.</span> <span class="nav-text">5.4.1 Two proportions comparision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paired-samples"><span class="nav-number">5.4.2.</span> <span class="nav-text">5.4.2 Paired samples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#compliance"><span class="nav-number">5.4.3.</span> <span class="nav-text">5.4.3 Compliance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rtimes-c-contingency-tables"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 \(R\times C\) contingency tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goodness-of-fit"><span class="nav-number">5.6.</span> <span class="nav-text">5.6 Goodness of Fit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-kappa-statistic"><span class="nav-number">5.7.</span> <span class="nav-text">5.7 The Kappa Statistic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-regression-and-correlation-methods"><span class="nav-number">6.</span> <span class="nav-text">Lecture 6 Regression and Correlation Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#regression-topic"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Regression Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#correaltion-coefficient"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 Correaltion coefficient</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pearson-correlation-coefficient"><span class="nav-number">6.2.1.</span> <span class="nav-text">6.2.1 Pearson correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spearman-rank-correlation-coefficient"><span class="nav-number">6.2.2.</span> <span class="nav-text">6.2.2 Spearman rank correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kendalls-tau"><span class="nav-number">6.2.3.</span> <span class="nav-text">6.2.3 Kendall&#39;s Tau</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Yukei Yim"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Yukei Yim</p>
+  <div class="site-description" itemprop="description">学数学本是逆天而行</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yukei Yim</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>
