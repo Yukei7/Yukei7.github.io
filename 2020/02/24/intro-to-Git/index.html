@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="This is the note for &amp;quot;Introduction to Git and GitHub&amp;quot; lectured by Google. Find more information on the course page on Coursera">
+<meta name="keywords" content="Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Git and GitHub">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;intro-to-Git&#x2F;index.html">
+<meta property="og:site_name" content="Yukei">
+<meta property="og:description" content="This is the note for &amp;quot;Introduction to Git and GitHub&amp;quot; lectured by Google. Find more information on the course page on Coursera">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;intro-to-Git&#x2F;2020-02-23-22-56-31.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;intro-to-Git&#x2F;2020-02-24-02-30-07.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;intro-to-Git&#x2F;2020-02-24-04-19-05.png">
+<meta property="og:updated_time" content="2020-02-23T22:03:33.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;24&#x2F;intro-to-Git&#x2F;2020-02-23-22-56-31.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/24/intro-to-Git/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Introduction to Git and GitHub | Yukei</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yukei</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/intro-to-Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yukei Yim">
+      <meta itemprop="description" content="学数学本是逆天而行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yukei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Introduction to Git and GitHub
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-24 05:54:21 / 修改时间：06:03:33" itemprop="dateCreated datePublished" datetime="2020-02-24T05:54:21+08:00">2020-02-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>This is the note for &quot;Introduction to Git and GitHub&quot; lectured by Google.</p>
+<p>Find more information on the <a href="https://www.coursera.org/learn/introduction-git-github?specialization=google-it-automation" target="_blank" rel="noopener">course page on Coursera</a></p>
+<a id="more"></a>
+<h2 id="week1-introduction-to-version-control">Week1 Introduction to Version Control</h2>
+<h3 id="before-version-control">1.1 Before Version Control</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff -u 1.py 2.py</span><br></pre></td></tr></table></figure>
+<p>Note the first line <code>6c6,7</code> means the 6th line in the original file was changed with the 6,7th line in the new file.</p>
+<p><code>-</code> sign means the lines are deleted and <code>+</code> sign means the lines are added</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diff -u old_file new_ file &gt; changes.diff.</span><br><span class="line">patch old_file.py &lt; changes.diff</span><br><span class="line">cat changes.diff</span><br></pre></td></tr></table></figure>
+<h3 id="version-control-systems">1.2 Version Control Systems</h3>
+<h3 id="using-git">1.3 Using Git</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email "me@example.com"</span><br><span class="line">git config --global user.name "My name"</span><br></pre></td></tr></table></figure>
+<p><code>--global</code> use the same email and name setting for all repositories</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git clone url</span><br></pre></td></tr></table></figure>
+<p>create a new repository/clone an exist repository</p>
+<p><code>init</code> create a &quot;.git&quot; directory which stores all the changes</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -la</span><br><span class="line">ls -l .git/</span><br></pre></td></tr></table></figure>
+<p>check the directory</p>
+<p><strong>Working tree:</strong> the sandbox that the current version is working on</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 1.py</span><br></pre></td></tr></table></figure>
+<p>add a new file to the staging area</p>
+<p><strong>Staging area (index):</strong> A file maintained by Git that contains all information about what files and changes going to go into your next commit</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>get information of the current working tree and pending changes</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br><span class="line">git commit -m 'commit mesage'</span><br></pre></td></tr></table></figure>
+<p>save changes. a commit message should be added in it (or it would be aborted).</p>
+<p><strong>Commit message:</strong></p>
+<p>First line is a brief decription of the commit. After the first line comes an empty line. Then a detailed explanation.</p>
+<p><strong>Modified:</strong> changes (adding, modifying, deleting) are made but not committed yet</p>
+<p><strong>Stage:</strong> ready to be committed (tracked)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
+<p>check the current configuration</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<p>show the history of commits (author, date, commit message).</p>
+<h2 id="week2-using-git-locally">Week2 Using Git Locally</h2>
+<h3 id="advanced-git-interaction">2.1 Advanced Git interaction</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<p><code>commit -a</code> is a shortcut to stage any changes to tracked files and commit them in one step. (Notice: untracked files won't be committed.)</p>
+<p><strong>HEAD:</strong> Git uses HEAD alias to represent the currently checked-out snapshot of your project</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log -p</span><br><span class="line">git show hashID</span><br></pre></td></tr></table></figure>
+<p>shows the actual lines that changed in each commit. <code>git log -p -2</code> limits the output to the last two entries.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></table></figure>
+<p>shows the number of changed files and lines</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>similar to <code>diff -u</code> but shows only unstaged changes by default.</p>
+<p>Use <code>git diff --staged</code> to see the changes that are staged but not committed.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -p</span><br></pre></td></tr></table></figure>
+<p>shows the changes and ask if we want to stage it or not.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm 1.py</span><br></pre></td></tr></table></figure>
+<p>delete a certain file (deleted from the directory) and staged to be committed</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv original.py new.py</span><br></pre></td></tr></table></figure>
+<p>rename/move the file and staged to be committed</p>
+<p><code>.gitignore/</code> a file to stored certain rules for Git to skip some types of files for the current repo.</p>
+<h3 id="undoing-things">2.2 Undoing things</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 1.py</span><br></pre></td></tr></table></figure>
+<p>revert changes to modify files before they are staged, which will restore the file to the latest storage snapshot. (effectively used to switch branches)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD 1.py</span><br></pre></td></tr></table></figure>
+<p>untracked the changes (basically resets the repo, throwing away some changes)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<p>overwrite the previous commit. (Notice: DO NOT use on public repository because the commit ID would change)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert HEAD</span><br></pre></td></tr></table></figure>
+<p>creating a new commit that is the oppsite of everything in the given commit. (rollback, Git would show the hash of the commit that it's reverting to)</p>
+<p><strong>Commit ID:</strong> 40 characters long. Acually a Hash calculated with SHA1. Hash guarentee the consistency of the history because it's calculated from all the information that makes up a commit. (commit message, date, author, snapshot)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert CommitID</span><br></pre></td></tr></table></figure>
+<p>revert to the specify commit with the commit ID. (intact ID is not required. The first 6-8 characters are enough)</p>
+<h3 id="branching-and-merging">2.3 Branching and Merging</h3>
+<p><strong>Branch:</strong> A pointer to a particular commit. Representing an independent line of development in a project.</p>
+<p><strong>master:</strong> The default branch that Git creates for you when a new repository is initialized. (Usually it's the most stable one)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>shows all existing branches</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch new-feature</span><br></pre></td></tr></table></figure>
+<p>creates a new branch</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout new-feature</span><br></pre></td></tr></table></figure>
+<p>switch to the specify branch. We use <code>git checkout</code> to check out the latest snapshot for both files and for branches.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new branch</span><br></pre></td></tr></table></figure>
+<p>use a one-line command to create a new branch and switch to it.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d new-feature</span><br></pre></td></tr></table></figure>
+<p>delete a certain branch. If that branch is not merged, use <code>git branch -D new-feature</code> if you are sure that you want to delete it.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge new-feature</span><br></pre></td></tr></table></figure>
+<p>merge the specific branch to the master branch.</p>
+<p><strong>Merging:</strong> The term that Git uses for combining branched data and history together. (Both branches point to the same commit) Git uses two different alogorithms to perform merge:</p>
+<ul>
+<li>fast-forward: both branches doesn't diverge (linear)</li>
+<li>three-way: branches have diverged and there is no linear path to combine them. Gits find the most recent common ancestor and merge the snapshots. (<strong>Merge conflict</strong> occurs when two branches have different snapshot on the same part in the same file)</li>
+</ul>
+<p><img src="2020-02-23-22-56-31.png" /></p>
+<p>If we use <code>git merge new-feature</code>, Git would show that there is a conflict when attempting to automatically merge them. Then when you open the file, the editor would add some information showing where the conflict is. It needs to be modified manually.</p>
+<p>After modifying, use <code>git add filename</code> to stage it.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --oneline</span><br></pre></td></tr></table></figure>
+<p>show the commits as graph.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
+<p>throw the merge away and start over.</p>
+<h2 id="week3-working-with-remotes">Week3 Working with Remotes</h2>
+<h3 id="intro-to-github">3.1 Intro to GitHub</h3>
+<p><strong>Distributed:</strong> Each developer has a copy of the whole repository on their local machine.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone url &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<p>clone the existing repos from the url to the directory</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>push the local snapshot to the remote repos</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper cache</span><br></pre></td></tr></table></figure>
+<p>avoid typing account and password each time for 15min. (or <a href="https://help.github.com/en/articles/generating-an-ssh-key" target="_blank" rel="noopener">SSH key instead</a>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>retrieve new changes from the repos</p>
+<h3 id="using-a-remote-repo">3.2 Using a Remote Repo</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p>shows the configuration for the remote</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show origin</span><br></pre></td></tr></table></figure>
+<p>shows detailed information of &quot;origin&quot;. A way to check whether the current repo is up-to-date or the existing branches. (Git won't keep remote and local branches in sync automatically)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+<p>shows the remote branches that our Git repo is currently tracking. (read-only) Notice that you should pull the remote branch and merge it locally first. Then push it back to its origin to change the remote branch.</p>
+<p>Also, <code>git status</code> would show whether the current repo is the same as the remote repo.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;origin&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<p>copies the commits done in the remote repo. Download the remote branches on our repo. (not automatically mirrored to our local branches)</p>
+<p>Notice that if we don't specify the branch name, this would retrieve all the branches</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log origin/master</span><br></pre></td></tr></table></figure>
+<p>show the info of remote repo: &quot;origin/branch&quot;. Use <code>git status</code> then Gits would notice that your branch is behind &quot;origin/branch&quot; by some commits, or have merge conflict.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
+<p>merge the remote branch to the local branch.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>fetch the remote branch and merge to the local master branch. (fetch+merge)</p>
+<p><code>git remote update</code> is similar to <code>git fetch -all</code></p>
+<h3 id="solving-conflicts">3.3 Solving Conflicts</h3>
+<p>Before attempting to push new features, we need to first integrate the remote changes. (<code>git pull</code>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --oneline --all</span><br></pre></td></tr></table></figure>
+<p>shows the different commits and positions in the tree</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p origin/master</span><br></pre></td></tr></table></figure>
+<p>find the conflict and manually solve the merge conflict issue. (<code>&gt;&gt;&gt;</code> is the sign for merge conflict)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin/feature</span><br></pre></td></tr></table></figure>
+<p><code>-u</code> sets a upstream to the remote following branches. (i.e. the branch &quot;feature&quot; and &quot;origin/feature&quot; do not relate to each other. By setting an upstream, the relation is set and we may simply use <code>git push</code> for &quot;feature&quot; to comit to &quot;origin/feature&quot; next time)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<p><strong>Rebasing:</strong> change the base commit that's used for our branch. (CAUTION: Rebasing would rewrite the history of our branch. Only use this on local branch: rebase the branch, merge to the master then delete the old one.)</p>
+<p>If change the base of 4a2c to 75ed:</p>
+<p><img src="2020-02-24-02-30-07.png" /></p>
+<p>origin path: 9bac-&gt;4a2c &amp; 9bac-&gt;75ed</p>
+<p>new path: 9bac-&gt;75ed-&gt;4a2c</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge feature</span><br><span class="line">git push --delete origin feature</span><br><span class="line">git branch -d feature</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>After rebasing, we could merge the feature to the master branch with fast-forward approach. Then the &quot;feature&quot; branch is just the same as the master branch. (which means that we could delete it)</p>
+<p>If there is a conflict when attempting to rebase the commit:</p>
+<ul>
+<li>fix the conflict</li>
+<li>skip the conflicting commit</li>
+<li>abort the rebase</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>after fixing the conflict, retry the rebase step.</p>
+<p><strong>Some tips:</strong></p>
+<p><em>Regularly merge changes made on the master branch back onto the feature branch.</em></p>
+<p><em>Have the latest version of the project in the master branch and a stable version of the project on a separate branch.</em></p>
+<p><em>You shouldn't rebase changes that have been pushed to remote repos.</em>(还没有与他人共享之前，commit history是你私人所有的，那么想怎么改写都可以)</p>
+<h2 id="week4-collaboration">Week4 Collaboration</h2>
+<h3 id="pull-requests">4.1 Pull Requests</h3>
+<p><strong>Forking:</strong> A way of creating a copy of the given repo so that it belongs to our user</p>
+<p><strong>Pull Request:</strong> A commit or series of commits that you send to the owner of the repo so that they incorporate it into their tree</p>
+<p>First fork the repo on GitHub, clone it, create a new branch then do the work.</p>
+<p>After the changes are done, commit and push to our repo. Then we could open a pull request on GitHub website.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i master</span><br></pre></td></tr></table></figure>
+<p><code>-i</code> Interative mode. Changing the &quot;pick&quot; parameter to squash two changes.</p>
+<p><img src="2020-02-24-04-19-05.png" /></p>
+<p>由于rebase是在本地未提交的commits中进行的，这里的合并不会出现分支问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+<p>replace the old commits with the new one (the divergency is discarded)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream url</span><br></pre></td></tr></table></figure>
+<p>In terms of source control, you're &quot;<strong>downstream</strong>&quot; when you copy (clone, checkout, etc) from a repository. Information is flowed &quot;downstream&quot; to you.</p>
+<p>When you make changes, you usually want to send them back &quot;<strong>upstream</strong>&quot; so they make it into that repository so that everyone pulling from the same source is working with all the same changes.</p>
+<h3 id="code-reviews">4.2 Code Reviews</h3>
+<p><strong>Code Review:</strong> Going through someone else's code, documentation or configuration and checking that it all makes sense and follows the expected patternes</p>
+<p>总之就是在pull request和repo owner交流看owner想怎么改代码，改好了就<code>git commit --amend</code> 然后重新push上去，点掉resolve comments表示已经修改了。类似甲方和乙方的交流()</p>
+<h3 id="managing-projects">4.3 Managing Projects</h3>
+<p><strong>Tracking Issues:</strong> GitHub上面的issue项，一般是一些bug、建议和新功能需求的反馈</p>
+<p>include <code>Closes #4</code> into the commit message. Then once this commit is merged, the #4 issue would be automatically closed.</p>
+<p><strong>Continuous Integration(CI):</strong> Will build and test our code every time there's a change</p>
+<p>Once we have our code automatically built and tested, the next automation step is <strong>continuous deployment/continuous delivery(CD)</strong>, which means the new code is deplyed often</p>
+<p>may use <strong>Travis</strong> (GitHub doesn't offer any CI/CD system)</p>
+<p><strong>Pipelines:</strong> Specify the steps that need to run to get the result you want</p>
+<p><strong>Artifacts:</strong> The name used to describe any files that are generated as part of the pipeline</p>
+<p><em>Make sure the authorized entities for the test servers are not the same entities authorized to deploy on the production servers.</em></p>
+<p><em>Always have a plan to recover your access in case your pipeline gets compromised.</em></p>
+<p>大体上是一个自动化流程，在VSC上完成代码修改后自动进行测试和部署，以达到快速得到反馈的目的。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Github/" rel="tag"># Github</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/30/20191030biostat/" rel="next" title="生物统计">
+                  <i class="fa fa-chevron-left"></i> 生物统计
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#week1-introduction-to-version-control"><span class="nav-text">Week1 Introduction to Version Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#before-version-control"><span class="nav-text">1.1 Before Version Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#version-control-systems"><span class="nav-text">1.2 Version Control Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using-git"><span class="nav-text">1.3 Using Git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week2-using-git-locally"><span class="nav-text">Week2 Using Git Locally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#advanced-git-interaction"><span class="nav-text">2.1 Advanced Git interaction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undoing-things"><span class="nav-text">2.2 Undoing things</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branching-and-merging"><span class="nav-text">2.3 Branching and Merging</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week3-working-with-remotes"><span class="nav-text">Week3 Working with Remotes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-to-github"><span class="nav-text">3.1 Intro to GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using-a-remote-repo"><span class="nav-text">3.2 Using a Remote Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-conflicts"><span class="nav-text">3.3 Solving Conflicts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week4-collaboration"><span class="nav-text">Week4 Collaboration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pull-requests"><span class="nav-text">4.1 Pull Requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-reviews"><span class="nav-text">4.2 Code Reviews</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#managing-projects"><span class="nav-text">4.3 Managing Projects</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Yukei Yim"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Yukei Yim</p>
+  <div class="site-description" itemprop="description">学数学本是逆天而行</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yukei Yim</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
