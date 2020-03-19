@@ -247,50 +247,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="2020-03-20-00-02-31.png" alt=""><br>支持向量机(Support Vectors Machine)的原理和部分数学推导。<br><a id="more"></a></p>
-<h2 id="Support-Vector-Machine"><a href="#Support-Vector-Machine" class="headerlink" title="Support Vector Machine"></a>Support Vector Machine</h2><h3 id="1-Seperable-case"><a href="#1-Seperable-case" class="headerlink" title="1. Seperable case"></a>1. Seperable case</h3><p><strong>超平面(Hyperplane):</strong> 在p维空间中的p-1维子空间，将p维空间分成两部分</p>
-<script type="math/tex; mode=display">
-\beta_0+\beta_1X_1+...+\beta_pX_p=0</script><p><strong>线性可分:</strong> 存在一个超平面将所有样本点分离，即满足</p>
-<script type="math/tex; mode=display">
-y_i(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip})>0</script><p><strong>最大间隔超平面(maximal margin hyperplane):</strong> 若样本线性可分，将样本分离的超平面不唯一。计算所有样本点与超平面之间的距离，其最小值也称为边缘(margin)，则定义最大间隔超平面为有最大边缘的超平面。（离超平面最近的样本点有“最宽的间隔”）</p>
-<p><img src="2020-03-19-05-50-45.png" alt=""></p>
+        <p><img src="2020-03-20-00-02-31.png" /> 支持向量机(Support Vectors Machine)的原理和部分数学推导。 <a id="more"></a></p>
+<h2 id="support-vector-machine">Support Vector Machine</h2>
+<h3 id="seperable-case">1. Seperable case</h3>
+<p><strong>超平面(Hyperplane):</strong> 在p维空间中的p-1维子空间，将p维空间分成两部分</p>
+<p><span class="math display">\[
+\beta_0+\beta_1X_1+...+\beta_pX_p=0
+\]</span></p>
+<p><strong>线性可分:</strong> 存在一个超平面将所有样本点分离，即满足</p>
+<p><span class="math display">\[
+y_i(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip})&gt;0
+\]</span></p>
+<p><strong>最大间隔超平面(maximal margin hyperplane):</strong> 若样本线性可分，将样本分离的超平面不唯一。计算所有样本点与超平面之间的距离，其最小值也称为边缘(margin)，则定义最大间隔超平面为有最大边缘的超平面。（离超平面最近的样本点有“最宽的间隔”）</p>
+<p><img src="2020-03-19-05-50-45.png" /></p>
 <p><strong>支持向量(support vectors):</strong> 距离最大间隔超平面最近的样本点，也即“边缘”上的样本点。支持向量确定了超平面的位置，故称之“支持”向量。</p>
 <p>（该分类器由支持向量确定，因而对于支持向量非常敏感。另外，margin具体大小可以用于衡量分类器的可信程度，更宽的margin更可信）</p>
 <p>于是通过下式构造最大间隔超平面，即最大间隔分类器(maximal margin classifier)：</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \max_{\beta}M,\text{subject to }\sum_{j}\beta_j^2=1,\\
-y_i(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip})\geq M</script><p>其中$M&gt;0$也即margin.</p>
-<h3 id="2-Inseperable-case"><a href="#2-Inseperable-case" class="headerlink" title="2. Inseperable case"></a>2. Inseperable case</h3><p>若样本线性不可分，则无法定义最大间隔超平面。推广至构造“几乎分隔”的平面，称这种情况下得到的分类器为支持向量分类器(support vector classifier)</p>
+y_i(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip})\geq M
+\]</span></p>
+<p>其中<span class="math inline">\(M&gt;0\)</span>也即margin.</p>
+<h3 id="inseperable-case">2. Inseperable case</h3>
+<p>若样本线性不可分，则无法定义最大间隔超平面。推广至构造“几乎分隔”的平面，称这种情况下得到的分类器为支持向量分类器(support vector classifier)</p>
 <p>另一方面，线性可分的样本使用最大间隔超平面可能存在过拟合的情况。支持向量分类器（也称soft margin classifier）允许分类器将小部分样本分到错误的一侧，定义如下：</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \max_{\beta,\epsilon,M} M,\text{subject to }\sum_j\beta_j^2=1,\\
 y_i(\beta_0+\beta_1x_{i1}+...+\beta_px_{ip})\geq M(1-\epsilon_i),\\
-\epsilon_i\geq 0,\sum_i\epsilon_i\leq C</script><p>其中$C\geq 0$为参数，$M$即margin.</p>
-<p>$\epsilon_1,…,\epsilon_n$为松弛变量(slack variables)允许样本分类到错误的一侧。当$\epsilon_i=0$时，对于样本$x_i$分类正确。也即$\epsilon_i$确定了样本$x_i$的位置，$\epsilon_i&gt;0$则对应样本分类到错误的一侧(violate the margin)，值越大则离平面越远。</p>
-<p>则通过控制参数$C$就可以调节边缘的“松紧”程度。$C$越大则允许更多的样本分类到错误的一侧，对应的$M$更大（边缘更宽）。</p>
-<p><img src="2020-03-19-06-19-00.png" alt=""></p>
+\epsilon_i\geq 0,\sum_i\epsilon_i\leq C
+\]</span></p>
+<p>其中<span class="math inline">\(C\geq 0\)</span>为参数，<span class="math inline">\(M\)</span>即margin.</p>
+<p><span class="math inline">\(\epsilon_1,...,\epsilon_n\)</span>为松弛变量(slack variables)允许样本分类到错误的一侧。当<span class="math inline">\(\epsilon_i=0\)</span>时，对于样本<span class="math inline">\(x_i\)</span>分类正确。也即<span class="math inline">\(\epsilon_i\)</span>确定了样本<span class="math inline">\(x_i\)</span>的位置，<span class="math inline">\(\epsilon_i&gt;0\)</span>则对应样本分类到错误的一侧(violate the margin)，值越大则离平面越远。</p>
+<p>则通过控制参数<span class="math inline">\(C\)</span>就可以调节边缘的“松紧”程度。<span class="math inline">\(C\)</span>越大则允许更多的样本分类到错误的一侧，对应的<span class="math inline">\(M\)</span>更大（边缘更宽）。</p>
+<p><img src="2020-03-19-06-19-00.png" /></p>
 <p><strong>支持向量(support vectors):</strong> 落在边缘上以及被允许错误分类的样本组成支持向量。可见支持向量分类器只取决于支持向量，边缘外正确分类的样本位置变动（在边缘外变动）不影响分类器。</p>
 <ul>
-<li>$C$越大边缘越宽，支持向量更多，low variance and high bias</li>
-<li>$C$越小边缘越窄，支持向量更少，high variance and low bias</li>
+<li><span class="math inline">\(C\)</span>越大边缘越宽，支持向量更多，low variance and high bias</li>
+<li><span class="math inline">\(C\)</span>越小边缘越窄，支持向量更少，high variance and low bias</li>
 </ul>
-<p><strong>Note:</strong> 此处参数$C$与下面的等价优化问题中的参数含义不同，注意区分理解，上面的参数$C$为$\sum<em>i\epsilon_i\leq C$而下面的等价问题是$\min</em>{\beta_0,\beta}\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i$</p>
+<p><strong>Note:</strong> 此处参数<span class="math inline">\(C\)</span>与下面的等价优化问题中的参数含义不同，注意区分理解，上面的参数<span class="math inline">\(C\)</span>为<span class="math inline">\(\sum_i\epsilon_i\leq C\)</span>而下面的等价问题是<span class="math inline">\(\min_{\beta_0,\beta}\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i\)</span></p>
 <p>由此可见，支持向量分类器的决策只依赖于训练样本的一个子集（支持向量），相较于LDA而言有更好的稳定性。（LDA依赖于各类中所有样本）</p>
 <p><strong>支持向量分类器最优化问题求解：</strong></p>
-<p><img src="2020-03-19-23-13-44.png" alt=""></p>
+<p><img src="2020-03-19-23-13-44.png" /></p>
 <p>由于边缘宽度由边缘上的支持向量决定，支持向量满足：</p>
-<script type="math/tex; mode=display">
-y_i(\beta_0+x_i^T\beta)=1</script><p>且有支持向量距离超平面距离为：</p>
-<script type="math/tex; mode=display">
-d=\frac{|\beta_0+x_i^T\beta|}{||\beta||}=\frac{1}{||\beta||}</script><p>因而可以确定有$\max_{\beta,\epsilon,M} M=\frac{1}{||\beta||}$. 因而优化问题转化为：</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
+y_i(\beta_0+x_i^T\beta)=1
+\]</span></p>
+<p>且有支持向量距离超平面距离为：</p>
+<p><span class="math display">\[
+d=\frac{|\beta_0+x_i^T\beta|}{||\beta||}=\frac{1}{||\beta||}
+\]</span></p>
+<p>因而可以确定有<span class="math inline">\(\max_{\beta,\epsilon,M} M=\frac{1}{||\beta||}\)</span>. 因而优化问题转化为：</p>
+<p><span class="math display">\[
 \min_{\beta_0,\epsilon,\beta}||\beta||,\text{ subject to }y_i(x_i^T\beta+\beta_0)\geq 1-\epsilon_i,\\
-\epsilon_i\geq 0,\sum_i\epsilon_i\leq C</script><p>等价的最优化问题：</p>
-<script type="math/tex; mode=display">
-\min_{\beta_0,\beta}\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i,\\\text{ subject to }\epsilon_i\geq 0,y_i(x_i^T\beta+\beta_0)\geq 1-\epsilon_i,</script><p>由拉格朗日形式：</p>
-<script type="math/tex; mode=display">
-F_P=\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i-\sum_i\alpha_i[y_i(\beta_0+x_i^T)-(1-\epsilon_i)]-\sum_i\mu_i\epsilon_i</script><p>得到KKT条件：</p>
-<script type="math/tex; mode=display">
+\epsilon_i\geq 0,\sum_i\epsilon_i\leq C
+\]</span></p>
+<p>等价的最优化问题：</p>
+<p><span class="math display">\[
+\min_{\beta_0,\beta}\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i,\\\text{ subject to }\epsilon_i\geq 0,y_i(x_i^T\beta+\beta_0)\geq 1-\epsilon_i,
+\]</span></p>
+<p>由拉格朗日形式：</p>
+<p><span class="math display">\[
+F_P=\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i-\sum_i\alpha_i[y_i(\beta_0+x_i^T)-(1-\epsilon_i)]-\sum_i\mu_i\epsilon_i
+\]</span></p>
+<p>得到KKT条件：</p>
+<p><span class="math display">\[
 \begin{cases}
     \frac{\partial F_P}{\partial\beta_0}=-\sum_i\alpha_iy_i=0\\
     \frac{\partial F_P}{\partial\beta}=\beta-\sum_i\alpha_iy_ix_i=0\\
@@ -299,40 +320,57 @@ F_P=\frac{1}{2}||\beta||^2+C\sum_i\epsilon_i-\sum_i\alpha_i[y_i(\beta_0+x_i^T)-(
     \alpha_i\geq 0\\
     \mu_i\epsilon_i=0\\
     \alpha_i[y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)]=0
-\end{cases}</script><p>可以得到拉格朗日对偶函数：</p>
-<script type="math/tex; mode=display">
-L_D(\alpha)=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j(x_i^Tx_j)</script><p>于是原优化问题转化为：</p>
-<script type="math/tex; mode=display">
+\end{cases}
+\]</span></p>
+<p>可以得到拉格朗日对偶函数：</p>
+<p><span class="math display">\[
+L_D(\alpha)=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j(x_i^Tx_j)
+\]</span></p>
+<p>于是原优化问题转化为：</p>
+<p><span class="math display">\[
 \max_{\alpha}L_D,\text{ subject to }0\leq\alpha_i\leq C,\sum_i\alpha_iy_i=0\\
 \begin{cases}
     y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)\geq 0\\
     \mu_i\epsilon_i=0\\
     \alpha_i[y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)]=0
-\end{cases}</script><p>假设$\alpha^<em>$是优化问题的解，则$\beta^</em>=\sum_i\alpha^*y_ix_i$，又因为$\alpha_i[y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)]=0$，则若$\alpha_i&gt;0$必有$y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)=0$，即只有支持向量对应的$\alpha_i$为正。下记$sv$为支持向量的空间。</p>
-<p>求得最优解$\alpha^<em>$后，可计算$\beta^</em>=\sum_{i\in sv}\alpha^<em>y_ix_i$，由支持向量可以计算$\beta_0^</em>$取平均为：</p>
-<script type="math/tex; mode=display">
-\beta_0^*=\frac{1}{|sv|}\sum_{i\in sv}(\frac{1-\epsilon_i-y_ix_i^T\beta^*}{y_i})</script><p>从而得到超平面为$f^<em>(x)=\beta_0^</em>+x^T\beta^<em>=\beta_0^</em>+\sum_{i\in sv}\alpha_i^*y_i(x^Tx_i)$</p>
+\end{cases}
+\]</span></p>
+<p>假设<span class="math inline">\(\alpha^*\)</span>是优化问题的解，则<span class="math inline">\(\beta^*=\sum_i\alpha^*y_ix_i\)</span>，又因为<span class="math inline">\(\alpha_i[y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)]=0\)</span>，则若<span class="math inline">\(\alpha_i&gt;0\)</span>必有<span class="math inline">\(y_i(\beta_0+x_i^T\beta)-(1-\epsilon_i)=0\)</span>，即只有支持向量对应的<span class="math inline">\(\alpha_i\)</span>为正。下记<span class="math inline">\(sv\)</span>为支持向量的空间。</p>
+<p>求得最优解<span class="math inline">\(\alpha^*\)</span>后，可计算<span class="math inline">\(\beta^*=\sum_{i\in sv}\alpha^*y_ix_i\)</span>，由支持向量可以计算<span class="math inline">\(\beta_0^*\)</span>取平均为：</p>
+<p><span class="math display">\[
+\beta_0^*=\frac{1}{|sv|}\sum_{i\in sv}(\frac{1-\epsilon_i-y_ix_i^T\beta^*}{y_i})
+\]</span></p>
+<p>从而得到超平面为<span class="math inline">\(f^*(x)=\beta_0^*+x^T\beta^*=\beta_0^*+\sum_{i\in sv}\alpha_i^*y_i(x^Tx_i)\)</span></p>
 <p><strong>如何求解？</strong></p>
 <p>参考SMO算法</p>
-<h3 id="3-Support-Vector-Machines"><a href="#3-Support-Vector-Machines" class="headerlink" title="3. Support Vector Machines"></a>3. Support Vector Machines</h3><p>支持向量分类器使用了线性边界，然而对于多数数据而言不存在线性的关系，（如经典的“异或”）需要使用非线性的边界。</p>
+<h3 id="support-vector-machines">3. Support Vector Machines</h3>
+<p>支持向量分类器使用了线性边界，然而对于多数数据而言不存在线性的关系，（如经典的“异或”）需要使用非线性的边界。</p>
 <p>和其他线性模型相似地，可以利用基函数(如polynomials和splines)扩展特征空间。</p>
 <p>思路：使用非线性映射，将原始数据映射到更高维的空间里，在高维空间下找到最佳分离超平面。</p>
-<h4 id="3-1-Polynomial"><a href="#3-1-Polynomial" class="headerlink" title="3.1 Polynomial"></a>3.1 Polynomial</h4><p>quadratic: 对于p维特征空间$X_1,…,X_p$，则用2p维$X_1,X_1^2,…,X_p,X_p^2$向量构造特征向量分类器:</p>
-<script type="math/tex; mode=display">
+<h4 id="polynomial">3.1 Polynomial</h4>
+<p>quadratic: 对于p维特征空间<span class="math inline">\(X_1,...,X_p\)</span>，则用2p维<span class="math inline">\(X_1,X_1^2,...,X_p,X_p^2\)</span>向量构造特征向量分类器:</p>
+<p><span class="math display">\[
 \max_{\beta,\epsilon,M} M,\text{subject to }
 y_i(\beta_0+\sum_j\beta_{j1}x_{ij}+\sum_j\beta_{j2}x_{ij}^2)\geq M(1-\epsilon_i),\\
-\epsilon_i\geq 0,\sum_i\epsilon_i\leq C,\sum_j\sum_{k=1}^2\beta_{jk}^2=1.</script><h4 id="3-2-The-Support-Vector-Machine"><a href="#3-2-The-Support-Vector-Machine" class="headerlink" title="3.2 The Support Vector Machine"></a>3.2 The Support Vector Machine</h4><p>“kernel trick” 使用核函数规避了维数灾难问题。</p>
-<p><strong>核函数(kernels):</strong> $K(x,y)=\langle h(x),h(y)\rangle$且核函数满足对称性，半正定性。这里给定$K$不需要知道$h$的具体形式</p>
+\epsilon_i\geq 0,\sum_i\epsilon_i\leq C,\sum_j\sum_{k=1}^2\beta_{jk}^2=1.
+\]</span></p>
+<h4 id="the-support-vector-machine">3.2 The Support Vector Machine</h4>
+<p>&quot;kernel trick&quot; 使用核函数规避了维数灾难问题。</p>
+<p><strong>核函数(kernels):</strong> <span class="math inline">\(K(x,y)=\langle h(x),h(y)\rangle\)</span>且核函数满足对称性，半正定性。这里给定<span class="math inline">\(K\)</span>不需要知道<span class="math inline">\(h\)</span>的具体形式</p>
 <p>回顾支持向量分类器最优化问题中，拉格朗日对偶形式为：</p>
-<script type="math/tex; mode=display">
-L_D(\alpha)=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j(x_i^Tx_j)</script><p>若由核函数对特征空间进行映射，对应：</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
+L_D(\alpha)=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j(x_i^Tx_j)
+\]</span></p>
+<p>若由核函数对特征空间进行映射，对应：</p>
+<p><span class="math display">\[
 \begin{aligned}
-    L_D(\alpha)&=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j\langle h(x_i),h(x_j)\rangle\\
-    &=1_n^T\alpha-\frac{1}{2}\alpha^TH\alpha
-\end{aligned}</script><p>其中$H_{ij}=y_iy_jK(x_i,x_j)$. 最终解得超平面为$f(x)=\beta_0+\sum_i\alpha_iy_i\langle h(x),h(x_i)\rangle$</p>
+    L_D(\alpha)&amp;=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j\langle h(x_i),h(x_j)\rangle\\
+    &amp;=1_n^T\alpha-\frac{1}{2}\alpha^TH\alpha
+\end{aligned}
+\]</span></p>
+<p>其中<span class="math inline">\(H_{ij}=y_iy_jK(x_i,x_j)\)</span>. 最终解得超平面为<span class="math inline">\(f(x)=\beta_0+\sum_i\alpha_iy_i\langle h(x),h(x_i)\rangle\)</span></p>
 <p>一些常用的核函数：</p>
-<p><img src="2020-03-19-08-14-13.png" alt=""></p>
+<p><img src="2020-03-19-08-14-13.png" /></p>
 <p><strong>Reference:</strong></p>
 <ul>
 <li>The Elements of Statistical Learning</li>
@@ -400,7 +438,7 @@ L_D(\alpha)=\sum_i\alpha_i-\frac{1}{2}\sum_i\sum_j\alpha_i\alpha_jy_iy_j(x_i^Tx_
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Support-Vector-Machine"><span class="nav-text">Support Vector Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Seperable-case"><span class="nav-text">1. Seperable case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Inseperable-case"><span class="nav-text">2. Inseperable case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Support-Vector-Machines"><span class="nav-text">3. Support Vector Machines</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Polynomial"><span class="nav-text">3.1 Polynomial</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-The-Support-Vector-Machine"><span class="nav-text">3.2 The Support Vector Machine</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#support-vector-machine"><span class="nav-text">Support Vector Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#seperable-case"><span class="nav-text">1. Seperable case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inseperable-case"><span class="nav-text">2. Inseperable case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#support-vector-machines"><span class="nav-text">3. Support Vector Machines</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#polynomial"><span class="nav-text">3.1 Polynomial</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-support-vector-machine"><span class="nav-text">3.2 The Support Vector Machine</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
