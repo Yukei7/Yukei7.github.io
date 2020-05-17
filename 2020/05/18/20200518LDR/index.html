@@ -61,7 +61,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/18/20200518LDR/2020-05-17-05-31-45.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/18/20200518LDR/2020-05-17-05-36-49.png">
 <meta property="article:published_time" content="2020-05-17T17:34:17.000Z">
-<meta property="article:modified_time" content="2020-05-17T17:56:00.602Z">
+<meta property="article:modified_time" content="2020-05-17T18:14:16.541Z">
 <meta property="article:author" content="Yukei Yim">
 <meta property="article:tag" content="Multivariate Statistics">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-18 01:34:17 / 修改时间：01:56:00" itemprop="dateCreated datePublished" datetime="2020-05-18T01:34:17+08:00">2020-05-18</time>
+              <time title="创建时间：2020-05-18 01:34:17 / 修改时间：02:14:16" itemprop="dateCreated datePublished" datetime="2020-05-18T01:34:17+08:00">2020-05-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,406 +249,253 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/2020/05/18/20200518LDR/2020-05-18-01-38-49.png"> 主要包括主成分分析（PCA）和经典相关分析（CCA）的推导 <a id="more"></a></p>
+        <p><img src="/2020/05/18/20200518LDR/2020-05-18-01-38-49.png" alt><br>主要包括主成分分析（PCA）和经典相关分析（CCA）的推导<br><a id="more"></a></p>
 <p>Outline:</p>
 <ul>
 <li>Introduction</li>
 <li>Principal Component Analysis</li>
 <li>Canonical Variate and Correlation Analysis</li>
 </ul>
-<h2 id="introduction">7.1 Introduction</h2>
-<p><strong>Target:</strong> find a projection that project data onto a lower-dimensional subspace without losing important information.</p>
+<h2 id="7-1-Introduction"><a href="#7-1-Introduction" class="headerlink" title="7.1 Introduction"></a>7.1 Introduction</h2><p><strong>Target:</strong> find a projection that project data onto a lower-dimensional subspace without losing important information.</p>
 <ul>
 <li>One possible way to accomplish this is through <strong>feature selection</strong>.</li>
 <li>Another way is by creating a reduced set of transformations(linear or nonlinear) of the input variables, which is often referred to as <strong>feature extraction</strong>.</li>
 </ul>
 <p><strong>Principal Component Analysis(PCA)</strong> and <strong>Cononical Variate and Correlation Analysis(CVA/CCA)</strong> are linear methods that are most popular in use today. Both these mothods are <strong>eigenvalue-eigenvector problems</strong> and can be viewed as special cases of multivariate reduced-rank regression.</p>
-<h2 id="principal-component-analysis">7.2 Principal Component Analysis</h2>
-<p>PCA was introduced as technique for deriving a reduced set of <strong>orthogonal linear projections</strong> of a single collection of correlated variables <span class="math inline">\(X=(X_1,...,X_r)^T\)</span>, where the projections are oredered by decreasing variances. It's also a method of <strong>decorrelating</strong> <span class="math inline">\(X\)</span>.</p>
+<h2 id="7-2-Principal-Component-Analysis"><a href="#7-2-Principal-Component-Analysis" class="headerlink" title="7.2 Principal Component Analysis"></a>7.2 Principal Component Analysis</h2><p>PCA was introduced as technique for deriving a reduced set of <strong>orthogonal linear projections</strong> of a single collection of correlated variables $X=(X_1,…,X_r)^T$, where the projections are oredered by decreasing variances. It’s also a method of <strong>decorrelating</strong> $X$.</p>
 <p><strong>Note:</strong> Variance is a second-order property of a random variable and is an important measurement of the amount of information in that variable.</p>
 <p>How to make use of the principal component scores (in decreasing order):</p>
 <ul>
-<li>The first few ones: revealing whether most of the data actually live on a linear subspace of <span class="math inline">\(\mathbb{R}^r\)</span> and identifying outliers, distributional peculiarities and clusters of points.</li>
+<li>The first few ones: revealing whether most of the data actually live on a linear subspace of $\mathbb{R}^r$ and identifying outliers, distributional peculiarities and clusters of points.</li>
 <li>The last few ones: detect collinearity and outliers that pop up and alter the perceived dimensionality of the data (which has near-zero variance)</li>
 </ul>
-<h3 id="population-principal-components">7.2.1 Population Principal Components</h3>
-<p>Assume that the ramdom <span class="math inline">\(r\)</span>-vector <span class="math inline">\(X=(X_1,...,X_r)^T\)</span> has mean <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\((r\times r)\)</span> covariance matrix <span class="math inline">\(\Sigma_{XX}\)</span>.</p>
-<p>PCA: set of <span class="math inline">\(r\)</span> variables <span class="math inline">\(X_r\)</span> (unordered and correlated) <span class="math inline">\(\rightarrow\)</span> set of <span class="math inline">\(t\)</span> variables <span class="math inline">\(\xi_t\)</span>(ordered and uncorrelated), where <span class="math inline">\(t&lt;r\)</span></p>
+<h3 id="7-2-1-Population-Principal-Components"><a href="#7-2-1-Population-Principal-Components" class="headerlink" title="7.2.1 Population Principal Components"></a>7.2.1 Population Principal Components</h3><p>Assume that the ramdom $r$-vector $X=(X<em>1,…,X_r)^T$ has mean $\mu_X$ and $(r\times r)$ covariance matrix $\Sigma</em>{XX}$.</p>
+<p>PCA: set of $r$ variables $X_r$ (unordered and correlated) $\rightarrow$ set of $t$ variables $\xi_t$(ordered and uncorrelated), where $t&lt;r$</p>
 <p><strong>First t principal components:</strong></p>
-<p><span class="math display">\[
-\xi_j = b_j^TX = b_{j1}X_1+...+b_{jr}X_r, j=1,2,...,t
-\]</span></p>
-<p>where we minimize the loss of information due to replacement.(<a href="#722-least-squares-optimality-of-pca">7.2.2</a>,<a href="#723-pca-as-a-variance-maximization-technique">7.2.3</a>)</p>
-<p>We here interpreted &quot;information&quot; with the <strong>total variation</strong> of the original input variables:</p>
-<p><span class="math display">\[
-\sum_{j=1}^r var(X_j)=tr(\Sigma_{XX})
-\]</span></p>
-<p>From the <strong>spectral decomposition theorem</strong>, we can write</p>
-<p><span class="math display">\[
-\Sigma_{XX}=U\Lambda U^T, U^TU=I_r
-\]</span></p>
-<p>where the diagonal matrix <span class="math inline">\(\Lambda\)</span> has diagonal elements the eigenvalues <span class="math inline">\(\left\{\lambda_j\right\}\)</span> of <span class="math inline">\(\Sigma_{XX}\)</span>, and the columns of <span class="math inline">\(U\)</span> are the eigenvectors of <span class="math inline">\(\Sigma_{XX}\)</span>.</p>
+<script type="math/tex; mode=display">
+\xi_j = b_j^TX = b_{j1}X_1+...+b_{jr}X_r, j=1,2,...,t</script><p>where we minimize the loss of information due to replacement.(<a href="#722-least-squares-optimality-of-pca">7.2.2</a>,<a href="#723-pca-as-a-variance-maximization-technique">7.2.3</a>)</p>
+<p>We here interpreted “information” with the <strong>total variation</strong> of the original input variables:</p>
+<script type="math/tex; mode=display">
+\sum_{j=1}^r var(X_j)=tr(\Sigma_{XX})</script><p>From the <strong>spectral decomposition theorem</strong>, we can write</p>
+<script type="math/tex; mode=display">
+\Sigma_{XX}=U\Lambda U^T, U^TU=I_r</script><p>where the diagonal matrix $\Lambda$ has diagonal elements the eigenvalues $\left{\lambda<em>j\right}$ of $\Sigma</em>{XX}$, and the columns of $U$ are the eigenvectors of $\Sigma_{XX}$.</p>
 <p>Thus, we obtain the total variation by</p>
-<p><span class="math display">\[
-tr(\Sigma_{XX})=tr(\Lambda)=\sum_{j=1}^r\lambda_j
-\]</span></p>
-<p>The <span class="math inline">\(j\)</span>th coefficient vector <span class="math inline">\(b_j=(b_{1j},...,b_{rj})^T\)</span> is chosen so that:</p>
+<script type="math/tex; mode=display">
+tr(\Sigma_{XX})=tr(\Lambda)=\sum_{j=1}^r\lambda_j</script><p>The $j$th coefficient vector $b<em>j=(b</em>{1j},…,b_{rj})^T$ is chosen so that:</p>
 <ul>
-<li>The first <span class="math inline">\(t\)</span> linear projections <span class="math inline">\(\xi_j,j=1,2,...,t\)</span> of <span class="math inline">\(X\)</span> are ranked in importance through their variances <span class="math inline">\(\left\{var(\xi_j)\right\}\)</span> that <span class="math inline">\(var(\xi_1)\geq var(\xi_2)\geq ...\geq var(\xi_t)\)</span></li>
-<li><span class="math inline">\(\xi_j\)</span> is uncorrelated with all <span class="math inline">\(\xi_k,k&lt;j\)</span></li>
+<li>The first $t$ linear projections $\xi_j,j=1,2,…,t$ of $X$ are ranked in importance through their variances $\left{var(\xi_j)\right}$ that $var(\xi_1)\geq var(\xi_2)\geq …\geq var(\xi_t)$</li>
+<li>$\xi_j$ is uncorrelated with all $\xi_k,k&lt;j$</li>
 </ul>
-<p>There are two popular derivations of the set of principal components of <span class="math inline">\(X\)</span>:</p>
+<p>There are two popular derivations of the set of principal components of $X$:</p>
 <ul>
 <li>Least-Squares Optimality crieterion (analogous with regression)</li>
 <li>Variance-maximizing technique</li>
 </ul>
-<h3 id="least-squares-optimality-of-pca">7.2.2 Least-Squares Optimality of PCA</h3>
-<p>Let</p>
-<p><span class="math display">\[
-B=(b_1,...,b_t)^T
-\]</span></p>
-<p>be a <span class="math inline">\((t\times r)\)</span>-matrix of weights (<span class="math inline">\(t\leq r\)</span>), then the linear projections can be written as</p>
-<p><span class="math display">\[
-\xi = BX
-\]</span></p>
-<p>where <span class="math inline">\(\xi=(\xi_1,...,\xi_t)^T\in\mathbb{R}^{t\times n}\)</span>. Note that <span class="math inline">\(X\in\mathbb{R}^{r\times n}\)</span> is the observations matrix with variables as rows and individual observations as columns.</p>
-<p>We want to find a <span class="math inline">\(r\)</span>-vector <span class="math inline">\(\mu\)</span> and an (<span class="math inline">\(r\times t\)</span>)-matrix <span class="math inline">\(A\)</span> such that</p>
-<p><span class="math display">\[
-X\approx \mu+A\xi
-\]</span></p>
-<p>(用 <span class="math inline">\(X\)</span> 对 <span class="math inline">\(\xi\)</span> 回归，类似“压缩”后“还原”的思想，通过“还原”后与原本数据的误差来评估“压缩器”的好坏)</p>
-<p>Here we use least-squares error criterion to find the optimum <span class="math inline">\(\mu,A\)</span>:</p>
-<p><span class="math display">\[
-E[(X-\mu-A\xi)^T(X-\mu-A\xi)]
-\]</span></p>
-<p>recall that we have <span class="math inline">\(\xi=BX\)</span>, we can write</p>
-<p><span class="math display">\[
-E[(X-\mu-ABX)^T(X-\mu-ABX)]
-\]</span></p>
-<p>When <span class="math inline">\(t=1\)</span>, the least-squares problem is equivalent to</p>
-<p><span class="math display">\[
-\min_{\mu,A,B}E\sum_{j=1}^r(X_j-\mu_j-a_{j1}b_1^TX)^2
-\]</span></p>
-<p>where <span class="math inline">\(X=(X_1,...,X_r)^T,\mu=(\mu_1,...,\mu_r)^T,A=a_1=(a_{11},...,a_{r1})^T\)</span>, and <span class="math inline">\(B=b_1^T\)</span></p>
-<p>For <span class="math inline">\(t&gt;1\)</span>, the criterion is similar to <a href="#appendix-a-weighted-sum-of-squares-criterion">Weighted Sum-of-Squares Criterion</a> with <span class="math inline">\(Y\equiv X,s=r,\Gamma=I_r\)</span>. Hence, the minimum solution is obtained by reduced-rank regression</p>
-<p><span class="math display">\[
+<h3 id="7-2-2-Least-Squares-Optimality-of-PCA"><a href="#7-2-2-Least-Squares-Optimality-of-PCA" class="headerlink" title="7.2.2 Least-Squares Optimality of PCA"></a>7.2.2 Least-Squares Optimality of PCA</h3><p>Let</p>
+<script type="math/tex; mode=display">
+B=(b_1,...,b_t)^T</script><p>be a $(t\times r)$-matrix of weights ($t\leq r$), then the linear projections can be written as</p>
+<script type="math/tex; mode=display">
+\xi = BX</script><p>where $\xi=(\xi_1,…,\xi_t)^T\in\mathbb{R}^{t\times n}$. Note that $X\in\mathbb{R}^{r\times n}$ is the observations matrix with variables as rows and individual observations as columns.</p>
+<p>We want to find a $r$-vector $\mu$ and an ($r\times t$)-matrix $A$ such that</p>
+<script type="math/tex; mode=display">
+X\approx \mu+A\xi</script><p>(用 $X$ 对 $\xi$ 回归，类似“压缩”后“还原”的思想，通过“还原”后与原本数据的误差来评估“压缩器”的好坏)</p>
+<p>Here we use least-squares error criterion to find the optimum $\mu,A$:</p>
+<script type="math/tex; mode=display">
+E[(X-\mu-A\xi)^T(X-\mu-A\xi)]</script><p>recall that we have $\xi=BX$, we can write</p>
+<script type="math/tex; mode=display">
+E[(X-\mu-ABX)^T(X-\mu-ABX)]</script><p>When $t=1$, the least-squares problem is equivalent to</p>
+<script type="math/tex; mode=display">
+\min_{\mu,A,B}E\sum_{j=1}^r(X_j-\mu_j-a_{j1}b_1^TX)^2</script><p>where $X=(X<em>1,…,X_r)^T,\mu=(\mu_1,…,\mu_r)^T,A=a_1=(a</em>{11},…,a_{r1})^T$, and $B=b_1^T$</p>
+<p>For $t&gt;1$, the criterion is similar to <a href="#appendix-a-weighted-sum-of-squares-criterion">Weighted Sum-of-Squares Criterion</a> with $Y\equiv X,s=r,\Gamma=I_r$. Hence, the minimum solution is obtained by reduced-rank regression</p>
+<script type="math/tex; mode=display">
 A^{(t)}=(v_1,...,v_t)=B^{(t)T},
-\mu^{(t)}=(I_r-A^{(t)}B^{(t)})\mu_X
-\]</span></p>
-<p>where <span class="math inline">\(v_j=v_j(\Sigma_{XX})\)</span> is the eigenvector associated with the <span class="math inline">\(j\)</span>th largest eigenvalue of <span class="math inline">\(\Sigma_{XX}\)</span> (i.e.<span class="math inline">\(\lambda_j\)</span>).</p>
-<p>Thus, our best rank-<span class="math inline">\(t\)</span> approximation to the original <span class="math inline">\(X\)</span> is given by</p>
-<p><span class="math display">\[
-\hat{X}^{(t)}=\mu^{(t)}+C^{(t)}X=\mu_X+C^{(t)}(X-\mu_X)
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-C^{(t)}=A^{(t)}B^{(t)}=\sum_{j=1}^t v_jv_j^T
-\]</span></p>
-<p>is the reduced-rank regression coefficient matrix with rank <span class="math inline">\(t\)</span> for the principal components case.</p>
-<p>The minumum of <span class="math inline">\(E[(X-\mu-ABX)^T(X-\mu-ABX)]\)</span> is given by <span class="math inline">\(\sum_{j=t+1}^r \lambda_j\)</span>.</p>
-<p>The <em>first <span class="math inline">\(t\)</span> principal components</em> of <span class="math inline">\(X\)</span> are given by</p>
-<p><span class="math display">\[
-\xi_j=v_j^TX
-\]</span></p>
-<p>and the covariance between <span class="math inline">\(\xi_i\)</span> and <span class="math inline">\(\xi_j\)</span> is</p>
-<p><span class="math display">\[
-cov(\xi_i,\xi_j)=v_i^T\Sigma_{XX}v_j=v_i^T\lambda_jv_j=\delta_{ij}\lambda_j
-\]</span></p>
-<h3 id="pca-as-a-variance-maximization-technique">7.2.3 PCA as a Variance-Maximization Technique</h3>
-<p>In the original derivation of principal components, the coefficient vectors</p>
-<p><span class="math display">\[
-b_j=(b_{j1},...,b_{jr})^T,j=1,2,...,t
-\]</span></p>
-<p>were chosen in a sequential manner so that:</p>
+\mu^{(t)}=(I_r-A^{(t)}B^{(t)})\mu_X</script><p>where $v<em>j=v_j(\Sigma</em>{XX})$ is the eigenvector associated with the $j$th largest eigenvalue of $\Sigma_{XX}$ (i.e.$\lambda_j$).</p>
+<p>Thus, our best rank-$t$ approximation to the original $X$ is given by</p>
+<script type="math/tex; mode=display">
+\hat{X}^{(t)}=\mu^{(t)}+C^{(t)}X=\mu_X+C^{(t)}(X-\mu_X)</script><p>where</p>
+<script type="math/tex; mode=display">
+C^{(t)}=A^{(t)}B^{(t)}=\sum_{j=1}^t v_jv_j^T</script><p>is the reduced-rank regression coefficient matrix with rank $t$ for the principal components case.</p>
+<p>The minumum of $E[(X-\mu-ABX)^T(X-\mu-ABX)]$ is given by $\sum_{j=t+1}^r \lambda_j$.</p>
+<p>The <em>first $t$ principal components</em> of $X$ are given by</p>
+<script type="math/tex; mode=display">
+\xi_j=v_j^TX</script><p>and the covariance between $\xi_i$ and $\xi_j$ is</p>
+<script type="math/tex; mode=display">
+cov(\xi_i,\xi_j)=v_i^T\Sigma_{XX}v_j=v_i^T\lambda_jv_j=\delta_{ij}\lambda_j</script><h3 id="7-2-3-PCA-as-a-Variance-Maximization-Technique"><a href="#7-2-3-PCA-as-a-Variance-Maximization-Technique" class="headerlink" title="7.2.3 PCA as a Variance-Maximization Technique"></a>7.2.3 PCA as a Variance-Maximization Technique</h3><p>In the original derivation of principal components, the coefficient vectors</p>
+<script type="math/tex; mode=display">
+b_j=(b_{j1},...,b_{jr})^T,j=1,2,...,t</script><p>were chosen in a sequential manner so that:</p>
 <ul>
-<li><span class="math inline">\(var(\xi_j)=b_j^T\Sigma_{XX}b_j\)</span> are arranged in descending order subject to the normalizations <span class="math inline">\(b_j^Tb_j=1,j=1,...,t\)</span></li>
-<li><span class="math inline">\(cov(\xi_i,\xi_j)=b_i^T\Sigma_{XX}b_j=0,i&lt;j\)</span></li>
+<li>$var(\xi<em>j)=b_j^T\Sigma</em>{XX}b_j$ are arranged in descending order subject to the normalizations $b_j^Tb_j=1,j=1,…,t$</li>
+<li>$cov(\xi<em>i,\xi_j)=b_i^T\Sigma</em>{XX}b_j=0,i&lt;j$</li>
 </ul>
-<p>The first principal component <span class="math inline">\(\xi_1\)</span> is obtained by choosing the <span class="math inline">\(r\)</span> coefficients <span class="math inline">\(b_1\)</span> for the linear projection <span class="math inline">\(\xi_1\)</span> (subject to normalization). A unique choice of <span class="math inline">\(\left\{\xi_j\right\}\)</span> is obtained through the normalization constraint <span class="math inline">\(b_j^Tb_j=1,j=1,...,t\)</span></p>
-<p><span class="math display">\[
+<p>The first principal component $\xi_1$ is obtained by choosing the $r$ coefficients $b_1$ for the linear projection $\xi_1$ (subject to normalization). A unique choice of $\left{\xi_j\right}$ is obtained through the normalization constraint $b_j^Tb_j=1,j=1,…,t$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    f(b_1)&amp;=var(\xi_1)+\lambda_1(1-b_1^Tb_1)\\
-    &amp;=b_1^T\Sigma_{XX}b_1+\lambda_1(1-b_1^Tb_1)
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_1\)</span> is a Lagrangian multiplier.</p>
-<p><span class="math display">\[
-\frac{\partial f(b_1)}{\partial b_1}=2(\Sigma_{XX}-\lambda_1I_r)b_1\overset{set}{=}0
-\]</span></p>
-<p>We require <span class="math inline">\(b_1\neq{0}\)</span>, so <span class="math inline">\(|\Sigma_{XX}-\lambda_1I_r|=0\)</span>.</p>
-<p>Note that when <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of <span class="math inline">\(\Sigma_{XX}\)</span>, let <span class="math inline">\(b_1\)</span> be the relevant eigenvector. We have <span class="math inline">\(\Sigma_{XX}b_1=\lambda_1b_1\)</span> hence <span class="math inline">\(|\Sigma_{XX}-\lambda_1I_r|=0\)</span>.</p>
+    f(b_1)&=var(\xi_1)+\lambda_1(1-b_1^Tb_1)\\
+    &=b_1^T\Sigma_{XX}b_1+\lambda_1(1-b_1^Tb_1)
+\end{aligned}</script><p>where $\lambda_1$ is a Lagrangian multiplier.</p>
+<script type="math/tex; mode=display">
+\frac{\partial f(b_1)}{\partial b_1}=2(\Sigma_{XX}-\lambda_1I_r)b_1\overset{set}{=}0</script><p>We require $b<em>1\neq{0}$, so $|\Sigma</em>{XX}-\lambda_1I_r|=0$.</p>
+<p>Note that when $\lambda<em>1$ is the largest eigenvalue of $\Sigma</em>{XX}$, let $b<em>1$ be the relevant eigenvector. We have $\Sigma</em>{XX}b<em>1=\lambda_1b_1$ hence $|\Sigma</em>{XX}-\lambda_1I_r|=0$.</p>
 <p><strong>Why has to be the largest?</strong></p>
 <ul>
-<li>If not, <span class="math inline">\(var(\xi_1)=b_1^T\Sigma_{XX}b_1=\lambda_1b_1^Tb_1=\lambda_1\)</span> is not the largest case.</li>
+<li>If not, $var(\xi<em>1)=b_1^T\Sigma</em>{XX}b_1=\lambda_1b_1^Tb_1=\lambda_1$ is not the largest case.</li>
 </ul>
-<p>Similarly, the second principal component <span class="math inline">\(\xi_2\)</span> and coefficients <span class="math inline">\(b_2\)</span> are chosen. That is, maximize <span class="math inline">\(var(\xi_2)=b_2^T\Sigma_{XX}b_2\)</span> subject to <span class="math inline">\(b_2^Tb_2=1\)</span> and <span class="math inline">\(b_1^Tb_2=0\)</span></p>
-<p><span class="math display">\[
-f(b_2)=b_2^T\Sigma_{XX}b_2-\lambda_2(1-b_2^Tb_2)+\mu b_1^Tb_2
-\]</span></p>
-<p>where <span class="math inline">\(\lambda_2,\mu\)</span> are Lagrangian multipliers.</p>
-<p><span class="math display">\[
-\frac{\partial f(b_2)}{\partial b_2}=2(\Sigma_{XX}-\lambda_2I_r)b_2+\mu b_1\overset{set}{=}0
-\]</span></p>
-<p>Premultiplying <span class="math inline">\(b_1^T\)</span> then</p>
-<p><span class="math display">\[
-2b_1^T\Sigma_{XX}b_2+\mu=0
-\]</span></p>
-<p>Premultiplying <span class="math inline">\((\Sigma_{XX}-\lambda_1I_r)b_1=0\)</span> by <span class="math inline">\(b_2^T\)</span> yields <span class="math inline">\(b_2^T\Sigma_{XX}b_1=0\)</span>, whence <span class="math inline">\(\mu=0\)</span>.</p>
-<p>This means that <span class="math inline">\(\lambda_2\)</span> is the second largest eigenvalue of <span class="math inline">\(\Sigma_{XX}\)</span> and <span class="math inline">\(b_2\)</span> is the relevant eigenvector.</p>
+<p>Similarly, the second principal component $\xi<em>2$ and coefficients $b_2$ are chosen. That is, maximize $var(\xi_2)=b_2^T\Sigma</em>{XX}b_2$ subject to $b_2^Tb_2=1$ and $b_1^Tb_2=0$</p>
+<script type="math/tex; mode=display">
+f(b_2)=b_2^T\Sigma_{XX}b_2-\lambda_2(1-b_2^Tb_2)+\mu b_1^Tb_2</script><p>where $\lambda_2,\mu$ are Lagrangian multipliers.</p>
+<script type="math/tex; mode=display">
+\frac{\partial f(b_2)}{\partial b_2}=2(\Sigma_{XX}-\lambda_2I_r)b_2+\mu b_1\overset{set}{=}0</script><p>Premultiplying $b_1^T$ then</p>
+<script type="math/tex; mode=display">
+2b_1^T\Sigma_{XX}b_2+\mu=0</script><p>Premultiplying $(\Sigma<em>{XX}-\lambda_1I_r)b_1=0$ by $b_2^T$ yields $b_2^T\Sigma</em>{XX}b_1=0$, whence $\mu=0$.</p>
+<p>This means that $\lambda<em>2$ is the second largest eigenvalue of $\Sigma</em>{XX}$ and $b_2$ is the relevant eigenvector.</p>
 <p>In this sequential manner, we obtain the remaining sets of coefficients for the principal components.</p>
-<h3 id="sample-principal-components">7.2.4 Sample Principal Components</h3>
-<p>We estimate the principal components of <span class="math inline">\(X\)</span> using a random sample with observed values <span class="math inline">\(\left\{x_i\right\}\)</span></p>
-<p><span class="math display">\[
-\hat{\mu}_X=\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i
-\]</span></p>
-<p>Let <span class="math inline">\(x_{ci}=x_i-\bar{x}\)</span> and <span class="math inline">\(X_c=(x_{c1},...,x_{cn})\)</span> we estimate <span class="math inline">\(\Sigma_{XX}\)</span> by</p>
-<p><span class="math display">\[
-\hat{\Sigma}_{XX}=\frac{1}{n}X_cX_c^T
-\]</span></p>
-<p>The ordered eigenvalues of <span class="math inline">\(\hat{\Sigma}_{XX}\)</span> are denoted by <span class="math inline">\(\hat{\lambda}_1\geq\hat{\lambda}_2\geq...\geq\hat{\lambda}_r\geq 0\)</span> and the relevent eigenvector <span class="math inline">\(\hat{v}_j\)</span>.</p>
-<p>Then we estimate <span class="math inline">\(A^{(t)}\)</span> and <span class="math inline">\(B^{(t)}\)</span> by</p>
-<p><span class="math display">\[
-\hat{A}^{(t)}=(\hat{v}_1,...,\hat{v}_t)=\hat{B}^{(t)T}
-\]</span></p>
-<p>The best rank-<span class="math inline">\(t\)</span> reconstruction of <span class="math inline">\(X\)</span> is given by</p>
-<p><span class="math display">\[
-\hat{x}^{(t)}=\bar{x}+\hat{C}^{(t)}(x-\bar{x})
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\hat{C}^{(t)}=\hat{A}^{(t)}\hat{B}^{(t)}=\sum_{j=1}^t\hat{v}_j\hat{v}_j^T
-\]</span></p>
-<p>is the reduced-rank regression coefficient matrix.</p>
-<p><em>The <span class="math inline">\(j\)</span>th sample PC score</em> is given by</p>
-<p><span class="math display">\[
-\hat{\xi}_j=\hat{v}_j^TX_c=\hat{v}_j^T(X-\bar{X})
-\]</span></p>
-<h3 id="selection-of-the-number-of-components">7.2.5 Selection of the number of components</h3>
-<p><strong>Scree Plot:</strong> The sample eigenvalues from a PCA are ordered from largest to smallest. (Find the &quot;elbow&quot;)</p>
-<p><img src="/2020/05/18/20200518LDR/2020-05-17-05-31-45.png"></p>
-<p><strong>PC Rank Trace:</strong> Obtain a useful estimate of the rank of the regression coefficient matrix <span class="math inline">\(C\)</span>.</p>
-<p><span class="math display">\[
-\Delta\hat{C}^{(t)}=(1-\frac{t}{r})^{1/2}
-\]</span></p>
-<p><span class="math display">\[
-\Delta\hat{\Sigma}_{\epsilon\epsilon}^{(t)}=(\frac{\hat{\lambda}_{t+1}^2+...+\hat{\lambda}_r^2}{\hat{\lambda}_1^2+...+\hat{\lambda}_r^2})^{1/2}
-\]</span></p>
-<p>A plot of <span class="math inline">\(\Delta\hat{\Sigma}_{\epsilon\epsilon}^{(t)}\)</span> against <span class="math inline">\(\Delta\hat{C}^{(t)}\)</span> is the PC rank trace plot.(Find the &quot;elbow&quot;)</p>
-<p><img src="/2020/05/18/20200518LDR/2020-05-17-05-36-49.png"></p>
-<p><strong>Kaiser's Rule:</strong> Only those eigenvalues exceed 1 would be retained. (too controversial)</p>
-<h3 id="invariance-and-scaling">7.2.6 Invariance and Scaling</h3>
-<p>Note that the principal components are <strong>NOT invariant</strong> under rescalings of the initial variables. (sensitive to the units of measurement of the different input variables)</p>
+<p><strong>Matrix form:</strong></p>
+<script type="math/tex; mode=display">
+f(B)=var(\xi)+\lambda(BB^T-1)=B\Sigma_{XX}B^T-\lambda(BB^T-1)</script><script type="math/tex; mode=display">
+\frac{\partial f}{\partial B}=2\Sigma_{XX}B-2\lambda B\overset{set}{=}0</script><script type="math/tex; mode=display">
+\Leftrightarrow \Sigma_{XX}B=\lambda B</script><h3 id="7-2-4-Sample-Principal-Components"><a href="#7-2-4-Sample-Principal-Components" class="headerlink" title="7.2.4 Sample Principal Components"></a>7.2.4 Sample Principal Components</h3><p>We estimate the principal components of $X$ using a random sample with observed values $\left{x_i\right}$</p>
+<script type="math/tex; mode=display">
+\hat{\mu}_X=\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i</script><p>Let $x<em>{ci}=x_i-\bar{x}$ and $X_c=(x</em>{c1},…,x<em>{cn})$ we estimate $\Sigma</em>{XX}$ by</p>
+<script type="math/tex; mode=display">
+\hat{\Sigma}_{XX}=\frac{1}{n}X_cX_c^T</script><p>The ordered eigenvalues of $\hat{\Sigma}_{XX}$ are denoted by $\hat{\lambda}_1\geq\hat{\lambda}_2\geq…\geq\hat{\lambda}_r\geq 0$ and the relevent eigenvector $\hat{v}_j$.</p>
+<p>Then we estimate $A^{(t)}$ and $B^{(t)}$ by</p>
+<script type="math/tex; mode=display">
+\hat{A}^{(t)}=(\hat{v}_1,...,\hat{v}_t)=\hat{B}^{(t)T}</script><p>The best rank-$t$ reconstruction of $X$ is given by</p>
+<script type="math/tex; mode=display">
+\hat{x}^{(t)}=\bar{x}+\hat{C}^{(t)}(x-\bar{x})</script><p>where</p>
+<script type="math/tex; mode=display">
+\hat{C}^{(t)}=\hat{A}^{(t)}\hat{B}^{(t)}=\sum_{j=1}^t\hat{v}_j\hat{v}_j^T</script><p>is the reduced-rank regression coefficient matrix.</p>
+<p><em>The $j$th sample PC score</em> is given by</p>
+<script type="math/tex; mode=display">
+\hat{\xi}_j=\hat{v}_j^TX_c=\hat{v}_j^T(X-\bar{X})</script><h3 id="7-2-5-Selection-of-the-number-of-components"><a href="#7-2-5-Selection-of-the-number-of-components" class="headerlink" title="7.2.5 Selection of the number of components"></a>7.2.5 Selection of the number of components</h3><p><strong>Scree Plot:</strong> The sample eigenvalues from a PCA are ordered from largest to smallest. (Find the “elbow”)</p>
+<p><img src="/2020/05/18/20200518LDR/2020-05-17-05-31-45.png" alt></p>
+<p><strong>PC Rank Trace:</strong> Obtain a useful estimate of the rank of the regression coefficient matrix $C$.</p>
+<script type="math/tex; mode=display">
+\Delta\hat{C}^{(t)}=(1-\frac{t}{r})^{1/2}</script><script type="math/tex; mode=display">
+\Delta\hat{\Sigma}_{\epsilon\epsilon}^{(t)}=(\frac{\hat{\lambda}_{t+1}^2+...+\hat{\lambda}_r^2}{\hat{\lambda}_1^2+...+\hat{\lambda}_r^2})^{1/2}</script><p>A plot of $\Delta\hat{\Sigma}_{\epsilon\epsilon}^{(t)}$ against $\Delta\hat{C}^{(t)}$ is the PC rank trace plot.(Find the “elbow”)</p>
+<p><img src="/2020/05/18/20200518LDR/2020-05-17-05-36-49.png" alt></p>
+<p><strong>Kaiser’s Rule:</strong> Only those eigenvalues exceed 1 would be retained. (too controversial)</p>
+<h3 id="7-2-6-Invariance-and-Scaling"><a href="#7-2-6-Invariance-and-Scaling" class="headerlink" title="7.2.6 Invariance and Scaling"></a>7.2.6 Invariance and Scaling</h3><p>Note that the principal components are <strong>NOT invariant</strong> under rescalings of the initial variables. (sensitive to the units of measurement of the different input variables)</p>
 <p>One possible way to solve this is to <strong>rescale</strong> the input data</p>
-<p><span class="math display">\[
-Z\leftarrow(diag\left\{\hat{\Sigma}_{XX}\right\})^{-1/2}(X-\hat{\mu}_X)
-\]</span></p>
-<p>which is equivalent to carrying out PCA using the <strong>correlation matrix</strong> (rather than the covariance matrix).</p>
-<h3 id="what-can-be-gained-from-using-pca">7.2.7 What can be gained from using PCA</h3>
-<ul>
+<script type="math/tex; mode=display">
+Z\leftarrow(diag\left\{\hat{\Sigma}_{XX}\right\})^{-1/2}(X-\hat{\mu}_X)</script><p>which is equivalent to carrying out PCA using the <strong>correlation matrix</strong> (rather than the covariance matrix).</p>
+<h3 id="7-2-7-What-can-be-gained-from-using-PCA"><a href="#7-2-7-What-can-be-gained-from-using-PCA" class="headerlink" title="7.2.7 What can be gained from using PCA"></a>7.2.7 What can be gained from using PCA</h3><ul>
 <li>decorrelate the original variables</li>
 <li>carry out data compression</li>
 <li>reconstruct the original input data using a reduced number of variables according to a least-squares criterion</li>
 <li>identify potential clusters in the data.</li>
 </ul>
-<p>PCA can be misleading when there are <strong>outliers</strong> in the data, or the <strong>linearity</strong> of PCA fits badly to the data.</p>
-<h2 id="canonical-variate-and-correlation-analysis">7.3 Canonical Variate and Correlation Analysis</h2>
-<h3 id="canonical-variates-and-canonical-correlations">7.3.1 Canonical Variates and Canonical Correlations</h3>
-<p>Assume that</p>
-<p><span class="math display">\[
+<p>PCA can be misleading when there are  <strong>outliers</strong> in the data, or the <strong>linearity</strong> of PCA fits badly to the data.</p>
+<h2 id="7-3-Canonical-Variate-and-Correlation-Analysis"><a href="#7-3-Canonical-Variate-and-Correlation-Analysis" class="headerlink" title="7.3 Canonical Variate and Correlation Analysis"></a>7.3 Canonical Variate and Correlation Analysis</h2><h3 id="7-3-1-Canonical-Variates-and-Canonical-Correlations"><a href="#7-3-1-Canonical-Variates-and-Canonical-Correlations" class="headerlink" title="7.3.1 Canonical Variates and Canonical Correlations"></a>7.3.1 Canonical Variates and Canonical Correlations</h3><p>Assume that</p>
+<script type="math/tex; mode=display">
 \left(
 \begin{matrix}
     X\\Y
 \end{matrix}
-\right)
-\]</span></p>
-<p>is a collection of <span class="math inline">\(r+s\)</span> variables partitioned into two disjoint subcollections, where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are jointly distributed with mean vector and covariance matrix given by</p>
-<p><span class="math display">\[
-E\left\{\left(\begin{matrix}X\\Y\end{matrix}\right)\right\}=\left(\begin{matrix}\mu_X\\\mu_Y\end{matrix}\right)
-\]</span></p>
-<p><span class="math display">\[
-E\left\{\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)^T\right\}=\left(\begin{matrix}\Sigma_{XX}&amp;\Sigma_{XY}\\\Sigma_{YX}&amp;\Sigma_{YY}\end{matrix}\right)
-\]</span></p>
-<p>CVA seeks to replace the two sets of correlated variables by <span class="math inline">\(t\)</span> pairs of new variables</p>
-<p><span class="math display">\[
-(\xi_i,\omega_i),i=1,2,...,t,\quad t\leq\min(r,s)
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
+\right)</script><p>is a collection of $r+s$ variables partitioned into two disjoint subcollections, where $X$ and $Y$ are jointly distributed with mean vector and covariance matrix given by</p>
+<script type="math/tex; mode=display">
+E\left\{\left(\begin{matrix}X\\Y\end{matrix}\right)\right\}=\left(\begin{matrix}\mu_X\\\mu_Y\end{matrix}\right)</script><script type="math/tex; mode=display">
+E\left\{\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)^T\right\}=\left(\begin{matrix}\Sigma_{XX}&\Sigma_{XY}\\\Sigma_{YX}&\Sigma_{YY}\end{matrix}\right)</script><p>CVA seeks to replace the two sets of correlated variables by $t$ pairs of new variables</p>
+<script type="math/tex; mode=display">
+(\xi_i,\omega_i),i=1,2,...,t,\quad t\leq\min(r,s)</script><p>where</p>
+<script type="math/tex; mode=display">
 \begin{cases}
     \xi_j=g_j^TX=g_{1j}X_1+...+g_{rj}X_r\\
     \omega_j=h_j^TY=h_{1j}Y_1+...+h_{sj}Y_s
-\end{cases}
-\]</span></p>
-<p>The <span class="math inline">\(j\)</span>th pairs of coefficient vectors are chosen so that</p>
+\end{cases}</script><p>The $j$th pairs of coefficient vectors are chosen so that</p>
 <ul>
-<li>the pairs are ranked in importance through their correlations that <span class="math inline">\(\rho_1\geq...\geq\rho_t\)</span> <span class="math display">\[
-\rho_j=corr(\xi_j,\omega_j)=\frac{g_j^T\Sigma_{XY}h_j}{(g_j^T\Sigma_{XX}g_j)^{1/2}(h_j^T\Sigma_{YY}h_j)^{1/2}}
-\]</span></li>
-<li><span class="math inline">\(cov(\xi_j,\xi_k)=g_j^T\Sigma_{XX}g_k=0,k&lt;j.\)</span></li>
-<li><span class="math inline">\(cov(\omega_j,\omega_k)=h_j^T\Sigma_{XX}h_k=0,k&lt;j.\)</span></li>
+<li>the pairs are ranked in importance through their correlations that $\rho_1\geq…\geq\rho_t$<script type="math/tex; mode=display">
+\rho_j=corr(\xi_j,\omega_j)=\frac{g_j^T\Sigma_{XY}h_j}{(g_j^T\Sigma_{XX}g_j)^{1/2}(h_j^T\Sigma_{YY}h_j)^{1/2}}</script></li>
+<li>$cov(\xi<em>j,\xi_k)=g_j^T\Sigma</em>{XX}g_k=0,k&lt;j.$</li>
+<li>$cov(\omega<em>j,\omega_k)=h_j^T\Sigma</em>{XX}h_k=0,k&lt;j.$</li>
 </ul>
-<p>The paris are known as <em>the first <span class="math inline">\(t\)</span> pairs of canonical variates</em> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and their correlations as <em>the <span class="math inline">\(t\)</span> largest canonical correlations</em>.</p>
-<h3 id="least-squares-optimality-of-cva">7.3.2 Least-Squares Optimality of CVA</h3>
-<p>Let the <span class="math inline">\((t\times r)\)</span>-matrix <span class="math inline">\(G\)</span> and the <span class="math inline">\((t\times s\)</span>-matrix <span class="math inline">\(H\)</span>, with <span class="math inline">\(1\leq t\leq\min(r,s)\)</span> be such that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are linearly projected</p>
-<p><span class="math display">\[
-\xi=GX,\quad\omega=HY
-\]</span></p>
-<p>Consider the problem of finding <span class="math inline">\(\nu,G,H\)</span> so that</p>
-<p><span class="math display">\[
-HY\approx\nu+GX
-\]</span></p>
-<p>which minimize the <span class="math inline">\((t\times t)\)</span>-matrix</p>
-<p><span class="math display">\[
-E\left\{(HY-\nu-GX)(HY-\nu-GX)^T\right\}
-\]</span></p>
-<p>where we assume that the covariance matrix of <span class="math inline">\(\omega\)</span> is <span class="math inline">\(\Sigma_{\omega\omega}=H\Sigma_{YY}H^T=I_t\)</span></p>
-<p>According to the Poincaré Separation Theorem, the cirterion is minimize when the coloumns of <span class="math inline">\(U\)</span> are the eigenvectors relevent to the first <span class="math inline">\(t\)</span> eigenvalues of <span class="math inline">\(R\)</span>. (see Section 3.2.10)</p>
+<p>The paris are known as <em>the first $t$ pairs of canonical variates</em> of $X$ and $Y$ and their correlations as <em>the $t$ largest canonical correlations</em>.</p>
+<h3 id="7-3-2-Least-Squares-Optimality-of-CVA"><a href="#7-3-2-Least-Squares-Optimality-of-CVA" class="headerlink" title="7.3.2 Least-Squares Optimality of CVA"></a>7.3.2 Least-Squares Optimality of CVA</h3><p>Let the $(t\times r)$-matrix $G$ and the $(t\times s$-matrix $H$, with $1\leq t\leq\min(r,s)$ be such that $X$ and $Y$ are linearly projected</p>
+<script type="math/tex; mode=display">
+\xi=GX,\quad\omega=HY</script><p>Consider the problem of finding $\nu,G,H$ so that</p>
+<script type="math/tex; mode=display">
+HY\approx\nu+GX</script><p>which minimize the $(t\times t)$-matrix</p>
+<script type="math/tex; mode=display">
+E\left\{(HY-\nu-GX)(HY-\nu-GX)^T\right\}</script><p>where we assume that the covariance matrix of $\omega$ is $\Sigma<em>{\omega\omega}=H\Sigma</em>{YY}H^T=I_t$</p>
+<p>According to the Poincaré Separation Theorem, the cirterion is minimize when the coloumns of $U$ are the eigenvectors relevent to the first $t$ eigenvalues of $R$. (see Section 3.2.10)</p>
 <p>Some conditions when the inequalities become equalities:</p>
-<p><span class="math display">\[
-\nu=H\mu_Y-G\mu_X
-\]</span></p>
-<p><span class="math display">\[
-G=\Sigma_{\omega X}\Sigma_{XX}^{-1}=H\Sigma_{YX}\Sigma_{XX}^{-1}
-\]</span></p>
-<p><span class="math display">\[
-U^T=H\Sigma_{YY}^{1/2},\quad U^TU=I_t
-\]</span></p>
-<p><span class="math display">\[
-R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}
-\]</span></p>
-<p><strong>To summarize:</strong></p>
-<p><span class="math display">\[
-\nu^{(t)}=H^{(t)}\mu_Y-G^{(t)}\mu_X
-\]</span></p>
-<p><span class="math display">\[
-G^{(t)}=\left(\begin{matrix}v_1^T\\ \vdots \\ v_t^T\end{matrix}\right)\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}=\left(\begin{matrix}\lambda_1u_1^T\\ \vdots \\ \lambda_tu_t^T\end{matrix}\right)\Sigma_{XX}^{-1/2}
-\]</span></p>
-<p><span class="math display">\[
-H^{(t)}=\left(\begin{matrix}v_1^T\\ \vdots \\ v_t^T\end{matrix}\right)\Sigma_{YY}^{-1/2}
-\]</span></p>
-<p>where <span class="math inline">\(u_j\)</span> is the eigenvector relevent to the <span class="math inline">\(j\)</span>th largest eigenvalue <span class="math inline">\(\lambda_j^2\)</span> of</p>
-<p><span class="math display">\[
-R^*=\Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}\Sigma_{XX}^{-1/2}
-\]</span></p>
-<p>and <span class="math inline">\(v_j\)</span> is the eigenvector relevent to the <span class="math inline">\(j\)</span>th largest eigenvalue <span class="math inline">\(\lambda_j^2\)</span> of</p>
-<p><span class="math display">\[
-R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}
-\]</span></p>
-<p>The <span class="math inline">\(jth\)</span> <em>pair of canonical variates socres</em> is given by</p>
-<p><span class="math display">\[
-\xi_j=g_j^TX,\quad\omega_j=h_j^TY
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-g_j=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}v_j=\lambda_j\Sigma_{XX}^{-1/2}u_j
-\]</span></p>
-<p><span class="math display">\[
-h_j=\Sigma_{YY}^{-1/2}v_j
-\]</span></p>
-<h3 id="cva-as-a-correlation-maximization-technique">7.3.3 CVA as a Correlation-Maximization Technique</h3>
-<p>Consider the linear poojections</p>
-<p><span class="math display">\[
-\xi=g^TX,\quad\omega=h^TY
-\]</span></p>
-<p>Assume that <span class="math inline">\(E(X)=\mu_X=0,E(Y)=\mu_Y=0\)</span> and <span class="math inline">\(g^T\Sigma_{XX}g=1,h^T\Sigma_{YY}h=1\)</span>.</p>
+<script type="math/tex; mode=display">
+\nu=H\mu_Y-G\mu_X</script><script type="math/tex; mode=display">
+G=\Sigma_{\omega X}\Sigma_{XX}^{-1}=H\Sigma_{YX}\Sigma_{XX}^{-1}</script><script type="math/tex; mode=display">
+U^T=H\Sigma_{YY}^{1/2},\quad U^TU=I_t</script><script type="math/tex; mode=display">
+R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}</script><p><strong>To summarize:</strong></p>
+<script type="math/tex; mode=display">
+\nu^{(t)}=H^{(t)}\mu_Y-G^{(t)}\mu_X</script><script type="math/tex; mode=display">
+G^{(t)}=\left(\begin{matrix}v_1^T\\ \vdots \\ v_t^T\end{matrix}\right)\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}=\left(\begin{matrix}\lambda_1u_1^T\\ \vdots \\ \lambda_tu_t^T\end{matrix}\right)\Sigma_{XX}^{-1/2}</script><script type="math/tex; mode=display">
+H^{(t)}=\left(\begin{matrix}v_1^T\\ \vdots \\ v_t^T\end{matrix}\right)\Sigma_{YY}^{-1/2}</script><p>where $u_j$ is the eigenvector relevent to the $j$th largest eigenvalue $\lambda_j^2$ of</p>
+<script type="math/tex; mode=display">
+R^*=\Sigma_{XX}^{-1/2}\Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}\Sigma_{XX}^{-1/2}</script><p>and $v_j$ is the eigenvector relevent to the $j$th largest eigenvalue $\lambda_j^2$ of</p>
+<script type="math/tex; mode=display">
+R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}</script><p>The $jth$ <em>pair of canonical variates socres</em> is given by</p>
+<script type="math/tex; mode=display">
+\xi_j=g_j^TX,\quad\omega_j=h_j^TY</script><p>where</p>
+<script type="math/tex; mode=display">
+g_j=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}v_j=\lambda_j\Sigma_{XX}^{-1/2}u_j</script><script type="math/tex; mode=display">
+h_j=\Sigma_{YY}^{-1/2}v_j</script><h3 id="7-3-3-CVA-as-a-Correlation-Maximization-Technique"><a href="#7-3-3-CVA-as-a-Correlation-Maximization-Technique" class="headerlink" title="7.3.3 CVA as a Correlation-Maximization Technique"></a>7.3.3 CVA as a Correlation-Maximization Technique</h3><p>Consider the linear poojections</p>
+<script type="math/tex; mode=display">
+\xi=g^TX,\quad\omega=h^TY</script><p>Assume that $E(X)=\mu<em>X=0,E(Y)=\mu_Y=0$ and $g^T\Sigma</em>{XX}g=1,h^T\Sigma_{YY}h=1$.</p>
 <p>We try to maximize the correlation</p>
-<p><span class="math display">\[
-corr(\xi,\omega)=g^T\Sigma_{XY}h
-\]</span></p>
-<p>The problem is equivalent to maximize</p>
-<p><span class="math display">\[
-f(g,h)=g^T\Sigma_{XY}h-\frac{1}{2}\lambda(g^T\Sigma_{XX}g-1)-\frac{1}{2}\mu(h^T\Sigma_{YY}h-1)
-\]</span></p>
-<p>where <span class="math inline">\(\lambda,\mu\)</span> are Lagrangian multipliers.</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+corr(\xi,\omega)=g^T\Sigma_{XY}h</script><p>The problem is equivalent to maximize</p>
+<script type="math/tex; mode=display">
+f(g,h)=g^T\Sigma_{XY}h-\frac{1}{2}\lambda(g^T\Sigma_{XX}g-1)-\frac{1}{2}\mu(h^T\Sigma_{YY}h-1)</script><p>where $\lambda,\mu$ are Lagrangian multipliers.</p>
+<script type="math/tex; mode=display">
 \begin{cases}
 \frac{\partial f}{\partial g}=\Sigma_{XY}h-\lambda\Sigma_{XX}g\overset{set}{=}0\\
 \frac{\partial f}{\partial h}=\Sigma_{YX}g-\mu\Sigma_{YY}h\overset{set}{=}0
-\end{cases}
-\]</span></p>
-<p>First, premultiplying <span class="math inline">\(g^T\)</span> and <span class="math inline">\(h^T\)</span> respectively, we have</p>
-<p><span class="math display">\[
+\end{cases}</script><p>First, premultiplying $g^T$ and $h^T$ respectively, we have</p>
+<script type="math/tex; mode=display">
 \begin{cases}
 g^T\Sigma_{XY}h-\lambda g^T\Sigma_{XX}g=0\\
 h^T\Sigma_{YX}g-\mu h^T\Sigma_{YY}h=0
-\end{cases}
-\]</span></p>
-<p>whence, the correlation between <span class="math inline">\(\xi\)</span> and <span class="math inline">\(\omega\)</span> satisfies</p>
-<p><span class="math display">\[
-g^T\Sigma_{XY}h=\lambda=\mu
-\]</span></p>
-<p>Hence, the original problem is equivalent to maximize the Lagrangrian multipliers.</p>
+\end{cases}</script><p>whence, the correlation between $\xi$ and $\omega$ satisfies</p>
+<script type="math/tex; mode=display">
+g^T\Sigma_{XY}h=\lambda=\mu</script><p>Hence, the original problem is equivalent to maximize the Lagrangrian multipliers.</p>
 <p><strong>Eigen-decomposition method:</strong></p>
-<p>Premultiplying <span class="math inline">\(\Sigma_{XX}^{-1}\)</span> and <span class="math inline">\(\Sigma_{YY}^{-1}\)</span> respectively</p>
-<p><span class="math display">\[
+<p>Premultiplying $\Sigma<em>{XX}^{-1}$ and $\Sigma</em>{YY}^{-1}$ respectively</p>
+<script type="math/tex; mode=display">
 \begin{cases}
     \Sigma_{XX}^{-1}\Sigma_{XY}h-\lambda g=0\\
     \Sigma_{YY}^{-1}\Sigma_{YX}g-\lambda h=0
-\end{cases}
-\]</span></p>
-<p>Rearrange the two equalities</p>
-<p><span class="math display">\[
+\end{cases}</script><p>Rearrange the two equalities</p>
+<script type="math/tex; mode=display">
 \begin{cases}
     \Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}g=\lambda^2 g\\
     \Sigma_{YY}^{-1}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda^2 h
-\end{cases}
-\]</span></p>
-<p>It can be shown that <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are respectively chosen by the eigenvectors of</p>
-<p><span class="math display">\[
+\end{cases}</script><p>It can be shown that $g$ and $h$ are respectively chosen by the eigenvectors of</p>
+<script type="math/tex; mode=display">
 \begin{cases}
     N=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}\\
     N^*=\Sigma_{YY}^{-1}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}
-\end{cases}
-\]</span></p>
-<p>To maximize <span class="math inline">\(\lambda\)</span>, choose the eigenvectors relevant to the largest <span class="math inline">\(t\)</span> eigenvalues of <span class="math inline">\(N,N^*\)</span>.</p>
+\end{cases}</script><p>To maximize $\lambda$, choose the eigenvectors relevant to the largest $t$ eigenvalues of $N,N^*$.</p>
 <p><strong>Least-square form:</strong></p>
-<p>Premultiplying <span class="math inline">\(\Sigma_{YX}\Sigma_{XX}^{-1}\)</span> to <span class="math inline">\(\Sigma_{XY}h-\lambda\Sigma_{XX}g=0\)</span> we have</p>
-<p><span class="math display">\[
-\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\Sigma_{YX}g
-\]</span></p>
-<p>Recall that <span class="math inline">\(\Sigma_{YX}g-\mu\Sigma_{YY}h=0\)</span>, we have</p>
-<p><span class="math display">\[
-\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\mu\Sigma_{YY}h
-\]</span></p>
-<p><span class="math display">\[
-\Leftrightarrow (\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}-\lambda^2\Sigma_{YY})h=0
-\]</span></p>
-<p>For there to be a nontrival solution, the following determinant has to be zero</p>
-<p><span class="math display">\[
-|\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}-\lambda^2\Sigma_{YY}|=0
-\]</span></p>
-<p><span class="math display">\[
-\Leftrightarrow |\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}-\lambda^2I_s|=0
-\]</span></p>
-<p>It can be shown that the determinant above is a polynomial in <span class="math inline">\(\lambda^2\)</span> of degree <span class="math inline">\(s\)</span>, having <span class="math inline">\(s\)</span> real roots <span class="math inline">\(\lambda_1^2\geq\lambda_2^2\geq...\geq\lambda_s^2\geq 0\)</span>, which are the ordered eigenvalues of</p>
-<p><span class="math display">\[
-R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}
-\]</span></p>
-<p>with relevant eigenvectors <span class="math inline">\(v_1,...,v_s\)</span>.</p>
-<p>The resultant choice of <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> are given by</p>
-<p><span class="math display">\[
-g_1=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}v_1,\quad h_1=\Sigma_{YY}^{-1/2}v_1
-\]</span></p>
-<p>Then the pairs are</p>
-<p><span class="math display">\[
-\xi_1=g_1^TX,\quad\omega_1=h_1^TY
-\]</span></p>
-<p>and their correlation is</p>
-<p><span class="math display">\[
-corr(\xi_1,\omega_1)=g_1^T\Sigma_{XY}h_1=\lambda_1
-\]</span></p>
-<p>Then we choose the other projections in this sequential manner by adding constraint</p>
-<p><span class="math display">\[
-g^T\Sigma_{XX}g_1=h^T\Sigma_{YY}h_1=0
-\]</span></p>
-<p><span class="math display">\[
-corr(\xi,\omega_1)=g^T\Sigma_{XY}h_1=\lambda_1g^T\Sigma_{XX}g_1=0
-\]</span></p>
-<p><span class="math display">\[
-corr(\omega,\xi_1)=h^T\Sigma_{YX}g_1=\lambda_1h^T\Sigma_{YY}h_1=0
-\]</span></p>
-<h2 id="appendix-a-weighted-sum-of-squares-criterion">Appendix A: Weighted Sum-of-Squares Criterion</h2>
-<p><code>#TODO</code></p>
+<p>Premultiplying $\Sigma<em>{YX}\Sigma</em>{XX}^{-1}$ to $\Sigma<em>{XY}h-\lambda\Sigma</em>{XX}g=0$ we have</p>
+<script type="math/tex; mode=display">
+\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\Sigma_{YX}g</script><p>Recall that $\Sigma<em>{YX}g-\mu\Sigma</em>{YY}h=0$, we have</p>
+<script type="math/tex; mode=display">
+\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\mu\Sigma_{YY}h</script><script type="math/tex; mode=display">
+\Leftrightarrow (\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}-\lambda^2\Sigma_{YY})h=0</script><p>For there to be a nontrival solution, the following determinant has to be zero</p>
+<script type="math/tex; mode=display">
+|\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}-\lambda^2\Sigma_{YY}|=0</script><script type="math/tex; mode=display">
+\Leftrightarrow |\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}-\lambda^2I_s|=0</script><p>It can be shown that the determinant above is a polynomial in $\lambda^2$ of degree $s$, having $s$ real roots $\lambda_1^2\geq\lambda_2^2\geq…\geq\lambda_s^2\geq 0$, which are the ordered eigenvalues of</p>
+<script type="math/tex; mode=display">
+R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}</script><p>with relevant eigenvectors $v_1,…,v_s$.</p>
+<p>The resultant choice of $g$ and $h$ are given by</p>
+<script type="math/tex; mode=display">
+g_1=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}v_1,\quad h_1=\Sigma_{YY}^{-1/2}v_1</script><p>Then the pairs are</p>
+<script type="math/tex; mode=display">
+\xi_1=g_1^TX,\quad\omega_1=h_1^TY</script><p>and their correlation is</p>
+<script type="math/tex; mode=display">
+corr(\xi_1,\omega_1)=g_1^T\Sigma_{XY}h_1=\lambda_1</script><p>Then we choose the other projections in this sequential manner by adding constraint</p>
+<script type="math/tex; mode=display">
+g^T\Sigma_{XX}g_1=h^T\Sigma_{YY}h_1=0</script><script type="math/tex; mode=display">
+corr(\xi,\omega_1)=g^T\Sigma_{XY}h_1=\lambda_1g^T\Sigma_{XX}g_1=0</script><script type="math/tex; mode=display">
+corr(\omega,\xi_1)=h^T\Sigma_{YX}g_1=\lambda_1h^T\Sigma_{YY}h_1=0</script><h2 id="Appendix-A-Weighted-Sum-of-Squares-Criterion"><a href="#Appendix-A-Weighted-Sum-of-Squares-Criterion" class="headerlink" title="Appendix A: Weighted Sum-of-Squares Criterion"></a>Appendix A: Weighted Sum-of-Squares Criterion</h2><p><code>#TODO</code></p>
 
     </div>
 
@@ -711,7 +558,7 @@ corr(\omega,\xi_1)=h^T\Sigma_{YX}g_1=\lambda_1h^T\Sigma_{YY}h_1=0
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">7.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#principal-component-analysis"><span class="nav-text">7.2 Principal Component Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#population-principal-components"><span class="nav-text">7.2.1 Population Principal Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least-squares-optimality-of-pca"><span class="nav-text">7.2.2 Least-Squares Optimality of PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pca-as-a-variance-maximization-technique"><span class="nav-text">7.2.3 PCA as a Variance-Maximization Technique</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-principal-components"><span class="nav-text">7.2.4 Sample Principal Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selection-of-the-number-of-components"><span class="nav-text">7.2.5 Selection of the number of components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#invariance-and-scaling"><span class="nav-text">7.2.6 Invariance and Scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-can-be-gained-from-using-pca"><span class="nav-text">7.2.7 What can be gained from using PCA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canonical-variate-and-correlation-analysis"><span class="nav-text">7.3 Canonical Variate and Correlation Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#canonical-variates-and-canonical-correlations"><span class="nav-text">7.3.1 Canonical Variates and Canonical Correlations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least-squares-optimality-of-cva"><span class="nav-text">7.3.2 Least-Squares Optimality of CVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cva-as-a-correlation-maximization-technique"><span class="nav-text">7.3.3 CVA as a Correlation-Maximization Technique</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#appendix-a-weighted-sum-of-squares-criterion"><span class="nav-text">Appendix A: Weighted Sum-of-Squares Criterion</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-Introduction"><span class="nav-text">7.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-Principal-Component-Analysis"><span class="nav-text">7.2 Principal Component Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-1-Population-Principal-Components"><span class="nav-text">7.2.1 Population Principal Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-2-Least-Squares-Optimality-of-PCA"><span class="nav-text">7.2.2 Least-Squares Optimality of PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-3-PCA-as-a-Variance-Maximization-Technique"><span class="nav-text">7.2.3 PCA as a Variance-Maximization Technique</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-4-Sample-Principal-Components"><span class="nav-text">7.2.4 Sample Principal Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-5-Selection-of-the-number-of-components"><span class="nav-text">7.2.5 Selection of the number of components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-6-Invariance-and-Scaling"><span class="nav-text">7.2.6 Invariance and Scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-7-What-can-be-gained-from-using-PCA"><span class="nav-text">7.2.7 What can be gained from using PCA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-Canonical-Variate-and-Correlation-Analysis"><span class="nav-text">7.3 Canonical Variate and Correlation Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-1-Canonical-Variates-and-Canonical-Correlations"><span class="nav-text">7.3.1 Canonical Variates and Canonical Correlations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-2-Least-Squares-Optimality-of-CVA"><span class="nav-text">7.3.2 Least-Squares Optimality of CVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-3-CVA-as-a-Correlation-Maximization-Technique"><span class="nav-text">7.3.3 CVA as a Correlation-Maximization Technique</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix-A-Weighted-Sum-of-Squares-Criterion"><span class="nav-text">Appendix A: Weighted Sum-of-Squares Criterion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
