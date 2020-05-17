@@ -269,7 +269,7 @@
 <li>The first few ones: revealing whether most of the data actually live on a linear subspace of $\mathbb{R}^r$ and identifying outliers, distributional peculiarities and clusters of points.</li>
 <li>The last few ones: detect collinearity and outliers that pop up and alter the perceived dimensionality of the data (which has near-zero variance)</li>
 </ul>
-<h3 id="7-2-1-Population-Principal-Components"><a href="#7-2-1-Population-Principal-Components" class="headerlink" title="7.2.1 Population Principal Components"></a>7.2.1 Population Principal Components</h3><p>Assume that the ramdom $r$-vector $X=(X<em>1,…,X_r)^T$ has mean $\mu_X$ and $(r\times r)$ covariance matrix $\Sigma</em>{XX}$.</p>
+<h3 id="7-2-1-Population-Principal-Components"><a href="#7-2-1-Population-Principal-Components" class="headerlink" title="7.2.1 Population Principal Components"></a>7.2.1 Population Principal Components</h3><p>Assume that the ramdom $r$-vector $X=(X_1,…,X_r)^T$ has mean $\mu_X$ and $(r\times r)$ covariance matrix $\Sigma_{XX}$.</p>
 <p>PCA: set of $r$ variables $X_r$ (unordered and correlated) $\rightarrow$ set of $t$ variables $\xi_t$(ordered and uncorrelated), where $t&lt;r$</p>
 <p><strong>First t principal components:</strong></p>
 <script type="math/tex; mode=display">
@@ -278,12 +278,12 @@
 <script type="math/tex; mode=display">
 \sum_{j=1}^r var(X_j)=tr(\Sigma_{XX})</script><p>From the <strong>spectral decomposition theorem</strong>, we can write</p>
 <script type="math/tex; mode=display">
-\Sigma_{XX}=U\Lambda U^T, U^TU=I_r</script><p>where the diagonal matrix $\Lambda$ has diagonal elements the eigenvalues $\left{\lambda<em>j\right}$ of $\Sigma</em>{XX}$, and the columns of $U$ are the eigenvectors of $\Sigma_{XX}$.</p>
+\Sigma_{XX}=U\Lambda U^T, U^TU=I_r</script><p>where the diagonal matrix $\Lambda$ has diagonal elements the eigenvalues $\left\{\lambda_j\right\}$ of $\Sigma_{XX}$, and the columns of $U$ are the eigenvectors of $\Sigma_{XX}$.</p>
 <p>Thus, we obtain the total variation by</p>
 <script type="math/tex; mode=display">
-tr(\Sigma_{XX})=tr(\Lambda)=\sum_{j=1}^r\lambda_j</script><p>The $j$th coefficient vector $b<em>j=(b</em>{1j},…,b_{rj})^T$ is chosen so that:</p>
+tr(\Sigma_{XX})=tr(\Lambda)=\sum_{j=1}^r\lambda_j</script><p>The $j$th coefficient vector $b_j=(b_{1j},…,b_{rj})^T$ is chosen so that:</p>
 <ul>
-<li>The first $t$ linear projections $\xi_j,j=1,2,…,t$ of $X$ are ranked in importance through their variances $\left{var(\xi_j)\right}$ that $var(\xi_1)\geq var(\xi_2)\geq …\geq var(\xi_t)$</li>
+<li>The first $t$ linear projections $\xi_j,j=1,2,…,t$ of $X$ are ranked in importance through their variances $\left\{var(\xi_j)\right\}$ that $var(\xi_1)\geq var(\xi_2)\geq …\geq var(\xi_t)$</li>
 <li>$\xi_j$ is uncorrelated with all $\xi_k,k&lt;j$</li>
 </ul>
 <p>There are two popular derivations of the set of principal components of $X$:</p>
@@ -305,11 +305,11 @@ E[(X-\mu-A\xi)^T(X-\mu-A\xi)]</script><p>recall that we have $\xi=BX$, we can wr
 <script type="math/tex; mode=display">
 E[(X-\mu-ABX)^T(X-\mu-ABX)]</script><p>When $t=1$, the least-squares problem is equivalent to</p>
 <script type="math/tex; mode=display">
-\min_{\mu,A,B}E\sum_{j=1}^r(X_j-\mu_j-a_{j1}b_1^TX)^2</script><p>where $X=(X<em>1,…,X_r)^T,\mu=(\mu_1,…,\mu_r)^T,A=a_1=(a</em>{11},…,a_{r1})^T$, and $B=b_1^T$</p>
+\min_{\mu,A,B}E\sum_{j=1}^r(X_j-\mu_j-a_{j1}b_1^TX)^2</script><p>where $X=(X_1,…,X_r)^T,\mu=(\mu_1,…,\mu_r)^T,A=a_1=(a_{11},…,a_{r1})^T$, and $B=b_1^T$</p>
 <p>For $t&gt;1$, the criterion is similar to <a href="#appendix-a-weighted-sum-of-squares-criterion">Weighted Sum-of-Squares Criterion</a> with $Y\equiv X,s=r,\Gamma=I_r$. Hence, the minimum solution is obtained by reduced-rank regression</p>
 <script type="math/tex; mode=display">
 A^{(t)}=(v_1,...,v_t)=B^{(t)T},
-\mu^{(t)}=(I_r-A^{(t)}B^{(t)})\mu_X</script><p>where $v<em>j=v_j(\Sigma</em>{XX})$ is the eigenvector associated with the $j$th largest eigenvalue of $\Sigma_{XX}$ (i.e.$\lambda_j$).</p>
+\mu^{(t)}=(I_r-A^{(t)}B^{(t)})\mu_X</script><p>where $v_j=v_j(\Sigma_{XX})$ is the eigenvector associated with the $j$th largest eigenvalue of $\Sigma_{XX}$ (i.e.$\lambda_j$).</p>
 <p>Thus, our best rank-$t$ approximation to the original $X$ is given by</p>
 <script type="math/tex; mode=display">
 \hat{X}^{(t)}=\mu^{(t)}+C^{(t)}X=\mu_X+C^{(t)}(X-\mu_X)</script><p>where</p>
@@ -324,38 +324,38 @@ cov(\xi_i,\xi_j)=v_i^T\Sigma_{XX}v_j=v_i^T\lambda_jv_j=\delta_{ij}\lambda_j</scr
 <script type="math/tex; mode=display">
 b_j=(b_{j1},...,b_{jr})^T,j=1,2,...,t</script><p>were chosen in a sequential manner so that:</p>
 <ul>
-<li>$var(\xi<em>j)=b_j^T\Sigma</em>{XX}b_j$ are arranged in descending order subject to the normalizations $b_j^Tb_j=1,j=1,…,t$</li>
-<li>$cov(\xi<em>i,\xi_j)=b_i^T\Sigma</em>{XX}b_j=0,i&lt;j$</li>
+<li>$var(\xi_j)=b_j^T\Sigma_{XX}b_j$ are arranged in descending order subject to the normalizations $b_j^Tb_j=1,j=1,…,t$</li>
+<li>$cov(\xi_i,\xi_j)=b_i^T\Sigma_{XX}b_j=0,i&lt;j$</li>
 </ul>
-<p>The first principal component $\xi_1$ is obtained by choosing the $r$ coefficients $b_1$ for the linear projection $\xi_1$ (subject to normalization). A unique choice of $\left{\xi_j\right}$ is obtained through the normalization constraint $b_j^Tb_j=1,j=1,…,t$</p>
+<p>The first principal component $\xi_1$ is obtained by choosing the $r$ coefficients $b_1$ for the linear projection $\xi_1$ (subject to normalization). A unique choice of $\left\{\xi_j\right\}$ is obtained through the normalization constraint $b_j^Tb_j=1,j=1,…,t$</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
     f(b_1)&=var(\xi_1)+\lambda_1(1-b_1^Tb_1)\\
     &=b_1^T\Sigma_{XX}b_1+\lambda_1(1-b_1^Tb_1)
 \end{aligned}</script><p>where $\lambda_1$ is a Lagrangian multiplier.</p>
 <script type="math/tex; mode=display">
-\frac{\partial f(b_1)}{\partial b_1}=2(\Sigma_{XX}-\lambda_1I_r)b_1\overset{set}{=}0</script><p>We require $b<em>1\neq{0}$, so $|\Sigma</em>{XX}-\lambda_1I_r|=0$.</p>
-<p>Note that when $\lambda<em>1$ is the largest eigenvalue of $\Sigma</em>{XX}$, let $b<em>1$ be the relevant eigenvector. We have $\Sigma</em>{XX}b<em>1=\lambda_1b_1$ hence $|\Sigma</em>{XX}-\lambda_1I_r|=0$.</p>
+\frac{\partial f(b_1)}{\partial b_1}=2(\Sigma_{XX}-\lambda_1I_r)b_1\overset{set}{=}0</script><p>We require $b_1\neq{0}$, so $|\Sigma_{XX}-\lambda_1I_r|=0$.</p>
+<p>Note that when $\lambda_1$ is the largest eigenvalue of $\Sigma_{XX}$, let $b_1$ be the relevant eigenvector. We have $\Sigma_{XX}b_1=\lambda_1b_1$ hence $|\Sigma_{XX}-\lambda_1I_r|=0$.</p>
 <p><strong>Why has to be the largest?</strong></p>
 <ul>
-<li>If not, $var(\xi<em>1)=b_1^T\Sigma</em>{XX}b_1=\lambda_1b_1^Tb_1=\lambda_1$ is not the largest case.</li>
+<li>If not, $var(\xi_1)=b_1^T\Sigma_{XX}b_1=\lambda_1b_1^Tb_1=\lambda_1$ is not the largest case.</li>
 </ul>
-<p>Similarly, the second principal component $\xi<em>2$ and coefficients $b_2$ are chosen. That is, maximize $var(\xi_2)=b_2^T\Sigma</em>{XX}b_2$ subject to $b_2^Tb_2=1$ and $b_1^Tb_2=0$</p>
+<p>Similarly, the second principal component $\xi_2$ and coefficients $b_2$ are chosen. That is, maximize $var(\xi_2)=b_2^T\Sigma_{XX}b_2$ subject to $b_2^Tb_2=1$ and $b_1^Tb_2=0$</p>
 <script type="math/tex; mode=display">
 f(b_2)=b_2^T\Sigma_{XX}b_2-\lambda_2(1-b_2^Tb_2)+\mu b_1^Tb_2</script><p>where $\lambda_2,\mu$ are Lagrangian multipliers.</p>
 <script type="math/tex; mode=display">
 \frac{\partial f(b_2)}{\partial b_2}=2(\Sigma_{XX}-\lambda_2I_r)b_2+\mu b_1\overset{set}{=}0</script><p>Premultiplying $b_1^T$ then</p>
 <script type="math/tex; mode=display">
-2b_1^T\Sigma_{XX}b_2+\mu=0</script><p>Premultiplying $(\Sigma<em>{XX}-\lambda_1I_r)b_1=0$ by $b_2^T$ yields $b_2^T\Sigma</em>{XX}b_1=0$, whence $\mu=0$.</p>
-<p>This means that $\lambda<em>2$ is the second largest eigenvalue of $\Sigma</em>{XX}$ and $b_2$ is the relevant eigenvector.</p>
+2b_1^T\Sigma_{XX}b_2+\mu=0</script><p>Premultiplying $(\Sigma_{XX}-\lambda_1I_r)b_1=0$ by $b_2^T$ yields $b_2^T\Sigma_{XX}b_1=0$, whence $\mu=0$.</p>
+<p>This means that $\lambda_2$ is the second largest eigenvalue of $\Sigma_{XX}$ and $b_2$ is the relevant eigenvector.</p>
 <p>In this sequential manner, we obtain the remaining sets of coefficients for the principal components.</p>
 <p><strong>Matrix form:</strong></p>
 <script type="math/tex; mode=display">
 f(B)=var(\xi)+\lambda(BB^T-1)=B\Sigma_{XX}B^T-\lambda(BB^T-1)</script><script type="math/tex; mode=display">
 \frac{\partial f}{\partial B}=2\Sigma_{XX}B-2\lambda B\overset{set}{=}0</script><script type="math/tex; mode=display">
-\Leftrightarrow \Sigma_{XX}B=\lambda B</script><h3 id="7-2-4-Sample-Principal-Components"><a href="#7-2-4-Sample-Principal-Components" class="headerlink" title="7.2.4 Sample Principal Components"></a>7.2.4 Sample Principal Components</h3><p>We estimate the principal components of $X$ using a random sample with observed values $\left{x_i\right}$</p>
+\Leftrightarrow \Sigma_{XX}B=\lambda B</script><h3 id="7-2-4-Sample-Principal-Components"><a href="#7-2-4-Sample-Principal-Components" class="headerlink" title="7.2.4 Sample Principal Components"></a>7.2.4 Sample Principal Components</h3><p>We estimate the principal components of $X$ using a random sample with observed values $\left\{x_i\right\}$</p>
 <script type="math/tex; mode=display">
-\hat{\mu}_X=\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i</script><p>Let $x<em>{ci}=x_i-\bar{x}$ and $X_c=(x</em>{c1},…,x<em>{cn})$ we estimate $\Sigma</em>{XX}$ by</p>
+\hat{\mu}_X=\bar{x}=\frac{1}{n}\sum_{i=1}^n x_i</script><p>Let $x_{ci}=x_i-\bar{x}$ and $X_c=(x_{c1},…,x_{cn})$ we estimate $\Sigma_{XX}$ by</p>
 <script type="math/tex; mode=display">
 \hat{\Sigma}_{XX}=\frac{1}{n}X_cX_c^T</script><p>The ordered eigenvalues of $\hat{\Sigma}_{XX}$ are denoted by $\hat{\lambda}_1\geq\hat{\lambda}_2\geq…\geq\hat{\lambda}_r\geq 0$ and the relevent eigenvector $\hat{v}_j$.</p>
 <p>Then we estimate $A^{(t)}$ and $B^{(t)}$ by</p>
@@ -406,8 +406,8 @@ E\left\{\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)\left(\begin{matr
 <ul>
 <li>the pairs are ranked in importance through their correlations that $\rho_1\geq…\geq\rho_t$<script type="math/tex; mode=display">
 \rho_j=corr(\xi_j,\omega_j)=\frac{g_j^T\Sigma_{XY}h_j}{(g_j^T\Sigma_{XX}g_j)^{1/2}(h_j^T\Sigma_{YY}h_j)^{1/2}}</script></li>
-<li>$cov(\xi<em>j,\xi_k)=g_j^T\Sigma</em>{XX}g_k=0,k&lt;j.$</li>
-<li>$cov(\omega<em>j,\omega_k)=h_j^T\Sigma</em>{XX}h_k=0,k&lt;j.$</li>
+<li>$cov(\xi_j,\xi_k)=g_j^T\Sigma_{XX}g_k=0,k&lt;j.$</li>
+<li>$cov(\omega_j,\omega_k)=h_j^T\Sigma_{XX}h_k=0,k&lt;j.$</li>
 </ul>
 <p>The paris are known as <em>the first $t$ pairs of canonical variates</em> of $X$ and $Y$ and their correlations as <em>the $t$ largest canonical correlations</em>.</p>
 <h3 id="7-3-2-Least-Squares-Optimality-of-CVA"><a href="#7-3-2-Least-Squares-Optimality-of-CVA" class="headerlink" title="7.3.2 Least-Squares Optimality of CVA"></a>7.3.2 Least-Squares Optimality of CVA</h3><p>Let the $(t\times r)$-matrix $G$ and the $(t\times s$-matrix $H$, with $1\leq t\leq\min(r,s)$ be such that $X$ and $Y$ are linearly projected</p>
@@ -416,7 +416,7 @@ E\left\{\left(\begin{matrix}X-\mu_X\\Y-\mu_Y\end{matrix}\right)\left(\begin{matr
 <script type="math/tex; mode=display">
 HY\approx\nu+GX</script><p>which minimize the $(t\times t)$-matrix</p>
 <script type="math/tex; mode=display">
-E\left\{(HY-\nu-GX)(HY-\nu-GX)^T\right\}</script><p>where we assume that the covariance matrix of $\omega$ is $\Sigma<em>{\omega\omega}=H\Sigma</em>{YY}H^T=I_t$</p>
+E\left\{(HY-\nu-GX)(HY-\nu-GX)^T\right\}</script><p>where we assume that the covariance matrix of $\omega$ is $\Sigma_{\omega\omega}=H\Sigma_{YY}H^T=I_t$</p>
 <p>According to the Poincaré Separation Theorem, the cirterion is minimize when the coloumns of $U$ are the eigenvectors relevent to the first $t$ eigenvalues of $R$. (see Section 3.2.10)</p>
 <p>Some conditions when the inequalities become equalities:</p>
 <script type="math/tex; mode=display">
@@ -438,7 +438,7 @@ R=\Sigma_{YY}^{-1/2}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}</sc
 g_j=\Sigma_{XX}^{-1}\Sigma_{XY}\Sigma_{YY}^{-1/2}v_j=\lambda_j\Sigma_{XX}^{-1/2}u_j</script><script type="math/tex; mode=display">
 h_j=\Sigma_{YY}^{-1/2}v_j</script><h3 id="7-3-3-CVA-as-a-Correlation-Maximization-Technique"><a href="#7-3-3-CVA-as-a-Correlation-Maximization-Technique" class="headerlink" title="7.3.3 CVA as a Correlation-Maximization Technique"></a>7.3.3 CVA as a Correlation-Maximization Technique</h3><p>Consider the linear poojections</p>
 <script type="math/tex; mode=display">
-\xi=g^TX,\quad\omega=h^TY</script><p>Assume that $E(X)=\mu<em>X=0,E(Y)=\mu_Y=0$ and $g^T\Sigma</em>{XX}g=1,h^T\Sigma_{YY}h=1$.</p>
+\xi=g^TX,\quad\omega=h^TY</script><p>Assume that $E(X)=\mu_X=0,E(Y)=\mu_Y=0$ and $g^T\Sigma_{XX}g=1,h^T\Sigma_{YY}h=1$.</p>
 <p>We try to maximize the correlation</p>
 <script type="math/tex; mode=display">
 corr(\xi,\omega)=g^T\Sigma_{XY}h</script><p>The problem is equivalent to maximize</p>
@@ -457,7 +457,7 @@ h^T\Sigma_{YX}g-\mu h^T\Sigma_{YY}h=0
 <script type="math/tex; mode=display">
 g^T\Sigma_{XY}h=\lambda=\mu</script><p>Hence, the original problem is equivalent to maximize the Lagrangrian multipliers.</p>
 <p><strong>Eigen-decomposition method:</strong></p>
-<p>Premultiplying $\Sigma<em>{XX}^{-1}$ and $\Sigma</em>{YY}^{-1}$ respectively</p>
+<p>Premultiplying $\Sigma_{XX}^{-1}$ and $\Sigma_{YY}^{-1}$ respectively</p>
 <script type="math/tex; mode=display">
 \begin{cases}
     \Sigma_{XX}^{-1}\Sigma_{XY}h-\lambda g=0\\
@@ -474,9 +474,9 @@ g^T\Sigma_{XY}h=\lambda=\mu</script><p>Hence, the original problem is equivalent
     N^*=\Sigma_{YY}^{-1}\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}
 \end{cases}</script><p>To maximize $\lambda$, choose the eigenvectors relevant to the largest $t$ eigenvalues of $N,N^*$.</p>
 <p><strong>Least-square form:</strong></p>
-<p>Premultiplying $\Sigma<em>{YX}\Sigma</em>{XX}^{-1}$ to $\Sigma<em>{XY}h-\lambda\Sigma</em>{XX}g=0$ we have</p>
+<p>Premultiplying $\Sigma_{YX}\Sigma_{XX}^{-1}$ to $\Sigma_{XY}h-\lambda\Sigma_{XX}g=0$ we have</p>
 <script type="math/tex; mode=display">
-\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\Sigma_{YX}g</script><p>Recall that $\Sigma<em>{YX}g-\mu\Sigma</em>{YY}h=0$, we have</p>
+\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\Sigma_{YX}g</script><p>Recall that $\Sigma_{YX}g-\mu\Sigma_{YY}h=0$, we have</p>
 <script type="math/tex; mode=display">
 \Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}h=\lambda\mu\Sigma_{YY}h</script><script type="math/tex; mode=display">
 \Leftrightarrow (\Sigma_{YX}\Sigma_{XX}^{-1}\Sigma_{XY}-\lambda^2\Sigma_{YY})h=0</script><p>For there to be a nontrival solution, the following determinant has to be zero</p>

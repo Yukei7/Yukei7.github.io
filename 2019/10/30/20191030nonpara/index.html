@@ -255,393 +255,241 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>非参数统计课程内容整理，参考教材：非参数统计第4版,吴喜之 <a id="more"></a></p>
-<h2 id="lecture-1-intro">Lecture 1 Intro</h2>
-<h2 id="lecture-2-data-types">Lecture 2 Data Types</h2>
-<h3 id="empirical-distribution-function">2.1 Empirical Distribution Function</h3>
-<p>Assume the observation <span class="math inline">\((x_1,x_2,...,x_n)\stackrel{i.i.d.}{\sim}F(x)=P(X\leq x)\)</span></p>
-<p><span class="math display">\[\hat{F_n}(X)=\frac{1}{n}\sum_{i=1}^nI(X_i\leq x)\]</span></p>
-<p>Given <span class="math inline">\(x\)</span>, <span class="math inline">\(I(X_i\leq x)\sim Binom(1,F(x))\)</span></p>
-<p>then <span class="math inline">\(n\hat{F_n}(x)=\sum_{i=1}^nI(X_i\leq x)\sim Binom(n,F(x))\)</span></p>
-<p><span class="math display">\[E[\hat{F_n}(x)]=F(x), Var(\hat{F_n}(x))=\frac{F(x)(1-F(x))}{n}\]</span></p>
-<p>so that <span class="math inline">\(MSE=\frac{F(x)(1-F(x))}{n}\rightarrow0, \hat{F_n}(x)\stackrel{P}{\rightarrow}F(x)\)</span></p>
-<p>Function <span class="math inline">\(T(F)\)</span> is the function of distribution function <span class="math inline">\(F\)</span>, for example:</p>
-<p><span class="math display">\[\mu=\int xdF(x), \sigma^2=\int(x-\mu)^2dF(x)\]</span></p>
-<p>and the estimator is <span class="math inline">\(\hat{\theta_n}=T(\hat{F_n})\)</span></p>
-<h3 id="kaplan-meier-estimator">2.2 Kaplan-Meier estimator</h3>
-<p><strong>Situation:</strong> Describe the survival condition of a group</p>
-<p><strong>Censorship:</strong></p>
-<h2 id="lecture-3-binomial-sign-hollander-chi-square-test">Lecture 3 Binomial Sign Hollander Chi-square Test</h2>
-<p>Outline:</p>
+        <p>非参数统计课程内容整理，参考教材：非参数统计第4版,吴喜之<br><a id="more"></a></p>
+<h2 id="Lecture-1-Intro"><a href="#Lecture-1-Intro" class="headerlink" title="Lecture 1 Intro"></a>Lecture 1 Intro</h2><h2 id="Lecture-2-Data-Types"><a href="#Lecture-2-Data-Types" class="headerlink" title="Lecture 2 Data Types"></a>Lecture 2 Data Types</h2><h3 id="2-1-Empirical-Distribution-Function"><a href="#2-1-Empirical-Distribution-Function" class="headerlink" title="2.1 Empirical Distribution Function"></a>2.1 Empirical Distribution Function</h3><p>Assume the observation $(x_1,x_2,…,x_n)\stackrel{i.i.d.}{\sim}F(x)=P(X\leq x)$</p>
+<script type="math/tex; mode=display">\hat{F_n}(X)=\frac{1}{n}\sum_{i=1}^nI(X_i\leq x)</script><p>Given $x$, $I(X_i\leq x)\sim Binom(1,F(x))$</p>
+<p>then $n\hat{F_n}(x)=\sum_{i=1}^nI(X_i\leq x)\sim Binom(n,F(x))$</p>
+<script type="math/tex; mode=display">E[\hat{F_n}(x)]=F(x), Var(\hat{F_n}(x))=\frac{F(x)(1-F(x))}{n}</script><p>so that $MSE=\frac{F(x)(1-F(x))}{n}\rightarrow0, \hat{F_n}(x)\stackrel{P}{\rightarrow}F(x)$</p>
+<p>Function $T(F)$ is the function of distribution function $F$, for example:</p>
+<script type="math/tex; mode=display">\mu=\int xdF(x), \sigma^2=\int(x-\mu)^2dF(x)</script><p>and the estimator is $\hat{\theta_n}=T(\hat{F_n})$</p>
+<h3 id="2-2-Kaplan-Meier-estimator"><a href="#2-2-Kaplan-Meier-estimator" class="headerlink" title="2.2 Kaplan-Meier estimator"></a>2.2 Kaplan-Meier estimator</h3><p><strong>Situation:</strong> Describe the survival condition of a group</p>
+<p><strong>Censorship:</strong> </p>
+<h2 id="Lecture-3-Binomial-Sign-Hollander-Chi-square-Test"><a href="#Lecture-3-Binomial-Sign-Hollander-Chi-square-Test" class="headerlink" title="Lecture 3 Binomial Sign Hollander Chi-square Test"></a>Lecture 3 Binomial Sign Hollander Chi-square Test</h2><p>Outline:</p>
 <ul>
 <li>Binomial test</li>
 <li>The Sign test</li>
 <li>Hollander test</li>
 <li>Chi-square test</li>
 </ul>
-<h3 id="binomial-test">3.1 Binomial test</h3>
-<p>Assume that <span class="math inline">\(X_i\sim B(n,p)\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p=p_0\quad v.s.\quad H_1:p\not ={p_0}\)</span></p>
+<h3 id="3-1-Binomial-test"><a href="#3-1-Binomial-test" class="headerlink" title="3.1 Binomial test"></a>3.1 Binomial test</h3><p>Assume that $X_i\sim B(n,p)$</p>
+<p><strong>Hypothesis:</strong> $H_0:p=p_0\quad v.s.\quad H_1:p\not ={p_0}$</p>
 <p><strong>The Score test statistic:</strong></p>
-<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\sim N(0,1)\]</span></p>
-<p><strong>The Wald test statistic:</strong></p>
-<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{\hat{p}(1-\hat{p})/n}}, t^2\sim \chi^2(1)\]</span></p>
-<p><strong>Exact binomial tests:</strong> Consider calculating an exact P-value.</p>
+<script type="math/tex; mode=display">t = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\sim N(0,1)</script><p><strong>The Wald test statistic:</strong></p>
+<script type="math/tex; mode=display">t = \frac{\hat{p}-p_0}{\sqrt{\hat{p}(1-\hat{p})/n}}, t^2\sim \chi^2(1)</script><p><strong>Exact binomial tests:</strong> Consider calculating an exact P-value.</p>
 <p><strong>Remark:</strong> The difference of the Score test and the Wald test:</p>
 <ul>
-<li>the Score test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var(\theta_0)}}\)</span></li>
-<li>the Wald test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var\hat{\theta}}}\)</span></li>
+<li>the Score test: $t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var(\theta_0)}}$</li>
+<li>the Wald test: $t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var\hat{\theta}}}$</li>
 </ul>
 <p><strong>Power Analysis and Sample size:</strong></p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 \begin{aligned}
-    1-\beta &amp;= P(\frac{|\hat{p}-p_0|}{\sqrt{\hat{p}(1-\hat{p})/n}}&gt;z_{1-\alpha/2}|p=p_1)\\
-    &amp;=P(\frac{\hat{p}-p_1}{\sqrt{p_1(1-p_1)/n}}&gt;z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
-    &amp;\quad +P(\frac{\hat{p}-p_1}{\sqrt{p_1(1-p_1)/n}}&lt;z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
-    &amp;=\Phi(-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}-\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})+\Phi(z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
-    &amp;\approx\Phi(-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{\Delta}{\sqrt{p_1(1-p_1)/n}})
-\end{aligned}
-\]</span></p>
-<p>then we have <span class="math inline">\(z_{1-\beta}=-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{\Delta}{\sqrt{p_1(1-p_1)/n}}\)</span></p>
-<p><span class="math display">\[n=\frac{p_0(1-p_0)(z_{1-\alpha/2}+z_{1-\beta}\sqrt{\frac{p_1(1-p_1)}{p_0(1-p_0)}})^2}{\Delta^2}\]</span></p>
-<h3 id="the-sign-test">3.2 The Sign test</h3>
-<h4 id="one-sample-sign-test">3.2.1 One-sample sign test</h4>
-<p><strong>Situation:</strong> Assume the observations <span class="math inline">\((x_1,...,x_n)\)</span> are iid and we want to test the median.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\theta=\theta_0\)</span></p>
-<p>Denote <span class="math inline">\(B=\sum_{i=1}^nI(x_i\geq\theta)\)</span> the number of observations larger than <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(B\sim b(n,\frac{1}{2})\)</span></p>
+    1-\beta &= P(\frac{|\hat{p}-p_0|}{\sqrt{\hat{p}(1-\hat{p})/n}}>z_{1-\alpha/2}|p=p_1)\\
+    &=P(\frac{\hat{p}-p_1}{\sqrt{p_1(1-p_1)/n}}>z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
+    &\quad +P(\frac{\hat{p}-p_1}{\sqrt{p_1(1-p_1)/n}}<z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
+    &=\Phi(-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}-\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})+\Phi(z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{p_0-p_1}{\sqrt{p_1(1-p_1)/n}})\\
+    &\approx\Phi(-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{\Delta}{\sqrt{p_1(1-p_1)/n}})
+\end{aligned}</script><p>then we have $z_{1-\beta}=-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{p_1(1-p_1)}}+\frac{\Delta}{\sqrt{p_1(1-p_1)/n}}$</p>
+<script type="math/tex; mode=display">n=\frac{p_0(1-p_0)(z_{1-\alpha/2}+z_{1-\beta}\sqrt{\frac{p_1(1-p_1)}{p_0(1-p_0)}})^2}{\Delta^2}</script><h3 id="3-2-The-Sign-test"><a href="#3-2-The-Sign-test" class="headerlink" title="3.2 The Sign test"></a>3.2 The Sign test</h3><h4 id="3-2-1-One-sample-sign-test"><a href="#3-2-1-One-sample-sign-test" class="headerlink" title="3.2.1 One-sample sign test"></a>3.2.1 One-sample sign test</h4><p><strong>Situation:</strong> Assume the observations $(x_1,…,x_n)$ are iid and we want to test the median.</p>
+<p><strong>Hypothesis:</strong> $H_0:\theta=\theta_0$</p>
+<p>Denote $B=\sum_{i=1}^nI(x_i\geq\theta)$ the number of observations larger than $\theta$, then $B\sim b(n,\frac{1}{2})$</p>
 <p><strong>Exact test:</strong></p>
-<p>If <span class="math inline">\(B&gt;\frac{n}{2},\quad p=2\times\sum_{k=B}^n\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
-<p>If <span class="math inline">\(B&lt;\frac{n}{2},\quad p=2\times\sum_{k=0}^B\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
-<p>If <span class="math inline">\(B=\frac{n}{2},\quad p=1.0\)</span>.</p>
+<p>If $B&gt;\frac{n}{2},\quad p=2\times\sum_{k=B}^n\binom{n}{k}(\frac{1}{2})^n$.</p>
+<p>If $B&lt;\frac{n}{2},\quad p=2\times\sum_{k=0}^B\binom{n}{k}(\frac{1}{2})^n$.</p>
+<p>If $B=\frac{n}{2},\quad p=1.0$.</p>
 <p><strong>Large sample:</strong></p>
-<p><span class="math display">\[E_0(B)=\frac{n}{2},Var_0(B)=\frac{n}{4}\]</span></p>
-<p><span class="math display">\[B^*=\frac{B-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{D}{\sim}N(0,1)\]</span></p>
-<h4 id="paired-sample-sign-test">3.2.2 Paired sample sign test</h4>
-<p><strong>Situation:</strong> Assume there are paired observations <span class="math inline">\((X_i,Y_i)\)</span>, we want to test if each distribution of <span class="math inline">\(Z_i=Y_i-X_i\)</span> has the same median <span class="math inline">\(\theta\)</span></p>
-<p><span class="math display">\[F_i(\theta)=P(Z_i\leq \theta)\]</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\theta=0\)</span></p>
-<h3 id="hollander-test">3.3 Hollander test</h3>
-<p><strong>Situation:</strong> We want to test if there are treatment effect in the observations by the commutativity <span class="math inline">\(F(x,y)=F(y,x)\)</span></p>
-<ol type="1">
-<li>Denote <span class="math inline">\(a_i=min(X_i,Y_i),b_i=max(X_i,Y_i)\)</span></li>
-<li>Denote <span class="math inline">\(r_i=\begin{cases}1,&amp;X_i=a_i&lt;b_i=Y_i\\0,&amp;X_i=b_i\geq a_i=Y_i\end{cases}\)</span></li>
-<li>Denote <span class="math inline">\(d_{ij}=\begin{cases}1,&amp;a_i\leq a_j&lt;b_i\leq b_j\\0,&amp;o.w.\end{cases}\)</span></li>
-<li>Denote <span class="math inline">\(T_j=\sum_{i=1}^ns_id_{ij}\)</span>, where <span class="math inline">\(s_i=2r_i-1\)</span></li>
-<li>Denote <span class="math inline">\(A_{obs}=\sum_{j=1}^n T_j^2/n^2\)</span></li>
-<li>Rank all <span class="math inline">\(2^n-1 A_{obs}\)</span> (except the one same as the sample) as <span class="math inline">\(A^{(1)}\leq A^{(2)}\leq ...\leq A^{(2^n)}\)</span></li>
-<li>Calculate <span class="math inline">\(m=2^n-\left\lfloor2^n\alpha\right\rfloor\)</span></li>
-<li>If <span class="math inline">\(A_{obs}&gt;A^{(m)}\)</span> then reject the null hypothesis</li>
+<script type="math/tex; mode=display">E_0(B)=\frac{n}{2},Var_0(B)=\frac{n}{4}</script><script type="math/tex; mode=display">B^*=\frac{B-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{D}{\sim}N(0,1)</script><h4 id="3-2-2-Paired-sample-sign-test"><a href="#3-2-2-Paired-sample-sign-test" class="headerlink" title="3.2.2 Paired sample sign test"></a>3.2.2 Paired sample sign test</h4><p><strong>Situation:</strong> Assume there are paired observations $(X_i,Y_i)$, we want to test if each distribution of $Z_i=Y_i-X_i$ has the same median $\theta$</p>
+<script type="math/tex; mode=display">F_i(\theta)=P(Z_i\leq \theta)</script><p><strong>Hypothesis:</strong> $H_0:\theta=0$</p>
+<h3 id="3-3-Hollander-test"><a href="#3-3-Hollander-test" class="headerlink" title="3.3 Hollander test"></a>3.3 Hollander test</h3><p><strong>Situation:</strong> We want to test if there are treatment effect in the observations by the commutativity $F(x,y)=F(y,x)$</p>
+<ol>
+<li>Denote $a_i=min(X_i,Y_i),b_i=max(X_i,Y_i)$</li>
+<li>Denote $r_i=\begin{cases}1,&amp;X_i=a_i&lt;b_i=Y_i\\0,&amp;X_i=b_i\geq a_i=Y_i\end{cases}$</li>
+<li>Denote $d_{ij}=\begin{cases}1,&amp;a_i\leq a_j&lt;b_i\leq b_j\\0,&amp;o.w.\end{cases}$</li>
+<li>Denote $T_j=\sum_{i=1}^ns_id_{ij}$, where $s_i=2r_i-1$</li>
+<li>Denote $A_{obs}=\sum_{j=1}^n T_j^2/n^2$</li>
+<li>Rank all $2^n-1 A_{obs}$ (except the one same as the sample) as $A^{(1)}\leq A^{(2)}\leq …\leq A^{(2^n)}$</li>
+<li>Calculate $m=2^n-\left\lfloor2^n\alpha\right\rfloor$</li>
+<li>If $A_{obs}&gt;A^{(m)}$ then reject the null hypothesis</li>
 </ol>
-<h2 id="lecture-5-one-sample-goodness-of-fit-test">Lecture 5 One-sample Goodness-of-fit test</h2>
-<p>Outline:</p>
+<h2 id="Lecture-5-One-sample-Goodness-of-fit-test"><a href="#Lecture-5-One-sample-Goodness-of-fit-test" class="headerlink" title="Lecture 5 One-sample Goodness-of-fit test"></a>Lecture 5 One-sample Goodness-of-fit test</h2><p>Outline:</p>
 <ul>
 <li>Q-Q plot</li>
-<li>Goodness-of-fit test
-<ul>
+<li>Goodness-of-fit test<ul>
 <li>Kolmogorov-Smirnov test</li>
 <li>Cramer-von Mises test</li>
 <li>Anderson-Darling test</li>
-</ul></li>
-<li>Normality test
-<ul>
+</ul>
+</li>
+<li>Normality test<ul>
 <li>Shapiro-Wilk test</li>
 <li>Shapiro-Francia test</li>
 <li>Liliefors test</li>
-</ul></li>
 </ul>
-<h2 id="lecture-6-contingency-table">Lecture 6 Contingency Table</h2>
-<p>Outline:</p>
+</li>
+</ul>
+<h2 id="Lecture-6-Contingency-Table"><a href="#Lecture-6-Contingency-Table" class="headerlink" title="Lecture 6 Contingency Table"></a>Lecture 6 Contingency Table</h2><p>Outline:</p>
 <ul>
 <li>Chi-squared test</li>
 <li>Fisher exact test</li>
-<li>McNamer's test</li>
+<li>McNamer’s test</li>
 <li>Mantel-Haenszel test</li>
 </ul>
-<h3 id="chi-squared-test">6.1 Chi-squared test</h3>
-<p><strong>Intuition:</strong> Set up contingency table, apply chi-squared test.</p>
+<h3 id="6-1-Chi-squared-test"><a href="#6-1-Chi-squared-test" class="headerlink" title="6.1 Chi-squared test"></a>6.1 Chi-squared test</h3><p><strong>Intuition:</strong> Set up contingency table, apply chi-squared test.</p>
 <ul>
 <li>This test is called a <em>test for homogeneity of binomial proportions</em>. In this situation, one set of margins is fixed and the number of successes in each row is a random variable.</li>
 </ul>
 <center>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Exposed</th>
-<th style="text-align: center;">Unexposed</th>
-<th style="text-align: center;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Case</td>
-<td style="text-align: center;"><span class="math inline">\(O_{11}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O_{12}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{1.}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Control</td>
-<td style="text-align: center;"><span class="math inline">\(O_{21}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O_{22}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{2.}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(n_{.1}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{.2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{..}\)</span></td>
-</tr>
-</tbody>
-</table>
+
+|   |Exposed|Unexposed|Total|
+|:---:|:---:|:---:|:---:|
+|Case|$O_{11}$|$O_{12}$|$n_{1.}$|
+|Control|$O_{21}$|$O_{22}$|$n_{2.}$|
+|Total|$n_{.1}$|$n_{.2}$|$n_{..}$|
+
 </center>
-<p>The expected number of units in the <span class="math inline">\((i,j)\)</span> cell :</p>
-<p><span class="math display">\[E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}}\]</span></p>
-<p><strong>Test statistics:</strong></p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
-<p>Test statistics with Yates' continuity correction :</p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(|O_{ij}-E_{ij}|-0.5)^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
-<p>Alternative form:</p>
-<p><span class="math display">\[\chi^2=\frac{n_{..}(n_{11}n_{22}-n_{12}n_{21})^2}{n_{.1}n_{.2}n_{1.}n_{2.}}\]</span></p>
-<p><strong>Note:</strong> The test is used only when <span class="math inline">\(E_{ij}&gt;5,\forall i,j.\)</span></p>
+
+<p>The expected number of units in the $(i,j)$ cell :</p>
+<script type="math/tex; mode=display">E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}}</script><p><strong>Test statistics:</strong></p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1</script><p>Test statistics with Yates’ continuity correction :</p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(|O_{ij}-E_{ij}|-0.5)^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1</script><p>Alternative form:</p>
+<script type="math/tex; mode=display">\chi^2=\frac{n_{..}(n_{11}n_{22}-n_{12}n_{21})^2}{n_{.1}n_{.2}n_{1.}n_{2.}}</script><p><strong>Note:</strong> The test is used only when $E_{ij}&gt;5,\forall i,j.$</p>
 <ul>
-<li>The <span class="math inline">\(\chi^2\)</span> statistic can be used
-<ul>
+<li>The $\chi^2$ statistic can be used<ul>
 <li>the rows are fixed (binomial)</li>
 <li>the colomns are fixed (binomial)</li>
 <li>the total sample size is fixed (multinomial)</li>
 <li>none are fixed (Poisson)</li>
-</ul></li>
-<li>For a given set of data, any of these assumptions results in the same value for the <span class="math inline">\(\chi^2\)</span> statistic.</li>
-<li><span class="math inline">\(df=n_{..}-1\)</span></li>
 </ul>
-<h3 id="fisher-exact-test">6.2 Fisher exact test</h3>
-<p><strong>Situation:</strong> Categorical data, small samples</p>
+</li>
+<li>For a given set of data, any of these assumptions results in the same value for the $\chi^2$ statistic.</li>
+<li>$df=n_{..}-1$</li>
+</ul>
+<h3 id="6-2-Fisher-exact-test"><a href="#6-2-Fisher-exact-test" class="headerlink" title="6.2 Fisher exact test"></a>6.2 Fisher exact test</h3><p><strong>Situation:</strong> Categorical data, small samples</p>
 <p><strong>Target:</strong> Figure out whether the difference is significant between two categories.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}\)</span></p>
+<p><strong>Hypothesis:</strong> $H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}$</p>
 <p>Exact Probability of Obeserving a Table with a certain cell :</p>
-<p><span class="math display">\[Pr(n_{11},n_{12},n_{21},n_{22})=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!n_{11}!n_{12}!n_{21}!n_{22}!}\]</span></p>
-<p>Suppose we consider all possible tables with fixed row margins and fixed column margins. Then <strong>rearrange the rows and columns</strong> so that <span class="math inline">\(n_{1.}\leq n_{2.}, n_{.1}\leq n_{.2}\)</span>.</p>
-<p>The random variable <span class="math inline">\(X\)</span> denote the cell count in <span class="math inline">\((1,1)\)</span> : <span class="math display">\[Pr(X=a)=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!a!(n_{1.}-a)!(n_{.1}-a)!(n_{.2}-n_{1.}+a)!}\stackrel{H_0}{\sim}Hypergeometric(n_{1.},n_{2.},n_{..})\]</span></p>
-<p>Also, under <span class="math inline">\(H_0\)</span> :</p>
-<p><span class="math display">\[E(X)=\frac{n_{1.}n_{.1}}{n_{..}},\quad Var(X)=\frac{n_{1.}n_{2.}n_{.1}n_{.2}}{n_{..}^2(n_{..}-1)}\]</span></p>
-<p>Enumerate all possible tables and compute the exact probability of each table using the formula above. Calculate the p-value(two-tailed test) :</p>
-<p><span class="math display">\[p-value = 2\times \min [Pr(0)+Pr(1)+...+Pr(a),Pr(a)+Pr(a+1)+...+Pr(k),0.5]\]</span></p>
-<h3 id="mcnemars-test">6.3 McNemar's test</h3>
-<p><strong>Situation:</strong> Samples are paired and dependent.</p>
+<script type="math/tex; mode=display">Pr(n_{11},n_{12},n_{21},n_{22})=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!n_{11}!n_{12}!n_{21}!n_{22}!}</script><p>Suppose we consider all possible tables with fixed row margins and fixed column margins. Then <strong>rearrange the rows and columns</strong> so that $n_{1.}\leq n_{2.}, n_{.1}\leq n_{.2}$.</p>
+<p>The random variable $X$ denote the cell count in $(1,1)$ :</p>
+<script type="math/tex; mode=display">Pr(X=a)=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!a!(n_{1.}-a)!(n_{.1}-a)!(n_{.2}-n_{1.}+a)!}\stackrel{H_0}{\sim}Hypergeometric(n_{1.},n_{2.},n_{..})</script><p>Also, under $H_0$ :</p>
+<script type="math/tex; mode=display">E(X)=\frac{n_{1.}n_{.1}}{n_{..}},\quad Var(X)=\frac{n_{1.}n_{2.}n_{.1}n_{.2}}{n_{..}^2(n_{..}-1)}</script><p>Enumerate all possible tables and compute the exact probability of each table using the formula above. Calculate the p-value(two-tailed test) :</p>
+<script type="math/tex; mode=display">p-value = 2\times \min [Pr(0)+Pr(1)+...+Pr(a),Pr(a)+Pr(a+1)+...+Pr(k),0.5]</script><h3 id="6-3-McNemar’s-test"><a href="#6-3-McNemar’s-test" class="headerlink" title="6.3 McNemar’s test"></a>6.3 McNemar’s test</h3><p><strong>Situation:</strong> Samples are paired and dependent.</p>
 <p><strong>Target:</strong> Figure out whether the difference is significant between two categories. Here, the two categories are dependent.</p>
 <center>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Type A/Type B</th>
-<th style="text-align: center;">Case</th>
-<th style="text-align: center;">Control</th>
-<th style="text-align: center;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Case</td>
-<td style="text-align: center;"><span class="math inline">\(n_{11}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{12}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Control</td>
-<td style="text-align: center;"><span class="math inline">\(n_{21}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{22}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(m_1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(m_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
-</tr>
-</tbody>
-</table>
+
+|Type A/Type B|Case|Control|Total|
+|:---:|:---:|:---:|:---:|
+|Case|$n_{11}$|$n_{12}$|$n_1$|
+|Control|$n_{21}$|$n_{22}$|$n_2$|
+|Total|$m_1$|$m_2$|$n$|
+
 </center>
+
 <ul>
-<li>Concordant pair : matched pair in which the outcome is the same for each member of the pair. i.e. <span class="math inline">\(n_{11}\)</span> and <span class="math inline">\(n_{22}\)</span>.</li>
-<li>Discordant pair : matched pair in which the outcomes differ for the member of the pair, which <strong>shows the difference between the categories</strong>. i.e. <span class="math inline">\(n_{12}\)</span> and <span class="math inline">\(n_{21}\)</span>.</li>
+<li>Concordant pair : matched pair in which the outcome is the same for each member of the pair. i.e. $n_{11}$ and $n_{22}$.</li>
+<li>Discordant pair : matched pair in which the outcomes differ for the member of the pair, which <strong>shows the difference between the categories</strong>. i.e. $n_{12}$ and $n_{21}$.</li>
 </ul>
-<p>Suppose that of <span class="math inline">\(n_D\)</span> discordant pairs, <span class="math inline">\(n_A\)</span> are type A.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0 : p=\frac{1}{2} \quad v.s. \quad H_1:p\not ={\frac{1}{2}}\)</span>, where <span class="math inline">\(p=\dfrac{n_A}{n_D}\)</span>.</p>
-<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(n_A\sim Binomial(n_D,0.5)\)</span> :</p>
-<p><span class="math display">\[E(n_A)=\frac{n_D}{2},\quad Var(n_A)=\frac{n_D}{4}\]</span></p>
-<p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[\chi^2=\frac{(n_A-\frac{n_D}{2})^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
-<p>Alternative form:</p>
-<p><span class="math display">\[\chi^2=\frac{(n_A-n_B)^2}{n_D}\]</span></p>
-<p>Test statistic with continutiy correction :</p>
-<p><span class="math display">\[\chi^2=\frac{(|n_A-\frac{n_D}{2}|-0.5)^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
-<p><strong>Note:</strong> Use this test only if <span class="math inline">\(n_D\geq20\)</span>.</p>
-<h3 id="mantel-haenszel-test">6.4 Mantel-Haenszel test</h3>
-<p><strong>Situation:</strong> There are multiple independent 2x2 contingency table and each table has non-ramdom row/column.</p>
+<p>Suppose that of $n_D$ discordant pairs, $n_A$ are type A.</p>
+<p><strong>Hypothesis:</strong> $H_0 : p=\frac{1}{2} \quad v.s. \quad H_1:p\not ={\frac{1}{2}}$, where $p=\dfrac{n_A}{n_D}$.</p>
+<p>Under $H_0$, $n_A\sim Binomial(n_D,0.5)$ :</p>
+<script type="math/tex; mode=display">E(n_A)=\frac{n_D}{2},\quad Var(n_A)=\frac{n_D}{4}</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">\chi^2=\frac{(n_A-\frac{n_D}{2})^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1</script><p>Alternative form:</p>
+<script type="math/tex; mode=display">\chi^2=\frac{(n_A-n_B)^2}{n_D}</script><p>Test statistic with continutiy correction :</p>
+<script type="math/tex; mode=display">\chi^2=\frac{(|n_A-\frac{n_D}{2}|-0.5)^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1</script><p><strong>Note:</strong> Use this test only if $n_D\geq20$.</p>
+<h3 id="6-4-Mantel-Haenszel-test"><a href="#6-4-Mantel-Haenszel-test" class="headerlink" title="6.4 Mantel-Haenszel test"></a>6.4 Mantel-Haenszel test</h3><p><strong>Situation:</strong> There are multiple independent 2x2 contingency table and each table has non-ramdom row/column.</p>
 <p><strong>Target:</strong> Figure out whether all the k tables show that it has no treatment effect.</p>
 <center>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Successes</th>
-<th style="text-align: center;">Failures</th>
-<th style="text-align: center;">Totals</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Sample1</td>
-<td style="text-align: center;"><span class="math inline">\(p_1^{(i)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1-p_1^{(i)}\)</span></td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Sample2</td>
-<td style="text-align: center;"><span class="math inline">\(p_2^{(i)}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1-p_2^{(i)}\)</span></td>
-<td style="text-align: center;">1</td>
-</tr>
-</tbody>
-</table>
+
+||Successes|Failures|Totals|
+|:---:|:---:|:---:|:---:|
+|Sample1|$p_1^{(i)}$|$1-p_1^{(i)}$|1|
+|Sample2|$p_2^{(i)}$|$1-p_2^{(i)}$|1|
+
 </center>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1^{(1)}=p_2^{(1)},...,p_1^{(k)}=p_2^{(k)}\)</span></p>
-<p>Denote <span class="math inline">\(\theta_i=\frac{p_1^{(i)}}{1-p_1^{(i)}}/\frac{p_2^{(i)}}{1-p_2^{(i)}}\)</span> (odds ratio), then <span class="math inline">\(H_0:\theta_1=...=\theta_k=1\)</span></p>
+
+<p><strong>Hypothesis:</strong> $H_0:p_1^{(1)}=p_2^{(1)},…,p_1^{(k)}=p_2^{(k)}$</p>
+<p>Denote $\theta_i=\frac{p_1^{(i)}}{1-p_1^{(i)}}/\frac{p_2^{(i)}}{1-p_2^{(i)}}$ (odds ratio), then $H_0:\theta_1=…=\theta_k=1$</p>
 <p><strong>Odds Ratio:</strong></p>
-<p><span class="math display">\[OR=\frac{p_1}{1-p_1}/\frac{p_2}{1-p_2}\]</span></p>
-<p>Each of the contingency table subjects to hypergeometric distribution:</p>
-<p><span class="math display">\[P(O_{11i}=x)=\frac{\binom{n_{1.i}}{x}\binom{n_{2.i}}{n_{.1i}-x}}{\binom{n_{..i}}{n_{.1i}}}\]</span></p>
-<p>under the null hypothesis:</p>
-<p><span class="math display">\[E_0(O_{11i})=\frac{(n_{1.i})(n_{.1i})}{n_{..i}},Var_0(O_{11i})=\frac{(n_{1.i})(n_{2.i})(n_{.1i})(n_{.2i})}{n_{..i}^2(n_{..i}-1)}\stackrel{H_0}{\sim}N(0,1)\]</span></p>
-<p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[MH=\frac{\sum_{i=1}^k\left\{O_{11i}-E_0(O_{11i})\right\}}{\sqrt{\sum_{i=1}^kVar_0(O_{11i})}}\]</span></p>
-<p><strong>Note:</strong> Mantel-Haenszel test can also test the independence: given the stratification and test if the two variables are independent</p>
-<h2 id="lecture-7-two-sample-problems">Lecture 7 Two-sample Problems</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">OR=\frac{p_1}{1-p_1}/\frac{p_2}{1-p_2}</script><p>Each of the contingency table subjects to hypergeometric distribution:</p>
+<script type="math/tex; mode=display">P(O_{11i}=x)=\frac{\binom{n_{1.i}}{x}\binom{n_{2.i}}{n_{.1i}-x}}{\binom{n_{..i}}{n_{.1i}}}</script><p>under the null hypothesis:</p>
+<script type="math/tex; mode=display">E_0(O_{11i})=\frac{(n_{1.i})(n_{.1i})}{n_{..i}},Var_0(O_{11i})=\frac{(n_{1.i})(n_{2.i})(n_{.1i})(n_{.2i})}{n_{..i}^2(n_{..i}-1)}\stackrel{H_0}{\sim}N(0,1)</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">MH=\frac{\sum_{i=1}^k\left\{O_{11i}-E_0(O_{11i})\right\}}{\sqrt{\sum_{i=1}^kVar_0(O_{11i})}}</script><p><strong>Note:</strong> Mantel-Haenszel test can also test the independence: given the stratification and test if the two variables are independent</p>
+<h2 id="Lecture-7-Two-sample-Problems"><a href="#Lecture-7-Two-sample-Problems" class="headerlink" title="Lecture 7 Two-sample Problems"></a>Lecture 7 Two-sample Problems</h2><p>Outline:</p>
 <ul>
-<li>Independence
-<ul>
+<li>Independence<ul>
 <li>Spearman rank test</li>
-<li>Kendall's tau test</li>
-</ul></li>
-<li>Goodness of fit
-<ul>
+<li>Kendall’s tau test</li>
+</ul>
+</li>
+<li>Goodness of fit<ul>
 <li>Kolmogorov-Smirnov test</li>
 <li>Camer-von Mises test</li>
 <li>Anderson-Darling test</li>
-</ul></li>
-<li>Location
-<ul>
+</ul>
+</li>
+<li>Location<ul>
 <li>Kruskal-Wallis test</li>
 <li>Friedman test</li>
 <li>Page test</li>
-</ul></li>
 </ul>
-<h3 id="spearman-rank-test">7.1 Spearman rank test</h3>
-<p><strong>Situation:</strong> Whether two samples are independent or related and how are they related?</p>
+</li>
+</ul>
+<h3 id="7-1-Spearman-rank-test"><a href="#7-1-Spearman-rank-test" class="headerlink" title="7.1 Spearman rank test"></a>7.1 Spearman rank test</h3><p><strong>Situation:</strong> Whether two samples are independent or related and how are they related?</p>
 <p>With parametric method, we have Pearson corelation coefficient defined as (second-order moment exists)</p>
-<p><span class="math display">\[\rho_p(X,Y)=\frac{\sum_{i=1}^n[(X_i-\bar{X})(Y_i-\bar{Y})]}{\sqrt{\sum_{i=1}^n(X_i-\bar{X})^2\sum_{i=1}^n(Y_i-\bar{Y})^2}}\]</span></p>
-<p>Replace the sample value with its rank</p>
-<p><span class="math display">\[r_s=\frac{\sum_{i=1}^n[(R_i-\bar{R})(Q_i-\bar{Q})]}{\sqrt{\sum_{i=1}^n(R_i-\bar{R})^2\sum_{i=1}^n(Q_i-\bar{Q})^2}}\]</span></p>
-<p>where <span class="math inline">\(R_i\)</span> is the rank of <span class="math inline">\(X_i\)</span> in <span class="math inline">\((X_1,...,X_n)\)</span>, <span class="math inline">\(Q_i\)</span> is the rank of <span class="math inline">\(Y_i\)</span> in <span class="math inline">\((Y_1,...,Y_n)\)</span></p>
+<script type="math/tex; mode=display">\rho_p(X,Y)=\frac{\sum_{i=1}^n[(X_i-\bar{X})(Y_i-\bar{Y})]}{\sqrt{\sum_{i=1}^n(X_i-\bar{X})^2\sum_{i=1}^n(Y_i-\bar{Y})^2}}</script><p>Replace the sample value with its rank</p>
+<script type="math/tex; mode=display">r_s=\frac{\sum_{i=1}^n[(R_i-\bar{R})(Q_i-\bar{Q})]}{\sqrt{\sum_{i=1}^n(R_i-\bar{R})^2\sum_{i=1}^n(Q_i-\bar{Q})^2}}</script><p>where $R_i$ is the rank of $X_i$ in $(X_1,…,X_n)$, $Q_i$ is the rank of $Y_i$ in $(Y_1,…,Y_n)$</p>
 <p>When there are no tie:</p>
-<p><span class="math display">\[\sum_{i=1}^nR_i=\sum_{i=1}^nQ_i=\frac{n(n+1)}{2}, \sum_{i=1}^nR_i^2=\sum_{i=1}^nQ_i^2=\frac{n(n+1)(2n+1)}{6}\]</span></p>
-<p><span class="math display">\[r_s=\frac{12\sum_{i=1}^nR_iQ_i}{n(n^2-1)}-3(\frac{n+1}{n-1})=1-\frac{6}{n(n^2-1)}\sum_{i=1}^n(R_i-Q_i)^2\]</span></p>
-<p>In large sample case</p>
-<p><span class="math display">\[E_0(r_s)=0, Var_0(r_s)=\frac{1}{n-1}\]</span></p>
-<figure>
-<img src="/2019/10/30/20191030nonpara/2019-10-26-16-19-31.png" alt="7.1"><figcaption>7.1</figcaption>
-</figure>
+<script type="math/tex; mode=display">\sum_{i=1}^nR_i=\sum_{i=1}^nQ_i=\frac{n(n+1)}{2}, \sum_{i=1}^nR_i^2=\sum_{i=1}^nQ_i^2=\frac{n(n+1)(2n+1)}{6}</script><script type="math/tex; mode=display">r_s=\frac{12\sum_{i=1}^nR_iQ_i}{n(n^2-1)}-3(\frac{n+1}{n-1})=1-\frac{6}{n(n^2-1)}\sum_{i=1}^n(R_i-Q_i)^2</script><p>In large sample case</p>
+<script type="math/tex; mode=display">E_0(r_s)=0, Var_0(r_s)=\frac{1}{n-1}</script><p><img src="/2019/10/30/20191030nonpara/2019-10-26-16-19-31.png" alt="7.1"></p>
 <p><strong>Note:</strong></p>
-<p>N1. Under null hypothesis, <span class="math inline">\(r_s\)</span> is symmetric about 0</p>
-<p><span class="math display">\[P_0(r_s\leq -x)=P_0(r_s\geq x)\]</span></p>
-<p>N2. Under null hypothesis, <span class="math inline">\((R_1,...,R_n)\)</span> and <span class="math inline">\((Q_1,...,Q_n)\)</span> are independent and have uniform distribution on <span class="math inline">\(\mathscr{R}=\left\{(i_1,...,i_n)\right\}\)</span></p>
-<p><span class="math display">\[\sum_{i=1}^nR_iQ_i=\sum_{j=1}^njQ_j\]</span></p>
-<h3 id="kendalls-tau-test">7.2 Kendall's tau test</h3>
-<p><span class="math display">\[\tau =2P\left\{(Y_2-Y_1)(X_2-X_1)&gt;0\right\}-1\]</span></p>
-<p>where <span class="math inline">\(P\left\{(Y_2-Y_1)(X_2-X_1)&gt;0\right\}=P(X_2&gt;X_1,Y_2&gt;Y_1)+P(X_2&lt;X_1,Y_2&lt;Y_1)\)</span></p>
-<p>hence, when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent</p>
-<p><span class="math display">\[P(X_2&gt;X_1,Y_2&gt;Y_1)=P(X_2&gt;X_1)P(Y_2&gt;Y_1)=\frac{1}{4}\]</span></p>
-<p><span class="math display">\[P(X_2&lt;X_1,Y_2&lt;Y_1)=P(X_2&lt;X_1)P(Y_2&lt;Y_1)=\frac{1}{4}\]</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0: \tau=0\quad \Leftrightarrow \quad F_{XY}(x,y)=F_X(x)F_Y(y),\forall (x,y)\)</span></p>
+<p>N1. Under null hypothesis, $r_s$ is symmetric about 0</p>
+<script type="math/tex; mode=display">P_0(r_s\leq -x)=P_0(r_s\geq x)</script><p>N2. Under null hypothesis, $(R_1,…,R_n)$ and $(Q_1,…,Q_n)$ are independent and have uniform distribution on $\mathscr{R}=\left\{(i_1,…,i_n)\right\}$</p>
+<script type="math/tex; mode=display">\sum_{i=1}^nR_iQ_i=\sum_{j=1}^njQ_j</script><h3 id="7-2-Kendall’s-tau-test"><a href="#7-2-Kendall’s-tau-test" class="headerlink" title="7.2 Kendall’s tau test"></a>7.2 Kendall’s tau test</h3><script type="math/tex; mode=display">\tau =2P\left\{(Y_2-Y_1)(X_2-X_1)>0\right\}-1</script><p>where $P\left\{(Y_2-Y_1)(X_2-X_1)&gt;0\right\}=P(X_2&gt;X_1,Y_2&gt;Y_1)+P(X_2&lt;X_1,Y_2&lt;Y_1)$</p>
+<p>hence, when $X$ and $Y$ are independent</p>
+<script type="math/tex; mode=display">P(X_2>X_1,Y_2>Y_1)=P(X_2>X_1)P(Y_2>Y_1)=\frac{1}{4}</script><script type="math/tex; mode=display">P(X_2<X_1,Y_2<Y_1)=P(X_2<X_1)P(Y_2<Y_1)=\frac{1}{4}</script><p><strong>Hypothesis:</strong> $H_0: \tau=0\quad \Leftrightarrow \quad F_{XY}(x,y)=F_X(x)F_Y(y),\forall (x,y)$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[\hat{\tau}=\frac{2}{n(n-1)}\sum_{1\leq i&lt;j&lt;n}sign((X_j-X_i)(Y_j-Y_i))\]</span></p>
-<p><span class="math display">\[K=\frac{2}{n(n-1)}\sum_{1\leq i&lt;j&lt;n}sign((R_j-R_i)(Q_j-Q_i))\]</span></p>
-<p>In large sample case</p>
-<p><span class="math display">\[E_0(\hat{\tau})=0, Var_0(\hat{\tau})=\frac{2(2n+5)}{9n(n-1)}\]</span></p>
-<p><strong>Note:</strong></p>
-<p>N1. Another form of <span class="math inline">\(K\)</span> can described with the number of concordant pairs and discordant paris.</p>
-<p><span class="math display">\[K=\#\left\{\text{Concordant pairs}\right\}-\#\left\{\text{Discordant pairs}\right\}=K_1-K_2\]</span></p>
-<p>N2. When there are no tie, <span class="math inline">\(K_1+K_2=\frac{n(n-1)}{2}\)</span></p>
+<script type="math/tex; mode=display">\hat{\tau}=\frac{2}{n(n-1)}\sum_{1\leq i<j<n}sign((X_j-X_i)(Y_j-Y_i))</script><script type="math/tex; mode=display">K=\frac{2}{n(n-1)}\sum_{1\leq i<j<n}sign((R_j-R_i)(Q_j-Q_i))</script><p>In large sample case</p>
+<script type="math/tex; mode=display">E_0(\hat{\tau})=0, Var_0(\hat{\tau})=\frac{2(2n+5)}{9n(n-1)}</script><p><strong>Note:</strong></p>
+<p>N1. Another form of $K$ can described with the number of concordant pairs and discordant paris.</p>
+<script type="math/tex; mode=display">K=\#\left\{\text{Concordant pairs}\right\}-\#\left\{\text{Discordant pairs}\right\}=K_1-K_2</script><p>N2. When there are no tie, $K_1+K_2=\frac{n(n-1)}{2}$</p>
 <p>N3. Under null hypothesis, K has symmetric distribution about 0</p>
-<p><span class="math display">\[P_0(K\leq -x)=P_0(K\geq x)\]</span></p>
-<p>N4. According to empirical practice, <span class="math inline">\(\hat{\tau}\approx \frac{2}{3}r_s\)</span></p>
-<h3 id="kolmogorov-smirnov-test">7.3 Kolmogorov-Smirnov test</h3>
-<p><span class="math display">\[D=(\frac{mn}{gcd(m,n)})\sup_x|F_n(x)-G_m(x)|\]</span></p>
-<h3 id="anderson-darling-test">7.4 Anderson-Darling test</h3>
-<p><span class="math display">\[A^2(F,G)=\int_{-\infty}^{\infty}[F(x)-G(x)]^2\psi(x)dF(x)dG(x)\]</span></p>
-<figure>
-<img src="/2019/10/30/20191030nonpara/2019-10-26-17-08-48.png" alt="7.4"><figcaption>7.4</figcaption>
-</figure>
-<h3 id="cramer-von-mises-test">7.5 Cramer-von Mises test</h3>
-<p>When <span class="math inline">\(\psi(x)\equiv 1\)</span> in AD test, it's a CVM test.</p>
-<p><span class="math display">\[CVM=\frac{nm}{(n+m)^2}\sum_{i=1}^{m+n}[F_n(z_i)-G_m(z_i)]^2\]</span></p>
-<h3 id="kruskal-wallis-test">7.6 Kruskal-Wallis test</h3>
-<p><strong>Situation:</strong> There are k treatments with <span class="math inline">\(n_k\)</span> observations respectively, whether the treatments are different?</p>
+<script type="math/tex; mode=display">P_0(K\leq -x)=P_0(K\geq x)</script><p>N4. According to empirical practice, $\hat{\tau}\approx \frac{2}{3}r_s$</p>
+<h3 id="7-3-Kolmogorov-Smirnov-test"><a href="#7-3-Kolmogorov-Smirnov-test" class="headerlink" title="7.3 Kolmogorov-Smirnov test"></a>7.3 Kolmogorov-Smirnov test</h3><script type="math/tex; mode=display">D=(\frac{mn}{gcd(m,n)})\sup_x|F_n(x)-G_m(x)|</script><h3 id="7-4-Anderson-Darling-test"><a href="#7-4-Anderson-Darling-test" class="headerlink" title="7.4 Anderson-Darling test"></a>7.4 Anderson-Darling test</h3><script type="math/tex; mode=display">A^2(F,G)=\int_{-\infty}^{\infty}[F(x)-G(x)]^2\psi(x)dF(x)dG(x)</script><p><img src="/2019/10/30/20191030nonpara/2019-10-26-17-08-48.png" alt="7.4"></p>
+<h3 id="7-5-Cramer-von-Mises-test"><a href="#7-5-Cramer-von-Mises-test" class="headerlink" title="7.5 Cramer-von Mises test"></a>7.5 Cramer-von Mises test</h3><p>When $\psi(x)\equiv 1$ in AD test, it’s a CVM test.</p>
+<script type="math/tex; mode=display">CVM=\frac{nm}{(n+m)^2}\sum_{i=1}^{m+n}[F_n(z_i)-G_m(z_i)]^2</script><h3 id="7-6-Kruskal-Wallis-test"><a href="#7-6-Kruskal-Wallis-test" class="headerlink" title="7.6 Kruskal-Wallis test"></a>7.6 Kruskal-Wallis test</h3><p><strong>Situation:</strong> There are k treatments with $n_k$ observations respectively, whether the treatments are different?</p>
 <p><strong>Assumption:</strong></p>
 <p>A1. All observations are independent</p>
-<p>A2. For fixed <span class="math inline">\(j\in \left\{1,...,k\right\}\)</span>, there are <span class="math inline">\(n_j\)</span> observations <span class="math inline">\(\left\{X_{1j},...,X_{n_j,j}\right\}\sim F_j\)</span></p>
-<p>A3. <span class="math inline">\(F_j(t)=F(t-\tau_j),-\infty&lt;t&lt;\infty\)</span>. F has an unknown median <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\tau_j\)</span> is the unknown jth treatment effect</p>
-<p><span class="math display">\[X_{ij}=\theta+\tau_j+e_{ij}\]</span></p>
-<p>where <span class="math inline">\(\sum_{j=1}^k\tau_j=0\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\tau_1=\tau_2=...=\tau_k \Rightarrow F_1=...=F_k=F\)</span></p>
+<p>A2. For fixed $j\in \left\{1,…,k\right\}$, there are $n_j$ observations $\left\{X_{1j},…,X_{n_j,j}\right\}\sim F_j$</p>
+<p>A3. $F_j(t)=F(t-\tau_j),-\infty&lt;t&lt;\infty$. F has an unknown median $\theta$ and $\tau_j$ is the unknown jth treatment effect</p>
+<script type="math/tex; mode=display">X_{ij}=\theta+\tau_j+e_{ij}</script><p>where $\sum_{j=1}^k\tau_j=0$</p>
+<p><strong>Hypothesis:</strong> $H_0:\tau_1=\tau_2=…=\tau_k \Rightarrow F_1=…=F_k=F$</p>
 <p>Quick review on one-way ANOVA test:</p>
 <p><strong>Model:</strong></p>
-<p><span class="math display">\[y_{ij}=\mu+\alpha_i+e_{ij},e_{ij}\sim N(0,\sigma^2)\]</span></p>
-<p>Breakdown the variance as</p>
-<p><span class="math display">\[\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y})^2=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y_i})^2+\sum_{i=1}^k\sum_{j=1}^{n_i}(\bar{y_i}-\bar{y})^2\]</span></p>
-<p>or <span class="math inline">\(SST=SSW+SSB\)</span>. Then we can estimate the variance</p>
-<p><span class="math display">\[\hat{\sigma_W}^2=MSW=\frac{SSW}{n-k}\]</span></p>
-<p><span class="math display">\[\hat{\sigma_B}^2=MSB=\frac{SSB}{k-1}\]</span></p>
-<p>The test statistic</p>
-<p><span class="math display">\[F=\frac{MSB}{MSW}=\frac{\hat{\sigma_B}^2}{\hat{\sigma_W}^2}\sim F_{k-1,n-k}\]</span></p>
-<p>Replace the sample value with its rank in its treatment group</p>
-<p><span class="math display">\[(SSB)D=\sum_{j=1}^kn_j(\frac{R_j}{n_j}-R_{..})^2=\sum_{j=1}^kn_j(\frac{R_j}{n_j}-\frac{N+1}{2})^2\]</span></p>
-<p><span class="math display">\[(SST)=\sum_{j=1}^k\sum_{i=1}^{n_j}(r_{ij}-R_{..})^2=\sum_{j=1}^k\sum_{i=1}^{n_j}r_{ij}^2-NR_{..}^2=\frac{N(N^2-1)}{12}\]</span></p>
-<p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[H=\frac{12D}{N(N+1)}=(\frac{12}{N(N+1)}\sum_{j=1}^k\frac{R_j^2}{n_j})-3(N+1)\stackrel{D}{\sim}\chi^2(k-1)\]</span></p>
-<p><strong>Intuition:</strong> SSB has a asymptotic distribution of <span class="math inline">\(\chi^2(k-1)\)</span></p>
-<p><strong>Note:</strong> when <span class="math inline">\(k=2\)</span>, the test statistic is the same as Wilcoxon rank-sum test. Under null hypothesis</p>
-<p><span class="math display">\[E_0(R_{.j})=\frac{N+1}{2},Var_0(R_{.j})=\frac{(N-n_j)(N+1)}{12n_j},Cov_0(R_{.i},R_{.j})=\frac{-(N+1)}{12}\]</span></p>
-<h3 id="friedman-test">7.7 Friedman test</h3>
-<p>Quick review on two-way ANOVA test:</p>
-<figure>
-<img src="/2019/10/30/20191030nonpara/2019-10-26-21-54-01.png" alt="7.7"><figcaption>7.7</figcaption>
-</figure>
+<script type="math/tex; mode=display">y_{ij}=\mu+\alpha_i+e_{ij},e_{ij}\sim N(0,\sigma^2)</script><p>Breakdown the variance as</p>
+<script type="math/tex; mode=display">\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y})^2=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y_i})^2+\sum_{i=1}^k\sum_{j=1}^{n_i}(\bar{y_i}-\bar{y})^2</script><p>or $SST=SSW+SSB$. Then we can estimate the variance</p>
+<script type="math/tex; mode=display">\hat{\sigma_W}^2=MSW=\frac{SSW}{n-k}</script><script type="math/tex; mode=display">\hat{\sigma_B}^2=MSB=\frac{SSB}{k-1}</script><p>The test statistic</p>
+<script type="math/tex; mode=display">F=\frac{MSB}{MSW}=\frac{\hat{\sigma_B}^2}{\hat{\sigma_W}^2}\sim F_{k-1,n-k}</script><p>Replace the sample value with its rank in its treatment group</p>
+<script type="math/tex; mode=display">(SSB)D=\sum_{j=1}^kn_j(\frac{R_j}{n_j}-R_{..})^2=\sum_{j=1}^kn_j(\frac{R_j}{n_j}-\frac{N+1}{2})^2</script><script type="math/tex; mode=display">(SST)=\sum_{j=1}^k\sum_{i=1}^{n_j}(r_{ij}-R_{..})^2=\sum_{j=1}^k\sum_{i=1}^{n_j}r_{ij}^2-NR_{..}^2=\frac{N(N^2-1)}{12}</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">H=\frac{12D}{N(N+1)}=(\frac{12}{N(N+1)}\sum_{j=1}^k\frac{R_j^2}{n_j})-3(N+1)\stackrel{D}{\sim}\chi^2(k-1)</script><p><strong>Intuition:</strong> SSB has a asymptotic distribution of $\chi^2(k-1)$</p>
+<p><strong>Note:</strong> when $k=2$, the test statistic is the same as Wilcoxon rank-sum test. Under null hypothesis</p>
+<script type="math/tex; mode=display">E_0(R_{.j})=\frac{N+1}{2},Var_0(R_{.j})=\frac{(N-n_j)(N+1)}{12n_j},Cov_0(R_{.i},R_{.j})=\frac{-(N+1)}{12}</script><h3 id="7-7-Friedman-test"><a href="#7-7-Friedman-test" class="headerlink" title="7.7 Friedman test"></a>7.7 Friedman test</h3><p>Quick review on two-way ANOVA test:</p>
+<p><img src="/2019/10/30/20191030nonpara/2019-10-26-21-54-01.png" alt="7.7"></p>
 <p><strong>Situation:</strong> There are different n blocks and diifferent treatments, to see if the different block has additive effect and whether the treatment has effect on the result.</p>
 <p><strong>Assumptions:</strong></p>
-<p>A1. The <span class="math inline">\(N\)</span> random variables are mutually independent</p>
-<p>A2. For each fixed <span class="math inline">\((i,j)\)</span>, the <span class="math inline">\(c_{ij}\)</span> random variables <span class="math inline">\((X_{ij1},...,X_{ijc_{ij}})\)</span> are a random sample from a continuous distribution with distribution function <span class="math inline">\(F_{ij}\)</span></p>
-<p>A3. <span class="math inline">\(F_{ij}(u)=F(u-\beta_i-\tau_j),-\infty&lt;u&lt;\infty\)</span> F has an unknown median <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\beta_i\)</span> is the unknown additive effect contributed by block i, and <span class="math inline">\(\tau_j\)</span> is the unknown jth treatment effect</p>
-<p>#TODO: two-way ANOVA statistic</p>
-<p>Denote <span class="math inline">\(r_{ij}\)</span> the rank of <span class="math inline">\(X_{ij}\)</span> in the <span class="math inline">\(i\)</span>th block,<span class="math inline">\(i\in\left\{1,...,n\right\}, j\in\left\{1,...,k\right\}\)</span>, then</p>
-<p><span class="math display">\[R_j=\sum_{i=1}^nr_{ij}\quad \text{and}\quad R_{.j}=\frac{R_j}{n}\]</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\tau_1=\tau_2=...=\tau_k \Rightarrow F_1=...=F_k=F\)</span></p>
+<p>A1. The $N$ random variables are mutually independent</p>
+<p>A2. For each fixed $(i,j)$, the $c_{ij}$ random variables $(X_{ij1},…,X_{ijc_{ij}})$ are a random sample from a continuous distribution with distribution function $F_{ij}$</p>
+<p>A3. $F_{ij}(u)=F(u-\beta_i-\tau_j),-\infty&lt;u&lt;\infty$ F has an unknown median $\theta$, $\beta_i$ is the unknown additive effect contributed by block i, and $\tau_j$ is the unknown jth treatment effect</p>
+<h1 id="TODO-two-way-ANOVA-statistic"><a href="#TODO-two-way-ANOVA-statistic" class="headerlink" title="TODO: two-way ANOVA statistic"></a>TODO: two-way ANOVA statistic</h1><p>Denote $r_{ij}$ the rank of $X_{ij}$ in the $i$th block,$i\in\left\{1,…,n\right\}, j\in\left\{1,…,k\right\}$, then</p>
+<script type="math/tex; mode=display">R_j=\sum_{i=1}^nr_{ij}\quad \text{and}\quad R_{.j}=\frac{R_j}{n}</script><p><strong>Hypothesis:</strong> $H_0:\tau_1=\tau_2=…=\tau_k \Rightarrow F_1=…=F_k=F$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 \begin{aligned}
-    S=\frac{SSt}{SSe}&amp;=\frac{12n}{k(k+1)}\sum_{j=1}^k(R_{.j}-\frac{k+1}{2})^2\\
-    &amp;=[\frac{12}{nk(k+1)}\sum_{j=1}^kR_j^2]-3n(k+1)\sim\chi^2_{k-1}
-\end{aligned}
-\]</span></p>
-<h3 id="page-test">7.8 Page test</h3>
-<p><strong>Situation:</strong> Assume that the additive effect of the blocks has a certain trend.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\tau_1=\tau_2=...=\tau_k \quad v.s.\quad H_1:\tau_1\leq\tau_2\leq...\leq\tau_k\)</span></p>
+    S=\frac{SSt}{SSe}&=\frac{12n}{k(k+1)}\sum_{j=1}^k(R_{.j}-\frac{k+1}{2})^2\\
+    &=[\frac{12}{nk(k+1)}\sum_{j=1}^kR_j^2]-3n(k+1)\sim\chi^2_{k-1}
+\end{aligned}</script><h3 id="7-8-Page-test"><a href="#7-8-Page-test" class="headerlink" title="7.8 Page test"></a>7.8 Page test</h3><p><strong>Situation:</strong> Assume that the additive effect of the blocks has a certain trend.</p>
+<p><strong>Hypothesis:</strong> $H_0:\tau_1=\tau_2=…=\tau_k \quad v.s.\quad H_1:\tau_1\leq\tau_2\leq…\leq\tau_k$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[L=\sum_{j=1}^kjR_j\]</span></p>
-<p>under the null hypothesis:</p>
-<p><span class="math display">\[E_0(L)=\frac{nk(k+1)^2}{4},Var_0(L)=\frac{nk^2(k+1)^2}{144}\]</span></p>
-
+<script type="math/tex; mode=display">L=\sum_{j=1}^kjR_j</script><p>under the null hypothesis:</p>
+<script type="math/tex; mode=display">E_0(L)=\frac{nk(k+1)^2}{4},Var_0(L)=\frac{nk^2(k+1)^2}{144}</script>
     </div>
 
     
@@ -706,7 +554,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-intro"><span class="nav-text">Lecture 1 Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-data-types"><span class="nav-text">Lecture 2 Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#empirical-distribution-function"><span class="nav-text">2.1 Empirical Distribution Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kaplan-meier-estimator"><span class="nav-text">2.2 Kaplan-Meier estimator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-binomial-sign-hollander-chi-square-test"><span class="nav-text">Lecture 3 Binomial Sign Hollander Chi-square Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#binomial-test"><span class="nav-text">3.1 Binomial test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-sign-test"><span class="nav-text">3.2 The Sign test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#one-sample-sign-test"><span class="nav-text">3.2.1 One-sample sign test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paired-sample-sign-test"><span class="nav-text">3.2.2 Paired sample sign test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hollander-test"><span class="nav-text">3.3 Hollander test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-5-one-sample-goodness-of-fit-test"><span class="nav-text">Lecture 5 One-sample Goodness-of-fit test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-contingency-table"><span class="nav-text">Lecture 6 Contingency Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chi-squared-test"><span class="nav-text">6.1 Chi-squared test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fisher-exact-test"><span class="nav-text">6.2 Fisher exact test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mcnemars-test"><span class="nav-text">6.3 McNemar&#39;s test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mantel-haenszel-test"><span class="nav-text">6.4 Mantel-Haenszel test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-7-two-sample-problems"><span class="nav-text">Lecture 7 Two-sample Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spearman-rank-test"><span class="nav-text">7.1 Spearman rank test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kendalls-tau-test"><span class="nav-text">7.2 Kendall&#39;s tau test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kolmogorov-smirnov-test"><span class="nav-text">7.3 Kolmogorov-Smirnov test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anderson-darling-test"><span class="nav-text">7.4 Anderson-Darling test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cramer-von-mises-test"><span class="nav-text">7.5 Cramer-von Mises test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskal-wallis-test"><span class="nav-text">7.6 Kruskal-Wallis test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#friedman-test"><span class="nav-text">7.7 Friedman test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#page-test"><span class="nav-text">7.8 Page test</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1-Intro"><span class="nav-text">Lecture 1 Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2-Data-Types"><span class="nav-text">Lecture 2 Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Empirical-Distribution-Function"><span class="nav-text">2.1 Empirical Distribution Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Kaplan-Meier-estimator"><span class="nav-text">2.2 Kaplan-Meier estimator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3-Binomial-Sign-Hollander-Chi-square-Test"><span class="nav-text">Lecture 3 Binomial Sign Hollander Chi-square Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Binomial-test"><span class="nav-text">3.1 Binomial test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-The-Sign-test"><span class="nav-text">3.2 The Sign test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-One-sample-sign-test"><span class="nav-text">3.2.1 One-sample sign test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-Paired-sample-sign-test"><span class="nav-text">3.2.2 Paired sample sign test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Hollander-test"><span class="nav-text">3.3 Hollander test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-5-One-sample-Goodness-of-fit-test"><span class="nav-text">Lecture 5 One-sample Goodness-of-fit test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-6-Contingency-Table"><span class="nav-text">Lecture 6 Contingency Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Chi-squared-test"><span class="nav-text">6.1 Chi-squared test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Fisher-exact-test"><span class="nav-text">6.2 Fisher exact test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-McNemar’s-test"><span class="nav-text">6.3 McNemar’s test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-Mantel-Haenszel-test"><span class="nav-text">6.4 Mantel-Haenszel test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-Two-sample-Problems"><span class="nav-text">Lecture 7 Two-sample Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-Spearman-rank-test"><span class="nav-text">7.1 Spearman rank test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-Kendall’s-tau-test"><span class="nav-text">7.2 Kendall’s tau test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-Kolmogorov-Smirnov-test"><span class="nav-text">7.3 Kolmogorov-Smirnov test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-Anderson-Darling-test"><span class="nav-text">7.4 Anderson-Darling test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-Cramer-von-Mises-test"><span class="nav-text">7.5 Cramer-von Mises test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-6-Kruskal-Wallis-test"><span class="nav-text">7.6 Kruskal-Wallis test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-7-Friedman-test"><span class="nav-text">7.7 Friedman test</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TODO-two-way-ANOVA-statistic"><span class="nav-text">TODO: two-way ANOVA statistic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-8-Page-test"><span class="nav-text">7.8 Page test</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

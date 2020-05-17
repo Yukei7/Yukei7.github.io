@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="This is the note for &quot;Introduction to Git and GitHub&quot; lectured by Google. Find more information on the course page on Coursera">
+  <meta name="description" content="This is the note for “Introduction to Git and GitHub” lectured by Google. Find more information on the course page on Coursera">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introduction to Git and GitHub">
 <meta property="og:url" content="http://yoursite.com/2020/02/24/intro-to-Git/index.html">
 <meta property="og:site_name" content="Yukei">
-<meta property="og:description" content="This is the note for &quot;Introduction to Git and GitHub&quot; lectured by Google. Find more information on the course page on Coursera">
+<meta property="og:description" content="This is the note for “Introduction to Git and GitHub” lectured by Google. Find more information on the course page on Coursera">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2020/02/24/intro-to-Git/github.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/02/24/intro-to-Git/2020-02-23-22-56-31.png">
@@ -256,23 +256,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/2020/02/24/intro-to-Git/github.jpg"></p>
-<p>This is the note for &quot;Introduction to Git and GitHub&quot; lectured by Google.</p>
+        <p><img src="/2020/02/24/intro-to-Git/github.jpg" alt></p>
+<p>This is the note for “Introduction to Git and GitHub” lectured by Google.</p>
 <p>Find more information on the <a href="https://www.coursera.org/learn/introduction-git-github?specialization=google-it-automation" target="_blank" rel="noopener">course page on Coursera</a></p>
 <a id="more"></a>
-<h2 id="week1-introduction-to-version-control">Week1 Introduction to Version Control</h2>
-<h3 id="before-version-control">1.1 Before Version Control</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff -u 1.py 2.py</span><br></pre></td></tr></table></figure>
+<h2 id="Week1-Introduction-to-Version-Control"><a href="#Week1-Introduction-to-Version-Control" class="headerlink" title="Week1 Introduction to Version Control"></a>Week1 Introduction to Version Control</h2><h3 id="1-1-Before-Version-Control"><a href="#1-1-Before-Version-Control" class="headerlink" title="1.1 Before Version Control"></a>1.1 Before Version Control</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff -u 1.py 2.py</span><br></pre></td></tr></table></figure>
 <p>Note the first line <code>6c6,7</code> means the 6th line in the original file was changed with the 6,7th line in the new file.</p>
 <p><code>-</code> sign means the lines are deleted and <code>+</code> sign means the lines are added</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diff -u old_file new_ file &gt; changes.diff.</span><br><span class="line">patch old_file.py &lt; changes.diff</span><br><span class="line">cat changes.diff</span><br></pre></td></tr></table></figure>
-<h3 id="version-control-systems">1.2 Version Control Systems</h3>
-<h3 id="using-git">1.3 Using Git</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email "me@example.com"</span><br><span class="line">git config --global user.name "My name"</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-Version-Control-Systems"><a href="#1-2-Version-Control-Systems" class="headerlink" title="1.2 Version Control Systems"></a>1.2 Version Control Systems</h3><h3 id="1-3-Using-Git"><a href="#1-3-Using-Git" class="headerlink" title="1.3 Using Git"></a>1.3 Using Git</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email "me@example.com"</span><br><span class="line">git config --global user.name "My name"</span><br></pre></td></tr></table></figure>
 <p><code>--global</code> use the same email and name setting for all repositories</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git clone url</span><br></pre></td></tr></table></figure>
 <p>create a new repository/clone an exist repository</p>
-<p><code>init</code> create a &quot;.git&quot; directory which stores all the changes</p>
+<p><code>init</code> create a “.git” directory which stores all the changes</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -la</span><br><span class="line">ls -l .git/</span><br></pre></td></tr></table></figure>
 <p>check the directory</p>
 <p><strong>Working tree:</strong> the sandbox that the current version is working on</p>
@@ -291,10 +287,8 @@
 <p>check the current configuration</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
 <p>show the history of commits (author, date, commit message).</p>
-<h2 id="week2-using-git-locally">Week2 Using Git Locally</h2>
-<h3 id="advanced-git-interaction">2.1 Advanced Git interaction</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
-<p><code>commit -a</code> is a shortcut to stage any changes to tracked files and commit them in one step. (Notice: untracked files won't be committed.)</p>
+<h2 id="Week2-Using-Git-Locally"><a href="#Week2-Using-Git-Locally" class="headerlink" title="Week2 Using Git Locally"></a>Week2 Using Git Locally</h2><h3 id="2-1-Advanced-Git-interaction"><a href="#2-1-Advanced-Git-interaction" class="headerlink" title="2.1 Advanced Git interaction"></a>2.1 Advanced Git interaction</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<p><code>commit -a</code> is a shortcut to stage any changes to tracked files and commit them in one step. (Notice: untracked files won’t be committed.)</p>
 <p><strong>HEAD:</strong> Git uses HEAD alias to represent the currently checked-out snapshot of your project</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log -p</span><br><span class="line">git show hashID</span><br></pre></td></tr></table></figure>
 <p>shows the actual lines that changed in each commit. <code>git log -p -2</code> limits the output to the last two entries.</p>
@@ -310,21 +304,19 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv original.py new.py</span><br></pre></td></tr></table></figure>
 <p>rename/move the file and staged to be committed</p>
 <p><code>.gitignore/</code> a file to stored certain rules for Git to skip some types of files for the current repo.</p>
-<h3 id="undoing-things">2.2 Undoing things</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 1.py</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-Undoing-things"><a href="#2-2-Undoing-things" class="headerlink" title="2.2 Undoing things"></a>2.2 Undoing things</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 1.py</span><br></pre></td></tr></table></figure>
 <p>revert changes to modify files before they are staged, which will restore the file to the latest storage snapshot. (effectively used to switch branches)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD 1.py</span><br></pre></td></tr></table></figure>
 <p>untracked the changes (basically resets the repo, throwing away some changes)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
 <p>overwrite the previous commit. (Notice: DO NOT use on public repository because the commit ID would change)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert HEAD</span><br></pre></td></tr></table></figure>
-<p>creating a new commit that is the oppsite of everything in the given commit. (rollback, Git would show the hash of the commit that it's reverting to)</p>
-<p><strong>Commit ID:</strong> 40 characters long. Acually a Hash calculated with SHA1. Hash guarentee the consistency of the history because it's calculated from all the information that makes up a commit. (commit message, date, author, snapshot)</p>
+<p>creating a new commit that is the oppsite of everything in the given commit. (rollback, Git would show the hash of the commit that it’s reverting to)</p>
+<p><strong>Commit ID:</strong> 40 characters long. Acually a Hash calculated with SHA1. Hash guarentee the consistency of the history because it’s calculated from all the information that makes up a commit. (commit message, date, author, snapshot)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert CommitID</span><br></pre></td></tr></table></figure>
 <p>revert to the specify commit with the commit ID. (intact ID is not required. The first 6-8 characters are enough)</p>
-<h3 id="branching-and-merging">2.3 Branching and Merging</h3>
-<p><strong>Branch:</strong> A pointer to a particular commit. Representing an independent line of development in a project.</p>
-<p><strong>master:</strong> The default branch that Git creates for you when a new repository is initialized. (Usually it's the most stable one)</p>
+<h3 id="2-3-Branching-and-Merging"><a href="#2-3-Branching-and-Merging" class="headerlink" title="2.3 Branching and Merging"></a>2.3 Branching and Merging</h3><p><strong>Branch:</strong> A pointer to a particular commit. Representing an independent line of development in a project.</p>
+<p><strong>master:</strong> The default branch that Git creates for you when a new repository is initialized. (Usually it’s the most stable one)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
 <p>shows all existing branches</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch new-feature</span><br></pre></td></tr></table></figure>
@@ -339,19 +331,17 @@
 <p>merge the specific branch to the master branch.</p>
 <p><strong>Merging:</strong> The term that Git uses for combining branched data and history together. (Both branches point to the same commit) Git uses two different alogorithms to perform merge:</p>
 <ul>
-<li>fast-forward: both branches doesn't diverge (linear)</li>
+<li>fast-forward: both branches doesn’t diverge (linear)</li>
 <li>three-way: branches have diverged and there is no linear path to combine them. Gits find the most recent common ancestor and merge the snapshots. (<strong>Merge conflict</strong> occurs when two branches have different snapshot on the same part in the same file)</li>
 </ul>
-<p><img src="/2020/02/24/intro-to-Git/2020-02-23-22-56-31.png"></p>
+<p><img src="/2020/02/24/intro-to-Git/2020-02-23-22-56-31.png" alt></p>
 <p>If we use <code>git merge new-feature</code>, Git would show that there is a conflict when attempting to automatically merge them. Then when you open the file, the editor would add some information showing where the conflict is. It needs to be modified manually.</p>
 <p>After modifying, use <code>git add filename</code> to stage it.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --oneline</span><br></pre></td></tr></table></figure>
 <p>show the commits as graph.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
 <p>throw the merge away and start over.</p>
-<h2 id="week3-working-with-remotes">Week3 Working with Remotes</h2>
-<h3 id="intro-to-github">3.1 Intro to GitHub</h3>
-<p><strong>Distributed:</strong> Each developer has a copy of the whole repository on their local machine.</p>
+<h2 id="Week3-Working-with-Remotes"><a href="#Week3-Working-with-Remotes" class="headerlink" title="Week3 Working with Remotes"></a>Week3 Working with Remotes</h2><h3 id="3-1-Intro-to-GitHub"><a href="#3-1-Intro-to-GitHub" class="headerlink" title="3.1 Intro to GitHub"></a>3.1 Intro to GitHub</h3><p><strong>Distributed:</strong> Each developer has a copy of the whole repository on their local machine.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone url &lt;directory&gt;</span><br></pre></td></tr></table></figure>
 <p>clone the existing repos from the url to the directory</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
@@ -360,40 +350,38 @@
 <p>avoid typing account and password each time for 15min. (or <a href="https://help.github.com/en/articles/generating-an-ssh-key" target="_blank" rel="noopener">SSH key instead</a>)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
 <p>retrieve new changes from the repos</p>
-<h3 id="using-a-remote-repo">3.2 Using a Remote Repo</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-Using-a-Remote-Repo"><a href="#3-2-Using-a-Remote-Repo" class="headerlink" title="3.2 Using a Remote Repo"></a>3.2 Using a Remote Repo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
 <p>shows the configuration for the remote</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show origin</span><br></pre></td></tr></table></figure>
-<p>shows detailed information of &quot;origin&quot;. A way to check whether the current repo is up-to-date or the existing branches. (Git won't keep remote and local branches in sync automatically)</p>
+<p>shows detailed information of “origin”. A way to check whether the current repo is up-to-date or the existing branches. (Git won’t keep remote and local branches in sync automatically)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
 <p>shows the remote branches that our Git repo is currently tracking. (read-only) Notice that you should pull the remote branch and merge it locally first. Then push it back to its origin to change the remote branch.</p>
 <p>Also, <code>git status</code> would show whether the current repo is the same as the remote repo.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;origin&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
 <p>copies the commits done in the remote repo. Download the remote branches on our repo. (not automatically mirrored to our local branches)</p>
-<p>Notice that if we don't specify the branch name, this would retrieve all the branches</p>
+<p>Notice that if we don’t specify the branch name, this would retrieve all the branches</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log origin/master</span><br></pre></td></tr></table></figure>
-<p>show the info of remote repo: &quot;origin/branch&quot;. Use <code>git status</code> then Gits would notice that your branch is behind &quot;origin/branch&quot; by some commits, or have merge conflict.</p>
+<p>show the info of remote repo: “origin/branch”. Use <code>git status</code> then Gits would notice that your branch is behind “origin/branch” by some commits, or have merge conflict.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
 <p>merge the remote branch to the local branch.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>fetch the remote branch and merge to the local master branch. (fetch+merge)</p>
+<p>fetch the remote branch and merge to the local master branch.<br> (fetch+merge)</p>
 <p><code>git remote update</code> is similar to <code>git fetch -all</code></p>
-<h3 id="solving-conflicts">3.3 Solving Conflicts</h3>
-<p>Before attempting to push new features, we need to first integrate the remote changes. (<code>git pull</code>)</p>
+<h3 id="3-3-Solving-Conflicts"><a href="#3-3-Solving-Conflicts" class="headerlink" title="3.3 Solving Conflicts"></a>3.3 Solving Conflicts</h3><p>Before attempting to push new features, we need to first integrate the remote changes. (<code>git pull</code>)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --oneline --all</span><br></pre></td></tr></table></figure>
 <p>shows the different commits and positions in the tree</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p origin/master</span><br></pre></td></tr></table></figure>
 <p>find the conflict and manually solve the merge conflict issue. (<code>&gt;&gt;&gt;</code> is the sign for merge conflict)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin/feature</span><br></pre></td></tr></table></figure>
-<p><code>-u</code> sets an upstream to the remote following branches. (i.e. the branch &quot;feature&quot; and &quot;origin/feature&quot; do not relate to each other. By setting an upstream, the relation is set and we may simply use <code>git push</code> for &quot;feature&quot; to comit to &quot;origin/feature&quot; next time)</p>
+<p><code>-u</code> sets an upstream to the remote following branches. (i.e. the branch “feature” and “origin/feature” do not relate to each other. By setting an upstream, the relation is set and we may simply use <code>git push</code> for “feature” to comit to “origin/feature” next time)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
-<p><strong>Rebasing:</strong> change the base commit that's used for our branch. (CAUTION: Rebasing would rewrite the history of our branch. Only use this on local branch: rebase the branch, merge to the master then delete the old one.)</p>
+<p><strong>Rebasing:</strong> change the base commit that’s used for our branch. (CAUTION: Rebasing would rewrite the history of our branch. Only use this on local branch: rebase the branch, merge to the master then delete the old one.)</p>
 <p>If change the base of 4a2c to 75ed:</p>
-<p><img src="/2020/02/24/intro-to-Git/2020-02-24-02-30-07.png"></p>
+<p><img src="/2020/02/24/intro-to-Git/2020-02-24-02-30-07.png" alt></p>
 <p>origin path: 9bac-&gt;4a2c &amp; 9bac-&gt;75ed</p>
 <p>new path: 9bac-&gt;75ed-&gt;4a2c</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge feature</span><br><span class="line">git push --delete origin feature</span><br><span class="line">git branch -d feature</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>After rebasing, we could merge the feature to the master branch with fast-forward approach. Then the &quot;feature&quot; branch is just the same as the master branch. (which means that we could delete it)</p>
+<p>After rebasing, we could merge the feature to the master branch with fast-forward approach. Then the “feature” branch is just the same as the master branch. (which means that we could delete it)</p>
 <p>If there is a conflict when attempting to rebase the commit:</p>
 <ul>
 <li>fix the conflict</li>
@@ -405,31 +393,27 @@
 <p><strong>Some tips:</strong></p>
 <p><em>Regularly merge changes made on the master branch back onto the feature branch.</em></p>
 <p><em>Have the latest version of the project in the master branch and a stable version of the project on a separate branch.</em></p>
-<p><em>You shouldn't rebase changes that have been pushed to remote repos.</em>(还没有与他人共享之前，commit history是你私人所有的，那么想怎么改写都可以)</p>
-<h2 id="week4-collaboration">Week4 Collaboration</h2>
-<h3 id="pull-requests">4.1 Pull Requests</h3>
-<p><strong>Forking:</strong> A way of creating a copy of the given repo so that it belongs to our user</p>
+<p><em>You shouldn’t rebase changes that have been pushed to remote repos.</em>(还没有与他人共享之前，commit history是你私人所有的，那么想怎么改写都可以)</p>
+<h2 id="Week4-Collaboration"><a href="#Week4-Collaboration" class="headerlink" title="Week4 Collaboration"></a>Week4 Collaboration</h2><h3 id="4-1-Pull-Requests"><a href="#4-1-Pull-Requests" class="headerlink" title="4.1 Pull Requests"></a>4.1 Pull Requests</h3><p><strong>Forking:</strong> A way of creating a copy of the given repo so that it belongs to our user</p>
 <p><strong>Pull Request:</strong> A commit or series of commits that you send to the owner of the repo so that they incorporate it into their tree</p>
 <p>First fork the repo on GitHub, clone it, create a new branch then do the work.</p>
 <p>After the changes are done, commit and push to our repo. Then we could open a pull request on GitHub website.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i master</span><br></pre></td></tr></table></figure>
-<p><code>-i</code> Interative mode. Changing the &quot;pick&quot; parameter to squash two changes.</p>
-<p><img src="/2020/02/24/intro-to-Git/2020-02-24-04-19-05.png"></p>
+<p><code>-i</code> Interative mode. Changing the “pick” parameter to squash two changes.</p>
+<p><img src="/2020/02/24/intro-to-Git/2020-02-24-04-19-05.png" alt></p>
 <p>由于rebase是在本地未提交的commits中进行的，这里的合并不会出现分支问题</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f</span><br></pre></td></tr></table></figure>
 <p>replace the old commits with the new one (the divergency is discarded)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream url</span><br></pre></td></tr></table></figure>
-<p>In terms of source control, you're &quot;<strong>downstream</strong>&quot; when you copy (clone, checkout, etc) from a repository. Information is flowed &quot;downstream&quot; to you.</p>
-<p>When you make changes, you usually want to send them back &quot;<strong>upstream</strong>&quot; so they make it into that repository so that everyone pulling from the same source is working with all the same changes.</p>
-<h3 id="code-reviews">4.2 Code Reviews</h3>
-<p><strong>Code Review:</strong> Going through someone else's code, documentation or configuration and checking that it all makes sense and follows the expected patternes</p>
+<p>In terms of source control, you’re “<strong>downstream</strong>“ when you copy (clone, checkout, etc) from a repository. Information is flowed “downstream” to you.</p>
+<p>When you make changes, you usually want to send them back “<strong>upstream</strong>“ so they make it into that repository so that everyone pulling from the same source is working with all the same changes.</p>
+<h3 id="4-2-Code-Reviews"><a href="#4-2-Code-Reviews" class="headerlink" title="4.2 Code Reviews"></a>4.2 Code Reviews</h3><p><strong>Code Review:</strong> Going through someone else’s code, documentation or configuration and checking that it all makes sense and follows the expected patternes</p>
 <p>总之就是在pull request和repo owner交流看owner想怎么改代码，改好了就<code>git commit --amend</code> 然后重新push上去，点掉resolve comments表示已经修改了。类似甲方和乙方的交流()</p>
-<h3 id="managing-projects">4.3 Managing Projects</h3>
-<p><strong>Tracking Issues:</strong> GitHub上面的issue项，一般是一些bug、建议和新功能需求的反馈</p>
+<h3 id="4-3-Managing-Projects"><a href="#4-3-Managing-Projects" class="headerlink" title="4.3 Managing Projects"></a>4.3 Managing Projects</h3><p><strong>Tracking Issues:</strong> GitHub上面的issue项，一般是一些bug、建议和新功能需求的反馈</p>
 <p>include <code>Closes #4</code> into the commit message. Then once this commit is merged, the #4 issue would be automatically closed.</p>
-<p><strong>Continuous Integration(CI):</strong> Will build and test our code every time there's a change</p>
+<p><strong>Continuous Integration(CI):</strong> Will build and test our code every time there’s a change</p>
 <p>Once we have our code automatically built and tested, the next automation step is <strong>continuous deployment/continuous delivery(CD)</strong>, which means the new code is deplyed often</p>
-<p>may use <strong>Travis</strong> (GitHub doesn't offer any CI/CD system)</p>
+<p>may use <strong>Travis</strong> (GitHub doesn’t offer any CI/CD system)</p>
 <p><strong>Pipelines:</strong> Specify the steps that need to run to get the result you want</p>
 <p><strong>Artifacts:</strong> The name used to describe any files that are generated as part of the pipeline</p>
 <p><em>Make sure the authorized entities for the test servers are not the same entities authorized to deploy on the production servers.</em></p>
@@ -500,7 +484,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#week1-introduction-to-version-control"><span class="nav-text">Week1 Introduction to Version Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#before-version-control"><span class="nav-text">1.1 Before Version Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#version-control-systems"><span class="nav-text">1.2 Version Control Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using-git"><span class="nav-text">1.3 Using Git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week2-using-git-locally"><span class="nav-text">Week2 Using Git Locally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#advanced-git-interaction"><span class="nav-text">2.1 Advanced Git interaction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undoing-things"><span class="nav-text">2.2 Undoing things</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branching-and-merging"><span class="nav-text">2.3 Branching and Merging</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week3-working-with-remotes"><span class="nav-text">Week3 Working with Remotes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intro-to-github"><span class="nav-text">3.1 Intro to GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using-a-remote-repo"><span class="nav-text">3.2 Using a Remote Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solving-conflicts"><span class="nav-text">3.3 Solving Conflicts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#week4-collaboration"><span class="nav-text">Week4 Collaboration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pull-requests"><span class="nav-text">4.1 Pull Requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-reviews"><span class="nav-text">4.2 Code Reviews</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#managing-projects"><span class="nav-text">4.3 Managing Projects</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week1-Introduction-to-Version-Control"><span class="nav-text">Week1 Introduction to Version Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Before-Version-Control"><span class="nav-text">1.1 Before Version Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Version-Control-Systems"><span class="nav-text">1.2 Version Control Systems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Using-Git"><span class="nav-text">1.3 Using Git</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week2-Using-Git-Locally"><span class="nav-text">Week2 Using Git Locally</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Advanced-Git-interaction"><span class="nav-text">2.1 Advanced Git interaction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Undoing-things"><span class="nav-text">2.2 Undoing things</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Branching-and-Merging"><span class="nav-text">2.3 Branching and Merging</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week3-Working-with-Remotes"><span class="nav-text">Week3 Working with Remotes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Intro-to-GitHub"><span class="nav-text">3.1 Intro to GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Using-a-Remote-Repo"><span class="nav-text">3.2 Using a Remote Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Solving-Conflicts"><span class="nav-text">3.3 Solving Conflicts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week4-Collaboration"><span class="nav-text">Week4 Collaboration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Pull-Requests"><span class="nav-text">4.1 Pull Requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Code-Reviews"><span class="nav-text">4.2 Code Reviews</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Managing-Projects"><span class="nav-text">4.3 Managing Projects</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

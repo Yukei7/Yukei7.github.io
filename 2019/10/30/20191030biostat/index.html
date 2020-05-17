@@ -57,8 +57,6 @@
 <meta property="og:site_name" content="Yukei">
 <meta property="og:description" content="生物统计课程内容整理，参考教材：Fundamentals of Biostatistics(7th edition)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-10-20-23-22-45.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-10-20-23-45-00.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-10-21-00-20-03.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/30/20191030biostat/2020-01-11-21-47-53.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-12-09-13-34-53.png">
@@ -72,7 +70,7 @@
 <meta property="article:author" content="Yukei Yim">
 <meta property="article:tag" content="Biostatistics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-10-20-23-22-45.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/30/20191030biostat/2019-10-21-00-20-03.png">
 
 <link rel="canonical" href="http://yoursite.com/2019/10/30/20191030biostat/">
 
@@ -262,212 +260,159 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>生物统计课程内容整理，参考教材：Fundamentals of Biostatistics(7th edition) <a id="more"></a></p>
-<h2 id="lecture-1-intro">Lecture 1 Intro</h2>
-<h3 id="randomized-clinical-trial-rct">1.1 Randomized Clinical Trial (RCT)</h3>
-<p><strong>Definition:</strong> RCT is a type of research design used for comparing different treatments(especially to those samples with small size), in which patients are assigned to a particular treatment by some random mechanism to make sure that the characteristics of treatment groups are comparable.</p>
-<h4 id="block-randomization">1.1.1 Block Randomization</h4>
-<p><strong>Defination:</strong> Block randomization is defined as follows in clinical trials comparing two treatments(A and B). A block size of <span class="math inline">\(2n\)</span> is determined in advance according to the sample size, then assigned randomly <span class="math inline">\(n\)</span> patients to treatment A, <span class="math inline">\(n\)</span> patients to treatment B. (this can also be used in clinical trials with more than two treatment groups)</p>
+        <p>生物统计课程内容整理，参考教材：Fundamentals of Biostatistics(7th edition)<br><a id="more"></a></p>
+<h2 id="Lecture-1-Intro"><a href="#Lecture-1-Intro" class="headerlink" title="Lecture 1 Intro"></a>Lecture 1 Intro</h2><h3 id="1-1-Randomized-Clinical-Trial-RCT"><a href="#1-1-Randomized-Clinical-Trial-RCT" class="headerlink" title="1.1 Randomized Clinical Trial (RCT)"></a>1.1 Randomized Clinical Trial (RCT)</h3><p><strong>Definition:</strong> RCT is a type of research design used for comparing different treatments(especially to those samples with small size), in which patients are assigned to a particular treatment by some random mechanism to make sure that the characteristics of treatment groups are comparable.</p>
+<h4 id="1-1-1-Block-Randomization"><a href="#1-1-1-Block-Randomization" class="headerlink" title="1.1.1 Block Randomization"></a>1.1.1 Block Randomization</h4><p><strong>Defination:</strong> Block randomization is defined as follows in clinical trials comparing two treatments(A and B). A block size of $2n$ is determined in advance according to the sample size, then assigned randomly $n$ patients to treatment A, $n$ patients to treatment B. (this can also be used in clinical trials with more than two treatment groups)</p>
 <p>By doing so, we can obtain equal size treatment groups and this ensures comparability of treatment groups. One should be aware that the size of the block should be hidden, because one may know the treatment when the block size is fixed. (or use random-size blocks to avoid this)</p>
-<h4 id="strafication">1.1.2 Strafication</h4>
-<p><strong>Defination:</strong> Strafication is the procedure that patients are subdivided into subgroups according to some important features, and separate randomization lists are maintained for each subgroup to ensure patient populations within each stratum.</p>
-<h4 id="blinding">1.1.3 Blinding</h4>
-<p>Deal with Placebo effect.</p>
-<h3 id="descriptive-statistics">1.2 Descriptive Statistics</h3>
-<h4 id="measures-of-location">1.2.1 Measures of Location</h4>
-<p>Mean: <span class="math inline">\(\bar{x}=\frac{1}{n}\sum_{l=1}^nx_l\)</span></p>
-<p>Median = $ \begin{cases} X_{((n+1)/2)}&amp;\ (X_{(n/2)}+X_{(n/2+1)})&amp; \end{cases} $</p>
+<h4 id="1-1-2-Strafication"><a href="#1-1-2-Strafication" class="headerlink" title="1.1.2 Strafication"></a>1.1.2 Strafication</h4><p><strong>Defination:</strong> Strafication is the procedure that patients are subdivided into subgroups according to some important features, and separate randomization lists are maintained for each subgroup to ensure patient populations within each stratum.</p>
+<h4 id="1-1-3-Blinding"><a href="#1-1-3-Blinding" class="headerlink" title="1.1.3 Blinding"></a>1.1.3 Blinding</h4><p>Deal with Placebo effect.</p>
+<h3 id="1-2-Descriptive-Statistics"><a href="#1-2-Descriptive-Statistics" class="headerlink" title="1.2 Descriptive Statistics"></a>1.2 Descriptive Statistics</h3><h4 id="1-2-1-Measures-of-Location"><a href="#1-2-1-Measures-of-Location" class="headerlink" title="1.2.1 Measures of Location"></a>1.2.1 Measures of Location</h4><p>Mean:  $\bar{x}=\frac{1}{n}\sum_{l=1}^nx_l$</p>
+<p>Median = $<br>\begin{cases}<br>  X_{(\lceil(n+1)/2\rceil)}&amp;\text{if n is odd,}\\<br>  (X_{(n/2)}+X_{(n/2+1)})&amp;\text{if n is even.}<br>\end{cases}<br>$</p>
 <p>Mode: the most frequently occurring value</p>
-<p>Geometric Mean: <span class="math inline">\(\overline{\log x}=\frac{1}{n}\sum_{l=1}^n\log x_l\)</span></p>
-<h4 id="measures-of-spread">1.2.2 Measures of Spread</h4>
-<p>Range: <span class="math inline">\(x_{\max}-x_{\min}\)</span></p>
-<p><span class="math display">\[
+<p>Geometric Mean: $\overline{\log x}=\frac{1}{n}\sum_{l=1}^n\log x_l$</p>
+<h4 id="1-2-2-Measures-of-Spread"><a href="#1-2-2-Measures-of-Spread" class="headerlink" title="1.2.2 Measures of Spread"></a>1.2.2 Measures of Spread</h4><p>Range:  $x_{\max}-x_{\min}$</p>
+<script type="math/tex; mode=display">
 \text{Quantiles = }\begin{cases}
-  X_{(\lceil np\rceil)}&amp;\text{if np is not an integer,}\\
-  (X_{(np)}+X_{(np+1)})/2 &amp; \text{if np is an integer.}
-\end{cases}
-\]</span></p>
-<p>Variance: <span class="math inline">\(s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}\)</span></p>
-<p>Standard Deviation: <span class="math inline">\(s=\sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}\)</span></p>
-<p>The Coefficient of Variation: <span class="math inline">\(CV=\dfrac{s}{\bar{x}}\times 100\%\)</span></p>
-<h4 id="graphic-methods">1.2.3 Graphic Methods</h4>
-<ul>
+  X_{(\lceil np\rceil)}&\text{if np is not an integer,}\\
+  (X_{(np)}+X_{(np+1)})/2 & \text{if np is an integer.}
+\end{cases}</script><p>Variance:  $s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}$</p>
+<p>Standard Deviation:  $s=\sqrt{\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}}$</p>
+<p>The Coefficient of Variation:  $CV=\dfrac{s}{\bar{x}}\times 100\%$</p>
+<h4 id="1-2-3-Graphic-Methods"><a href="#1-2-3-Graphic-Methods" class="headerlink" title="1.2.3 Graphic Methods"></a>1.2.3 Graphic Methods</h4><ul>
 <li>Bar Graphs</li>
 <li>Box Plots</li>
 <li>Scatter Plots</li>
 </ul>
-<h3 id="roc-curve">1.3 ROC curve</h3>
-<h4 id="hypothesis-testing">1.3.1 Hypothesis Testing</h4>
-<p>Hypothesis testing is concerned with making decisions using data. The null hypothesis is assumed true and statistical evidence is required to reject it in favor of a research of alternative hypothesis.</p>
+<h3 id="1-3-ROC-curve"><a href="#1-3-ROC-curve" class="headerlink" title="1.3 ROC curve"></a>1.3 ROC curve</h3><h4 id="1-3-1-Hypothesis-Testing"><a href="#1-3-1-Hypothesis-Testing" class="headerlink" title="1.3.1 Hypothesis Testing"></a>1.3.1 Hypothesis Testing</h4><p>Hypothesis testing is concerned with making decisions using data. The null hypothesis is assumed true and statistical evidence is required to reject it in favor of a research of alternative hypothesis.</p>
 <p>There are four possible outcomes:</p>
 <center>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-10-20-23-22-45.png" alt="1.3.1"><figcaption>1.3.1</figcaption>
-</figure>
+
+![1.3.1](20191030biostat/2019-10-20-23-22-45.png)
+
 </center>
-<p>The general aim in hypothesis testing is to use statistical tests that make <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> as small as possible.(genral strategy is to fix <span class="math inline">\(\alpha\)</span> at some specific level and use the test that minimizes <span class="math inline">\(\beta\)</span>)</p>
+
+<p>The general aim in hypothesis testing is to use statistical tests that make $\alpha$ and $\beta$ as small as possible.(genral strategy is to fix $\alpha$ at some specific level and use the test that minimizes $\beta$)</p>
 <ul>
-<li>making <span class="math inline">\(\alpha\)</span> small involves rejecting <span class="math inline">\(H_0\)</span> less often</li>
-<li>making <span class="math inline">\(\beta\)</span> small involves accepting <span class="math inline">\(H_0\)</span> less often</li>
+<li>making $\alpha$ small involves rejecting $H_0$ less often</li>
+<li>making $\beta$ small involves accepting $H_0$ less often</li>
 </ul>
-<h4 id="sensitivity-and-specificity">1.3.2 Sensitivity and Specificity</h4>
-<p>When assessing the diagnostic performance, &quot;accuracy&quot; number can be very misleading due to the low probability of occurance for some rare diseases. The probability of symptom is present that the person has a disease should be taken into account.</p>
+<h4 id="1-3-2-Sensitivity-and-Specificity"><a href="#1-3-2-Sensitivity-and-Specificity" class="headerlink" title="1.3.2 Sensitivity and Specificity"></a>1.3.2 Sensitivity and Specificity</h4><p>When assessing the diagnostic performance, “accuracy” number can be very misleading due to the low probability of occurance for some rare diseases. The probability of symptom is present that the person has a disease should be taken into account.</p>
 <center>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-10-20-23-45-00.png" alt="1.3.2"><figcaption>1.3.2</figcaption>
-</figure>
+
+![1.3.2](20191030biostat/2019-10-20-23-45-00.png)
+
 </center>
-<p><strong>Sensitivity:</strong> the probability that the symptom is present given that the person has a disease. i.e.sensitivity = <span class="math inline">\(P(rejected|H_1)=\dfrac{B}{B+D}\)</span>, proportion of correctly rejected case to all H1 cases</p>
-<p><strong>Specificity:</strong> the probability that the symptom is not present given that the person does not have a disease. i.e. specificity = <span class="math inline">\(P(not\ rejected|H_0)=\dfrac{C}{A+C}\)</span>, proportion of correctly accepted case to all H0 cases</p>
+
+<p><strong>Sensitivity:</strong> the probability that the symptom is present given that the person has a disease. i.e.sensitivity = $P(rejected|H_1)=\dfrac{B}{B+D}$, proportion of correctly rejected case to all H1 cases</p>
+<p><strong>Specificity:</strong> the probability that the symptom is not present given that the person does not have a disease. i.e. specificity = $P(not\ rejected|H_0)=\dfrac{C}{A+C}$, proportion of correctly accepted case to all H0 cases</p>
 <p>e.g. Disease: lung canser, Symptom: cigarette smoking.</p>
 <p>If we assume that 90% of people with lung cancer and 30% of people without lung cancer are smokers, then sensitivity=.9, specificity=.7</p>
-<p><strong>False negative:</strong> a negative test result when the disease or condition being tested for is actually present.(<span class="math inline">\(\beta\)</span>, i.e. the test failed to identify the negative outcome, accept H0 when the truth is H1)</p>
-<p><strong>False positive:</strong> a positive test result when the disease or condition being tested for is not actually present.(<span class="math inline">\(\alpha\)</span>, i.e. the test failed to identify the positive outcome, reject H0 when the the truth is H0)</p>
-<p><strong>Positive Predictive Value(PPV):</strong> <span class="math inline">\(PPV=P(H_1|rejected)=\dfrac{B}{A+B}\)</span></p>
-<p><strong>Negative Predictive Value(NPV):</strong> <span class="math inline">\(NPV=P(H_0|not\ rejected)=\dfrac{C}{C+D}\)</span></p>
+<p><strong>False negative:</strong> a negative test result when the disease or condition being tested for is actually present.($\beta$, i.e. the test failed to identify the negative outcome, accept H0 when the truth is H1)</p>
+<p><strong>False positive:</strong> a positive test result when the disease or condition being tested for is not actually present.($\alpha$, i.e. the test failed to identify the positive outcome, reject H0 when the the truth is H0)</p>
+<p><strong>Positive Predictive Value(PPV):</strong> $PPV=P(H_1|rejected)=\dfrac{B}{A+B}$</p>
+<p><strong>Negative Predictive Value(NPV):</strong> $NPV=P(H_0|not\ rejected)=\dfrac{C}{C+D}$</p>
 <p><strong>Prevalence:</strong> probability of currently having the disease.(#people have the disease/#number of people in the study)</p>
 <p><strong>As prevalence increases, PPV increases and NPV decreases.</strong></p>
 <p><strong>Note:</strong> Positive test = reject H0, Negative test = accept H0</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-10-21-00-20-03.png" alt="1.3.2"><figcaption>1.3.2</figcaption>
-</figure>
-<p>The measure with &quot;true positive fraction&quot; and &quot;false positive fraction&quot; are more meaningful than &quot;accuracy&quot; because they depend on the arbitrary selection of a decision threshold.</p>
-<h4 id="roc-curve-1">1.3.3 ROC Curve</h4>
-<p><strong>Receiver Operating Characteristic(ROC) curve:</strong> indicating all possible combinations of the relative frequencies of the various kinds of correct and incorrect decisions. ROC Curve is a plot of <em>the sensitivity versus (1-specificity)</em>, where the different points on the cureve correspond to different cutoff points used to designate test-positive.</p>
-<p><strong>Area Under Curve(AUC):</strong> Describe the &quot;degree of separation&quot;, a summary of the overall diagnostic accuracy of the test.</p>
-<p>AUC = 0.5 <span class="math inline">\(\Leftrightarrow\)</span> random chance</p>
-<p>AUC = 1.0 <span class="math inline">\(\Leftrightarrow\)</span> all true-positives have higher values than any true-negatives</p>
-<h2 id="lecture-2-hypothesis-testing">Lecture 2 Hypothesis Testing</h2>
-<p>Outline:</p>
+<p><img src="/2019/10/30/20191030biostat/2019-10-21-00-20-03.png" alt="1.3.2"></p>
+<p>The measure with “true positive fraction” and “false positive fraction” are more meaningful than “accuracy” because they depend on the arbitrary selection of a decision threshold.</p>
+<h4 id="1-3-3-ROC-Curve"><a href="#1-3-3-ROC-Curve" class="headerlink" title="1.3.3 ROC Curve"></a>1.3.3 ROC Curve</h4><p><strong>Receiver Operating Characteristic(ROC) curve:</strong> indicating all possible combinations of the relative frequencies of the various kinds of correct and incorrect decisions. ROC Curve is a plot of <em>the sensitivity versus (1-specificity)</em>, where the different points on the cureve correspond to different cutoff points used to designate test-positive.</p>
+<p><strong>Area Under Curve(AUC):</strong> Describe the “degree of separation”, a summary of the overall diagnostic accuracy of the test.</p>
+<p>AUC = 0.5 $\Leftrightarrow$ random chance</p>
+<p>AUC = 1.0 $\Leftrightarrow$ all true-positives have higher values than any true-negatives</p>
+<h2 id="Lecture-2-Hypothesis-Testing"><a href="#Lecture-2-Hypothesis-Testing" class="headerlink" title="Lecture 2 Hypothesis Testing"></a>Lecture 2 Hypothesis Testing</h2><p>Outline:</p>
 <ul>
 <li>Recap</li>
 <li>Hypothesis test under normal distribution</li>
 <li>Hypothesis test for binomial proportions</li>
 <li>Hypothesis test for the Poisson Distribution</li>
 </ul>
-<h3 id="recap">2.1 Recap</h3>
-<p><strong>P-value:</strong> the probability under the null hypothesis of obtaining evidence as extreme or more extreme thant would be observed by chance alone. If the P-value is small, then either <span class="math inline">\(H_0\)</span> is true and we have observed a rare event or <span class="math inline">\(H_0\)</span> is false.(set a level of <span class="math inline">\(\alpha\)</span> to judge the significance)</p>
-<p><strong>Power:</strong> <span class="math inline">\(1-\beta = P(\text{reject}\ H_0|H_1)\)</span></p>
-<h3 id="hypothesis-test-under-normal-distribution">2.2 Hypothesis test under normal distribution</h3>
-<h4 id="one-sample-test-for-the-mean">2.2.1 One-sample test for the mean</h4>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}\)</span></p>
+<h3 id="2-1-Recap"><a href="#2-1-Recap" class="headerlink" title="2.1 Recap"></a>2.1 Recap</h3><p><strong>P-value:</strong> the probability under the null hypothesis of obtaining evidence as extreme or more extreme thant would be observed by chance alone. If the P-value is small, then either $H_0$ is true and we have observed a rare event or $H_0$ is false.(set a level of $\alpha$ to judge the significance)</p>
+<p><strong>Power:</strong> $1-\beta = P(\text{reject}\ H_0|H_1)$</p>
+<h3 id="2-2-Hypothesis-test-under-normal-distribution"><a href="#2-2-Hypothesis-test-under-normal-distribution" class="headerlink" title="2.2 Hypothesis test under normal distribution"></a>2.2 Hypothesis test under normal distribution</h3><h4 id="2-2-1-One-sample-test-for-the-mean"><a href="#2-2-1-One-sample-test-for-the-mean" class="headerlink" title="2.2.1 One-sample test for the mean"></a>2.2.1 One-sample test for the mean</h4><p><strong>Hypothesis:</strong> $H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}$</p>
 <p><strong>Test statistic:</strong></p>
 <ul>
-<li>t test: <span class="math inline">\(t=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}\)</span> (with <span class="math inline">\(\sigma\)</span> unknown)</li>
-<li>z test: <span class="math inline">\(t=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}\)</span> (with <span class="math inline">\(\sigma\)</span> known)</li>
+<li>t test: $t=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}$ (with $\sigma$ unknown)</li>
+<li>z test: $t=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}$ (with $\sigma$ known)</li>
 </ul>
-<p><strong>Power for z-test</strong> (with <span class="math inline">\(\sigma\)</span> known)</p>
-<p><span class="math display">\[
+<p><strong>Power for z-test</strong> (with $\sigma$ known)</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta &amp;= P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}&gt;z_{1-\alpha/2}|\mu=\mu_1)\\
-  &amp;= P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}&gt;z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}&lt;z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
-  &amp;=1-\Phi(z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+\Phi(z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
-  &amp;=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}})+\Phi(-z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
-  &amp;\approx\Phi(-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}})
-\end{aligned}
-\]</span></p>
-<p><strong>Sample-size for z-test</strong> (with <span class="math inline">\(\sigma\)</span> known)</p>
-<p><span class="math display">\[z_{1-\beta}=-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}}\]</span></p>
-<p><span class="math display">\[n=\frac{\sigma^2(z_{1-\beta}+z_{1-\alpha/2})^2}{(\mu_0-\mu_1)^2}\]</span></p>
-<p><strong>Power for t-test</strong> (with <span class="math inline">\(\sigma\)</span> unknown)</p>
-<p>Since we have <span class="math inline">\(\frac{S}{\sigma}=\sqrt{\frac{(n-1)S^2}{\sigma^2}/(n-1)}=\sqrt{V/r},V\sim\chi^2(n-1)\)</span> and <span class="math inline">\(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}\sim N(0,1)\)</span></p>
-<p><span class="math display">\[
-\frac{\bar{X}-\mu_0}{S/\sqrt{n}}=\frac{\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}}{S/\sigma}\stackrel{H_1}{\sim}t_{n-1,ncp}\]</span></p>
-<p>where <span class="math inline">\(ncp=\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}\)</span>.</p>
-<p><span class="math display">\[
+  1-\beta &= P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}>z_{1-\alpha/2}|\mu=\mu_1)\\
+  &= P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}>z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+P(\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}<z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &=1-\Phi(z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})+\Phi(z_{\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}})+\Phi(-z_{1-\alpha/2}+\frac{\mu_0-\mu_1}{\sigma/\sqrt{n}})\\
+  &\approx\Phi(-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}})
+\end{aligned}</script><p><strong>Sample-size for z-test</strong> (with $\sigma$ known)</p>
+<script type="math/tex; mode=display">z_{1-\beta}=-z_{1-\alpha/2}+\frac{|\mu_0-\mu_1|}{\sigma/\sqrt{n}}</script><script type="math/tex; mode=display">n=\frac{\sigma^2(z_{1-\beta}+z_{1-\alpha/2})^2}{(\mu_0-\mu_1)^2}</script><p><strong>Power for t-test</strong> (with $\sigma$ unknown)</p>
+<p>Since we have $\frac{S}{\sigma}=\sqrt{\frac{(n-1)S^2}{\sigma^2}/(n-1)}=\sqrt{V/r},V\sim\chi^2(n-1)$ and $\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}\sim N(0,1)$</p>
+<script type="math/tex; mode=display">
+\frac{\bar{X}-\mu_0}{S/\sqrt{n}}=\frac{\frac{\bar{X}-\mu_1}{\sigma/\sqrt{n}}+\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}}{S/\sigma}\stackrel{H_1}{\sim}t_{n-1,ncp}</script><p>where $ncp=\frac{\mu_1-\mu_0}{\sigma/\sqrt{n}}$.</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta&amp;=P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}&gt;t_{1-\alpha/2}(n-1)|\mu=\mu_1)\\
-  &amp;=P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}&gt;t_{1-\alpha/2}(n-1)|\mu=\mu_1)+P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}&lt;t_{\alpha/2}(n-1)|\mu=\mu_1)\\
-  &amp;=1-t_{n-1,ncp}(t_{1-\alpha/2}(n-1))+t_{n-1,ncp}(t_{\alpha/2}(n-1))
-\end{aligned}
-\]</span></p>
-<p>Usually, we take only one tail to calculate the power. We have</p>
-<p><span class="math display">\[1-\beta \approx 1-t_{n-1,ncp}(t_{1-\alpha}(n-1))\]</span></p>
-<p><strong>Sample-size for t-test</strong> (with <span class="math inline">\(\sigma\)</span> unknown)</p>
-<p>With the required <span class="math inline">\(\beta\)</span>, solve <span class="math inline">\(t_{\beta,ncp}(n-1)=t_{1-\alpha}(n-1)\)</span> to obtain the sample size.</p>
-<p><strong>CI width:</strong> Calculated based on <span class="math inline">\(CI=\bar{x}\pm \frac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1),\ L=\frac{2s}{\sqrt{n}}t_{1-\alpha/2}(n-1)\)</span> (similarly to z-test)</p>
-<h4 id="one-sample-test-for-the-variance">2.2.2 One-sample test for the Variance</h4>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\sigma^2=\sigma^2_0\quad v.s.\quad H_1:\sigma^2\not ={\sigma^2_0}\)</span></p>
+  1-\beta&=P(\frac{|\bar{X}-\mu_0|}{\sigma/\sqrt{n}}>t_{1-\alpha/2}(n-1)|\mu=\mu_1)\\
+  &=P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}>t_{1-\alpha/2}(n-1)|\mu=\mu_1)+P(\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}<t_{\alpha/2}(n-1)|\mu=\mu_1)\\
+  &=1-t_{n-1,ncp}(t_{1-\alpha/2}(n-1))+t_{n-1,ncp}(t_{\alpha/2}(n-1))
+\end{aligned}</script><p>Usually, we take only one tail to calculate the power. We have</p>
+<script type="math/tex; mode=display">1-\beta \approx 1-t_{n-1,ncp}(t_{1-\alpha}(n-1))</script><p><strong>Sample-size for t-test</strong> (with $\sigma$ unknown)</p>
+<p>With the required $\beta$, solve $t_{\beta,ncp}(n-1)=t_{1-\alpha}(n-1)$ to obtain the sample size.</p>
+<p><strong>CI width:</strong> Calculated based on $CI=\bar{x}\pm \frac{s}{\sqrt{n}}t_{1-\alpha/2}(n-1),\ L=\frac{2s}{\sqrt{n}}t_{1-\alpha/2}(n-1)$ (similarly to z-test)</p>
+<h4 id="2-2-2-One-sample-test-for-the-Variance"><a href="#2-2-2-One-sample-test-for-the-Variance" class="headerlink" title="2.2.2 One-sample test for the Variance"></a>2.2.2 One-sample test for the Variance</h4><p><strong>Hypothesis:</strong> $H_0:\sigma^2=\sigma^2_0\quad v.s.\quad H_1:\sigma^2\not ={\sigma^2_0}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[X^2=\frac{(n-1)s^2}{\sigma^2}\sim\chi^2(n-1)\]</span></p>
-<h3 id="hypothesis-test-for-binomial-proportions">2.3 Hypothesis test for binomial proportions</h3>
-<p>Assume that <span class="math inline">\(X_i\sim B(n,p)\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p=p_0\quad v.s.\quad H_1:p\not ={p_0}\)</span></p>
+<script type="math/tex; mode=display">X^2=\frac{(n-1)s^2}{\sigma^2}\sim\chi^2(n-1)</script><h3 id="2-3-Hypothesis-test-for-binomial-proportions"><a href="#2-3-Hypothesis-test-for-binomial-proportions" class="headerlink" title="2.3 Hypothesis test for binomial proportions"></a>2.3 Hypothesis test for binomial proportions</h3><p>Assume that $X_i\sim B(n,p)$</p>
+<p><strong>Hypothesis:</strong> $H_0:p=p_0\quad v.s.\quad H_1:p\not ={p_0}$</p>
 <p><strong>The Score test statistic:</strong></p>
-<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\sim N(0,1)\]</span></p>
-<p><strong>The Wald test statistic:</strong></p>
-<p><span class="math display">\[t = \frac{\hat{p}-p_0}{\sqrt{\hat{p}(1-\hat{p})/n}},\quad t^2\sim \chi^2(1)\]</span></p>
-<p><strong>Exact binomial tests:</strong> Consider calculating an exact P-value.</p>
+<script type="math/tex; mode=display">t = \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\sim N(0,1)</script><p><strong>The Wald test statistic:</strong></p>
+<script type="math/tex; mode=display">t = \frac{\hat{p}-p_0}{\sqrt{\hat{p}(1-\hat{p})/n}},\quad t^2\sim \chi^2(1)</script><p><strong>Exact binomial tests:</strong> Consider calculating an exact P-value.</p>
 <p><strong>Remark:</strong> The difference of the Score test and the Wald test:</p>
 <ul>
-<li>the Score test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var(\theta_0)}}\)</span></li>
-<li>the Wald test: <span class="math inline">\(t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var\hat{\theta}}}\)</span></li>
+<li>the Score test: $t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var(\theta_0)}}$</li>
+<li>the Wald test: $t=\frac{\hat{\theta_0}-\mu_{\theta_0}}{\sqrt{Var\hat{\theta}}}$</li>
 </ul>
-<h3 id="hypothesis-test-for-the-poisson-distribution">2.4 Hypothesis test for the Poisson Distribution</h3>
-<p>Assume that <span class="math inline">\(X_i\sim Poi(\mu)\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}\)</span></p>
+<h3 id="2-4-Hypothesis-test-for-the-Poisson-Distribution"><a href="#2-4-Hypothesis-test-for-the-Poisson-Distribution" class="headerlink" title="2.4 Hypothesis test for the Poisson Distribution"></a>2.4 Hypothesis test for the Poisson Distribution</h3><p>Assume that $X_i\sim Poi(\mu)$</p>
+<p><strong>Hypothesis:</strong> $H_0:\mu=\mu_0\quad v.s.\quad H_1:\mu\not ={\mu_0}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[X^2=\frac{(x-\mu_0)^2}{\mu_0}\stackrel{H_0}{\sim}\chi^2(1)\]</span></p>
-<h2 id="lecture-3-hypothesis-testing-two-sample-inference">Lecture 3 Hypothesis Testing: Two-sample Inference</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">X^2=\frac{(x-\mu_0)^2}{\mu_0}\stackrel{H_0}{\sim}\chi^2(1)</script><h2 id="Lecture-3-Hypothesis-Testing-Two-sample-Inference"><a href="#Lecture-3-Hypothesis-Testing-Two-sample-Inference" class="headerlink" title="Lecture 3 Hypothesis Testing: Two-sample Inference"></a>Lecture 3 Hypothesis Testing: Two-sample Inference</h2><p>Outline:</p>
 <ul>
 <li>Introduction</li>
 <li>Paired sample</li>
-<li>Two independent groups
-<ul>
+<li>Two independent groups<ul>
 <li>Two sample t-test with equal variances</li>
 <li>Testing for the equality of two variances</li>
 <li>Two sample t-test with unequal variances</li>
-</ul></li>
+</ul>
+</li>
 <li>Power analysis and Sample-size determination</li>
 </ul>
-<h3 id="introduction">3.1 Introduction</h3>
-<p>In a two-sample hypothesis testing problem, the underlying parameters of two different populations, neither of whose values is assumed known, are compared.</p>
+<h3 id="3-1-Introduction"><a href="#3-1-Introduction" class="headerlink" title="3.1 Introduction"></a>3.1 Introduction</h3><p>In a two-sample hypothesis testing problem, the underlying parameters of two different populations, neither of whose values is assumed known, are compared.</p>
 <p><strong>Longitudinal Study:</strong> (follow-up study)same group of people is followed overtime. i.e.<em>paired sample</em></p>
 <p><strong>Cross-Sectional Study:</strong> the participants are seen only one point in time. i.e.<em>independent sample</em></p>
-<h3 id="paired-samplethe-paired-t-test">3.2 Paired sample(The paired t-test)</h3>
-<p>Denote <span class="math inline">\(d=X_1-X_2\)</span> and do a one-sample t-test.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\Delta=0\quad v.s.\quad H_1:\Delta\not ={0}\)</span></p>
+<h3 id="3-2-Paired-sample-The-paired-t-test"><a href="#3-2-Paired-sample-The-paired-t-test" class="headerlink" title="3.2 Paired sample(The paired t-test)"></a>3.2 Paired sample(The paired t-test)</h3><p>Denote $d=X_1-X_2$ and do a one-sample t-test.</p>
+<p><strong>Hypothesis:</strong> $H_0:\Delta=0\quad v.s.\quad H_1:\Delta\not ={0}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[t=\frac{\bar{d}}{s_d/\sqrt{n}}\stackrel{H_0}{\sim}t(n-1)\]</span></p>
-<p>where <span class="math inline">\(s_d\)</span> is the sample standard deviation of the observed differences. <span class="math display">\[s_d=\sqrt{\dfrac{\sum_{i=1}^nd_i^2-\frac{(\sum_{i=1}^nd_i)^2}{n}}{n-1}}\]</span></p>
-<h3 id="two-independent-groups">3.3 Two independent groups</h3>
-<h4 id="two-sample-t-test-with-equal-variances">3.3.1 Two-sample t-test with equal variances</h4>
-<p>Assume that the underlying variances in the two groups are the same. <span class="math display">\[\sigma_1^2=\sigma_2^2=\sigma^2\]</span></p>
-<p>Then we have <span class="math inline">\(\bar{X_1}-\bar{X_2}\sim N[\mu_1-\mu_2,\sigma^2(\frac{1}{n_1}+\frac{1}{n_2})]\)</span>. We use the pooled estimate of the variance <span class="math inline">\(s^2\)</span> instead of the unknown <span class="math inline">\(\sigma^2\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}\)</span></p>
+<script type="math/tex; mode=display">t=\frac{\bar{d}}{s_d/\sqrt{n}}\stackrel{H_0}{\sim}t(n-1)</script><p>where $s_d$ is the sample standard deviation of the observed differences.</p>
+<script type="math/tex; mode=display">s_d=\sqrt{\dfrac{\sum_{i=1}^nd_i^2-\frac{(\sum_{i=1}^nd_i)^2}{n}}{n-1}}</script><h3 id="3-3-Two-independent-groups"><a href="#3-3-Two-independent-groups" class="headerlink" title="3.3 Two independent groups"></a>3.3 Two independent groups</h3><h4 id="3-3-1-Two-sample-t-test-with-equal-variances"><a href="#3-3-1-Two-sample-t-test-with-equal-variances" class="headerlink" title="3.3.1 Two-sample t-test with equal variances"></a>3.3.1 Two-sample t-test with equal variances</h4><p>Assume that the underlying variances in the two groups are the same.</p>
+<script type="math/tex; mode=display">\sigma_1^2=\sigma_2^2=\sigma^2</script><p>Then we have $\bar{X_1}-\bar{X_2}\sim N[\mu_1-\mu_2,\sigma^2(\frac{1}{n_1}+\frac{1}{n_2})]$. We use the pooled estimate of the variance $s^2$ instead of the unknown $\sigma^2$</p>
+<p><strong>Hypothesis:</strong> $H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[t=\frac{\bar{X_1}-\bar{X_2}}{S\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\stackrel{H_0}{\sim}t(n_1+n_2-2)\]</span></p>
-<p>where <span class="math inline">\(S^2\)</span> is the pooled estimate of variance,</p>
-<p><span class="math display">\[S^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\]</span></p>
-<h4 id="testing-for-the-equility-of-two-variances">3.3.2 Testing for the equility of two variances</h4>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(\sigma_1^2=\sigma_2^2\quad v.s.\quad H_1:\sigma_1^2\not ={\sigma_2^2}\)</span></p>
+<script type="math/tex; mode=display">t=\frac{\bar{X_1}-\bar{X_2}}{S\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\stackrel{H_0}{\sim}t(n_1+n_2-2)</script><p>where $S^2$ is the pooled estimate of variance,</p>
+<script type="math/tex; mode=display">S^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}</script><h4 id="3-3-2-Testing-for-the-equility-of-two-variances"><a href="#3-3-2-Testing-for-the-equility-of-two-variances" class="headerlink" title="3.3.2 Testing for the equility of two variances"></a>3.3.2 Testing for the equility of two variances</h4><p><strong>Hypothesis:</strong> $\sigma_1^2=\sigma_2^2\quad v.s.\quad H_1:\sigma_1^2\not ={\sigma_2^2}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[F = \frac{s_1^2}{s_2^2}\stackrel{H_0}{\sim}F_{n_1-1,n_2-1}\]</span></p>
-<p>It can be shown that</p>
-<p><span class="math display">\[F_{d_1,d_2,p}=\frac{1}{F_{d_2,d_1,1-p}}\]</span></p>
-<h4 id="two-sample-t-test-with-unequal-variances">3.3.3 Two sample t-test with unequal variances</h4>
-<p>Assume that the two variances are significantly different.</p>
-<p>Then we have <span class="math inline">\(\bar{X_1}-\bar{X_2}\sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2})\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}\)</span></p>
+<script type="math/tex; mode=display">F = \frac{s_1^2}{s_2^2}\stackrel{H_0}{\sim}F_{n_1-1,n_2-1}</script><p>It can be shown that</p>
+<script type="math/tex; mode=display">F_{d_1,d_2,p}=\frac{1}{F_{d_2,d_1,1-p}}</script><h4 id="3-3-3-Two-sample-t-test-with-unequal-variances"><a href="#3-3-3-Two-sample-t-test-with-unequal-variances" class="headerlink" title="3.3.3 Two sample t-test with unequal variances"></a>3.3.3 Two sample t-test with unequal variances</h4><p>Assume that the two variances are significantly different. </p>
+<p>Then we have $\bar{X_1}-\bar{X_2}\sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2})$</p>
+<p><strong>Hypothesis:</strong> $H_0:\mu_1=\mu_2\quad v.s.\quad H_1:\mu_1\not ={\mu_2}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[t=\frac{\bar{X_1}-\bar{X_2}}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}\stackrel{H_0}{\sim}t(d&#39;)\]</span></p>
-<p>the approximate degrees of freedom <span class="math inline">\(d&#39;\)</span> is</p>
-<p><span class="math display">\[d&#39;=\dfrac{(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2})^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}\]</span></p>
-<h3 id="power-analysis-and-sample-size-determination">3.4 Power analysis and Sample-size determination</h3>
-<p>Denote <span class="math inline">\(|\mu_1-\mu_2|=\Delta\)</span>, with significance level <span class="math inline">\(\alpha\)</span>,</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">t=\frac{\bar{X_1}-\bar{X_2}}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}\stackrel{H_0}{\sim}t(d')</script><p>the approximate degrees of freedom $d’$ is</p>
+<script type="math/tex; mode=display">d'=\dfrac{(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2})^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}</script><h3 id="3-4-Power-analysis-and-Sample-size-determination"><a href="#3-4-Power-analysis-and-Sample-size-determination" class="headerlink" title="3.4 Power analysis and Sample-size determination"></a>3.4 Power analysis and Sample-size determination</h3><p>Denote $|\mu_1-\mu_2|=\Delta$, with significance level $\alpha$,</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta&amp;=P(\frac{|\bar{X_1}-\bar{X_2}|}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&gt;z_{1-\alpha/2}|H_1)\\
-  &amp;=P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&gt;z_{1-\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}&lt;z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
-  &amp;=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+\Phi(z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
-  &amp;\approx\Phi(-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})
-\end{aligned}
-\]</span></p>
-<p>then we have <span class="math inline">\(z_{1-\beta}=-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\)</span>, suppose that <span class="math inline">\(n_2=kn_1\)</span>, it can be shown that</p>
-<p><span class="math display">\[n_1=\frac{(\sigma_1^2+\frac{1}{k}\sigma_2^2))(z_{1-\alpha/2}+z_{1-\beta})^2}{\Delta^2}\]</span></p>
-<h2 id="lecture-4-nonparametric-methods">Lecture 4 Nonparametric Methods</h2>
-<p>Outline:</p>
+  1-\beta&=P(\frac{|\bar{X_1}-\bar{X_2}|}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}>z_{1-\alpha/2}|H_1)\\
+  &=P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}>z_{1-\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+P(\frac{\bar{X_1}-\bar{X_2}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}<z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
+  &=\Phi(-z_{1-\alpha/2}+\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})+\Phi(z_{\alpha/2}-\frac{\mu_1-\mu_2}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})\\
+  &\approx\Phi(-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}})
+\end{aligned}</script><p>then we have $z_{1-\beta}=-z_{1-\alpha/2}+\dfrac{\Delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}$, suppose that $n_2=kn_1$, it can be shown that</p>
+<script type="math/tex; mode=display">n_1=\frac{(\sigma_1^2+\frac{1}{k}\sigma_2^2))(z_{1-\alpha/2}+z_{1-\beta})^2}{\Delta^2}</script><h2 id="Lecture-4-Nonparametric-Methods"><a href="#Lecture-4-Nonparametric-Methods" class="headerlink" title="Lecture 4 Nonparametric Methods"></a>Lecture 4 Nonparametric Methods</h2><p>Outline:</p>
 <ul>
 <li>Types of data</li>
 <li>Nonparametric tests</li>
@@ -476,916 +421,595 @@
 <li>Sign sum test</li>
 <li>Sample size calculation</li>
 </ul>
-<h3 id="types-of-data">4.1 Types of Data</h3>
-<p><strong>Cardinal data:</strong> on a scale where it is meaningful to measure the distance between possible data values. <strong>Interval scale</strong> data have the arbitrary zero point. (e.g.temperature) <strong>Ratio scale</strong> data have a fixed zero point. (e.g.weight)</p>
+<h3 id="4-1-Types-of-Data"><a href="#4-1-Types-of-Data" class="headerlink" title="4.1 Types of Data"></a>4.1 Types of Data</h3><p><strong>Cardinal data:</strong> on a scale where it is meaningful to measure the distance between possible data values. <strong>Interval scale</strong> data have the arbitrary zero point. (e.g.temperature) <strong>Ratio scale</strong> data have a fixed zero point. (e.g.weight)</p>
 <p><strong>Ordinal data:</strong> can be ordered but not have specific numeric values.</p>
 <p><strong>Categorical data:</strong> (Nominal data) data values can be classified into categories but the categories have no specific ordering.</p>
-<h3 id="the-sign-test">4.2 The Sign Test</h3>
-<p><strong>Situation:</strong> Exact value is not available (but which is better is known)</p>
+<h3 id="4-2-The-Sign-Test"><a href="#4-2-The-Sign-Test" class="headerlink" title="4.2 The Sign Test"></a>4.2 The Sign Test</h3><p><strong>Situation:</strong> Exact value is not available (but which is better is known)</p>
 <p><strong>Target:</strong> Compare the performance of two groups</p>
-<p><strong>Intuition:</strong> Let <span class="math inline">\(d_i=a_i-b_i\)</span>, denote <span class="math inline">\(C=\sum_iI(d_i&gt;0)\)</span> the number of whom <span class="math inline">\(d_i&gt;0\)</span> out of the total of <span class="math inline">\(n\)</span> people with nonzero <span class="math inline">\(d_i\)</span>, then C is binomial(n,p). If the two groups have similar performance, then the distribution of <span class="math inline">\(d_i\)</span> should be <strong>symmetry</strong>.</p>
-<p>Let <span class="math inline">\(\Delta\)</span> be the population <strong>median</strong> of the <span class="math inline">\(d_i\)</span>.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\Delta=0 \quad v.s.\quad H_1:\Delta\not ={0}\)</span></p>
-<h4 id="normal-theory-method">4.2.1 Normal-Theory Method</h4>
-<p><span class="math display">\[E(C)=\frac{n}{2}, \quad Var(C)=\frac{n}{4}\]</span></p>
-<p>Test statistic:</p>
-<p><span class="math display">\[Z=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)\]</span></p>
-<p>Test statistic with continuity correction:</p>
-<p><span class="math display">\[Z=\frac{C-\frac{n}{2}-0.5}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)\]</span></p>
-<p><strong>Note:</strong> Use this test only when <span class="math inline">\(n\geq 20\)</span>.</p>
-<h4 id="exact-method">4.2.2 Exact Method</h4>
-<p>If <span class="math inline">\(C&gt;\frac{n}{2},\quad p=2\times\sum_{k=C}^n\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
-<p>If <span class="math inline">\(C&lt;\frac{n}{2},\quad p=2\times\sum_{k=0}^C\binom{n}{k}(\frac{1}{2})^n\)</span>.</p>
-<p>If <span class="math inline">\(C=\frac{n}{2},\quad p=1.0\)</span>.</p>
-<h3 id="wilcoxon-signed-rank-test">4.3 Wilcoxon Signed-rank test</h3>
-<p><strong>Situation:</strong> Exact value is available. Two groups of samples(paired)</p>
-<p><strong>Target:</strong> Compare the performance of two groups. Take &quot;distance&quot; into account.</p>
-<p><strong>Intuition:</strong> Let <span class="math inline">\(R_i=|d_i|=|a_i-b_i|\)</span> and rank these values. Consider the rank sum of which <span class="math inline">\(d_i&gt;0\)</span>. Since the rank sum outcome has equal probability, if the two groups have similar performance, the positive rank sum should be half of the total rank sum.</p>
-<p>Denote <span class="math inline">\(W_+=\sum_{i=1}^nR_i\phi_i\)</span>, where <span class="math inline">\(R_i=|d_i|, \phi_i=I(d_i&gt;0)\)</span>.</p>
-<p>Since <span class="math inline">\(W=W_++W_-=\dfrac{n(n+1)}{2}\)</span>, under <span class="math inline">\(H_0\)</span> with no ties :</p>
-<p><span class="math display">\[E(W_+)=\frac{n(n+1)}{4},\quad Var(W_+)=\frac{n(n+1)(2n+1)}{24}\]</span></p>
-<p>If there are ties :</p>
-<p><span class="math display">\[Var(W_+)=\frac{n(n+1)(2n+1)}{24}-\sum_{g=1}^g\frac{t_i^3-t_i}{48}\]</span></p>
-<h3 id="wilcoxon-rank-sum-test-mann-whitney-test">4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</h3>
-<p><strong>Situation:</strong> Two groups of samples(not paired). Treatment effect.</p>
+<p><strong>Intuition:</strong> Let $d_i=a_i-b_i$, denote $C=\sum_iI(d_i&gt;0)$ the number of whom $d_i&gt;0$ out of the total of $n$ people with nonzero $d_i$, then C is binomial(n,p). If the two groups have similar performance, then the distribution of $d_i$ should be <strong>symmetry</strong>.</p>
+<p>Let $\Delta$ be the population <strong>median</strong> of the $d_i$.</p>
+<p><strong>Hypothesis:</strong> $H_0:\Delta=0 \quad v.s.\quad H_1:\Delta\not ={0}$</p>
+<h4 id="4-2-1-Normal-Theory-Method"><a href="#4-2-1-Normal-Theory-Method" class="headerlink" title="4.2.1 Normal-Theory Method"></a>4.2.1 Normal-Theory Method</h4><script type="math/tex; mode=display">E(C)=\frac{n}{2}, \quad Var(C)=\frac{n}{4}</script><p>Test statistic:</p>
+<script type="math/tex; mode=display">Z=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)</script><p>Test statistic with continuity correction:</p>
+<script type="math/tex; mode=display">Z=\frac{C-\frac{n}{2}-0.5}{\sqrt{\frac{n}{4}}}\stackrel{D}{\rightarrow}N(0,1)</script><p><strong>Note:</strong> Use this test only when $n\geq 20$.</p>
+<h4 id="4-2-2-Exact-Method"><a href="#4-2-2-Exact-Method" class="headerlink" title="4.2.2 Exact Method"></a>4.2.2 Exact Method</h4><p>If $C&gt;\frac{n}{2},\quad p=2\times\sum_{k=C}^n\binom{n}{k}(\frac{1}{2})^n$.</p>
+<p>If $C&lt;\frac{n}{2},\quad p=2\times\sum_{k=0}^C\binom{n}{k}(\frac{1}{2})^n$.</p>
+<p>If $C=\frac{n}{2},\quad p=1.0$.</p>
+<h3 id="4-3-Wilcoxon-Signed-rank-test"><a href="#4-3-Wilcoxon-Signed-rank-test" class="headerlink" title="4.3 Wilcoxon Signed-rank test"></a>4.3 Wilcoxon Signed-rank test</h3><p><strong>Situation:</strong> Exact value is available. Two groups of samples(paired)</p>
+<p><strong>Target:</strong> Compare the performance of two groups. Take “distance” into account.</p>
+<p><strong>Intuition:</strong> Let $R_i=|d_i|=|a_i-b_i|$ and rank these values. Consider the rank sum of which $d_i&gt;0$. Since the rank sum outcome has equal probability, if the two groups have similar performance, the positive rank sum should be half of the total rank sum.</p>
+<p>Denote $W_+=\sum_{i=1}^nR_i\phi_i$, where $R_i=|d_i|, \phi_i=I(d_i&gt;0)$. </p>
+<p>Since $W=W_++W_-=\dfrac{n(n+1)}{2}$, under $H_0$ with no ties :</p>
+<script type="math/tex; mode=display">E(W_+)=\frac{n(n+1)}{4},\quad Var(W_+)=\frac{n(n+1)(2n+1)}{24}</script><p>If there are ties :</p>
+<script type="math/tex; mode=display">Var(W_+)=\frac{n(n+1)(2n+1)}{24}-\sum_{g=1}^g\frac{t_i^3-t_i}{48}</script><h3 id="4-4-Wilcoxon-Rank-Sum-Test-Mann-Whitney-Test"><a href="#4-4-Wilcoxon-Rank-Sum-Test-Mann-Whitney-Test" class="headerlink" title="4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)"></a>4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</h3><p><strong>Situation:</strong> Two groups of samples(not paired). Treatment effect.</p>
 <p><strong>Target:</strong> Compare if a certain feature of the sample is significantly different.(if treatment effect exists)</p>
-<p><strong>Intuition:</strong> Discard the labels and rank all the observations. If treatment effect doesn't exist, the sum of the ranks in the first and the second treatment would be proportioned by the sample size.</p>
-<p>Let <span class="math inline">\(X_1,X_2,...,X_{n_1}\sim F,Y_1,Y_2,...,Y_{n_2}\sim G\)</span>, denote the statistic</p>
-<p><span class="math display">\[
+<p><strong>Intuition:</strong> Discard the labels and rank all the observations. If treatment effect doesn’t exist, the sum of the ranks in the first and the second treatment would be proportioned by the sample size.</p>
+<p>Let $X_1,X_2,…,X_{n_1}\sim F,Y_1,Y_2,…,Y_{n_2}\sim G$, denote the statistic</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  W_X&amp;=\sum_{i=1}^{n_1}rank(X_i)\\
-  &amp;=\sum_{i=1}^{n_1}(\sum_{j=1}^{n_1}I(X_j\leq X_i)+\sum_{j=1}^{n_2}I(Y_j\leq X_i))\\
-  &amp;=\frac{n_1(n_1+1)}{2}+\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)
-\end{aligned}
-\]</span></p>
-<p>Here we have Mann-Whitney Statistic:</p>
-<p><span class="math display">\[W_{YX}=\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)\]</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:F(x)=G(x),\forall x \quad v.s.\quad H_1:F(x)\not =G(x), \exist x\)</span></p>
-<p>Under <span class="math inline">\(H_0\)</span>, if there are no ties:</p>
-<p><span class="math display">\[E(W_X)=\frac{n_1(n_1+n_2+1)}{2}, Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}\]</span></p>
-<p>If there are ties:</p>
-<p><span class="math display">\[Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}-\sum_{i=1}^g\frac{n_1n_2(t_i^3-t_i)}{12(n_1+n_2)(n_1+n_2+1)}\]</span></p>
-<p><strong>Note:</strong> Normal approximate should be used only if both <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are at least 10.</p>
+  W_X&=\sum_{i=1}^{n_1}rank(X_i)\\
+  &=\sum_{i=1}^{n_1}(\sum_{j=1}^{n_1}I(X_j\leq X_i)+\sum_{j=1}^{n_2}I(Y_j\leq X_i))\\
+  &=\frac{n_1(n_1+1)}{2}+\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)
+\end{aligned}</script><p>Here we have Mann-Whitney Statistic:</p>
+<script type="math/tex; mode=display">W_{YX}=\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}I(Y_j\leq X_i)</script><p><strong>Hypothesis:</strong> $H_0:F(x)=G(x),\forall x \quad v.s.\quad H_1:F(x)\not =G(x), \exist x$</p>
+<p>Under $H_0$, if there are no ties:</p>
+<script type="math/tex; mode=display">E(W_X)=\frac{n_1(n_1+n_2+1)}{2}, Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}</script><p>If there are ties:</p>
+<script type="math/tex; mode=display">Var(W_X)=\frac{n_1n_2(n_1+n_2+1)}{12}-\sum_{i=1}^g\frac{n_1n_2(t_i^3-t_i)}{12(n_1+n_2)(n_1+n_2+1)}</script><p><strong>Note:</strong> Normal approximate should be used only if both $n_1$ and $n_2$ are at least 10.</p>
 <p><strong>Remark:</strong> Comparision of the Wilcoxon Signed rank test and Wilcoxon Rank sum test</p>
 <ul>
-<li>Singed rank: <span class="math inline">\(f(·)\)</span> is symmetric around <span class="math inline">\(\Delta\)</span></li>
-<li>Rank sum: <span class="math inline">\(G(x)=F(x-\Delta)\)</span> or <span class="math inline">\(Y=X+\Delta\)</span></li>
-<li>Hypothesis: <span class="math inline">\(H_0:\Delta=0\quad vs.\quad H_1:\Delta\not ={0}\)</span></li>
+<li>Singed rank: $f(·)$ is symmetric around $\Delta$</li>
+<li>Rank sum: $G(x)=F(x-\Delta)$ or $Y=X+\Delta$</li>
+<li>Hypothesis: $H_0:\Delta=0\quad vs.\quad H_1:\Delta\not ={0}$</li>
 </ul>
-<h3 id="sample-size-calculation">4.5 Sample-size Calculation</h3>
-<h4 id="sign-test">4.5.1 Sign test</h4>
-<p>One-sample case: <span class="math inline">\(Z_1,Z_2,...,Z_n\sim f\)</span>, let <span class="math inline">\(\theta\)</span> be the population median of the <span class="math inline">\(f(x)\)</span>.</p>
-<p><span class="math display">\[H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}\]</span></p>
-<p><span class="math display">\[\Leftrightarrow H_0:p=P(Z&gt;0|Z\not ={0})=0.5 \quad v.s. \quad H_1:p\not ={0.5}\]</span></p>
-<p><span class="math display">\[C=\sum_{i=1}^nI(Z_i&gt;0)\]</span> <span class="math display">\[T=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{H_0}{\sim}N(0,1)\]</span></p>
-<p>Under <span class="math inline">\(H_1\)</span>, <span class="math inline">\(C\sim B(n,p_1)\)</span></p>
-<p><span class="math display">\[
+<h3 id="4-5-Sample-size-Calculation"><a href="#4-5-Sample-size-Calculation" class="headerlink" title="4.5 Sample-size Calculation"></a>4.5 Sample-size Calculation</h3><h4 id="4-5-1-Sign-test"><a href="#4-5-1-Sign-test" class="headerlink" title="4.5.1 Sign test"></a>4.5.1 Sign test</h4><p>One-sample case: $Z_1,Z_2,…,Z_n\sim f$, let $\theta$ be the population median of the $f(x)$.</p>
+<script type="math/tex; mode=display">H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}</script><script type="math/tex; mode=display">\Leftrightarrow H_0:p=P(Z>0|Z\not ={0})=0.5 \quad v.s. \quad H_1:p\not ={0.5}</script><script type="math/tex; mode=display">C=\sum_{i=1}^nI(Z_i>0)</script><script type="math/tex; mode=display">T=\frac{C-\frac{n}{2}}{\sqrt{\frac{n}{4}}}\stackrel{H_0}{\sim}N(0,1)</script><p>Under $H_1$, $C\sim B(n,p_1)$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta&amp;=P(T&gt;z_{1-\frac{\alpha}{2}}|p=p_1)\\
-  &amp;=P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}&gt;\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{1-\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
-  &amp;\quad +P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}&lt;\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
-  &amp;=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}-\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})+\Phi(\frac{z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
-  &amp;\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n|0.5-p_1|}{\sqrt{np_1(1-p_1)}})
-\end{aligned}
-\]</span></p>
-<h4 id="wilcoxon-signed-rank-test-1">4.5.2 Wilcoxon Signed Rank test</h4>
-<p>One-sample case: <span class="math inline">\(Z_1,Z_2,...,Z_n\sim f\)</span>,<span class="math inline">\(f(·)\)</span> is symmetric around <span class="math inline">\(\theta\)</span></p>
-<p><span class="math display">\[H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}\]</span></p>
-<p>Under <span class="math inline">\(H_1\)</span>,</p>
-<p><span class="math display">\[
+  1-\beta&=P(T>z_{1-\frac{\alpha}{2}}|p=p_1)\\
+  &=P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}>\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{1-\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &\quad +P(\frac{C-np_1}{\sqrt{np_1(1-p_1)}}<\frac{\sqrt{n/4}}{\sqrt{np_1(1-p_1)}}z_{\alpha/2}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}-\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})+\Phi(\frac{z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n/2-np_1}{\sqrt{np_1(1-p_1)}})\\
+  &\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_1(1-p_1)}}+\frac{n|0.5-p_1|}{\sqrt{np_1(1-p_1)}})
+\end{aligned}</script><h4 id="4-5-2-Wilcoxon-Signed-Rank-test"><a href="#4-5-2-Wilcoxon-Signed-Rank-test" class="headerlink" title="4.5.2 Wilcoxon Signed Rank test"></a>4.5.2 Wilcoxon Signed Rank test</h4><p>One-sample case: $Z_1,Z_2,…,Z_n\sim f$,$f(·)$ is symmetric around $\theta$</p>
+<script type="math/tex; mode=display">H_0:\theta=0 \quad v.s. \quad H_1:\theta\not ={0}</script><p>Under $H_1$,</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta &amp;= P(|W^*|&gt;z_{1-\frac{\alpha}{2}}|\theta\not ={0})\\
-  &amp;=P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}&gt;\frac{z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
-  &amp;\qquad +P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}&lt;\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
-  &amp;=\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}-n_1n_2(0.5-p_1)}{\sigma_W})+\Phi(\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
-  &amp;\approx\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2|0.5-p_1|}{\sigma_W})
-\end{aligned}
-\]</span></p>
-<h3 id="some-other-topics">4.6 Some other topics</h3>
-<p><span class="math display">\[AUC = \frac{U}{n_1n_2}\]</span></p>
-<p>Where U is the Mann-Whitney Statistic.</p>
-<p>For random variables <span class="math inline">\(\xi=(X_1,...,X_{n_1},Y_1,...,Y_{n_2})\)</span> and Z,</p>
-<p><span class="math inline">\(c-index = P(\xi_1&lt;\xi_2|Z_1&lt;Z_2)\Leftrightarrow P(\xi_1&lt;\xi_2|Z_1=0,Z_2=1)\Leftrightarrow P(X_1&lt;Y_1)\)</span></p>
-<h2 id="lecture-5-categorical-data">Lecture 5 Categorical Data</h2>
-<p>Outline:</p>
+  1-\beta &= P(|W^*|>z_{1-\frac{\alpha}{2}}|\theta\not ={0})\\
+  &=P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}>\frac{z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &\qquad +P(\frac{W-(\frac{n_2(n_2+1)}{2}+n_1n_2p_1)}{\sigma_W}<\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &=\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}-n_1n_2(0.5-p_1)}{\sigma_W})+\Phi(\frac{z_{\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2(0.5-p_1)}{\sigma_W})\\
+  &\approx\Phi(\frac{-z_{1-\frac{\alpha}{2}}\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}+n_1n_2|0.5-p_1|}{\sigma_W})
+\end{aligned}</script><h3 id="4-6-Some-other-topics"><a href="#4-6-Some-other-topics" class="headerlink" title="4.6 Some other topics"></a>4.6 Some other topics</h3><script type="math/tex; mode=display">AUC = \frac{U}{n_1n_2}</script><p>Where U is the Mann-Whitney Statistic.</p>
+<p>For random variables $\xi=(X_1,…,X_{n_1},Y_1,…,Y_{n_2})$ and Z,</p>
+<p>$c-index = P(\xi_1&lt;\xi_2|Z_1&lt;Z_2)\Leftrightarrow P(\xi_1&lt;\xi_2|Z_1=0,Z_2=1)\Leftrightarrow P(X_1&lt;Y_1)$</p>
+<h2 id="Lecture-5-Categorical-Data"><a href="#Lecture-5-Categorical-Data" class="headerlink" title="Lecture 5 Categorical Data"></a>Lecture 5 Categorical Data</h2><p>Outline:</p>
 <ul>
-<li>Two sample test for Binominal propotions
-<ul>
+<li>Two sample test for Binominal propotions<ul>
 <li>Normal theory approach</li>
 <li>Contingency table approach</li>
-</ul></li>
-<li>Fisher's exact test</li>
-<li>McNemar's test</li>
+</ul>
+</li>
+<li>Fisher’s exact test</li>
+<li>McNemar’s test</li>
 <li>Sample size and power estimation</li>
-<li><span class="math inline">\(R\times C\)</span> contingency tables</li>
+<li>$R\times C$ contingency tables</li>
 <li>Goodness of Fit</li>
 <li>The Kappa Statistic</li>
 </ul>
-<h3 id="two-sample-test-for-binomial-proportions">5.1 Two-Sample Test for Binomial Proportions</h3>
-<p><strong>Situation:</strong> Categorical data</p>
+<h3 id="5-1-Two-Sample-Test-for-Binomial-Proportions"><a href="#5-1-Two-Sample-Test-for-Binomial-Proportions" class="headerlink" title="5.1 Two-Sample Test for Binomial Proportions"></a>5.1 Two-Sample Test for Binomial Proportions</h3><p><strong>Situation:</strong> Categorical data</p>
 <p><strong>Target:</strong> Figure out whether the difference is significant between two categories.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}\)</span></p>
-<h4 id="normal-theory-method-1">5.1.1 Normal-Theory Method</h4>
-<p><strong>Intuition:</strong> Compare the difference between the sample proportions <span class="math inline">\((\hat{p_1}-\hat{p_2})\)</span>. If <span class="math inline">\(H_0\)</span> is true, the difference should be small. The samples will be assumed large enough so that <em>normal approximation</em> is valid.</p>
-<p>Under <span class="math inline">\(H_0\)</span> : <span class="math display">\[E(\hat{p_1}-\hat{p_2})=0 \quad std(\hat{p_1}-\hat{p_2})=\sqrt{pq(\frac{1}{n_1}+\frac{1}{n_2})}\]</span></p>
-<p><strong>Test statistic:</strong> <span class="math display">\[z=\frac{\hat{p_1}-\hat{p_2}}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</span></p>
-<p>where <span class="math inline">\(\hat{p}=\dfrac{n_1\hat{p_1}+n_2\hat{p_2}}{n_1+n_2}=\dfrac{x_1+x_2}{n_1+n_2}, \hat{q}=1-\hat{p}.\)</span></p>
+<p><strong>Hypothesis:</strong> $H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}$</p>
+<h4 id="5-1-1-Normal-Theory-Method"><a href="#5-1-1-Normal-Theory-Method" class="headerlink" title="5.1.1 Normal-Theory Method"></a>5.1.1 Normal-Theory Method</h4><p><strong>Intuition:</strong> Compare the difference between the sample proportions $(\hat{p_1}-\hat{p_2})$. If $H_0$ is true, the difference should be small. The samples will be assumed large enough so that <em>normal approximation</em> is valid.</p>
+<p>Under $H_0$ :</p>
+<script type="math/tex; mode=display">E(\hat{p_1}-\hat{p_2})=0 \quad std(\hat{p_1}-\hat{p_2})=\sqrt{pq(\frac{1}{n_1}+\frac{1}{n_2})}</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">z=\frac{\hat{p_1}-\hat{p_2}}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)</script><p>where $\hat{p}=\dfrac{n_1\hat{p_1}+n_2\hat{p_2}}{n_1+n_2}=\dfrac{x_1+x_2}{n_1+n_2}, \hat{q}=1-\hat{p}.$</p>
 <p>Test statistic with continutiy correction :</p>
-<p><span class="math display">\[z=\frac{|\hat{p_1}-\hat{p_2}|-(\frac{1}{2n_1}+\frac{1}{2n_2})}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</span></p>
-<p><strong>Note:</strong> Use this test only when <span class="math inline">\(n_1\hat{p}\hat{q}\geq5\)</span> and <span class="math inline">\(n_2\hat{p}\hat{q}\geq5\)</span>.</p>
-<h4 id="contingency-table-approach">5.1.2 Contingency table approach</h4>
-<p><strong>Intuition:</strong> Set up contingency table, apply chi-squared test.</p>
+<script type="math/tex; mode=display">z=\frac{|\hat{p_1}-\hat{p_2}|-(\frac{1}{2n_1}+\frac{1}{2n_2})}{\sqrt{\hat{p}\hat{q}(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)</script><p><strong>Note:</strong> Use this test only when $n_1\hat{p}\hat{q}\geq5$ and $n_2\hat{p}\hat{q}\geq5$.</p>
+<h4 id="5-1-2-Contingency-table-approach"><a href="#5-1-2-Contingency-table-approach" class="headerlink" title="5.1.2 Contingency table approach"></a>5.1.2 Contingency table approach</h4><p><strong>Intuition:</strong> Set up contingency table, apply chi-squared test.</p>
 <ul>
 <li>This test is called a <em>test for homogeneity of binomial proportions</em>. In this situation, one set of margins is fixed and the number of successes in each row is a random variable.</li>
 </ul>
 <center>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"></th>
-<th style="text-align: center;">Exposed</th>
-<th style="text-align: center;">Unexposed</th>
-<th style="text-align: center;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Case</td>
-<td style="text-align: center;"><span class="math inline">\(O_{11}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O_{12}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{1.}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Control</td>
-<td style="text-align: center;"><span class="math inline">\(O_{21}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O_{22}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{2.}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(n_{.1}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{.2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{..}\)</span></td>
-</tr>
-</tbody>
-</table>
+
+|   |Exposed|Unexposed|Total|
+|:---:|:---:|:---:|:---:|
+|Case|$O_{11}$|$O_{12}$|$n_{1.}$|
+|Control|$O_{21}$|$O_{22}$|$n_{2.}$|
+|Total|$n_{.1}$|$n_{.2}$|$n_{..}$|
+
 </center>
-<p>The expected number of units in the <span class="math inline">\((i,j)\)</span> cell :</p>
-<p><span class="math display">\[E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}}\]</span></p>
-<p><strong>Test statistics:</strong></p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
-<p>Test statistics with Yates' continuity correction :</p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(|O_{ij}-E_{ij}|-0.5)^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1\]</span></p>
-<p>Alternative form:</p>
-<p><span class="math display">\[\chi^2=\frac{n_{..}(n_{11}n_{22}-n_{12}n_{21})^2}{n_{.1}n_{.2}n_{1.}n_{2.}}\]</span></p>
-<p><strong>Note:</strong> The test is used only when <span class="math inline">\(E_{ij}&gt;5,\forall i,j.\)</span></p>
-<h4 id="more-details-about-chi-squared">5.1.3 More details about chi-squared</h4>
-<ul>
-<li>The <span class="math inline">\(\chi^2\)</span> statistic can be used
-<ul>
+
+<p>The expected number of units in the $(i,j)$ cell :</p>
+<script type="math/tex; mode=display">E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}}</script><p><strong>Test statistics:</strong></p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1</script><p>Test statistics with Yates’ continuity correction :</p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(|O_{ij}-E_{ij}|-0.5)^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_1</script><p>Alternative form:</p>
+<script type="math/tex; mode=display">\chi^2=\frac{n_{..}(n_{11}n_{22}-n_{12}n_{21})^2}{n_{.1}n_{.2}n_{1.}n_{2.}}</script><p><strong>Note:</strong> The test is used only when $E_{ij}&gt;5,\forall i,j.$</p>
+<h4 id="5-1-3-More-details-about-chi-squared"><a href="#5-1-3-More-details-about-chi-squared" class="headerlink" title="5.1.3 More details about chi-squared"></a>5.1.3 More details about chi-squared</h4><ul>
+<li>The $\chi^2$ statistic can be used<ul>
 <li>the rows are fixed (binomial)</li>
 <li>the colomns are fixed (binomial)</li>
 <li>the total sample size is fixed (multinomial)</li>
 <li>none are fixed (Poisson)</li>
-</ul></li>
-<li>For a given set of data, any of these assumptions results in the same value for the statistic.</li>
-<li><span class="math inline">\(df=n_{..}-1\)</span></li>
 </ul>
-<h3 id="fishers-exact-test">5.2 Fisher's Exact Test</h3>
-<p><strong>Situation:</strong> Categorical data, small samples</p>
+</li>
+<li>For a given set of data, any of these assumptions results in the same value for the statistic.</li>
+<li>$df=n_{..}-1$</li>
+</ul>
+<h3 id="5-2-Fisher’s-Exact-Test"><a href="#5-2-Fisher’s-Exact-Test" class="headerlink" title="5.2 Fisher’s Exact Test"></a>5.2 Fisher’s Exact Test</h3><p><strong>Situation:</strong> Categorical data, small samples</p>
 <p><strong>Target:</strong> Figure out whether the difference is significant between two categories.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}\)</span></p>
+<p><strong>Hypothesis:</strong> $H_0:p_1=p_2=p\quad v.s. \quad H_1:p_1\not ={p_2}$</p>
 <p>Exact Probability of Obeserving a Table with a certain cell :</p>
-<p><span class="math display">\[Pr(n_{11},n_{12},n_{21},n_{22})=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!n_{11}!n_{12}!n_{21}!n_{22}!}\]</span></p>
-<p>Suppose we consider all possible tables with fixed row margins and fixed column margins. Then <strong>rearrange the rows and columns</strong> so that <span class="math inline">\(n_{1.}\leq n_{2.}, n_{.1}\leq n_{.2}\)</span>.</p>
-<p>The random variable <span class="math inline">\(X\)</span> denote the cell count in <span class="math inline">\((1,1)\)</span> : <span class="math display">\[Pr(X=a)=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!a!(n_{1.}-a)!(n_{.1}-a)!(n_{.2}-n_{1.}+a)!}\stackrel{H_0}{\sim}Hypergeometric(n_{1.},n_{2.},n_{..})\]</span></p>
-<p>Also, under <span class="math inline">\(H_0\)</span> :</p>
-<p><span class="math display">\[E(X)=\frac{n_{1.}n_{.1}}{n_{..}},\quad Var(X)=\frac{n_{1.}n_{2.}n_{.1}n_{.2}}{n_{..}^2(n_{..}-1)}\]</span></p>
-<p>Enumerate all possible tables and compute the exact probability of each table using the formula above. Calculate the p-value(two-tailed test) :</p>
-<p><span class="math display">\[p-value = 2\times \min [Pr(0)+Pr(1)+...+Pr(a),Pr(a)+Pr(a+1)+...+Pr(k),0.5]\]</span></p>
-<h3 id="mcnemars-test">5.3 McNemar's test</h3>
-<p><strong>Situation:</strong> Samples are paired and dependent.</p>
+<script type="math/tex; mode=display">Pr(n_{11},n_{12},n_{21},n_{22})=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!n_{11}!n_{12}!n_{21}!n_{22}!}</script><p>Suppose we consider all possible tables with fixed row margins and fixed column margins. Then <strong>rearrange the rows and columns</strong> so that $n_{1.}\leq n_{2.}, n_{.1}\leq n_{.2}$.</p>
+<p>The random variable $X$ denote the cell count in $(1,1)$ :</p>
+<script type="math/tex; mode=display">Pr(X=a)=\frac{n_{1.}!n_{2.}!n_{.1}!n_{.2}!}{n_{..}!a!(n_{1.}-a)!(n_{.1}-a)!(n_{.2}-n_{1.}+a)!}\stackrel{H_0}{\sim}Hypergeometric(n_{1.},n_{2.},n_{..})</script><p>Also, under $H_0$ :</p>
+<script type="math/tex; mode=display">E(X)=\frac{n_{1.}n_{.1}}{n_{..}},\quad Var(X)=\frac{n_{1.}n_{2.}n_{.1}n_{.2}}{n_{..}^2(n_{..}-1)}</script><p>Enumerate all possible tables and compute the exact probability of each table using the formula above. Calculate the p-value(two-tailed test) :</p>
+<script type="math/tex; mode=display">p-value = 2\times \min [Pr(0)+Pr(1)+...+Pr(a),Pr(a)+Pr(a+1)+...+Pr(k),0.5]</script><h3 id="5-3-McNemar’s-test"><a href="#5-3-McNemar’s-test" class="headerlink" title="5.3 McNemar’s test"></a>5.3 McNemar’s test</h3><p><strong>Situation:</strong> Samples are paired and dependent.</p>
 <p><strong>Target:</strong> Figure out whether the difference is significant between two categories. Here, the two categories are dependent.</p>
 <center>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Type A/Type B</th>
-<th style="text-align: center;">Case</th>
-<th style="text-align: center;">Control</th>
-<th style="text-align: center;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Case</td>
-<td style="text-align: center;"><span class="math inline">\(n_{11}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{12}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Control</td>
-<td style="text-align: center;"><span class="math inline">\(n_{21}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_{22}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Total</td>
-<td style="text-align: center;"><span class="math inline">\(m_1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(m_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
-</tr>
-</tbody>
-</table>
+
+|Type A/Type B|Case|Control|Total|
+|:---:|:---:|:---:|:---:|
+|Case|$n_{11}$|$n_{12}$|$n_1$|
+|Control|$n_{21}$|$n_{22}$|$n_2$|
+|Total|$m_1$|$m_2$|$n$|
+
 </center>
+
 <ul>
-<li>Concordant pair : matched pair in which the outcome is the same for each member of the pair. i.e. <span class="math inline">\(n_{11}\)</span> and <span class="math inline">\(n_{22}\)</span>.</li>
-<li>Discordant pair : matched pair in which the outcomes differ for the member of the pair, which <strong>shows the difference between the categories</strong>. i.e. <span class="math inline">\(n_{12}\)</span> and <span class="math inline">\(n_{21}\)</span>.</li>
+<li>Concordant pair : matched pair in which the outcome is the same for each member of the pair. i.e. $n_{11}$ and $n_{22}$.</li>
+<li>Discordant pair : matched pair in which the outcomes differ for the member of the pair, which <strong>shows the difference between the categories</strong>. i.e. $n_{12}$ and $n_{21}$.</li>
 </ul>
-<p>Suppose that of <span class="math inline">\(n_D\)</span> discordant pairs, <span class="math inline">\(n_A\)</span> are type A.</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0 : p=\frac{1}{2} \quad v.s. \quad H_1:p\not ={\frac{1}{2}}\)</span>, where <span class="math inline">\(p=\dfrac{n_A}{n_D}\)</span>.</p>
-<p>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(n_A\sim Binomial(n_D,0.5)\)</span> :</p>
-<p><span class="math display">\[E(n_A)=\frac{n_D}{2},\quad Var(n_A)=\frac{n_D}{4}\]</span></p>
-<p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[\chi^2=\frac{(n_A-\frac{n_D}{2})^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
-<p>Alternative form:</p>
-<p><span class="math display">\[\chi^2=\frac{(n_A-n_B)^2}{n_D}\]</span></p>
-<p>Test statistic with continutiy correction :</p>
-<p><span class="math display">\[\chi^2=\frac{(|n_A-\frac{n_D}{2}|-0.5)^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
-<p><strong>Note:</strong> Use this test only if <span class="math inline">\(n_D\geq20\)</span>.</p>
-<h3 id="sample-size-and-power-estimation">5.4 Sample size and power estimation</h3>
-<h4 id="two-proportions-comparision">5.4.1 Two proportions comparision</h4>
-<p>Denote <span class="math inline">\(\Delta=|p_2-p_1|\)</span>, <span class="math inline">\(p_1,p_2\)</span> = projected true probabilities of success in the two groups, suppose that <span class="math inline">\(n_2=kn_1\)</span>, then <span class="math inline">\(\bar{p}=\frac{p_1+kp_2}{1+k}\)</span>, with significance level <span class="math inline">\(\alpha\)</span>, the power is</p>
-<p><span class="math display">\[
+<p>Suppose that of $n_D$ discordant pairs, $n_A$ are type A.</p>
+<p><strong>Hypothesis:</strong> $H_0 : p=\frac{1}{2} \quad v.s. \quad H_1:p\not ={\frac{1}{2}}$, where $p=\dfrac{n_A}{n_D}$.</p>
+<p>Under $H_0$, $n_A\sim Binomial(n_D,0.5)$ :</p>
+<script type="math/tex; mode=display">E(n_A)=\frac{n_D}{2},\quad Var(n_A)=\frac{n_D}{4}</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">\chi^2=\frac{(n_A-\frac{n_D}{2})^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1</script><p>Alternative form:</p>
+<script type="math/tex; mode=display">\chi^2=\frac{(n_A-n_B)^2}{n_D}</script><p>Test statistic with continutiy correction :</p>
+<script type="math/tex; mode=display">\chi^2=\frac{(|n_A-\frac{n_D}{2}|-0.5)^2}{\frac{n_D}{4}}\stackrel{H_0}{\sim}\chi^2_1</script><p><strong>Note:</strong> Use this test only if $n_D\geq20$.</p>
+<h3 id="5-4-Sample-size-and-power-estimation"><a href="#5-4-Sample-size-and-power-estimation" class="headerlink" title="5.4 Sample size and power estimation"></a>5.4 Sample size and power estimation</h3><h4 id="5-4-1-Two-proportions-comparision"><a href="#5-4-1-Two-proportions-comparision" class="headerlink" title="5.4.1 Two proportions comparision"></a>5.4.1 Two proportions comparision</h4><p>Denote $\Delta=|p_2-p_1|$, $p_1,p_2$ = projected true probabilities of success in the two groups, suppose that $n_2=kn_1$, then $\bar{p}=\frac{p_1+kp_2}{1+k}$, with significance level $\alpha$, the power is</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta&amp;=P(\frac{|\hat{p_1}-\hat{p_2}|}{\sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1}+\frac{1}{n_2})}}&gt;z_{1-\alpha/2}|H_1)\\
-  &amp;=P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}&gt;z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
-  &amp;\qquad +P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}&lt;z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
-  &amp;=\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})+\Phi(z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
-  &amp;\approx\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})
-\end{aligned}
-\]</span></p>
-<p>We have <span class="math inline">\(z_{1-\beta}=\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}\)</span>, it can be shown that</p>
-<p><span class="math display">\[n_1=\frac{[\sqrt{\bar{p}\bar{q}(1+\frac{1}{k})}z_{1-\alpha/2}+\sqrt{p_1q_2\dfrac{p_2q_2}{k}}z_{1-\beta}]^2}{\Delta^2}\]</span></p>
-<h4 id="paired-samples">5.4.2 Paired samples</h4>
-<p>Denote the specific alternative <span class="math inline">\(p=p_A\)</span>, with significance level <span class="math inline">\(\alpha\)</span></p>
-<p>Since <span class="math inline">\(\hat{p_A}\sim N(p_A,\frac{p_Aq_A}{n_D})\)</span></p>
-<p><span class="math display">\[
+  1-\beta&=P(\frac{|\hat{p_1}-\hat{p_2}|}{\sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1}+\frac{1}{n_2})}}>z_{1-\alpha/2}|H_1)\\
+  &=P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}>z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &\qquad +P(\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}<z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &=\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})+\Phi(z_{\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-\frac{p_1-p_2}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})\\
+  &\approx\Phi(-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}+\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}})
+\end{aligned}</script><p>We have $z_{1-\beta}=\frac{\Delta}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}-z_{1-\alpha/2}\frac{\sqrt{\bar{p}\bar{q}(1/n_1+1/n_2)}}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}$, it can be shown that</p>
+<script type="math/tex; mode=display">n_1=\frac{[\sqrt{\bar{p}\bar{q}(1+\frac{1}{k})}z_{1-\alpha/2}+\sqrt{p_1q_2\dfrac{p_2q_2}{k}}z_{1-\beta}]^2}{\Delta^2}</script><h4 id="5-4-2-Paired-samples"><a href="#5-4-2-Paired-samples" class="headerlink" title="5.4.2 Paired samples"></a>5.4.2 Paired samples</h4><p>Denote the specific alternative $p=p_A$, with significance level $\alpha$</p>
+<p>Since $\hat{p_A}\sim N(p_A,\frac{p_Aq_A}{n_D})$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-  1-\beta&amp;=P(\frac{|n_A-\frac{n_D}{2}|}{\sqrt{\frac{n_D}{4}}}&gt;z_{1-\alpha/2}|H_1)\\
-  &amp;=P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}&gt;z_{1-\alpha/2}|H_1)+P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}&lt;z_{\alpha/2}|H_1)\\
-  &amp;=P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}&gt;\frac{z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}&lt;\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
-  &amp;=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}-\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+\Phi(\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
-  &amp;\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}})
-\end{aligned}
-\]</span></p>
-<p>We have <span class="math inline">\(z_{1-\beta}=\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}}\)</span>, it can be shown that</p>
-<p><span class="math display">\[n=\frac{(z_{1-\alpha/2}+2z_{1-\beta}\sqrt{p_Aq_A})^2}{4(p_A-0.5)^2p_D}\]</span></p>
-<p>where <span class="math inline">\(p_D=\frac{n_D}{n}\)</span> is projected proportion of discordant pairs among all pairs. <span class="math inline">\(n\)</span> matched pairs are required.</p>
-<h4 id="compliance">5.4.3 Compliance</h4>
-<p><strong>Definition:</strong> Compliance describes the degree to which a patient correctly follows medical advice.</p>
+  1-\beta&=P(\frac{|n_A-\frac{n_D}{2}|}{\sqrt{\frac{n_D}{4}}}>z_{1-\alpha/2}|H_1)\\
+  &=P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}>z_{1-\alpha/2}|H_1)+P(\frac{\hat{p_A}-\frac{1}{2}}{\sqrt{\frac{1}{4n_D}}}<z_{\alpha/2}|H_1)\\
+  &=P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}>\frac{z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+P(\frac{\hat{p_A}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}}<\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
+  &=\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}-\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})+\Phi(\frac{z_{\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{\frac{1}{2}-p_A}{\sqrt{\frac{p_Aq_A}{n_D}}})\\
+  &\approx\Phi(\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}})
+\end{aligned}</script><p>We have $z_{1-\beta}=\frac{-z_{1-\alpha/2}}{\sqrt{4p_Aq_A}}+\frac{|\frac{1}{2}-p_A|}{\sqrt{\frac{p_Aq_A}{n_D}}}$, it can be shown that</p>
+<script type="math/tex; mode=display">n=\frac{(z_{1-\alpha/2}+2z_{1-\beta}\sqrt{p_Aq_A})^2}{4(p_A-0.5)^2p_D}</script><p>where $p_D=\frac{n_D}{n}$ is projected proportion of discordant pairs among all pairs. $n$ matched pairs are required.</p>
+<h4 id="5-4-3-Compliance"><a href="#5-4-3-Compliance" class="headerlink" title="5.4.3 Compliance"></a>5.4.3 Compliance</h4><p><strong>Definition:</strong> Compliance describes the degree to which a patient correctly follows medical advice.</p>
 <p>Two types of noncompliance to consider:</p>
 <ul>
-<li>dropout rate <span class="math inline">\(\lambda_1\)</span>: the proportion of participants who fail to actually receive the active treatment</li>
-<li>drop-in rate <span class="math inline">\(\lambda_2\)</span>: the proportion of participants in the placebo group who actually receive the active treatment outside the study protocol</li>
+<li>dropout rate $\lambda_1$: the proportion of participants who fail to actually receive the active treatment</li>
+<li>drop-in rate $\lambda_2$: the proportion of participants in the placebo group who actually receive the active treatment outside the study protocol</li>
 </ul>
 <p>under the assumption of perfect compliance:</p>
 <ul>
-<li><span class="math inline">\(p_1\)</span>=incidence of disease among participants who actually receive treatment</li>
-<li><span class="math inline">\(p_2\)</span>=incidence of disease among participants who don't receive treatment</li>
+<li>$p_1$=incidence of disease among participants who actually receive treatment</li>
+<li>$p_2$=incidence of disease among participants who don’t receive treatment</li>
 </ul>
 <p>Assuming that compliance is not perfect:</p>
 <ul>
-<li><span class="math inline">\(p_1^*\)</span>=observed rate of disease in the treatment groups</li>
-<li><span class="math inline">\(p_2^*\)</span>=observed rate of disease in the placebo groups</li>
+<li>$p_1^*$=observed rate of disease in the treatment groups</li>
+<li>$p_2^*$=observed rate of disease in the placebo groups</li>
 </ul>
 <p>then we have</p>
-<p><span class="math display">\[p_1^*=p_1(1-\lambda_1)+p_2\lambda_1,\quad p_2^*=p_2(1-\lambda_2)+p_1\lambda_2\]</span></p>
-<h3 id="rtimes-c-contingency-tables">5.5 <span class="math inline">\(R\times C\)</span> contingency tables</h3>
-<p>An <span class="math inline">\(R\times C\)</span> contingency table is a table with <span class="math inline">\(R\)</span> rows and <span class="math inline">\(C\)</span> columns, which displays the relationship between two variables.</p>
+<script type="math/tex; mode=display">p_1^*=p_1(1-\lambda_1)+p_2\lambda_1,\quad p_2^*=p_2(1-\lambda_2)+p_1\lambda_2</script><h3 id="5-5-R-times-C-contingency-tables"><a href="#5-5-R-times-C-contingency-tables" class="headerlink" title="5.5 $R\times C$ contingency tables"></a>5.5 $R\times C$ contingency tables</h3><p>An $R\times C$ contingency table is a table with $R$ rows and $C$ columns, which displays the relationship between two variables.</p>
 <p><strong>Test statistics:</strong></p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_{(R-1)\times(C-1)}\]</span></p>
-<p><strong>Chi-square test for trend:</strong></p>
-<p>To test if there is a trend between two groups for all variables. Assign each group with a numeric attribute (mean or other particular numbers), which is called <em>Score variable</em> <span class="math inline">\(S_i\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\)</span>There is no trend among the <span class="math inline">\(p_i&#39;s\quad v.s.\quad H_1:\)</span>The trend exists,<span class="math inline">\(p_i=\alpha+\beta S_i\)</span></p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_{(R-1)\times(C-1)}</script><p><strong>Chi-square test for trend:</strong></p>
+<p>To test if there is a trend between two groups for all variables. Assign each group with a numeric attribute (mean or other particular numbers), which is called <em>Score variable</em> $S_i$</p>
+<p><strong>Hypothesis:</strong> $H_0:$There is no trend among the $p_i’s\quad v.s.\quad H_1:$The trend exists,$p_i=\alpha+\beta S_i$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[\chi^2_\text{trend}=\frac{(\sum x_iS_i-x\bar{S})^2}{\bar{p}(1-\bar{p})(\sum n_iS_i^2-(\sum n_iS_i)^2)/n}\stackrel{H_0}{\sim}\chi^2_1\]</span></p>
-<h3 id="goodness-of-fit">5.6 Goodness of Fit</h3>
-<p><strong>Test statistics:</strong></p>
-<p><span class="math display">\[\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_{g-1-k}\]</span></p>
-<p>where g=the number of groups, k=number of paramters to be estimated</p>
-<h3 id="the-kappa-statistic">5.7 The Kappa Statistic</h3>
-<p>The Cohen's Kappa Statistic measures the agreement/association between two variables</p>
-<p><span class="math display">\[\kappa = \frac{p_o-p-e}{1-p_e}\]</span></p>
-<p>where</p>
+<script type="math/tex; mode=display">\chi^2_\text{trend}=\frac{(\sum x_iS_i-x\bar{S})^2}{\bar{p}(1-\bar{p})(\sum n_iS_i^2-(\sum n_iS_i)^2)/n}\stackrel{H_0}{\sim}\chi^2_1</script><h3 id="5-6-Goodness-of-Fit"><a href="#5-6-Goodness-of-Fit" class="headerlink" title="5.6 Goodness of Fit"></a>5.6 Goodness of Fit</h3><p><strong>Test statistics:</strong></p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}\stackrel{H_0}\sim \chi^2_{g-1-k}</script><p>where g=the number of groups, k=number of paramters to be estimated</p>
+<h3 id="5-7-The-Kappa-Statistic"><a href="#5-7-The-Kappa-Statistic" class="headerlink" title="5.7 The Kappa Statistic"></a>5.7 The Kappa Statistic</h3><p>The Cohen’s Kappa Statistic measures the agreement/association between two variables</p>
+<script type="math/tex; mode=display">\kappa = \frac{p_o-p-e}{1-p_e}</script><p>where</p>
 <ul>
-<li><span class="math inline">\(p_o=\)</span> observed probability of concordance between the two surveys</li>
-<li><span class="math inline">\(p_e=\)</span> expected probability of concordance between the two surveys, <span class="math inline">\(p_e=\sum a_ib_i\)</span>, where <span class="math inline">\(a_i,b_i\)</span> is the marginal probabilities of the two surveys.</li>
+<li>$p_o=$ observed probability of concordance between the two surveys</li>
+<li>$p_e=$ expected probability of concordance between the two surveys, $p_e=\sum a_ib_i$, where $a_i,b_i$ is the marginal probabilities of the two surveys.</li>
 </ul>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[z=\frac{\kappa}{se(\kappa)}\]</span></p>
-<p>where</p>
-<p><span class="math display">\[se(\kappa)=\frac{1}{(1-p_e)\sqrt{n}}\sqrt{p_e+p_e^2-\sum a_ib_i(a_i+b_i)}\]</span></p>
-<h2 id="lecture-6-regression-and-correlation-methods">Lecture 6 Regression and Correlation Methods</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">z=\frac{\kappa}{se(\kappa)}</script><p>where</p>
+<script type="math/tex; mode=display">se(\kappa)=\frac{1}{(1-p_e)\sqrt{n}}\sqrt{p_e+p_e^2-\sum a_ib_i(a_i+b_i)}</script><h2 id="Lecture-6-Regression-and-Correlation-Methods"><a href="#Lecture-6-Regression-and-Correlation-Methods" class="headerlink" title="Lecture 6 Regression and Correlation Methods"></a>Lecture 6 Regression and Correlation Methods</h2><p>Outline:</p>
 <ul>
 <li>Regression Topic</li>
-<li>Correlation coefficient
-<ul>
+<li>Correlation coefficient<ul>
 <li>Pearson correlation coefficient</li>
 <li>Spearman rank correlation coefficient</li>
-<li>Kendall's Tau</li>
-</ul></li>
+<li>Kendall’s Tau</li>
 </ul>
-<h3 id="regression-topic">6.1 Regression Topic</h3>
-<p>Refer to Applied Linear Regression course.</p>
-<h3 id="correaltion-coefficient">6.2 Correaltion coefficient</h3>
-<h4 id="pearson-correlation-coefficient">6.2.1 Pearson correlation coefficient</h4>
-<p>The sample Pearson correlation coefficient is defined by</p>
-<p><span class="math display">\[r=\frac{L_{xy}}{\sqrt{L_{xx}L_{yy}}}\]</span></p>
-<p>where <span class="math inline">\(L_{xy}=\sum(x_i-\bar{x})(y_i-\bar{y}), L_{xx}=\sum(x_i-\bar{x})^2, L_{yy}=\sum(y_i-\bar{y})^2\)</span></p>
+</li>
+</ul>
+<h3 id="6-1-Regression-Topic"><a href="#6-1-Regression-Topic" class="headerlink" title="6.1 Regression Topic"></a>6.1 Regression Topic</h3><p>Refer to Applied Linear Regression course.</p>
+<h3 id="6-2-Correaltion-coefficient"><a href="#6-2-Correaltion-coefficient" class="headerlink" title="6.2 Correaltion coefficient"></a>6.2 Correaltion coefficient</h3><h4 id="6-2-1-Pearson-correlation-coefficient"><a href="#6-2-1-Pearson-correlation-coefficient" class="headerlink" title="6.2.1 Pearson correlation coefficient"></a>6.2.1 Pearson correlation coefficient</h4><p>The sample Pearson correlation coefficient is defined by</p>
+<script type="math/tex; mode=display">r=\frac{L_{xy}}{\sqrt{L_{xx}L_{yy}}}</script><p>where $L_{xy}=\sum(x_i-\bar{x})(y_i-\bar{y}), L_{xx}=\sum(x_i-\bar{x})^2, L_{yy}=\sum(y_i-\bar{y})^2$</p>
 <p>Also</p>
-<p><span class="math display">\[r=\frac{s_{xy}}{\sqrt{s_{xx}s_{yy}}}\]</span></p>
-<p>The regression model <span class="math inline">\(Y=\beta_0+\beta_1X\)</span>, then</p>
-<p><span class="math display">\[\beta_1=\frac{L_{xy}}{L_{xx}}=\sqrt{\frac{L_{yy}}{L_{xx}}}\times r\]</span></p>
-<p><strong>Note:</strong></p>
-<ol type="1">
-<li>The regression coefficient is based on the normal distribution assumption, which means that the <span class="math inline">\(Y_i\)</span> should follow a normal distribution. Also, the relationship between correlation coefficient and regression coefficient depends on that.</li>
-<li>r does not change if the units of measurement are changed, while <span class="math inline">\(\beta_1\)</span> depends.</li>
+<script type="math/tex; mode=display">r=\frac{s_{xy}}{\sqrt{s_{xx}s_{yy}}}</script><p>The regression model $Y=\beta_0+\beta_1X$, then</p>
+<script type="math/tex; mode=display">\beta_1=\frac{L_{xy}}{L_{xx}}=\sqrt{\frac{L_{yy}}{L_{xx}}}\times r</script><p><strong>Note:</strong></p>
+<ol>
+<li>The regression coefficient is based on the normal distribution assumption, which means that the $Y_i$ should follow a normal distribution. Also, the relationship between correlation coefficient and regression coefficient depends on that.</li>
+<li>r does not change if the units of measurement are changed, while $\beta_1$ depends.</li>
 </ol>
 <ul>
-<li>Predict one variable from another <span class="math inline">\(\Rightarrow\)</span> regressioon coefficient</li>
-<li>Describe the linear relationship between two variables <span class="math inline">\(\Rightarrow\)</span> correlation coefficient</li>
+<li>Predict one variable from another $\Rightarrow$ regressioon coefficient</li>
+<li>Describe the linear relationship between two variables $\Rightarrow$ correlation coefficient</li>
 </ul>
-<h4 id="spearman-rank-correlation-coefficient">6.2.2 Spearman rank correlation coefficient</h4>
-<p><span class="math display">\[r_s=\frac{R_{xy}}{\sqrt{R_{xx}\times R_{yy}}}\]</span></p>
-<p>where the R's are computed from the ranks rather than from the actual scores</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\rho=0\quad v.s. \quad H_1:\rho\not ={0}\)</span></p>
+<h4 id="6-2-2-Spearman-rank-correlation-coefficient"><a href="#6-2-2-Spearman-rank-correlation-coefficient" class="headerlink" title="6.2.2 Spearman rank correlation coefficient"></a>6.2.2 Spearman rank correlation coefficient</h4><script type="math/tex; mode=display">r_s=\frac{R_{xy}}{\sqrt{R_{xx}\times R_{yy}}}</script><p>where the R’s are computed from the ranks rather than from the actual scores</p>
+<p><strong>Hypothesis:</strong> $H_0:\rho=0\quad v.s. \quad H_1:\rho\not ={0}$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[t_s=\frac{r_s\sqrt{n-2}}{\sqrt{1-r_s^2}}\stackrel{H_0}{\sim}t_{n-2}\]</span></p>
-<h4 id="kendalls-tau">6.2.3 Kendall's Tau</h4>
-<p>The Kendall's Tau is based on the number of concordant and discordant pairs.(describe the trend of the paired data)</p>
-<p><span class="math display">\[\hat{\tau}=\frac{\sum_{1\leq i&lt;j&lt;n}sign((X_j-X_i)(Y_j-Y_i))}{\frac{n(n-1)}{2}}\]</span></p>
-<p>another form:</p>
-<p><span class="math display">\[\tau=\frac{K_1-K_2}{\frac{n(n-1)}{2}}\]</span></p>
-<p>where <span class="math inline">\(K_1\)</span> is the number of concordant pairs and <span class="math inline">\(K_2\)</span> is the number of discordant paris</p>
-<h2 id="lecture-7-fixed-effects-models">Lecture 7 Fixed Effects Models</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">t_s=\frac{r_s\sqrt{n-2}}{\sqrt{1-r_s^2}}\stackrel{H_0}{\sim}t_{n-2}</script><h4 id="6-2-3-Kendall’s-Tau"><a href="#6-2-3-Kendall’s-Tau" class="headerlink" title="6.2.3 Kendall’s Tau"></a>6.2.3 Kendall’s Tau</h4><p>The Kendall’s Tau is based on the number of concordant and discordant pairs.(describe the trend of the paired data)</p>
+<script type="math/tex; mode=display">\hat{\tau}=\frac{\sum_{1\leq i<j<n}sign((X_j-X_i)(Y_j-Y_i))}{\frac{n(n-1)}{2}}</script><p>another form:</p>
+<script type="math/tex; mode=display">\tau=\frac{K_1-K_2}{\frac{n(n-1)}{2}}</script><p>where $K_1$ is the number of concordant pairs and $K_2$ is the number of discordant paris</p>
+<h2 id="Lecture-7-Fixed-Effects-Models"><a href="#Lecture-7-Fixed-Effects-Models" class="headerlink" title="Lecture 7 Fixed Effects Models"></a>Lecture 7 Fixed Effects Models</h2><p>Outline:</p>
 <ul>
-<li>One-Way ANOVA--Fixed Effects
-<ul>
+<li>One-Way ANOVA—Fixed Effects<ul>
 <li>One-way ANOVA</li>
 <li>Post-hoc Test After One-way ANOVA</li>
-</ul></li>
+</ul>
+</li>
 <li>Two-Way ANOVA</li>
 <li>The Kruskal-Wallis Test</li>
 </ul>
-<h3 id="one-way-anova">7.1 One-Way ANOVA</h3>
-<p><span class="math display">\[
-y_{ij}=\mu+\alpha_i+e_{ij},e_{ij}\sim N(0,\sigma^2)
-\]</span></p>
-<p>Constraint: <span class="math inline">\(\sum_{i=1}^k \alpha_i=0\)</span></p>
+<h3 id="7-1-One-Way-ANOVA"><a href="#7-1-One-Way-ANOVA" class="headerlink" title="7.1 One-Way ANOVA"></a>7.1 One-Way ANOVA</h3><script type="math/tex; mode=display">
+y_{ij}=\mu+\alpha_i+e_{ij},e_{ij}\sim N(0,\sigma^2)</script><p>Constraint: $\sum_{i=1}^k \alpha_i=0$</p>
 <ul>
-<li><span class="math inline">\(\mu\)</span> is the underlying mean of all groups taken together</li>
-<li><span class="math inline">\(\alpha_i\)</span> is the difference between the mean of the ith group and the overall mean</li>
-<li><span class="math inline">\(e_{ij}\)</span> is the random error about the mean <span class="math inline">\(\mu+\alpha_i\)</span> for an individual observation from the ith group</li>
+<li>$\mu$ is the underlying mean of all groups taken together</li>
+<li>$\alpha_i$ is the difference between the mean of the ith group and the overall mean</li>
+<li>$e_{ij}$ is the random error about the mean $\mu+\alpha_i$ for an individual observation from the ith group</li>
 </ul>
 <p><strong>Situation:</strong> whether there are differences between groups</p>
-<h4 id="f-test-for-anova">7.1.1 F-test for ANOVA</h4>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\alpha_1=...=\alpha_k=0\quad v.s.\quad H_1:\alpha_j\neq 0,\exist j\)</span></p>
-<p><span class="math inline">\(SSTO=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y})^2\sim\sigma^2\chi^2(n-1)\)</span></p>
-<p><span class="math inline">\(SSW=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y_i})^2\sim\sigma^2\chi^2(n-k)\)</span></p>
-<p><span class="math inline">\(SSB=\sum_{i=1}^k\sum_{j=1}^{n_i}(\bar{y_i}-\bar{y})^2=\sum_{i=1}^kn_i(\bar{y_i}-\bar{y})^2\sim\sigma^2\chi^2(k-1,\lambda)\)</span></p>
+<h4 id="7-1-1-F-test-for-ANOVA"><a href="#7-1-1-F-test-for-ANOVA" class="headerlink" title="7.1.1 F-test for ANOVA"></a>7.1.1 F-test for ANOVA</h4><p><strong>Hypothesis:</strong> $H_0:\alpha_1=…=\alpha_k=0\quad v.s.\quad H_1:\alpha_j\neq 0,\exist j$</p>
+<p>$SSTO=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y})^2\sim\sigma^2\chi^2(n-1)$</p>
+<p>$SSW=\sum_{i=1}^k\sum_{j=1}^{n_i}(y_{ij}-\bar{y_i})^2\sim\sigma^2\chi^2(n-k)$</p>
+<p>$SSB=\sum_{i=1}^k\sum_{j=1}^{n_i}(\bar{y_i}-\bar{y})^2=\sum_{i=1}^kn_i(\bar{y_i}-\bar{y})^2\sim\sigma^2\chi^2(k-1,\lambda)$</p>
 <p><strong>Test statistic:</strong></p>
-<p><span class="math display">\[
-F^*=\frac{MSB}{MSW}=\frac{SSB/(k-1)}{SSW/(n-k)}\stackrel{H_0}{\sim}F(k-1,n-k)
-\]</span></p>
-<h4 id="t-test-for-comparisonlsd">7.1.2 t-test for Comparison(LSD)</h4>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\alpha_1=\alpha_2\quad v.s. \quad H_1:\alpha_1\neq\alpha_2\)</span></p>
+<script type="math/tex; mode=display">
+F^*=\frac{MSB}{MSW}=\frac{SSB/(k-1)}{SSW/(n-k)}\stackrel{H_0}{\sim}F(k-1,n-k)</script><h4 id="7-1-2-t-test-for-Comparison-LSD"><a href="#7-1-2-t-test-for-Comparison-LSD" class="headerlink" title="7.1.2 t-test for Comparison(LSD)"></a>7.1.2 t-test for Comparison(LSD)</h4><p><strong>Hypothesis:</strong> $H_0:\alpha_1=\alpha_2\quad v.s. \quad H_1:\alpha_1\neq\alpha_2$</p>
 <p><strong>Test Statistic:</strong></p>
-<p><span class="math display">\[
-t^*=\frac{\bar{y_1}-\bar{y_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\stackrel{H_0}{\sim}t_{n-k}
-\]</span></p>
-<p>where <span class="math inline">\(s=\hat{\sigma}_W^2=MSW\)</span> is the &quot;pooled&quot; sample estimate of the common variance</p>
-<h4 id="multiple-comparison">7.1.3 Multiple Comparison</h4>
-<p>For more than one group, performing individual comparisons require multiple hypothesis tests (for <span class="math inline">\(n\)</span> independent tests, TypeI error probability is <span class="math inline">\(1-(1-0.05)^n\)</span>)</p>
+<script type="math/tex; mode=display">
+t^*=\frac{\bar{y_1}-\bar{y_2}}{s\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\stackrel{H_0}{\sim}t_{n-k}</script><p>where $s=\hat{\sigma}_W^2=MSW$ is the “pooled” sample estimate of the common variance</p>
+<h4 id="7-1-3-Multiple-Comparison"><a href="#7-1-3-Multiple-Comparison" class="headerlink" title="7.1.3 Multiple Comparison"></a>7.1.3 Multiple Comparison</h4><p>For more than one group, performing individual comparisons require multiple hypothesis tests (for $n$ independent tests, TypeI error probability is $1-(1-0.05)^n$)</p>
 <p><strong>Familty Wise typeI Error Rate(FWER):</strong></p>
-<p><span class="math display">\[
-FWER=Pr(\cup_{i=1}^n A_i)=1-\prod_{i=1}^n(1-\alpha_i)
-\]</span></p>
-<p>where <span class="math inline">\(A_i\)</span> is typeI error occurs in the ith hypothesis testing</p>
+<script type="math/tex; mode=display">
+FWER=Pr(\cup_{i=1}^n A_i)=1-\prod_{i=1}^n(1-\alpha_i)</script><p>where $A_i$ is typeI error occurs in the ith hypothesis testing</p>
 <p><strong>Bonferroni Adjustment:</strong> A possible correction for multiple comparisons</p>
-<p><span class="math display">\[
-\alpha^*=\frac{\alpha}{\binom{k}{2}}
-\]</span></p>
-<p>where <span class="math inline">\(\alpha\)</span> is FWER</p>
-<p>Bonferroni Adjustment ensures overall typeI error rate does not exceed <span class="math inline">\(\alpha=0.05\)</span>, but it's too conservative</p>
+<script type="math/tex; mode=display">
+\alpha^*=\frac{\alpha}{\binom{k}{2}}</script><p>where $\alpha$ is FWER</p>
+<p>Bonferroni Adjustment ensures overall typeI error rate does not exceed $\alpha=0.05$, but it’s too conservative</p>
 <p><strong>False-Discovery Rate(FDR):</strong> attempts to control the proportion of false positive results among reported statistically significant results</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2020-01-11-21-47-53.png" alt="7.1.3"><figcaption>7.1.3</figcaption>
-</figure>
-<p><span class="math display">\[
+<p><img src="/2019/10/30/20191030biostat/2020-01-11-21-47-53.png" alt="7.1.3"></p>
+<script type="math/tex; mode=display">
 Q=\begin{cases}
-    V/R,&amp;R&gt;0\\
-    0,&amp;R=0
-\end{cases}
-\]</span></p>
-<p><span class="math display">\[
-FDR=E(Q)=E(V/R|R&gt;0)Pr(R&gt;0)
-\]</span></p>
-<p>since <span class="math inline">\(FWER=Pr(V\geq 1)\)</span>, it's found that <span class="math inline">\(FDR\leq FWER\)</span> (when <span class="math inline">\(m=m_0\)</span> the equality holds). Thus controlling FDR may gain power comparing to controlling FWER.</p>
+    V/R,&R>0\\
+    0,&R=0
+\end{cases}</script><script type="math/tex; mode=display">
+FDR=E(Q)=E(V/R|R>0)Pr(R>0)</script><p>since $FWER=Pr(V\geq 1)$, it’s found that $FDR\leq FWER$ (when $m=m_0$ the equality holds). Thus controlling FDR may gain power comparing to controlling FWER.</p>
 <p><strong>FDR Testing Procedure:</strong></p>
-<ol type="1">
-<li>Renumber all <span class="math inline">\(p_i\)</span> so that <span class="math inline">\(p_1\leq p_2\leq...\leq p_k\)</span></li>
-<li>Define <span class="math inline">\(q_i=kp_i/i\)</span>, where <span class="math inline">\(i\)</span> is the rank of p-values among the <span class="math inline">\(k\)</span> tests</li>
-<li>Let <span class="math inline">\(FDR_i=\min(q_i,...,q_k)\)</span></li>
-<li>Find the largest <span class="math inline">\(i\)</span> such that <span class="math inline">\(FDR_i&lt;FDR_0\)</span></li>
-<li>reject all <span class="math inline">\(1,...,i\)</span> hypotheses</li>
+<ol>
+<li>Renumber all $p_i$ so that $p_1\leq p_2\leq…\leq p_k$</li>
+<li>Define $q_i=kp_i/i$, where $i$ is the rank of p-values among the $k$ tests</li>
+<li>Let $FDR_i=\min(q_i,…,q_k)$</li>
+<li>Find the largest $i$ such that $FDR_i&lt;FDR_0$</li>
+<li>reject all $1,…,i$ hypotheses</li>
 </ol>
-<h3 id="two-way-anova">7.2 Two-Way ANOVA</h3>
-<ul>
+<h3 id="7-2-Two-Way-ANOVA"><a href="#7-2-Two-Way-ANOVA" class="headerlink" title="7.2 Two-Way ANOVA"></a>7.2 Two-Way ANOVA</h3><ul>
 <li><strong>Main Effect:</strong> effect of one treatment variable considered in isolation</li>
 <li><strong>Interaction Effect:</strong> the effect of one variable depends on the level of the other variable</li>
 </ul>
-<p><span class="math display">\[
-y_{ijk}=\mu+\alpha_i+\beta_j+\gamma_{ij}+e_{ijk},e_{ijk}\sim N(0,\sigma^2)
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\alpha_i\)</span> the effect of row group</li>
-<li><span class="math inline">\(\beta_j\)</span> the effect of column group</li>
-<li><span class="math inline">\(\gamma_{ij}\)</span> the interaction effect between row group and column group</li>
+<script type="math/tex; mode=display">
+y_{ijk}=\mu+\alpha_i+\beta_j+\gamma_{ij}+e_{ijk},e_{ijk}\sim N(0,\sigma^2)</script><ul>
+<li>$\alpha_i$ the effect of row group</li>
+<li>$\beta_j$ the effect of column group</li>
+<li>$\gamma_{ij}$ the interaction effect between row group and column group</li>
 </ul>
 <p>Constraint:</p>
 <ul>
-<li><span class="math inline">\(\sum\alpha_i=\sum\beta_j=0\)</span></li>
-<li><span class="math inline">\(\sum_i\gamma_{ij}=0,\sum_j\gamma_{ij}=0\)</span></li>
+<li>$\sum\alpha_i=\sum\beta_j=0$</li>
+<li>$\sum_i\gamma_{ij}=0,\sum_j\gamma_{ij}=0$</li>
 </ul>
 <p>(Refer to PPT Lecture7,page44)</p>
-<h3 id="kruskal-wallis-test">7.3 Kruskal-Wallis Test</h3>
-<p>A nonparametric alternative to the one-way ANOVA</p>
-<p><span class="math display">\[
-H^*=\frac{12}{N(N+1)}\sum n_i(\bar{R_i}-\bar{R})^2\stackrel{H_0}{\sim}\chi_{k-1}^2
-\]</span></p>
-<h2 id="lecture-8-random-effects-models">Lecture 8 Random Effects Models</h2>
-<p>Outline:</p>
+<h3 id="7-3-Kruskal-Wallis-Test"><a href="#7-3-Kruskal-Wallis-Test" class="headerlink" title="7.3 Kruskal-Wallis Test"></a>7.3 Kruskal-Wallis Test</h3><p>A nonparametric alternative to the one-way ANOVA</p>
+<script type="math/tex; mode=display">
+H^*=\frac{12}{N(N+1)}\sum n_i(\bar{R_i}-\bar{R})^2\stackrel{H_0}{\sim}\chi_{k-1}^2</script><h2 id="Lecture-8-Random-Effects-Models"><a href="#Lecture-8-Random-Effects-Models" class="headerlink" title="Lecture 8 Random Effects Models"></a>Lecture 8 Random Effects Models</h2><p>Outline:</p>
 <ul>
-<li>One-Way ANOVA--Random Effects</li>
+<li>One-Way ANOVA—Random Effects</li>
 <li>Meta Analysis</li>
 <li>Mixed Model</li>
 </ul>
-<h3 id="random-effects-one-way-anova">8.1 Random-Effects One-way ANOVA</h3>
-<p><span class="math display">\[
-y_{ij}=\mu+\alpha_i+\epsilon_{ij}
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\alpha_i\)</span> is the between-subject variability, <span class="math inline">\(\alpha_i\sim N(0,\sigma_A^2)\)</span></li>
-<li><span class="math inline">\(e_{ij}\)</span> is the within-subject variability, <span class="math inline">\(e_{ij}\sim N(0,\sigma^2)\)</span> and independent of <span class="math inline">\(\alpha_i,e_{ij}\)</span></li>
+<h3 id="8-1-Random-Effects-One-way-ANOVA"><a href="#8-1-Random-Effects-One-way-ANOVA" class="headerlink" title="8.1 Random-Effects One-way ANOVA"></a>8.1 Random-Effects One-way ANOVA</h3><script type="math/tex; mode=display">
+y_{ij}=\mu+\alpha_i+\epsilon_{ij}</script><ul>
+<li>$\alpha_i$ is the between-subject variability, $\alpha_i\sim N(0,\sigma_A^2)$</li>
+<li>$e_{ij}$ is the within-subject variability, $e_{ij}\sim N(0,\sigma^2)$ and independent of $\alpha_i,e_{ij}$</li>
 </ul>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\sigma_A^2=0\quad v.s.\quad H_1:\sigma_A^2&gt;0\)</span></p>
-<p><span class="math display">\[
-E(MSW)=\sigma^2,E(MSB)=\sigma^2+n_0\sigma_A^2
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
+<p><strong>Hypothesis:</strong> $H_0:\sigma_A^2=0\quad v.s.\quad H_1:\sigma_A^2&gt;0$</p>
+<script type="math/tex; mode=display">
+E(MSW)=\sigma^2,E(MSB)=\sigma^2+n_0\sigma_A^2</script><p>where</p>
+<script type="math/tex; mode=display">
 n_0=\begin{cases}
-    n_1=...=n_k,&amp;\text{balanced case}\\
-    (\sum n_l-\sum n_l^2/\sum n_l)/(k-1),&amp;\text{unbalanced case}
-\end{cases}
-\]</span></p>
-<p>then the unbiased <span class="math inline">\(\hat{\sigma}^2=MSW,\hat{\sigma_A}^2=(MSB-MSW)/n_0\)</span></p>
+    n_1=...=n_k,&\text{balanced case}\\
+    (\sum n_l-\sum n_l^2/\sum n_l)/(k-1),&\text{unbalanced case}
+\end{cases}</script><p>then the unbiased $\hat{\sigma}^2=MSW,\hat{\sigma_A}^2=(MSB-MSW)/n_0$</p>
 <p><strong>Test Statistic:</strong></p>
-<p><span class="math display">\[
-F^*=\frac{MSB}{MSW}\stackrel{H_0}{\sim}F_{k-1,N-k}
-\]</span></p>
-<p><strong>Coefficient of Variation(CV):</strong> less than 20% are desirable</p>
-<ol type="1">
-<li>Apply <span class="math inline">\(\ln\)</span> transformation to each of the values</li>
-<li>Estimate <span class="math inline">\(SSB,SSW\)</span> using one-way random-effects model ANOVA</li>
-<li>The <span class="math inline">\(CV\)</span> in the original scale is estimated by <span class="math inline">\(100\%\times\sqrt{MSW}\)</span></li>
+<script type="math/tex; mode=display">
+F^*=\frac{MSB}{MSW}\stackrel{H_0}{\sim}F_{k-1,N-k}</script><p><strong>Coefficient of Variation(CV):</strong> less than 20\% are desirable</p>
+<ol>
+<li>Apply $\ln$ transformation to each of the values</li>
+<li>Estimate $SSB,SSW$ using one-way random-effects model ANOVA</li>
+<li>The $CV$ in the original scale is estimated by $100\%\times\sqrt{MSW}$</li>
 </ol>
-<p><strong>Interclass Correlation Coefficient:</strong> the correlation between two replicates from the same subject, denoted by <span class="math inline">\(\rho_I\)</span></p>
-<p><span class="math display">\[
-\rho_I=\sigma_A^2/(\sigma_A^2+\sigma^2)
-\]</span></p>
-<ul>
+<p><strong>Interclass Correlation Coefficient:</strong> the correlation between two replicates from the same subject, denoted by $\rho_I$</p>
+<script type="math/tex; mode=display">
+\rho_I=\sigma_A^2/(\sigma_A^2+\sigma^2)</script><ul>
 <li>1 indicating perfect reproducibility</li>
 <li>0 indicating no reproducibility at all</li>
 </ul>
-<h3 id="meta-analysis">8.2 Meta Analysis</h3>
-<p><span class="math display">\[
-y_i=\theta_i+\epsilon_i,\epsilon_i\sim N(0,\sigma_i^2)
-\]</span></p>
-<ul>
-<li>Fixed-effect: <span class="math inline">\(\theta_1=...=\theta_K=\theta,y_i\sim N(\theta,\sigma_i^2)\)</span></li>
-<li>Random-effect: <span class="math inline">\(\theta_i\stackrel{i.i.d}{\sim}N(\theta,\sigma_A^2),y_i\sim N(\theta,\sigma_A^2+\sigma_i^2)\)</span></li>
+<h3 id="8-2-Meta-Analysis"><a href="#8-2-Meta-Analysis" class="headerlink" title="8.2 Meta Analysis"></a>8.2 Meta Analysis</h3><script type="math/tex; mode=display">
+y_i=\theta_i+\epsilon_i,\epsilon_i\sim N(0,\sigma_i^2)</script><ul>
+<li>Fixed-effect: $\theta_1=…=\theta_K=\theta,y_i\sim N(\theta,\sigma_i^2)$</li>
+<li>Random-effect: $\theta_i\stackrel{i.i.d}{\sim}N(\theta,\sigma_A^2),y_i\sim N(\theta,\sigma_A^2+\sigma_i^2)$</li>
 </ul>
-<p><span class="math display">\[
-\hat{\theta}=\frac{\sum w_iy_i}{\sum w_i},w_i=\frac{1}{\sigma_i^2+\hat{\sigma_A}^2}
-\]</span></p>
-<p><strong>Test of Homogeneity:</strong> random effect procedure should only be used if there is no significant heterogeneity among the k study-specific <span class="math inline">\(\theta_i\)</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\theta_1=...=\theta_k=\theta\quad v.s.\quad H_1:\theta_i\neq\theta_j,\exist i,j\)</span></p>
+<script type="math/tex; mode=display">
+\hat{\theta}=\frac{\sum w_iy_i}{\sum w_i},w_i=\frac{1}{\sigma_i^2+\hat{\sigma_A}^2}</script><p><strong>Test of Homogeneity:</strong> random effect procedure should only be used if there is no significant heterogeneity among the k study-specific $\theta_i$</p>
+<p><strong>Hypothesis:</strong> $H_0:\theta_1=…=\theta_k=\theta\quad v.s.\quad H_1:\theta_i\neq\theta_j,\exist i,j$</p>
 <p><strong>Test Statistic:</strong></p>
-<p><span class="math display">\[
-Q_w=\sum_{i=1}^k w_i(y_i-\hat{\theta})^2\stackrel{H_0}{\sim}\chi_{k-1}^2
-\]</span></p>
-<h3 id="mixed-model">8.3 Mixed model</h3>
-<p><span class="math display">\[
-y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+e_{ijk}
-\]</span></p>
-<h2 id="lecture-9-design-and-analysis-techniques-for-epidemiologic-studies">Lecture 9 Design and Analysis Techniques for Epidemiologic Studies</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">
+Q_w=\sum_{i=1}^k w_i(y_i-\hat{\theta})^2\stackrel{H_0}{\sim}\chi_{k-1}^2</script><h3 id="8-3-Mixed-model"><a href="#8-3-Mixed-model" class="headerlink" title="8.3 Mixed model"></a>8.3 Mixed model</h3><script type="math/tex; mode=display">
+y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+e_{ijk}</script><h2 id="Lecture-9-Design-and-Analysis-Techniques-for-Epidemiologic-Studies"><a href="#Lecture-9-Design-and-Analysis-Techniques-for-Epidemiologic-Studies" class="headerlink" title="Lecture 9 Design and Analysis Techniques for Epidemiologic Studies"></a>Lecture 9 Design and Analysis Techniques for Epidemiologic Studies</h2><p>Outline:</p>
 <ul>
 <li>Study Design</li>
-<li>Measures of effect for categorical data
-<ul>
+<li>Measures of effect for categorical data<ul>
 <li>Risk Difference</li>
 <li>Risk Ratio</li>
 <li>Odds Ratio</li>
-</ul></li>
+</ul>
+</li>
 <li>Confounding and Standardization</li>
 <li>Mantel-Haenszel Test</li>
 <li>Power and Sample-Size Estimation for Stratified Categorical Data</li>
 </ul>
-<h3 id="study-design">9.1 Study Design</h3>
-<p><strong>Prospective(Cohort) study</strong>: a group of disease-free individuals(<strong>Cohort</strong>) is identified at one point in time and are followed over a period of time until some of them develop the disease.(if so, the disease is related to <em>exposure variables</em>)</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-12-09-13-34-53.png" alt="9.1.1"><figcaption>9.1.1</figcaption>
-</figure>
+<h3 id="9-1-Study-Design"><a href="#9-1-Study-Design" class="headerlink" title="9.1 Study Design"></a>9.1 Study Design</h3><p><strong>Prospective(Cohort) study</strong>: a group of disease-free individuals(<strong>Cohort</strong>) is identified at one point in time and are followed over a period of time until some of them develop the disease.(if so, the disease is related to <em>exposure variables</em>)</p>
+<p><img src="/2019/10/30/20191030biostat/2019-12-09-13-34-53.png" alt="9.1.1"></p>
 <p><strong>Restrospective study</strong>:</p>
-<ol type="1">
-<li><p>a group that has the disease under study (the cases)</p></li>
-<li><p>a group that does not have the disease under study (the controls).</p></li>
-</ol>
+<p>(1) a group that has the disease under study (the cases)</p>
+<p>(2) a group that does not have the disease under study (the controls).</p>
 <p>Then make an attempt to relate their prior health habits to their current disease status.</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-12-09-13-35-44.png" alt="9.1.2"><figcaption>9.1.2</figcaption>
-</figure>
+<p><img src="/2019/10/30/20191030biostat/2019-12-09-13-35-44.png" alt="9.1.2"></p>
 <p><strong>Cross-Sectional(Prevalence) study</strong>: a study population is ascertained at a single point in time.</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-12-09-13-36-15.png" alt="9.1.3"><figcaption>9.1.3</figcaption>
-</figure>
-<h3 id="measures-of-effect-for-categorical-data">9.2 Measures of effect for categorical data</h3>
-<figure>
-<img src="/2019/10/30/20191030biostat/2019-12-09-13-52-38.png" alt="9.2"><figcaption>9.2</figcaption>
-</figure>
-<h4 id="the-risk-differencerd">9.2.1 The Risk Difference(RD)</h4>
-<p><span class="math display">\[RD=p_1-p_2\]</span></p>
-<p><span class="math inline">\(p_1\)</span> = probability of developing disease for exposed individuals</p>
-<p><span class="math inline">\(p_2\)</span> = probability of developing disease for unexposed individuals</p>
+<p><img src="/2019/10/30/20191030biostat/2019-12-09-13-36-15.png" alt="9.1.3"></p>
+<h3 id="9-2-Measures-of-effect-for-categorical-data"><a href="#9-2-Measures-of-effect-for-categorical-data" class="headerlink" title="9.2 Measures of effect for categorical data"></a>9.2 Measures of effect for categorical data</h3><p><img src="/2019/10/30/20191030biostat/2019-12-09-13-52-38.png" alt="9.2"></p>
+<h4 id="9-2-1-The-Risk-Difference-RD"><a href="#9-2-1-The-Risk-Difference-RD" class="headerlink" title="9.2.1 The Risk Difference(RD)"></a>9.2.1 The Risk Difference(RD)</h4><script type="math/tex; mode=display">RD=p_1-p_2</script><p>$p_1$ = probability of developing disease for exposed individuals</p>
+<p>$p_2$ = probability of developing disease for unexposed individuals</p>
 <p>Then</p>
-<p><span class="math display">\[
-\frac{|p_1-p_2-(\hat{p_1}-\hat{p_2})|-(\frac{1}{2n_1}+\frac{1}{2n_2})}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}\sim N(0,1)
-\]</span></p>
-<p>Therefore, if <span class="math inline">\(p_1q_1/n_1+p_2q_2/n_2\)</span> is approximated by <span class="math inline">\(\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2\)</span>, CI for <span class="math inline">\(\hat{p_1}-\hat{p_2}\)</span> can be obtained:</p>
-<p><span class="math display">\[
-\hat{p_1}-\hat{p_2}-[1/(2n_1)+1/(2n_2)]\pm z_{1-\alpha/2}\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2},\text{ if }\hat{p_1}&gt;\hat{p_2}\\
-\hat{p_1}-\hat{p_2}+[1/(2n_1)+1/(2n_2)]\pm z_{1-\alpha/2}\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2},\text{ if }\hat{p_1}\leq\hat{p_2}
-\]</span></p>
-<h4 id="the-risk-ratiorr">9.2.2 The Risk Ratio(RR)</h4>
-<p><span class="math display">\[
-RR=\frac{p_1}{p_2}\Rightarrow \widehat{RR}=\frac{\hat{p_1}}{\hat{p_2}}
-\]</span></p>
-<p><span class="math inline">\(p_1\)</span> = probability of developing disease for exposed individuals</p>
-<p><span class="math inline">\(p_2\)</span> = probability of developing disease for unexposed individuals</p>
-<p>To obtain the interval estimate, <em>Delta Method</em> is used to calculate <span class="math inline">\(Var(\ln\frac{\hat{p_1}}{\hat{p_2}})\)</span>, that is</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+\frac{|p_1-p_2-(\hat{p_1}-\hat{p_2})|-(\frac{1}{2n_1}+\frac{1}{2n_2})}{\sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}}\sim N(0,1)</script><p>Therefore, if $p_1q_1/n_1+p_2q_2/n_2$ is approximated by $\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2$, CI for $\hat{p_1}-\hat{p_2}$ can be obtained:</p>
+<script type="math/tex; mode=display">
+\hat{p_1}-\hat{p_2}-[1/(2n_1)+1/(2n_2)]\pm z_{1-\alpha/2}\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2},\text{ if }\hat{p_1}>\hat{p_2}\\
+\hat{p_1}-\hat{p_2}+[1/(2n_1)+1/(2n_2)]\pm z_{1-\alpha/2}\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2},\text{ if }\hat{p_1}\leq\hat{p_2}</script><h4 id="9-2-2-The-Risk-Ratio-RR"><a href="#9-2-2-The-Risk-Ratio-RR" class="headerlink" title="9.2.2 The Risk Ratio(RR)"></a>9.2.2 The Risk Ratio(RR)</h4><script type="math/tex; mode=display">
+RR=\frac{p_1}{p_2}\Rightarrow \widehat{RR}=\frac{\hat{p_1}}{\hat{p_2}}</script><p>$p_1$ = probability of developing disease for exposed individuals</p>
+<p>$p_2$ = probability of developing disease for unexposed individuals</p>
+<p>To obtain the interval estimate, <em>Delta Method</em> is used to calculate $Var(\ln\frac{\hat{p_1}}{\hat{p_2}})$, that is</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    Var(\ln\widehat{RR})&amp;=Var(\ln\hat{p_1})+Var(\ln\hat{p_2})\\
-    &amp;\approx\frac{1}{\hat{p_1}^2}Var(\hat{p_1})+\frac{1}{\hat{p_2}^2}Var(\hat{p_2})\\
-    &amp;=\frac{1}{\hat{p_1}^2}\frac{n_1\hat{p_1}\hat{q_1}}{n_1^2}+\frac{1}{\hat{p_2}^2}\frac{n_2\hat{p_2}\hat{q_2}}{n_2^2}\\
-    &amp;=\frac{1-\hat{p_1}}{\hat{p_1}n_1}+\frac{1-\hat{p_2}}{\hat{p_2}n_2}\\
-    &amp;=\frac{b}{an_1}+\frac{d}{cn_2}
-\end{aligned}
-\]</span></p>
-<p>With <span class="math inline">\(se[\ln(\widehat{RR})]\)</span>, the approximate CI for <span class="math inline">\(\ln(RR)\)</span> is given by</p>
-<p><span class="math display">\[
-[\ln(\widehat{RR})\pm z_{1-\alpha/2}\sqrt{\frac{b}{an_1}+\frac{d}{cn_2}}]
-\]</span></p>
-<p>Further, the approximate CI for <span class="math inline">\(RR\)</span> is given by</p>
-<p><span class="math display">\[
-[\exp\left\{\ln(\widehat{RR})\pm z_{1-\alpha/2}\sqrt{b/(an_1)+d/(cn_2)}\right\}]
-\]</span></p>
-<h4 id="the-odds-ratioor">9.2.3 The Odds Ratio(OR)</h4>
-<p><span class="math inline">\(p\)</span> = the probability of a success</p>
-<p>The <strong>Odds</strong> in favor of success = <span class="math inline">\(\frac{p}{1-p}\)</span></p>
+    Var(\ln\widehat{RR})&=Var(\ln\hat{p_1})+Var(\ln\hat{p_2})\\
+    &\approx\frac{1}{\hat{p_1}^2}Var(\hat{p_1})+\frac{1}{\hat{p_2}^2}Var(\hat{p_2})\\
+    &=\frac{1}{\hat{p_1}^2}\frac{n_1\hat{p_1}\hat{q_1}}{n_1^2}+\frac{1}{\hat{p_2}^2}\frac{n_2\hat{p_2}\hat{q_2}}{n_2^2}\\
+    &=\frac{1-\hat{p_1}}{\hat{p_1}n_1}+\frac{1-\hat{p_2}}{\hat{p_2}n_2}\\
+    &=\frac{b}{an_1}+\frac{d}{cn_2}
+\end{aligned}</script><p>With $se[\ln(\widehat{RR})]$, the approximate CI for $\ln(RR)$ is given by</p>
+<script type="math/tex; mode=display">
+[\ln(\widehat{RR})\pm z_{1-\alpha/2}\sqrt{\frac{b}{an_1}+\frac{d}{cn_2}}]</script><p>Further, the approximate CI for $RR$ is given by</p>
+<script type="math/tex; mode=display">
+[\exp\left\{\ln(\widehat{RR})\pm z_{1-\alpha/2}\sqrt{b/(an_1)+d/(cn_2)}\right\}]</script><h4 id="9-2-3-The-Odds-Ratio-OR"><a href="#9-2-3-The-Odds-Ratio-OR" class="headerlink" title="9.2.3 The Odds Ratio(OR)"></a>9.2.3 The Odds Ratio(OR)</h4><p>$p$ = the probability of a success</p>
+<p>The <strong>Odds</strong> in favor of success = $\frac{p}{1-p}$</p>
 <p>then</p>
-<p><span class="math display">\[
-OR=\frac{p_1/q_1}{p_2/q_2}=\frac{p_1q_2}{p_2q_1}
-\]</span></p>
-<p>which can also be calculated with the cotingency table <span class="math inline">\(OR=\frac{ad}{bc}\)</span>. OR is popularly used in study because it's comparible (why?).</p>
-<p>Similarly, use Delta method to obtain <span class="math inline">\(Var(\ln\hat{OR})\)</span>, that is</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+OR=\frac{p_1/q_1}{p_2/q_2}=\frac{p_1q_2}{p_2q_1}</script><p>which can also be calculated with the cotingency table $OR=\frac{ad}{bc}$. OR is popularly used in study because it’s comparible (why?).</p>
+<p>Similarly, use Delta method to obtain $Var(\ln\hat{OR})$, that is</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    Var(\ln(\hat{OR}))&amp;=Var(\ln\frac{\hat{p_1}}{1-\hat{p_1}})+Var(\ln\frac{\hat{p_2}}{1-\hat{p_2}})\\
-    &amp;=\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}
-\end{aligned}
-\]</span></p>
-<p>Then the approximate CI for <span class="math inline">\(\ln(OR)\)</span> is given by</p>
-<p><span class="math display">\[
-\ln(\hat{OR})\pm z_{1-\alpha/2}\sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}}
-\]</span></p>
-<p>Further, the approximate CI for <span class="math inline">\(OR\)</span> is given by</p>
-<p><span class="math display">\[
-\hat{OR}\exp\left\{\pm z_{1-\alpha/2}\sqrt{1/a+1/b+1/c+1/d}\right\}
-\]</span></p>
-<h4 id="delta-method">9.2.4 Delta Method</h4>
-<p>The variance of a function of a random variable <span class="math inline">\(f(X)\)</span> can be approximated by</p>
-<p><span class="math display">\[
-Var[f(X)]=[f&#39;(X)]^2Var(X)
-\]</span></p>
-<h4 id="comparison-between-rdrror">9.2.5 Comparison between RD,RR,OR</h4>
-<figure>
-<img src="/2019/10/30/20191030biostat/2020-01-11-16-59-17.png" alt="9.2.5"><figcaption>9.2.5</figcaption>
-</figure>
-<p>Suppose that a random fraction <span class="math inline">\(f_1\)</span> of subjects with disease and a random fraction <span class="math inline">\(f_2\)</span> of subjects without disease in the reference population are included in our study sample.(no sampling bias)</p>
-<p>Therefore <span class="math inline">\(a=f_1A,c=f_1C,b=f_2B,d=f_2D\)</span></p>
-<p>If we estimate the <span class="math inline">\(RR\)</span> from study sample, we obtain <span class="math inline">\(\hat{RR}=\frac{a/(a+b)}{c/(c+d)}=\frac{A/(f_1A+f_2B)}{C/(f_1C+f_2D)}\)</span>, which doesn't equal to <span class="math inline">\(RR=\frac{A/(A+B)}{C/(C+D)}\)</span>, unless <span class="math inline">\(f_1=f_2\)</span>. But this is unlikely to be true because the usual sampling strategy is to <strong>oversample subjects with disease</strong>.</p>
-<p>When estimating <span class="math inline">\(OR\)</span>, we can see that <span class="math inline">\(\hat{OR}=\frac{ad}{bc}=\frac{f_1Af_2D}{f_2Bf_1C}=\frac{AD}{BC}=OR\)</span>.</p>
-<h3 id="confounding-and-standardization">9.3 Confounding and Standardization</h3>
-<p><strong>Confounding variable</strong> is a variable that is associated with both the disease and the exposure variable. Such a variable must usually be controlled for before looking at a disease-exposure relationship.</p>
+    Var(\ln(\hat{OR}))&=Var(\ln\frac{\hat{p_1}}{1-\hat{p_1}})+Var(\ln\frac{\hat{p_2}}{1-\hat{p_2}})\\
+    &=\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}
+\end{aligned}</script><p>Then the approximate CI for $\ln(OR)$ is given by</p>
+<script type="math/tex; mode=display">
+\ln(\hat{OR})\pm z_{1-\alpha/2}\sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}}</script><p>Further, the approximate CI for $OR$ is given by</p>
+<script type="math/tex; mode=display">
+\hat{OR}\exp\left\{\pm z_{1-\alpha/2}\sqrt{1/a+1/b+1/c+1/d}\right\}</script><h4 id="9-2-4-Delta-Method"><a href="#9-2-4-Delta-Method" class="headerlink" title="9.2.4 Delta Method"></a>9.2.4 Delta Method</h4><p>The variance of a function of a random variable $f(X)$ can be approximated by</p>
+<script type="math/tex; mode=display">
+Var[f(X)]=[f'(X)]^2Var(X)</script><h4 id="9-2-5-Comparison-between-RD-RR-OR"><a href="#9-2-5-Comparison-between-RD-RR-OR" class="headerlink" title="9.2.5 Comparison between RD,RR,OR"></a>9.2.5 Comparison between RD,RR,OR</h4><p><img src="/2019/10/30/20191030biostat/2020-01-11-16-59-17.png" alt="9.2.5"></p>
+<p>Suppose that a random fraction $f_1$ of subjects with disease and a random fraction $f_2$ of subjects without disease in the reference population are included in our study sample.(no sampling bias)</p>
+<p>Therefore $a=f_1A,c=f_1C,b=f_2B,d=f_2D$</p>
+<p>If we estimate the $RR$ from study sample, we obtain $\hat{RR}=\frac{a/(a+b)}{c/(c+d)}=\frac{A/(f_1A+f_2B)}{C/(f_1C+f_2D)}$, which doesn’t equal to $RR=\frac{A/(A+B)}{C/(C+D)}$, unless $f_1=f_2$. But this is unlikely to be true because the usual sampling strategy is to <strong>oversample subjects with disease</strong>.</p>
+<p>When estimating $OR$, we can see that $\hat{OR}=\frac{ad}{bc}=\frac{f_1Af_2D}{f_2Bf_1C}=\frac{AD}{BC}=OR$.</p>
+<h3 id="9-3-Confounding-and-Standardization"><a href="#9-3-Confounding-and-Standardization" class="headerlink" title="9.3 Confounding and Standardization"></a>9.3 Confounding and Standardization</h3><p><strong>Confounding variable</strong> is a variable that is associated with both the disease and the exposure variable. Such a variable must usually be controlled for before looking at a disease-exposure relationship.</p>
 <p><strong>Stratification</strong> The analysis of disease-exposure realtionships in separate subgroups of the data, in which the subgroups are defined by one or more potential confounders.</p>
 <p><strong>Standardization</strong> (Age-standardized as example)</p>
-<p>Suppose people in a study population are stratified into k age groups, the risk of disease among the exposed in the ith age group is <span class="math inline">\(\hat{p_{i1}}=\frac{x_{i1}}{n_{i1}}\)</span> and the risk of disease among the unexposd in the ith age group is <span class="math inline">\(\hat{p_{i2}}=\frac{x_{i2}}{n_{i2}}\)</span></p>
+<p>Suppose people in a study population are stratified into k age groups, the risk of disease among the exposed in the ith age group is $\hat{p_{i1}}=\frac{x_{i1}}{n_{i1}}$ and the risk of disease among the unexposd in the ith age group is $\hat{p_{i2}}=\frac{x_{i2}}{n_{i2}}$</p>
 <p><strong>Age-standardized risk</strong> of disease among the exposed</p>
-<p><span class="math display">\[
-\hat{p_1}^*=\sum n_i\hat{p_{i1}}/\sum n_i
-\]</span></p>
-<p><strong>Age-standardized risk</strong> of disease among the unexposed</p>
-<p><span class="math display">\[
-\hat{p_2}^*=\sum n_i\hat{p_{i2}}/\sum n_i
-\]</span></p>
-<p><strong>Standardized RR:</strong></p>
-<p><span class="math display">\[
-RR^*=\frac{\hat{p_{1}}^*}{\hat{p_{2}}^*}
-\]</span></p>
-<h3 id="mantel-haenszel-test">9.4 Mantel-Haenszel Test</h3>
-<p><strong>Target:</strong> test homogeneity in the various strata</p>
-<figure>
-<img src="/2019/10/30/20191030biostat/2020-01-11-17-17-10.png" alt="9.4"><figcaption>9.4</figcaption>
-</figure>
-<ol type="1">
-<li>Form <span class="math inline">\(k\)</span> strata based on the level of the confounding variables. Construct a <span class="math inline">\(2\times 2\)</span> table relating disease and exposure within each stratum</li>
-<li>the total observed number of units (<span class="math inline">\(O\)</span>) in the (1,1) cell over all strata <span class="math display">\[O=\sum O_i=\sum a_i\]</span></li>
-<li>the total expected number of units (<span class="math inline">\(E\)</span>) in the (1,1) cell over all strata <span class="math display">\[E=\sum E_i=\sum \frac{(a_i+b_i)(a_i+c_i)}{n_i}\]</span></li>
-<li>Compute the variance (<span class="math inline">\(V\)</span>) of <span class="math inline">\(O\)</span> under <span class="math inline">\(H_0\)</span> <span class="math display">\[V=\sum V_i=\sum \frac{(a_i+b_i)(c_i+d_i)(a_i+c_i)(b_i+d_i)}{n_i^2(n_i-1)}\]</span></li>
-<li>The test statistic is given by <span class="math display">\[X_{MH}^2=\frac{(|O-E|-0.5)^2}{V}\stackrel{H_0}{\sim}\chi_1^2\]</span></li>
+<script type="math/tex; mode=display">
+\hat{p_1}^*=\sum n_i\hat{p_{i1}}/\sum n_i</script><p><strong>Age-standardized risk</strong> of disease among the unexposed</p>
+<script type="math/tex; mode=display">
+\hat{p_2}^*=\sum n_i\hat{p_{i2}}/\sum n_i</script><p><strong>Standardized RR:</strong></p>
+<script type="math/tex; mode=display">
+RR^*=\frac{\hat{p_{1}}^*}{\hat{p_{2}}^*}</script><h3 id="9-4-Mantel-Haenszel-Test"><a href="#9-4-Mantel-Haenszel-Test" class="headerlink" title="9.4 Mantel-Haenszel Test"></a>9.4 Mantel-Haenszel Test</h3><p><strong>Target:</strong> test homogeneity in the various strata</p>
+<p><img src="/2019/10/30/20191030biostat/2020-01-11-17-17-10.png" alt="9.4"></p>
+<ol>
+<li>Form $k$ strata based on the level of the confounding variables. Construct a $2\times 2$ table relating disease and exposure within each stratum</li>
+<li>the total observed number of units ($O$) in the (1,1) cell over all strata<script type="math/tex; mode=display">O=\sum O_i=\sum a_i</script></li>
+<li>the total expected number of units ($E$) in the (1,1) cell over all strata<script type="math/tex; mode=display">E=\sum E_i=\sum \frac{(a_i+b_i)(a_i+c_i)}{n_i}</script></li>
+<li>Compute the variance ($V$) of $O$ under $H_0$<script type="math/tex; mode=display">V=\sum V_i=\sum \frac{(a_i+b_i)(c_i+d_i)(a_i+c_i)(b_i+d_i)}{n_i^2(n_i-1)}</script></li>
+<li>The test statistic is given by<script type="math/tex; mode=display">X_{MH}^2=\frac{(|O-E|-0.5)^2}{V}\stackrel{H_0}{\sim}\chi_1^2</script></li>
 </ol>
-<p>Assuming that the underlying <span class="math inline">\(OR\)</span> is the same for each stratum, an estimate of the common underlying <span class="math inline">\(OR\)</span> is provided by</p>
-<p><span class="math display">\[
-\widehat{OR}_{MH}=\frac{\sum a_id_i/n_i}{\sum b_ic_i/n_i}
-\]</span></p>
-<h3 id="woolf-method">9.5 Woolf Method</h3>
-<p><strong>Target:</strong> Test for homogeneity of ORs over different strata</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:OR_1=...=OR_k\quad v.s. \quad H_1:OR_i\neq OR_j,\exist i,j\)</span></p>
-<p>(MH test <span class="math inline">\(H_0:OR_1=...=OR_k=1\)</span>)</p>
-<p><span class="math inline">\(\ln\widehat{OR_i}=\ln[a_id_i/(b_ic_i)]\)</span>, denote <span class="math inline">\(w_i=(\frac{1}{a_i}+\frac{1}{b_i}+\frac{1}{c_i}+\frac{1}{d_i})^{-1}\)</span></p>
-<p><span class="math display">\[
-\overline{\ln OR}=\frac{\sum w_i\ln\widehat{OR_i}}{\sum w_i}
-\]</span></p>
-<p><strong>Test Statistic:</strong></p>
-<p><span class="math display">\[
+<p>Assuming that the underlying $OR$ is the same for each stratum, an estimate of the common underlying $OR$ is provided by</p>
+<script type="math/tex; mode=display">
+\widehat{OR}_{MH}=\frac{\sum a_id_i/n_i}{\sum b_ic_i/n_i}</script><h3 id="9-5-Woolf-Method"><a href="#9-5-Woolf-Method" class="headerlink" title="9.5 Woolf Method"></a>9.5 Woolf Method</h3><p><strong>Target:</strong> Test for homogeneity of ORs over different strata</p>
+<p><strong>Hypothesis:</strong> $H_0:OR_1=…=OR_k\quad v.s. \quad H_1:OR_i\neq OR_j,\exist i,j$</p>
+<p>(MH test $H_0:OR_1=…=OR_k=1$)</p>
+<p>$\ln\widehat{OR_i}=\ln[a_id_i/(b_ic_i)]$, denote $w_i=(\frac{1}{a_i}+\frac{1}{b_i}+\frac{1}{c_i}+\frac{1}{d_i})^{-1}$</p>
+<script type="math/tex; mode=display">
+\overline{\ln OR}=\frac{\sum w_i\ln\widehat{OR_i}}{\sum w_i}</script><p><strong>Test Statistic:</strong></p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    X_{HOM}^2&amp;=\sum w_i(\ln\widehat{OR_i}-\overline{\ln OR})^2\\
-    &amp;=\sum w_i(\ln\widehat{OR_i})^2-\frac{(\sum w_i\ln\widehat{OR_i})^2}{\sum w_i}\stackrel{H_0}{\sim}\chi_{k-1}^2
-\end{aligned}
-\]</span></p>
-<h3 id="matched-pair-studies">9.6 Matched-pair Studies</h3>
-<p>Suppose we want to study the relationship between two variables.</p>
-<p><span class="math inline">\(n_A\)</span> number of discordant pairs of type A</p>
-<p><span class="math inline">\(n_B\)</span> number of discordant pairs of type B</p>
-<ol type="1">
-<li>MH estimator <span class="math inline">\(\widehat{OR}=n_A/n_B\)</span></li>
-<li><span class="math inline">\(Var(\ln\widehat{OR})=1/(n\hat{p}\hat{q}),\hat{p}=n_A/(n_A+n_B),\hat{q}=1-\hat{p}\)</span></li>
+    X_{HOM}^2&=\sum w_i(\ln\widehat{OR_i}-\overline{\ln OR})^2\\
+    &=\sum w_i(\ln\widehat{OR_i})^2-\frac{(\sum w_i\ln\widehat{OR_i})^2}{\sum w_i}\stackrel{H_0}{\sim}\chi_{k-1}^2
+\end{aligned}</script><h3 id="9-6-Matched-pair-Studies"><a href="#9-6-Matched-pair-Studies" class="headerlink" title="9.6 Matched-pair Studies"></a>9.6 Matched-pair Studies</h3><p>Suppose we want to study the relationship between two variables.</p>
+<p>$n_A$ number of discordant pairs of type A</p>
+<p>$n_B$ number of discordant pairs of type B</p>
+<ol>
+<li>MH estimator $\widehat{OR}=n_A/n_B$</li>
+<li>$Var(\ln\widehat{OR})=1/(n\hat{p}\hat{q}),\hat{p}=n_A/(n_A+n_B),\hat{q}=1-\hat{p}$</li>
 <li>Test statistic</li>
 </ol>
-<p><span class="math display">\[
-\frac{\ln\widehat{OR}-\ln OR}{\sqrt{1/(n\hat{p}\hat{q})}}\stackrel{H_0}{\sim}N(0,1)
-\]</span></p>
-<h3 id="power-and-sample-size-estimation">9.7 Power and Sample-Size Estimation</h3>
-<p>(Refer to PPT)</p>
-<h2 id="lecture-10-multiple-logistic-regression">Lecture 10 Multiple Logistic Regression</h2>
-<p>Outline:</p>
+<script type="math/tex; mode=display">
+\frac{\ln\widehat{OR}-\ln OR}{\sqrt{1/(n\hat{p}\hat{q})}}\stackrel{H_0}{\sim}N(0,1)</script><h3 id="9-7-Power-and-Sample-Size-Estimation"><a href="#9-7-Power-and-Sample-Size-Estimation" class="headerlink" title="9.7 Power and Sample-Size Estimation"></a>9.7 Power and Sample-Size Estimation</h3><p>(Refer to PPT)</p>
+<h2 id="Lecture-10-Multiple-Logistic-Regression"><a href="#Lecture-10-Multiple-Logistic-Regression" class="headerlink" title="Lecture 10 Multiple Logistic Regression"></a>Lecture 10 Multiple Logistic Regression</h2><p>Outline:</p>
 <ul>
 <li>Multiple Logistic Regression</li>
 <li>Extensions to Logistic Regression</li>
 <li>Sample Size Calculation in Logistic Regression Model</li>
 </ul>
-<h3 id="multiple-logistic-regression">10.1 Multiple Logistic Regression</h3>
-<p>Denote <span class="math inline">\(p\)</span> the probability of disease, the regression model</p>
-<p><span class="math display">\[
-p=\alpha+\beta_1x_1+...+\beta_kx_k
-\]</span></p>
-<p><strong>Logit function:</strong> map <span class="math inline">\((-\infty,\infty)\rightarrow(0,1)\)</span></p>
-<p><span class="math display">\[
-logit(p)=\ln\frac{p}{1-p}
-\]</span></p>
-<p>Then the multiple logistic-regression model is given by</p>
-<p><span class="math display">\[
-logit(p)=\ln\frac{p}{1-p}=\alpha+\beta_1x_1+...+\beta_kx_k
-\]</span></p>
-<p>or equivalently</p>
-<p><span class="math display">\[
-p=\frac{e^{\alpha+\beta_1x_1+...+\beta_kx_k}}{1+e^{\alpha+\beta_1x_1+...+\beta_kx_k}}
-\]</span></p>
-<h4 id="categorical-variable">10.1.1 Categorical variable</h4>
-<p>For a certain categorical variable(j):</p>
-<p><span class="math inline">\(logit(p_A)=\alpha+...+\beta_j(1)+...+\beta_kx_k\)</span></p>
-<p><span class="math inline">\(logit(p_B)=\alpha+...+\beta_j(0)+...+\beta_kx_k\)</span></p>
-<p>So that <span class="math inline">\(logit(p_A)-logit(p_B)=\beta_j\Leftrightarrow\dfrac{p_A/(1-p_A)}{p_B/(1-p_B)}=e^{\beta_j}\)</span></p>
-<p><span class="math display">\[
-OR=\frac{Odds_A}{Odds_B}=e^{\beta_j}
-\]</span></p>
-<p>CI for the true <span class="math inline">\(OR\)</span> : <span class="math inline">\(\exp(\hat{\beta_j}\pm z_{1-\alpha/2}se(\hat{\beta_j}))\)</span></p>
+<h3 id="10-1-Multiple-Logistic-Regression"><a href="#10-1-Multiple-Logistic-Regression" class="headerlink" title="10.1 Multiple Logistic Regression"></a>10.1 Multiple Logistic Regression</h3><p>Denote $p$ the probability of disease, the regression model</p>
+<script type="math/tex; mode=display">
+p=\alpha+\beta_1x_1+...+\beta_kx_k</script><p><strong>Logit function:</strong> map $(-\infty,\infty)\rightarrow(0,1)$</p>
+<script type="math/tex; mode=display">
+logit(p)=\ln\frac{p}{1-p}</script><p>Then the multiple logistic-regression model is given by</p>
+<script type="math/tex; mode=display">
+logit(p)=\ln\frac{p}{1-p}=\alpha+\beta_1x_1+...+\beta_kx_k</script><p>or equivalently</p>
+<script type="math/tex; mode=display">
+p=\frac{e^{\alpha+\beta_1x_1+...+\beta_kx_k}}{1+e^{\alpha+\beta_1x_1+...+\beta_kx_k}}</script><h4 id="10-1-1-Categorical-variable"><a href="#10-1-1-Categorical-variable" class="headerlink" title="10.1.1 Categorical variable"></a>10.1.1 Categorical variable</h4><p>For a certain categorical variable(j):</p>
+<p>$logit(p_A)=\alpha+…+\beta_j(1)+…+\beta_kx_k$</p>
+<p>$logit(p_B)=\alpha+…+\beta_j(0)+…+\beta_kx_k$</p>
+<p>So that $logit(p_A)-logit(p_B)=\beta_j\Leftrightarrow\dfrac{p_A/(1-p_A)}{p_B/(1-p_B)}=e^{\beta_j}$</p>
+<script type="math/tex; mode=display">
+OR=\frac{Odds_A}{Odds_B}=e^{\beta_j}</script><p>CI for the true $OR$ : $\exp(\hat{\beta_j}\pm z_{1-\alpha/2}se(\hat{\beta_j}))$</p>
 <p><strong>Note:</strong></p>
 <p>2X2表格，前瞻性、回顾性实验区别？</p>
-<p>前瞻性实验：<span class="math inline">\(logit(P(Y|X))=\beta_0+\beta_1X\)</span></p>
-<p>回顾性实验：<span class="math inline">\(logit(P(Y|X))=\alpha_0+\alpha_1X\)</span></p>
-<p>由于<span class="math inline">\(OR\)</span>在两组实验中相同，<span class="math inline">\(\beta_1=\alpha_1\)</span>，考虑<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\alpha_0\)</span>是否相等</p>
-<p>在模型拟合中，截距项是一个“基准”（PPT13）而<span class="math inline">\(OR\)</span>是一个基于基准的浮动值</p>
-<p><span class="math display">\[
+<p>前瞻性实验：$logit(P(Y|X))=\beta_0+\beta_1X$</p>
+<p>回顾性实验：$logit(P(Y|X))=\alpha_0+\alpha_1X$</p>
+<p>由于$OR$在两组实验中相同，$\beta_1=\alpha_1$，考虑$\beta_0$和$\alpha_0$是否相等</p>
+<p>在模型拟合中，截距项是一个“基准”（PPT13）而$OR$是一个基于基准的浮动值</p>
+<script type="math/tex; mode=display">
 logit(p)=\ln\left\{\frac{p(D|E)}{1-p(D|E)}\right\}=\alpha+\beta E\\
-OR=\frac{p_1/(1-p_1)}{p_0(1-p_0)}=\frac{\exp(\gamma_1)}{\exp(\gamma_0)}=e^\beta
-\]</span></p>
-<p>在前瞻性和回顾性实验中，<span class="math inline">\(\gamma_0\)</span>基准的含义不同，分别为<span class="math inline">\(\frac{a}{a+b}\)</span>和<span class="math inline">\(\frac{A}{A+B}\)</span>，因而<span class="math inline">\(\beta_0\)</span>和<span class="math inline">\(\alpha_0\)</span>的含义不同</p>
-<p>由列联表可以求出患病率在暴露组(exposed)和非暴露组(unexposed)中的数值为<span class="math inline">\(\frac{a}{a+c}\)</span>和<span class="math inline">\(\frac{b}{b+d}\)</span>，或由逻辑回归模型有<span class="math inline">\(e^{\hat{\alpha}+\hat{\beta}}/(1+e^{\hat{\alpha}+\hat{\beta}})\)</span>和<span class="math inline">\(e^{\hat{\alpha}}/(1+e^{\hat{\alpha}})\)</span></p>
-<h4 id="continuous-variable">10.1.2 Continuous variable</h4>
-<p>For a certain continuous variable(j):</p>
-<p><span class="math inline">\(logit(p_A)=\alpha+...+\beta_j(x_j+\Delta)+...+\beta_kx_k\)</span></p>
-<p><span class="math inline">\(logit(p_B)=\alpha+...+\beta_jx_j+...+\beta_kx_k\)</span></p>
-<p>then <span class="math inline">\(\widehat{OR}=e^{\hat{\beta_j}\Delta}\)</span> relating the exposure variable to the dependent variable after controlling all other variables</p>
-<p>CI for the true <span class="math inline">\(OR\)</span> : <span class="math inline">\(\exp(\hat{\beta_j}\Delta\pm z_{1-\alpha/2}se(\hat{\beta_j})\Delta)\)</span></p>
-<h4 id="hypothesis-testing-1">10.1.3 Hypothesis Testing</h4>
-<p><strong>Target:</strong> To test whether to risk factors is statistical significance</p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\beta_j=0,\beta_i\neq 0 (i\neq j)\quad v.s. \quad H_1:\beta_i\neq 0,\forall i\)</span></p>
+OR=\frac{p_1/(1-p_1)}{p_0(1-p_0)}=\frac{\exp(\gamma_1)}{\exp(\gamma_0)}=e^\beta</script><p>在前瞻性和回顾性实验中，$\gamma_0$基准的含义不同，分别为$\frac{a}{a+b}$和$\frac{A}{A+B}$，因而$\beta_0$和$\alpha_0$的含义不同</p>
+<p>由列联表可以求出患病率在暴露组(exposed)和非暴露组(unexposed)中的数值为$\frac{a}{a+c}$和$\frac{b}{b+d}$，或由逻辑回归模型有$e^{\hat{\alpha}+\hat{\beta}}/(1+e^{\hat{\alpha}+\hat{\beta}})$和$e^{\hat{\alpha}}/(1+e^{\hat{\alpha}})$</p>
+<h4 id="10-1-2-Continuous-variable"><a href="#10-1-2-Continuous-variable" class="headerlink" title="10.1.2 Continuous variable"></a>10.1.2 Continuous variable</h4><p>For a certain continuous variable(j):</p>
+<p>$logit(p_A)=\alpha+…+\beta_j(x_j+\Delta)+…+\beta_kx_k$</p>
+<p>$logit(p_B)=\alpha+…+\beta_jx_j+…+\beta_kx_k$</p>
+<p>then $\widehat{OR}=e^{\hat{\beta_j}\Delta}$ relating the exposure variable to the dependent variable after controlling all other variables</p>
+<p>CI for the true $OR$ : $\exp(\hat{\beta_j}\Delta\pm z_{1-\alpha/2}se(\hat{\beta_j})\Delta)$</p>
+<h4 id="10-1-3-Hypothesis-Testing"><a href="#10-1-3-Hypothesis-Testing" class="headerlink" title="10.1.3 Hypothesis Testing"></a>10.1.3 Hypothesis Testing</h4><p><strong>Target:</strong> To test whether to risk factors is statistical significance</p>
+<p><strong>Hypothesis:</strong> $H_0:\beta_j=0,\beta_i\neq 0 (i\neq j)\quad v.s. \quad H_1:\beta_i\neq 0,\forall i$</p>
 <p><strong>Test Statistic:</strong></p>
-<p><span class="math display">\[
-z=\frac{\hat{\beta_j}}{se(\hat{\beta_j})}\stackrel{H_0}{\sim}N(0,1)
-\]</span></p>
-<h4 id="prediction">10.1.4 Prediction</h4>
-<p>First compute the linear predictor <span class="math inline">\(\hat{L}=\hat{\alpha}+...+\hat{\beta_k}x_k\)</span>, then the point estimate:</p>
-<p><span class="math display">\[
-\hat{p}=\frac{e^{\hat{L}}}{1+e^{\hat{L}}}
-\]</span></p>
-<p><strong>Pearson residuals:</strong></p>
-<p><span class="math display">\[
-r_i=\frac{y_i-\hat{p_i}}{se(\hat{p_i})}
-\]</span></p>
-<p>where <span class="math inline">\(y_i\)</span> is the proportion of successes among the ith group of observations/numbers of success observations</p>
+<script type="math/tex; mode=display">
+z=\frac{\hat{\beta_j}}{se(\hat{\beta_j})}\stackrel{H_0}{\sim}N(0,1)</script><h4 id="10-1-4-Prediction"><a href="#10-1-4-Prediction" class="headerlink" title="10.1.4 Prediction"></a>10.1.4 Prediction</h4><p>First compute the linear predictor $\hat{L}=\hat{\alpha}+…+\hat{\beta_k}x_k$, then the point estimate:</p>
+<script type="math/tex; mode=display">
+\hat{p}=\frac{e^{\hat{L}}}{1+e^{\hat{L}}}</script><p><strong>Pearson residuals:</strong></p>
+<script type="math/tex; mode=display">
+r_i=\frac{y_i-\hat{p_i}}{se(\hat{p_i})}</script><p>where $y_i$ is the proportion of successes among the ith group of observations/numbers of success observations</p>
 <p><strong>Deviance residuals:</strong></p>
-<p><span class="math display">\[
-r_i=sign(y_i-\hat{p_i})\sqrt{-2[y_i\log\hat{p_i}+(1-y_i)\log(1-\hat{p_i})]}
-\]</span></p>
-<h3 id="extensions-to-logistic-regression">10.2 Extensions to Logistic Regression</h3>
-<h4 id="conditional-logistic-regression">10.2.1 Conditional Logistic Regression</h4>
-<p><strong>Target:</strong> assess the association between two variables, but control for certain covariates denoted in summary by <span class="math inline">\(\tilde{z}\)</span></p>
-<p>Subdivide the data into <span class="math inline">\(S\)</span> matched sets (<span class="math inline">\(i=1,...,S\)</span>, a single case and <span class="math inline">\(n_i\)</span> controls):</p>
-<p><span class="math display">\[
-logit(p(D_{ij}=1))=\alpha_iI(\text{in the ith set})+\beta x_{ij}+\gamma z_{ij}
-\]</span></p>
-<p>then the conditional probability that the jth member of a matched set is a case given that <strong>there is exactly one case in the matched set</strong>, denoted by <span class="math inline">\(p_{ij}\)</span></p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+r_i=sign(y_i-\hat{p_i})\sqrt{-2[y_i\log\hat{p_i}+(1-y_i)\log(1-\hat{p_i})]}</script><h3 id="10-2-Extensions-to-Logistic-Regression"><a href="#10-2-Extensions-to-Logistic-Regression" class="headerlink" title="10.2 Extensions to Logistic Regression"></a>10.2 Extensions to Logistic Regression</h3><h4 id="10-2-1-Conditional-Logistic-Regression"><a href="#10-2-1-Conditional-Logistic-Regression" class="headerlink" title="10.2.1 Conditional Logistic Regression"></a>10.2.1 Conditional Logistic Regression</h4><p><strong>Target:</strong> assess the association between two variables, but control for certain covariates denoted in summary by $\tilde{z}$</p>
+<p>Subdivide the data into $S$ matched sets ($i=1,…,S$, a single case and $n_i$ controls):</p>
+<script type="math/tex; mode=display">
+logit(p(D_{ij}=1))=\alpha_iI(\text{in the ith set})+\beta x_{ij}+\gamma z_{ij}</script><p>then the conditional probability that the jth member of a matched set is a case given that <strong>there is exactly one case in the matched set</strong>, denoted by $p_{ij}$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    p_{ij}&amp;=Pr(D_{ij}=1|\sum_{k=1}^{n_i}D_{ik}=1)\\
-    &amp;=\frac{Pr(D_{ij}=1)\prod_{k\neq j}Pr(D_{ik}=0)}{\sum_lPr(D_{il}=1)\prod_{k\neq l}Pr(D_{ik}=0)}\\
-    &amp;=\exp(\beta x_{ij}+\tilde{\gamma}\tilde{z_{ij}})/\sum_l\exp(\beta x_{il}+\tilde{\gamma}\tilde{z_{il}})
-\end{aligned}
-\]</span></p>
-<p>The conditional Likelihood, where <span class="math inline">\(j_i\)</span> is the case in the ith matched set:</p>
-<p><span class="math display">\[
-L=\prod_{i=1}^Sp_{ij_i}
-\]</span></p>
-<ul>
-<li>for two subjects(case and control) in the ith matched set, <span class="math inline">\(\tilde{z_{ij}}=\tilde{z_{il}}\)</span> and <span class="math inline">\(x_{ij}=x_{il}+1\)</span></li>
-<li><span class="math inline">\(RR=Pr(D_{ij}=1)/Pr(D_{il}=1)=\exp(\beta)\)</span></li>
+    p_{ij}&=Pr(D_{ij}=1|\sum_{k=1}^{n_i}D_{ik}=1)\\
+    &=\frac{Pr(D_{ij}=1)\prod_{k\neq j}Pr(D_{ik}=0)}{\sum_lPr(D_{il}=1)\prod_{k\neq l}Pr(D_{ik}=0)}\\
+    &=\exp(\beta x_{ij}+\tilde{\gamma}\tilde{z_{ij}})/\sum_l\exp(\beta x_{il}+\tilde{\gamma}\tilde{z_{il}})
+\end{aligned}</script><p>The conditional Likelihood, where $j_i$ is the case in the ith matched set:</p>
+<script type="math/tex; mode=display">
+L=\prod_{i=1}^Sp_{ij_i}</script><ul>
+<li>for two subjects(case and control) in the ith matched set, $\tilde{z_{ij}}=\tilde{z_{il}}$ and $x_{ij}=x_{il}+1$</li>
+<li>$RR=Pr(D_{ij}=1)/Pr(D_{il}=1)=\exp(\beta)$</li>
 </ul>
-<h4 id="polychotomous-logistic-regression">10.2.2 Polychotomous Logistic Regression</h4>
-<p><strong>Situation:</strong> outcome variable has more than 2 categories</p>
-<p><span class="math display">\[
-Pr(1st)=\frac{1}{1+\sum_{r=2}^Q\exp(\alpha_r+\sum_{k=1}^K\beta_{rk}x_k)}
-\]</span></p>
-<p><span class="math display">\[
-Pr(qth)=\frac{\exp(\alpha_q+\sum_{k=1}^K\beta_{qk}x_k)}{1+\sum_{r=2}^Q\exp(\alpha_r+\sum_{k=1}^K\beta_{rk}x_k)},q=2,...,Q
-\]</span></p>
-<p>the odds of subject S is in the qth outcome category, denoted by <span class="math inline">\(Odds_{q,S}\)</span>(compare with the control group, i.e.<span class="math inline">\(Pr(qth)/Pr(1st)\)</span>)</p>
-<p><span class="math display">\[
-Odds_{q,S}=\exp(\alpha_q+\sum_{k=1}^K\beta_{qk}x_k))
-\]</span></p>
-<p>then we can compare the <span class="math inline">\(OR\)</span> for being in category <span class="math inline">\(q\)</span> v.s. control group for subject A and B (suppose that A and B only differ in <span class="math inline">\(x_k\)</span> and <span class="math inline">\(x_k+1\)</span>):</p>
-<p><span class="math display">\[
-\frac{Odds_{q,A}}{Odds_{q,B}}=\exp(\beta_{qk})
-\]</span></p>
-<h4 id="ordinal-logsitic-regression">10.2.3 Ordinal Logsitic Regression</h4>
-<p><strong>Target:</strong> the case of <span class="math inline">\(c(c\geq 2)\)</span> ordered categories</p>
-<p><span class="math display">\[
-\log\frac{Pr(y\leq j)}{Pr(y\geq j+1)}=\alpha_j-\beta_1x_1-...-\beta_kx_k,j=1,...,c-1
-\]</span></p>
-<p>then we obtain</p>
-<p><span class="math display">\[
-(\text{odds that }y\leq j|x_q=x)/(\text{odds that }y\leq j|x_q=x-1)=e^{\beta_q}
-\]</span></p>
-<h3 id="sample-size-calculation-in-logistic-regression-model">10.3 Sample Size Calculation in Logistic Regression Model</h3>
-<h4 id="continuous-x">10.3.1 Continuous X</h4>
-<p><span class="math display">\[
-\log(\frac{P(Y=1|x)}{1-P(Y=1|x)})=\beta_0+\beta_1x
-\]</span></p>
-<p><strong>Hypothesis:</strong> <span class="math inline">\(H_0:\beta_1=0\quad v.s. \quad H_1:\beta_1\neq 0\)</span></p>
-<p>If the rationale is if <span class="math inline">\(Y\)</span> is not related to <span class="math inline">\(X\)</span>, then <span class="math inline">\(\mu_1=\mu_2\)</span>, where <span class="math inline">\(\mu_1=E(X|Y=0),\mu_2=E(X|Y=1)\)</span></p>
-<p>The equivalence hypothesis testing: <span class="math inline">\(H_0:\mu_1=\mu_2\quad v.s. \quad H_1:\mu_1\neq\mu_2\)</span></p>
+<h4 id="10-2-2-Polychotomous-Logistic-Regression"><a href="#10-2-2-Polychotomous-Logistic-Regression" class="headerlink" title="10.2.2 Polychotomous Logistic Regression"></a>10.2.2 Polychotomous Logistic Regression</h4><p><strong>Situation:</strong> outcome variable has more than 2 categories</p>
+<script type="math/tex; mode=display">
+Pr(1st)=\frac{1}{1+\sum_{r=2}^Q\exp(\alpha_r+\sum_{k=1}^K\beta_{rk}x_k)}</script><script type="math/tex; mode=display">
+Pr(qth)=\frac{\exp(\alpha_q+\sum_{k=1}^K\beta_{qk}x_k)}{1+\sum_{r=2}^Q\exp(\alpha_r+\sum_{k=1}^K\beta_{rk}x_k)},q=2,...,Q</script><p>the odds of subject S is in the qth outcome category, denoted by $Odds_{q,S}$(compare with the control group, i.e.$Pr(qth)/Pr(1st)$)</p>
+<script type="math/tex; mode=display">
+Odds_{q,S}=\exp(\alpha_q+\sum_{k=1}^K\beta_{qk}x_k))</script><p>then we can compare the $OR$ for being in category $q$ v.s. control group for subject A and B (suppose that A and B only differ in $x_k$ and $x_k+1$):</p>
+<script type="math/tex; mode=display">
+\frac{Odds_{q,A}}{Odds_{q,B}}=\exp(\beta_{qk})</script><h4 id="10-2-3-Ordinal-Logsitic-Regression"><a href="#10-2-3-Ordinal-Logsitic-Regression" class="headerlink" title="10.2.3 Ordinal Logsitic Regression"></a>10.2.3 Ordinal Logsitic Regression</h4><p><strong>Target:</strong> the case of $c(c\geq 2)$ ordered categories</p>
+<script type="math/tex; mode=display">
+\log\frac{Pr(y\leq j)}{Pr(y\geq j+1)}=\alpha_j-\beta_1x_1-...-\beta_kx_k,j=1,...,c-1</script><p>then we obtain</p>
+<script type="math/tex; mode=display">
+(\text{odds that }y\leq j|x_q=x)/(\text{odds that }y\leq j|x_q=x-1)=e^{\beta_q}</script><h3 id="10-3-Sample-Size-Calculation-in-Logistic-Regression-Model"><a href="#10-3-Sample-Size-Calculation-in-Logistic-Regression-Model" class="headerlink" title="10.3 Sample Size Calculation in Logistic Regression Model"></a>10.3 Sample Size Calculation in Logistic Regression Model</h3><h4 id="10-3-1-Continuous-X"><a href="#10-3-1-Continuous-X" class="headerlink" title="10.3.1 Continuous X"></a>10.3.1 Continuous X</h4><script type="math/tex; mode=display">
+\log(\frac{P(Y=1|x)}{1-P(Y=1|x)})=\beta_0+\beta_1x</script><p><strong>Hypothesis:</strong> $H_0:\beta_1=0\quad v.s. \quad H_1:\beta_1\neq 0$</p>
+<p>If the rationale is if $Y$ is not related to $X$, then $\mu_1=\mu_2$, where $\mu_1=E(X|Y=0),\mu_2=E(X|Y=1)$</p>
+<p>The equivalence hypothesis testing: $H_0:\mu_1=\mu_2\quad v.s. \quad H_1:\mu_1\neq\mu_2$</p>
 <p>The sample size being required for testing the equality of two independent sample means is</p>
-<p><span class="math display">\[
-n=\frac{(k+1)^2}{k}\cdot\frac{\sigma^2(z_{1-\alpha/2}+z_{1-\beta})^2}{(\mu_1-\mu_2)^2}
-\]</span></p>
-<p>where <span class="math inline">\(\sigma^2\)</span> is the common variance of two normal distributions and <span class="math inline">\(k=\frac{n_2}{n_1}=\frac{p_1}{1-p_1}\)</span>, <span class="math inline">\(p_1=Pr(Y=1|x=EX)\)</span></p>
-<p>Note that <span class="math inline">\(P(Y=1|x)=\frac{f(x|Y=1)P(Y=1)}{f(x)}\)</span>, then</p>
-<p><span class="math display">\[
-\frac{P(Y=1|x)}{P(Y=0|x)}=\frac{f(x|Y=1)P(Y=1)}{f(x|Y=0)P(Y=0)}=\frac{\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu_2)^2}{2\sigma^2})P(Y=1)}{\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu_1)^2}{2\sigma^2})P(Y=0)}
-\]</span></p>
-<p><span class="math display">\[
-\Rightarrow\log(\frac{P(Y=1|x)}{1-P(Y=1|x)})=\log(\frac{P(Y=1)}{P(Y=0)})+\frac{(x-\mu_1)^2-(x-\mu_2)^2}{2\sigma^2}
-\]</span></p>
-<p>so that we have <span class="math inline">\(Odds=C+\frac{\mu_2-\mu_1}{\sigma}\cdot\frac{x}{\sigma}\)</span> and <span class="math inline">\(\beta_1=\frac{\mu_2-\mu_1}{\sigma}\)</span> has the meaning of the <span class="math inline">\(\log OR\)</span> when <span class="math inline">\(x\)</span> increase to <span class="math inline">\(x+\sigma\)</span>. Thus,</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+n=\frac{(k+1)^2}{k}\cdot\frac{\sigma^2(z_{1-\alpha/2}+z_{1-\beta})^2}{(\mu_1-\mu_2)^2}</script><p>where $\sigma^2$ is the common variance of two normal distributions and $k=\frac{n_2}{n_1}=\frac{p_1}{1-p_1}$, $p_1=Pr(Y=1|x=EX)$</p>
+<p>Note that $P(Y=1|x)=\frac{f(x|Y=1)P(Y=1)}{f(x)}$, then</p>
+<script type="math/tex; mode=display">
+\frac{P(Y=1|x)}{P(Y=0|x)}=\frac{f(x|Y=1)P(Y=1)}{f(x|Y=0)P(Y=0)}=\frac{\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu_2)^2}{2\sigma^2})P(Y=1)}{\frac{1}{\sqrt{2\pi}\sigma}\exp(-\frac{(x-\mu_1)^2}{2\sigma^2})P(Y=0)}</script><script type="math/tex; mode=display">
+\Rightarrow\log(\frac{P(Y=1|x)}{1-P(Y=1|x)})=\log(\frac{P(Y=1)}{P(Y=0)})+\frac{(x-\mu_1)^2-(x-\mu_2)^2}{2\sigma^2}</script><p>so that we have $Odds=C+\frac{\mu_2-\mu_1}{\sigma}\cdot\frac{x}{\sigma}$ and $\beta_1=\frac{\mu_2-\mu_1}{\sigma}$ has the meaning of the $\log OR$ when $x$ increase to $x+\sigma$. Thus,</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-    n&amp;=\frac{(k+1)^2}{k}\cdot\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{(\frac{\mu_1-\mu_2}{\sigma})^2}\\
-    &amp;=\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{p_1(1-p_1)\beta_1^2}\\
-    &amp;=\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{p_1(1-p_1)\log(\frac{Odds_2}{Odds_1})^2}
-\end{aligned}
-\]</span></p>
-<h4 id="binary-x">10.3.2 Binary X</h4>
-<p><span class="math display">\[
-n=(1+k)\cdot\frac{(z_{1-\alpha/2}\sqrt{\frac{p(1-p)(k+1)}{k}}+z_{1-\beta}\sqrt{p_0(1-p_0)+\frac{p_1(1-p_1)}{k}})^2}{(p_0-p_1)^2}
-\]</span></p>
-<p>where <span class="math inline">\(p_0\)</span> and <span class="math inline">\(p_1\)</span> are proportion that <span class="math inline">\(Y=1|X=0,1\)</span> and <span class="math inline">\(p=\frac{p_0+kp_1}{1+k}\)</span></p>
-<p>Suppose <span class="math inline">\(B\)</span> is the proportion of the sample with <span class="math inline">\(X=1\)</span>, overall rate is <span class="math inline">\(p=(1-B)p_0+Bp_1\)</span>, then <span class="math inline">\(k=\frac{B}{1-B}\)</span></p>
-<p><span class="math display">\[
-n=\frac{(z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{B}}+z_{1-\beta}\sqrt{p_0(1-p_0)+\frac{p_1(1-p_1)(1-B)}{B}})^2}{(p_0-p_1)^2(1-B)}
-\]</span></p>
-<h4 id="multiple-logistic-regression-1">10.3.3 Multiple Logistic Regression</h4>
-<p><span class="math display">\[
-var_p(b_1)=var_1(b)/(1-R^2)
-\]</span></p>
-<p>where <span class="math inline">\(R^2\)</span> is equal to the proportion of the variance of <span class="math inline">\(X_1\)</span> explained by the regression relationship with <span class="math inline">\(X_2,...,X_p\)</span></p>
-<p><span class="math display">\[
-n_p=n_1/(1-R^2)
-\]</span></p>
-<h2 id="lecture-11-clustered-binary-data">Lecture 11 Clustered Binary Data</h2>
-<p>Outline:</p>
+    n&=\frac{(k+1)^2}{k}\cdot\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{(\frac{\mu_1-\mu_2}{\sigma})^2}\\
+    &=\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{p_1(1-p_1)\beta_1^2}\\
+    &=\frac{(z_{1-\alpha/2}+z_{1-\beta})^2}{p_1(1-p_1)\log(\frac{Odds_2}{Odds_1})^2}
+\end{aligned}</script><h4 id="10-3-2-Binary-X"><a href="#10-3-2-Binary-X" class="headerlink" title="10.3.2 Binary X"></a>10.3.2 Binary X</h4><script type="math/tex; mode=display">
+n=(1+k)\cdot\frac{(z_{1-\alpha/2}\sqrt{\frac{p(1-p)(k+1)}{k}}+z_{1-\beta}\sqrt{p_0(1-p_0)+\frac{p_1(1-p_1)}{k}})^2}{(p_0-p_1)^2}</script><p>where $p_0$ and $p_1$ are proportion that $Y=1|X=0,1$ and $p=\frac{p_0+kp_1}{1+k}$</p>
+<p>Suppose $B$ is the proportion of the sample with $X=1$, overall rate is $p=(1-B)p_0+Bp_1$, then $k=\frac{B}{1-B}$</p>
+<script type="math/tex; mode=display">
+n=\frac{(z_{1-\alpha/2}\sqrt{\frac{p(1-p)}{B}}+z_{1-\beta}\sqrt{p_0(1-p_0)+\frac{p_1(1-p_1)(1-B)}{B}})^2}{(p_0-p_1)^2(1-B)}</script><h4 id="10-3-3-Multiple-Logistic-Regression"><a href="#10-3-3-Multiple-Logistic-Regression" class="headerlink" title="10.3.3 Multiple Logistic Regression"></a>10.3.3 Multiple Logistic Regression</h4><script type="math/tex; mode=display">
+var_p(b_1)=var_1(b)/(1-R^2)</script><p>where $R^2$ is equal to the proportion of the variance of $X_1$ explained by the regression relationship with $X_2,…,X_p$</p>
+<script type="math/tex; mode=display">
+n_p=n_1/(1-R^2)</script><h2 id="Lecture-11-Clustered-Binary-Data"><a href="#Lecture-11-Clustered-Binary-Data" class="headerlink" title="Lecture 11 Clustered Binary Data"></a>Lecture 11 Clustered Binary Data</h2><p>Outline:</p>
 <ul>
 <li>Equivalence Studies</li>
 <li>Missing Data</li>
 </ul>
-<h3 id="equivalence-studies">11.1 Equivalence Studies</h3>
-<p><strong>Target:</strong> test whether the &quot;effectiveness&quot; is enough</p>
-<p>Denote <span class="math inline">\(p_1\)</span> the survival rate for the standard treatment and <span class="math inline">\(p_2\)</span> the survival rate for the experimental treatment</p>
+<h3 id="11-1-Equivalence-Studies"><a href="#11-1-Equivalence-Studies" class="headerlink" title="11.1 Equivalence Studies"></a>11.1 Equivalence Studies</h3><p><strong>Target:</strong> test whether the “effectiveness” is enough</p>
+<p>Denote $p_1$ the survival rate for the standard treatment and $p_2$ the survival rate for the experimental treatment</p>
 <ul>
-<li>Superiority test (good enough)
-<ul>
-<li>Higher means better: <span class="math inline">\(H_1:p_2&gt;p_1+\delta\)</span></li>
-<li>Higher means worse: <span class="math inline">\(H_1:p_2&lt;p_1-\delta\)</span></li>
-</ul></li>
-<li>Non-inferiority test (not so bad)
-<ul>
-<li>Higher means better: <span class="math inline">\(H_1:p_2&gt;p_1-\delta\)</span></li>
-<li>Higher means worse: <span class="math inline">\(H_1:p_2&lt;p_1+\delta\)</span></li>
-</ul></li>
+<li>Superiority test (good enough)<ul>
+<li>Higher means better: $H_1:p_2&gt;p_1+\delta$</li>
+<li>Higher means worse: $H_1:p_2&lt;p_1-\delta$</li>
 </ul>
-<p><strong>Example:</strong> <span class="math inline">\(p_1=0.8,\delta=0.1\)</span>, Non-inferiority test</p>
-<p><span class="math display">\[
-H_0:p_1-p_2\geq \delta \quad v.s.\quad H_1:p_2&gt;p_1-\delta
-\]</span></p>
-<p><span class="math display">\[
-z^*=\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}\stackrel{H_0}{\sim}N(0,1)
-\]</span></p>
-<p>and the rejection region <span class="math inline">\(z^*&lt;-z_{1-\alpha}\)</span></p>
+</li>
+<li>Non-inferiority test (not so bad)<ul>
+<li>Higher means better: $H_1:p_2&gt;p_1-\delta$</li>
+<li>Higher means worse: $H_1:p_2&lt;p_1+\delta$</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example:</strong> $p_1=0.8,\delta=0.1$, Non-inferiority test</p>
+<script type="math/tex; mode=display">
+H_0:p_1-p_2\geq \delta \quad v.s.\quad H_1:p_2>p_1-\delta</script><script type="math/tex; mode=display">
+z^*=\frac{\hat{p_1}-\hat{p_2}-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}\stackrel{H_0}{\sim}N(0,1)</script><p>and the rejection region $z^*&lt;-z_{1-\alpha}$</p>
 <p><strong>Sample size:</strong></p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 \begin{aligned}
-    1-\beta&amp;=Pr(\hat{p_1}-\hat{p_2}+z_{1-\alpha}\sqrt{\frac{\hat{p_1}\hat{q_1}}{n_1}+\frac{\hat{p_2}\hat{q_2}}{n_2}}\leq\delta)\\
-    &amp;=Pr(z^*\leq \frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha})\\
-    &amp;=\Phi(\frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha})
-\end{aligned}
-\]</span></p>
-<p>so that we have <span class="math inline">\(z_{1-\beta}=\frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha}\)</span>, assume that <span class="math inline">\(n_2=kn_1\)</span>, it can be shown that</p>
-<p><span class="math display">\[
-n_1=\frac{(\hat{p_1}\hat{q_1}+\hat{p_2}\hat{q_2}/k)(z_{1-\alpha}+z_{1-\beta})^2}{[\delta-(p_1-p_2)]^2}
-\]</span></p>
-<h3 id="missing-data">11.2 Missing Data</h3>
-<p><strong>Imputation:</strong> Imputation is defined as the estimation of a missing variable as a function of other covariates that are present, including the outcome</p>
-<p><strong>Multiple Imputation</strong> is a Monte Carlo technique in which the missing values are replaced by <span class="math inline">\(m&gt;1\)</span> simulated versions, where <span class="math inline">\(m\)</span> is typically small</p>
-<ol type="1">
-<li>Covariates: <span class="math inline">\(x_1,...,x_k\)</span> have complete <span class="math inline">\(x_1,...,x_{k-1}\)</span> and missing for <span class="math inline">\(N_{mis}\)</span> subjects in <span class="math inline">\(x_k\)</span> and <span class="math inline">\(N_{obs}\)</span> are available. A binary outcome <span class="math inline">\(y\)</span></li>
-<li>Run a multiple regression analysis of <span class="math inline">\(x_k\)</span> on <span class="math inline">\(x_1,...,x_{k-1},y\)</span> based on the complete data <span class="math display">\[x_k=\alpha+\gamma_1x_1+...+\gamma_{k-1}x_{k-1}+\delta y+\epsilon\]</span></li>
-<li>For <span class="math inline">\(i=1,...,N_{mis}\)</span> subjects with missing data on <span class="math inline">\(x_k\)</span>, calculate an estimated value for <span class="math inline">\(x_k\)</span>, denoted by <span class="math inline">\(x_{i,k,1}\)</span> for ith subject <span class="math display">\[\widehat{x_k}=\hat{\alpha}+\hat{\gamma_1}x_1+...+\widehat{\gamma_{k-1}}x_{k-1}+\hat{\delta}y\]</span></li>
-<li>Denote <span class="math inline">\(\xi(X)\)</span> a Monte Carlo sample, then <span class="math display">\[x_{i,k,1}=\xi(\hat{\alpha})+\xi(\hat{\gamma_1})x_1+...+\xi(\widehat{\gamma_{k-1}})x_{k-1}+\xi(\hat{\delta})y+\xi\cdot MSE\]</span></li>
-<li>Run a logistic regression <span class="math display">\[\ln\frac{p}{1-p}=\alpha+\beta_1x_1+...+\beta_kx_k\]</span></li>
-<li>Repeat steps 3-5 for <span class="math inline">\(m-1\)</span> additional imputations</li>
-<li>The estimates from the <span class="math inline">\(m\)</span> seperate imputations are then combined into a overall estimate for <span class="math inline">\(\beta_j\)</span> <span class="math display">\[\hat{\beta_j}=\sum_{q=1}^m\frac{\hat{\beta_{j,q}}}{m}\]</span></li>
+    1-\beta&=Pr(\hat{p_1}-\hat{p_2}+z_{1-\alpha}\sqrt{\frac{\hat{p_1}\hat{q_1}}{n_1}+\frac{\hat{p_2}\hat{q_2}}{n_2}}\leq\delta)\\
+    &=Pr(z^*\leq \frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha})\\
+    &=\Phi(\frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha})
+\end{aligned}</script><p>so that we have $z_{1-\beta}=\frac{\delta-(p_1-p_2)}{\sqrt{\hat{p_1}\hat{q_1}/n_1+\hat{p_2}\hat{q_2}/n_2}}-z_{1-\alpha}$, assume that $n_2=kn_1$, it can be shown that</p>
+<script type="math/tex; mode=display">
+n_1=\frac{(\hat{p_1}\hat{q_1}+\hat{p_2}\hat{q_2}/k)(z_{1-\alpha}+z_{1-\beta})^2}{[\delta-(p_1-p_2)]^2}</script><h3 id="11-2-Missing-Data"><a href="#11-2-Missing-Data" class="headerlink" title="11.2 Missing Data"></a>11.2 Missing Data</h3><p><strong>Imputation:</strong> Imputation is defined as the estimation of a missing variable as a function of other covariates that are present, including the outcome</p>
+<p><strong>Multiple Imputation</strong> is a Monte Carlo technique in which the missing values are replaced by $m&gt;1$ simulated versions, where $m$ is typically small</p>
+<ol>
+<li>Covariates: $x_1,…,x_k$ have complete $x_1,…,x_{k-1}$ and missing for $N_{mis}$ subjects in $x_k$ and $N_{obs}$ are available. A binary outcome $y$</li>
+<li>Run a multiple regression analysis of $x_k$ on $x_1,…,x_{k-1},y$ based on the complete data<script type="math/tex; mode=display">x_k=\alpha+\gamma_1x_1+...+\gamma_{k-1}x_{k-1}+\delta y+\epsilon</script></li>
+<li>For $i=1,…,N_{mis}$ subjects with missing data on $x_k$, calculate an estimated value for $x_k$, denoted by $x_{i,k,1}$ for ith subject<script type="math/tex; mode=display">\widehat{x_k}=\hat{\alpha}+\hat{\gamma_1}x_1+...+\widehat{\gamma_{k-1}}x_{k-1}+\hat{\delta}y</script></li>
+<li>Denote $\xi(X)$ a Monte Carlo sample, then<script type="math/tex; mode=display">x_{i,k,1}=\xi(\hat{\alpha})+\xi(\hat{\gamma_1})x_1+...+\xi(\widehat{\gamma_{k-1}})x_{k-1}+\xi(\hat{\delta})y+\xi\cdot MSE</script></li>
+<li>Run a logistic regression<script type="math/tex; mode=display">\ln\frac{p}{1-p}=\alpha+\beta_1x_1+...+\beta_kx_k</script></li>
+<li>Repeat steps 3-5 for $m-1$ additional imputations</li>
+<li>The estimates from the $m$ seperate imputations are then combined into a overall estimate for $\beta_j$<script type="math/tex; mode=display">\hat{\beta_j}=\sum_{q=1}^m\frac{\hat{\beta_{j,q}}}{m}</script></li>
 </ol>
 <p>The overall variance is</p>
-<p><span class="math display">\[
-Var(\hat{\beta_j})=\sum_{q=1}^m\frac{Var(\hat{\beta_{j,q}})}{m}+\frac{m+1}{m}\sum_{q=1}^m\frac{(\hat{\beta_{j,q}}-\hat{\beta_j})^2}{m-1}
-\]</span></p>
-
+<script type="math/tex; mode=display">
+Var(\hat{\beta_j})=\sum_{q=1}^m\frac{Var(\hat{\beta_{j,q}})}{m}+\frac{m+1}{m}\sum_{q=1}^m\frac{(\hat{\beta_{j,q}}-\hat{\beta_j})^2}{m-1}</script>
     </div>
 
     
@@ -1450,7 +1074,7 @@ Var(\hat{\beta_j})=\sum_{q=1}^m\frac{Var(\hat{\beta_{j,q}})}{m}+\frac{m+1}{m}\su
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-intro"><span class="nav-text">Lecture 1 Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#randomized-clinical-trial-rct"><span class="nav-text">1.1 Randomized Clinical Trial (RCT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#block-randomization"><span class="nav-text">1.1.1 Block Randomization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strafication"><span class="nav-text">1.1.2 Strafication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#blinding"><span class="nav-text">1.1.3 Blinding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#descriptive-statistics"><span class="nav-text">1.2 Descriptive Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#measures-of-location"><span class="nav-text">1.2.1 Measures of Location</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#measures-of-spread"><span class="nav-text">1.2.2 Measures of Spread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graphic-methods"><span class="nav-text">1.2.3 Graphic Methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roc-curve"><span class="nav-text">1.3 ROC curve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hypothesis-testing"><span class="nav-text">1.3.1 Hypothesis Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sensitivity-and-specificity"><span class="nav-text">1.3.2 Sensitivity and Specificity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#roc-curve-1"><span class="nav-text">1.3.3 ROC Curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-hypothesis-testing"><span class="nav-text">Lecture 2 Hypothesis Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#recap"><span class="nav-text">2.1 Recap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-under-normal-distribution"><span class="nav-text">2.2 Hypothesis test under normal distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#one-sample-test-for-the-mean"><span class="nav-text">2.2.1 One-sample test for the mean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#one-sample-test-for-the-variance"><span class="nav-text">2.2.2 One-sample test for the Variance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-for-binomial-proportions"><span class="nav-text">2.3 Hypothesis test for binomial proportions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hypothesis-test-for-the-poisson-distribution"><span class="nav-text">2.4 Hypothesis test for the Poisson Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-hypothesis-testing-two-sample-inference"><span class="nav-text">Lecture 3 Hypothesis Testing: Two-sample Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-text">3.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#paired-samplethe-paired-t-test"><span class="nav-text">3.2 Paired sample(The paired t-test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-independent-groups"><span class="nav-text">3.3 Two independent groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#two-sample-t-test-with-equal-variances"><span class="nav-text">3.3.1 Two-sample t-test with equal variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#testing-for-the-equility-of-two-variances"><span class="nav-text">3.3.2 Testing for the equility of two variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#two-sample-t-test-with-unequal-variances"><span class="nav-text">3.3.3 Two sample t-test with unequal variances</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-analysis-and-sample-size-determination"><span class="nav-text">3.4 Power analysis and Sample-size determination</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-4-nonparametric-methods"><span class="nav-text">Lecture 4 Nonparametric Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#types-of-data"><span class="nav-text">4.1 Types of Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-sign-test"><span class="nav-text">4.2 The Sign Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-theory-method"><span class="nav-text">4.2.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exact-method"><span class="nav-text">4.2.2 Exact Method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wilcoxon-signed-rank-test"><span class="nav-text">4.3 Wilcoxon Signed-rank test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wilcoxon-rank-sum-test-mann-whitney-test"><span class="nav-text">4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-size-calculation"><span class="nav-text">4.5 Sample-size Calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sign-test"><span class="nav-text">4.5.1 Sign test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wilcoxon-signed-rank-test-1"><span class="nav-text">4.5.2 Wilcoxon Signed Rank test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-other-topics"><span class="nav-text">4.6 Some other topics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-5-categorical-data"><span class="nav-text">Lecture 5 Categorical Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#two-sample-test-for-binomial-proportions"><span class="nav-text">5.1 Two-Sample Test for Binomial Proportions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal-theory-method-1"><span class="nav-text">5.1.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contingency-table-approach"><span class="nav-text">5.1.2 Contingency table approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more-details-about-chi-squared"><span class="nav-text">5.1.3 More details about chi-squared</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fishers-exact-test"><span class="nav-text">5.2 Fisher&#39;s Exact Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mcnemars-test"><span class="nav-text">5.3 McNemar&#39;s test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-size-and-power-estimation"><span class="nav-text">5.4 Sample size and power estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#two-proportions-comparision"><span class="nav-text">5.4.1 Two proportions comparision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#paired-samples"><span class="nav-text">5.4.2 Paired samples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#compliance"><span class="nav-text">5.4.3 Compliance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rtimes-c-contingency-tables"><span class="nav-text">5.5 \(R\times C\) contingency tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goodness-of-fit"><span class="nav-text">5.6 Goodness of Fit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-kappa-statistic"><span class="nav-text">5.7 The Kappa Statistic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-regression-and-correlation-methods"><span class="nav-text">Lecture 6 Regression and Correlation Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#regression-topic"><span class="nav-text">6.1 Regression Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#correaltion-coefficient"><span class="nav-text">6.2 Correaltion coefficient</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pearson-correlation-coefficient"><span class="nav-text">6.2.1 Pearson correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spearman-rank-correlation-coefficient"><span class="nav-text">6.2.2 Spearman rank correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kendalls-tau"><span class="nav-text">6.2.3 Kendall&#39;s Tau</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-7-fixed-effects-models"><span class="nav-text">Lecture 7 Fixed Effects Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one-way-anova"><span class="nav-text">7.1 One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#f-test-for-anova"><span class="nav-text">7.1.1 F-test for ANOVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#t-test-for-comparisonlsd"><span class="nav-text">7.1.2 t-test for Comparison(LSD)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multiple-comparison"><span class="nav-text">7.1.3 Multiple Comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two-way-anova"><span class="nav-text">7.2 Two-Way ANOVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kruskal-wallis-test"><span class="nav-text">7.3 Kruskal-Wallis Test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-8-random-effects-models"><span class="nav-text">Lecture 8 Random Effects Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#random-effects-one-way-anova"><span class="nav-text">8.1 Random-Effects One-way ANOVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta-analysis"><span class="nav-text">8.2 Meta Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mixed-model"><span class="nav-text">8.3 Mixed model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-9-design-and-analysis-techniques-for-epidemiologic-studies"><span class="nav-text">Lecture 9 Design and Analysis Techniques for Epidemiologic Studies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#study-design"><span class="nav-text">9.1 Study Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#measures-of-effect-for-categorical-data"><span class="nav-text">9.2 Measures of effect for categorical data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#the-risk-differencerd"><span class="nav-text">9.2.1 The Risk Difference(RD)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-risk-ratiorr"><span class="nav-text">9.2.2 The Risk Ratio(RR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-odds-ratioor"><span class="nav-text">9.2.3 The Odds Ratio(OR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delta-method"><span class="nav-text">9.2.4 Delta Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#comparison-between-rdrror"><span class="nav-text">9.2.5 Comparison between RD,RR,OR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#confounding-and-standardization"><span class="nav-text">9.3 Confounding and Standardization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mantel-haenszel-test"><span class="nav-text">9.4 Mantel-Haenszel Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#woolf-method"><span class="nav-text">9.5 Woolf Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matched-pair-studies"><span class="nav-text">9.6 Matched-pair Studies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#power-and-sample-size-estimation"><span class="nav-text">9.7 Power and Sample-Size Estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-multiple-logistic-regression"><span class="nav-text">Lecture 10 Multiple Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multiple-logistic-regression"><span class="nav-text">10.1 Multiple Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#categorical-variable"><span class="nav-text">10.1.1 Categorical variable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continuous-variable"><span class="nav-text">10.1.2 Continuous variable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hypothesis-testing-1"><span class="nav-text">10.1.3 Hypothesis Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prediction"><span class="nav-text">10.1.4 Prediction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extensions-to-logistic-regression"><span class="nav-text">10.2 Extensions to Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#conditional-logistic-regression"><span class="nav-text">10.2.1 Conditional Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#polychotomous-logistic-regression"><span class="nav-text">10.2.2 Polychotomous Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ordinal-logsitic-regression"><span class="nav-text">10.2.3 Ordinal Logsitic Regression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-size-calculation-in-logistic-regression-model"><span class="nav-text">10.3 Sample Size Calculation in Logistic Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#continuous-x"><span class="nav-text">10.3.1 Continuous X</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binary-x"><span class="nav-text">10.3.2 Binary X</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multiple-logistic-regression-1"><span class="nav-text">10.3.3 Multiple Logistic Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-clustered-binary-data"><span class="nav-text">Lecture 11 Clustered Binary Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equivalence-studies"><span class="nav-text">11.1 Equivalence Studies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#missing-data"><span class="nav-text">11.2 Missing Data</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1-Intro"><span class="nav-text">Lecture 1 Intro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Randomized-Clinical-Trial-RCT"><span class="nav-text">1.1 Randomized Clinical Trial (RCT)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-Block-Randomization"><span class="nav-text">1.1.1 Block Randomization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Strafication"><span class="nav-text">1.1.2 Strafication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-Blinding"><span class="nav-text">1.1.3 Blinding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Descriptive-Statistics"><span class="nav-text">1.2 Descriptive Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-Measures-of-Location"><span class="nav-text">1.2.1 Measures of Location</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-Measures-of-Spread"><span class="nav-text">1.2.2 Measures of Spread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-Graphic-Methods"><span class="nav-text">1.2.3 Graphic Methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-ROC-curve"><span class="nav-text">1.3 ROC curve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-Hypothesis-Testing"><span class="nav-text">1.3.1 Hypothesis Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-Sensitivity-and-Specificity"><span class="nav-text">1.3.2 Sensitivity and Specificity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-3-ROC-Curve"><span class="nav-text">1.3.3 ROC Curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2-Hypothesis-Testing"><span class="nav-text">Lecture 2 Hypothesis Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Recap"><span class="nav-text">2.1 Recap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Hypothesis-test-under-normal-distribution"><span class="nav-text">2.2 Hypothesis test under normal distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-One-sample-test-for-the-mean"><span class="nav-text">2.2.1 One-sample test for the mean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-One-sample-test-for-the-Variance"><span class="nav-text">2.2.2 One-sample test for the Variance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Hypothesis-test-for-binomial-proportions"><span class="nav-text">2.3 Hypothesis test for binomial proportions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Hypothesis-test-for-the-Poisson-Distribution"><span class="nav-text">2.4 Hypothesis test for the Poisson Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3-Hypothesis-Testing-Two-sample-Inference"><span class="nav-text">Lecture 3 Hypothesis Testing: Two-sample Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Introduction"><span class="nav-text">3.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Paired-sample-The-paired-t-test"><span class="nav-text">3.2 Paired sample(The paired t-test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Two-independent-groups"><span class="nav-text">3.3 Two independent groups</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-Two-sample-t-test-with-equal-variances"><span class="nav-text">3.3.1 Two-sample t-test with equal variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-Testing-for-the-equility-of-two-variances"><span class="nav-text">3.3.2 Testing for the equility of two variances</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-3-Two-sample-t-test-with-unequal-variances"><span class="nav-text">3.3.3 Two sample t-test with unequal variances</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Power-analysis-and-Sample-size-determination"><span class="nav-text">3.4 Power analysis and Sample-size determination</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-4-Nonparametric-Methods"><span class="nav-text">Lecture 4 Nonparametric Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Types-of-Data"><span class="nav-text">4.1 Types of Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-The-Sign-Test"><span class="nav-text">4.2 The Sign Test</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-Normal-Theory-Method"><span class="nav-text">4.2.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-Exact-Method"><span class="nav-text">4.2.2 Exact Method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Wilcoxon-Signed-rank-test"><span class="nav-text">4.3 Wilcoxon Signed-rank test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Wilcoxon-Rank-Sum-Test-Mann-Whitney-Test"><span class="nav-text">4.4 Wilcoxon Rank-Sum Test (Mann-Whitney Test)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Sample-size-Calculation"><span class="nav-text">4.5 Sample-size Calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-1-Sign-test"><span class="nav-text">4.5.1 Sign test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-2-Wilcoxon-Signed-Rank-test"><span class="nav-text">4.5.2 Wilcoxon Signed Rank test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Some-other-topics"><span class="nav-text">4.6 Some other topics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-5-Categorical-Data"><span class="nav-text">Lecture 5 Categorical Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Two-Sample-Test-for-Binomial-Proportions"><span class="nav-text">5.1 Two-Sample Test for Binomial Proportions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-Normal-Theory-Method"><span class="nav-text">5.1.1 Normal-Theory Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-Contingency-table-approach"><span class="nav-text">5.1.2 Contingency table approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-3-More-details-about-chi-squared"><span class="nav-text">5.1.3 More details about chi-squared</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Fisher’s-Exact-Test"><span class="nav-text">5.2 Fisher’s Exact Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-McNemar’s-test"><span class="nav-text">5.3 McNemar’s test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-Sample-size-and-power-estimation"><span class="nav-text">5.4 Sample size and power estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-Two-proportions-comparision"><span class="nav-text">5.4.1 Two proportions comparision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-2-Paired-samples"><span class="nav-text">5.4.2 Paired samples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-3-Compliance"><span class="nav-text">5.4.3 Compliance</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-R-times-C-contingency-tables"><span class="nav-text">5.5 $R\times C$ contingency tables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-Goodness-of-Fit"><span class="nav-text">5.6 Goodness of Fit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-The-Kappa-Statistic"><span class="nav-text">5.7 The Kappa Statistic</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-6-Regression-and-Correlation-Methods"><span class="nav-text">Lecture 6 Regression and Correlation Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Regression-Topic"><span class="nav-text">6.1 Regression Topic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Correaltion-coefficient"><span class="nav-text">6.2 Correaltion coefficient</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-1-Pearson-correlation-coefficient"><span class="nav-text">6.2.1 Pearson correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-2-Spearman-rank-correlation-coefficient"><span class="nav-text">6.2.2 Spearman rank correlation coefficient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-3-Kendall’s-Tau"><span class="nav-text">6.2.3 Kendall’s Tau</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-Fixed-Effects-Models"><span class="nav-text">Lecture 7 Fixed Effects Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-One-Way-ANOVA"><span class="nav-text">7.1 One-Way ANOVA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-1-F-test-for-ANOVA"><span class="nav-text">7.1.1 F-test for ANOVA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-2-t-test-for-Comparison-LSD"><span class="nav-text">7.1.2 t-test for Comparison(LSD)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-3-Multiple-Comparison"><span class="nav-text">7.1.3 Multiple Comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-Two-Way-ANOVA"><span class="nav-text">7.2 Two-Way ANOVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-Kruskal-Wallis-Test"><span class="nav-text">7.3 Kruskal-Wallis Test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-8-Random-Effects-Models"><span class="nav-text">Lecture 8 Random Effects Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-Random-Effects-One-way-ANOVA"><span class="nav-text">8.1 Random-Effects One-way ANOVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-Meta-Analysis"><span class="nav-text">8.2 Meta Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-Mixed-model"><span class="nav-text">8.3 Mixed model</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-9-Design-and-Analysis-Techniques-for-Epidemiologic-Studies"><span class="nav-text">Lecture 9 Design and Analysis Techniques for Epidemiologic Studies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-Study-Design"><span class="nav-text">9.1 Study Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-Measures-of-effect-for-categorical-data"><span class="nav-text">9.2 Measures of effect for categorical data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-1-The-Risk-Difference-RD"><span class="nav-text">9.2.1 The Risk Difference(RD)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-2-The-Risk-Ratio-RR"><span class="nav-text">9.2.2 The Risk Ratio(RR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-3-The-Odds-Ratio-OR"><span class="nav-text">9.2.3 The Odds Ratio(OR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-4-Delta-Method"><span class="nav-text">9.2.4 Delta Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-5-Comparison-between-RD-RR-OR"><span class="nav-text">9.2.5 Comparison between RD,RR,OR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-Confounding-and-Standardization"><span class="nav-text">9.3 Confounding and Standardization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-Mantel-Haenszel-Test"><span class="nav-text">9.4 Mantel-Haenszel Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-5-Woolf-Method"><span class="nav-text">9.5 Woolf Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-6-Matched-pair-Studies"><span class="nav-text">9.6 Matched-pair Studies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-7-Power-and-Sample-Size-Estimation"><span class="nav-text">9.7 Power and Sample-Size Estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-10-Multiple-Logistic-Regression"><span class="nav-text">Lecture 10 Multiple Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-Multiple-Logistic-Regression"><span class="nav-text">10.1 Multiple Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-1-Categorical-variable"><span class="nav-text">10.1.1 Categorical variable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-2-Continuous-variable"><span class="nav-text">10.1.2 Continuous variable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-3-Hypothesis-Testing"><span class="nav-text">10.1.3 Hypothesis Testing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-4-Prediction"><span class="nav-text">10.1.4 Prediction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-Extensions-to-Logistic-Regression"><span class="nav-text">10.2 Extensions to Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-1-Conditional-Logistic-Regression"><span class="nav-text">10.2.1 Conditional Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-2-Polychotomous-Logistic-Regression"><span class="nav-text">10.2.2 Polychotomous Logistic Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-3-Ordinal-Logsitic-Regression"><span class="nav-text">10.2.3 Ordinal Logsitic Regression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-Sample-Size-Calculation-in-Logistic-Regression-Model"><span class="nav-text">10.3 Sample Size Calculation in Logistic Regression Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-1-Continuous-X"><span class="nav-text">10.3.1 Continuous X</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-2-Binary-X"><span class="nav-text">10.3.2 Binary X</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-3-Multiple-Logistic-Regression"><span class="nav-text">10.3.3 Multiple Logistic Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-11-Clustered-Binary-Data"><span class="nav-text">Lecture 11 Clustered Binary Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-Equivalence-Studies"><span class="nav-text">11.1 Equivalence Studies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-Missing-Data"><span class="nav-text">11.2 Missing Data</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

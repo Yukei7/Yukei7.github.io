@@ -254,143 +254,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/2019/10/28/20191026matlab/matlab.png" alt="title"> 数学实验与数学软件内容整理，参考教材：MATLAB教程 <a id="more"></a></p>
-<h2 id="lecture-1-matlab软件入门">Lecture 1 MATLAB软件入门</h2>
-<h3 id="matlab特点">1.1 MATLAB特点</h3>
-<p>MATLAB:MATrix LABoratory，是一种解释性程序语言，无需编译，大都按行逐句解释运行，直到发生错误或中断。</p>
-<h3 id="变量与特殊数值">1.2 变量与特殊数值</h3>
-<p><code>...</code> 是续行输入法</p>
+        <p><img src="/2019/10/28/20191026matlab/matlab.png" alt="title"><br>数学实验与数学软件内容整理，参考教材：MATLAB教程<br><a id="more"></a></p>
+<h2 id="Lecture-1-MATLAB软件入门"><a href="#Lecture-1-MATLAB软件入门" class="headerlink" title="Lecture 1 MATLAB软件入门"></a>Lecture 1 MATLAB软件入门</h2><h3 id="1-1-MATLAB特点"><a href="#1-1-MATLAB特点" class="headerlink" title="1.1 MATLAB特点"></a>1.1 MATLAB特点</h3><p>MATLAB:MATrix LABoratory，是一种解释性程序语言，无需编译，大都按行逐句解释运行，直到发生错误或中断。</p>
+<h3 id="1-2-变量与特殊数值"><a href="#1-2-变量与特殊数值" class="headerlink" title="1.2 变量与特殊数值"></a>1.2 变量与特殊数值</h3><p><code>...</code> 是续行输入法</p>
 <p>变量名区分大小写，首字母必须为字母，不可与关键词重复</p>
-<p><code>realmax('classname')</code> 返回某类型数据的实数最大值，同理 <code>realmin</code></p>
-<p><code>intmax('classname'='int32')</code> 返回指定整数类型的最大值，同理 <code>intmin</code></p>
-<p><code>eps(2)</code>等价于<span class="math inline">\(2\epsilon\)</span></p>
-<h3 id="运算符">1.3 运算符</h3>
-<p>A/B 和 A区别： 2/3=0.66，3/2=1.5，在矩阵下定义为 <code>A/B=A*inv(B)</code> 和 <code>A\B=inv(A)*B</code></p>
+<p><code>realmax(&#39;classname&#39;)</code> 返回某类型数据的实数最大值，同理 <code>realmin</code></p>
+<p><code>intmax(&#39;classname&#39;=&#39;int32&#39;)</code> 返回指定整数类型的最大值，同理 <code>intmin</code></p>
+<p><code>eps(2)</code>等价于$2\epsilon$</p>
+<h3 id="1-3-运算符"><a href="#1-3-运算符" class="headerlink" title="1.3 运算符"></a>1.3 运算符</h3><p>A/B 和 A\B 区别： 2/3=0.66，3/2=1.5，在矩阵下定义为 <code>A/B=A*inv(B)</code> 和 <code>A\B=inv(A)*B</code></p>
 <p>A*B矩阵乘法，A.*B矩阵对应位置的乘法，同理A/B和A./B，矩阵乘除法需要满足行列关系否则报错</p>
-<h3 id="复数">1.4 复数</h3>
-<p><code>i</code> 以及 <code>j</code> 是预留的叙述单位，<code>real()</code> 取实部，<code>imag()</code> 取虚部，<code>angle()</code> 取幅角，可用 <code>abs()</code> 计算复数的模长，<code>conj()</code>计算复数共轭</p>
+<h3 id="1-4-复数"><a href="#1-4-复数" class="headerlink" title="1.4 复数"></a>1.4 复数</h3><p><code>i</code> 以及 <code>j</code> 是预留的叙述单位，<code>real()</code> 取实部，<code>imag()</code> 取虚部，<code>angle()</code> 取幅角，可用 <code>abs()</code> 计算复数的模长，<code>conj()</code>计算复数共轭</p>
 <p>以上函数均可直接在矩阵上使用，考虑向量化变成提高代码效率。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">z = <span class="number">4</span> + <span class="number">3</span><span class="built_in">i</span></span><br><span class="line">real_z = <span class="built_in">real</span>(z)</span><br><span class="line">image_z = <span class="built_in">imag</span>(z)</span><br><span class="line">magnitude_z = <span class="built_in">abs</span>(z)</span><br><span class="line">angle_z_radian = <span class="built_in">angle</span>(z)</span><br><span class="line">angle_z_degree = <span class="built_in">angle</span>(z)*<span class="number">180</span>/<span class="built_in">pi</span></span><br></pre></td></tr></table></figure>
 <p>绘图操作：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">z1=<span class="number">4</span>+<span class="number">3</span><span class="built_in">i</span>;</span><br><span class="line">z2=<span class="number">1</span>+<span class="number">2</span><span class="built_in">i</span>;</span><br><span class="line">z12=z1+z2;</span><br><span class="line">clf</span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line"><span class="built_in">plot</span>([<span class="number">0</span>,z1,z12],<span class="string">'-b'</span>,<span class="string">'LineWidth'</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">plot</span>([<span class="number">0</span>,z12],<span class="string">'-r'</span>,<span class="string">'LineWidth'</span>,<span class="number">3</span>)</span><br><span class="line"><span class="built_in">plot</span>([z1,z12],<span class="string">'ob'</span>,<span class="string">'MarkerSize'</span>,<span class="number">8</span>)</span><br><span class="line"><span class="built_in">hold</span> off</span><br><span class="line">grid on</span><br><span class="line">axis equal</span><br><span class="line">axis([<span class="number">0</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">6</span>])</span><br><span class="line">text(<span class="number">3.5</span>,<span class="number">2.3</span>,<span class="string">'z1'</span>)</span><br><span class="line">text(<span class="number">5</span>,<span class="number">4.5</span>,<span class="string">'z2'</span>)</span><br><span class="line">text(<span class="number">2.5</span>,<span class="number">3.5</span>,<span class="string">'z12'</span>)</span><br><span class="line">xlabel(<span class="string">'real'</span>)</span><br><span class="line">ylabel(<span class="string">'image'</span>)</span><br></pre></td></tr></table></figure>
-<p>复数相关计算，<span class="math inline">\(\sqrt[3]{-8}\)</span>为例</p>
+<p>复数相关计算，$\sqrt[3]{-8}$为例</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">-8</span>;</span><br><span class="line">r_a = a^(<span class="number">1</span>/<span class="number">3</span>)<span class="comment">%计算主根</span></span><br><span class="line">r_n = <span class="built_in">nthroot</span>(a,<span class="number">3</span>)<span class="comment">%计算实根</span></span><br><span class="line"></span><br><span class="line">p=[<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,-a]; <span class="comment">%p(r)=r^3-a的多项式系数</span></span><br><span class="line">R=roots(p) <span class="comment">%返回所有根</span></span><br></pre></td></tr></table></figure>
-<h3 id="命令窗功能">1.5 命令窗功能</h3>
-<p><code>clf</code> 清空绘图窗口，<code>clc</code> 清空指令窗，<code>clear</code> 清除工作空间变量或<code>clear name</code>清除指定工作变量，<code>close all</code> 关闭所有弹出窗口</p>
+<h3 id="1-5-命令窗功能"><a href="#1-5-命令窗功能" class="headerlink" title="1.5 命令窗功能"></a>1.5 命令窗功能</h3><p><code>clf</code> 清空绘图窗口，<code>clc</code> 清空指令窗，<code>clear</code> 清除工作空间变量或<code>clear name</code>清除指定工作变量，<code>close all</code> 关闭所有弹出窗口</p>
 <p><code>help name</code> 显示帮助信息，<code>doc name</code> 在浏览器搜索指定内容， <code>helpwin name</code> 弹出窗口显示帮助信息， <code>lookfor name</code> 搜索词条</p>
 <p><code>cd</code> 改变目录，<code>dir</code> 当前目录下所有文件，<code>exit</code> 和 <code>quit</code> 退出MATLAB，<code>diary</code> 记录指令窗输入记录</p>
-<h2 id="lecture-2-matlab编辑器与符号计算一">Lecture 2 MATLAB编辑器与符号计算（一）</h2>
-<h3 id="运算结果显示形式">2.1 运算结果显示形式</h3>
-<p><code>format class</code> 恢复预设值，默认为<code>short</code></p>
+<h2 id="Lecture-2-MATLAB编辑器与符号计算（一）"><a href="#Lecture-2-MATLAB编辑器与符号计算（一）" class="headerlink" title="Lecture 2 MATLAB编辑器与符号计算（一）"></a>Lecture 2 MATLAB编辑器与符号计算（一）</h2><h3 id="2-1-运算结果显示形式"><a href="#2-1-运算结果显示形式" class="headerlink" title="2.1 运算结果显示形式"></a>2.1 运算结果显示形式</h3><p><code>format class</code> 恢复预设值，默认为<code>short</code></p>
 <p><code>format short (e)/long (e)</code> 5/15位有效数字（科学计数）</p>
 <p>其它可选字段有<code>rat</code>近似有理数、<code>hex</code>十六进制、<code>+</code>大矩阵、<code>bank</code>金融，<code>compact</code>紧凑和<code>loose</code>稀疏</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">1</span>/<span class="number">3</span>;</span><br><span class="line"><span class="comment">% 默认显示精度为4，实际存储精度为双精度</span></span><br><span class="line">a=<span class="number">0.3333</span></span><br></pre></td></tr></table></figure>
-<h3 id="搜索路径原则">2.2 搜索路径原则</h3>
-<p>可以在设置搜索路径添加搜索路径，或者可以使用<code>path</code>或<code>addpath</code>命令</p>
-<ol type="1">
+<h3 id="2-2-搜索路径原则"><a href="#2-2-搜索路径原则" class="headerlink" title="2.2 搜索路径原则"></a>2.2 搜索路径原则</h3><p>可以在设置搜索路径添加搜索路径，或者可以使用<code>path</code>或<code>addpath</code>命令</p>
+<ol>
 <li>首先检查内存（工作区），观察cont是否为变量</li>
 <li>若不是，检查cont是否为内建函数或常量</li>
 <li>在当前文件夹检查是否有名为cont的M文件，若有则需运行对应的M文件（可能为子函数或子程序）</li>
 <li>在搜索路径的其他文件夹查找是否有对应的M文件</li>
 <li>如果都没有，则会报错</li>
 </ol>
-<h3 id="符号对象">2.3 符号对象</h3>
-<p><code>a = sym(0.3,'flag')</code>则定义了一个符号变量，具体以<code>3/10</code>存储，<code>flag</code>参数指定存储类型，可选<code>r</code>有理形，<code>d</code>十进制浮点，<code>e</code>机器误差有理格式，<code>f</code>合并的有理形式</p>
+<h3 id="2-3-符号对象"><a href="#2-3-符号对象" class="headerlink" title="2.3 符号对象"></a>2.3 符号对象</h3><p><code>a = sym(0.3,&#39;flag&#39;)</code>则定义了一个符号变量，具体以<code>3/10</code>存储，<code>flag</code>参数指定存储类型，可选<code>r</code>有理形，<code>d</code>十进制浮点，<code>e</code>机器误差有理格式，<code>f</code>合并的有理形式</p>
 <p>字符串小数转换为符号对象会被识别为32位精度的近似小数，计算会有误差。通常先定义符号对象再计算可以减小误差。</p>
 <p><code>syms para1 para2 Flag</code>则定义多个符号变量，同在Flag指定域下定义。可选<code>real</code>,<code>positive</code>等</p>
 <p><code>syms F(x,y)</code> 则定义符号函数，可以在后续定义具体形式。<code>g(z)=u*w^2+z*w==v</code> 可以定义符号恒等式函数</p>
 <p><code>symvar(EXPR)</code> 按字典序显示所有基本符号变量</p>
 <p><code>symvar(EXPR,20)</code> 按照ASCII码与’x’距离显示最近的20个</p>
 <p><code>disp([‘XXXXX’,str,…])</code>可依次输出多条字符串，非字符串可以用自带变量类型输出，也可用int2str转换，disp此时可等价换为display，多目标输出小括号内中括号不可省略</p>
-<h3 id="符号表达式">2.4 符号表达式</h3>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">syms u v w z <span class="comment">%先定义好基本符号变量</span></span><br><span class="line">Eq=u*w^<span class="number">2</span>+z*w-v <span class="comment">%然后定义符号表达式</span></span><br><span class="line">g(z)=u*w^<span class="number">2</span>+z*w==v <span class="comment">%定义符号恒等式函数</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-4-符号表达式"><a href="#2-4-符号表达式" class="headerlink" title="2.4 符号表达式"></a>2.4 符号表达式</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">syms u v w z <span class="comment">%先定义好基本符号变量</span></span><br><span class="line">Eq=u*w^<span class="number">2</span>+z*w-v <span class="comment">%然后定义符号表达式</span></span><br><span class="line">g(z)=u*w^<span class="number">2</span>+z*w==v <span class="comment">%定义符号恒等式函数</span></span><br></pre></td></tr></table></figure>
 <p><code>solve(Eq,var)</code> 缺省变量则默认解的自由变量是x或离x最近的符号</p>
 <p><code>vpa(symb,num)</code>将符号对象或传统数化为有指定位数有效数字的结果</p>
 <p><code>subs(symb,x,4)</code>将符号对象中指定符号替换为新的对象</p>
-<h3 id="符号微积分">2.5 符号微积分</h3>
-<p><code>limit(f,x,a,'right')</code> 计算f(x)在x=a处极限，x缺省则为默认变量，a缺省则默认为0，<code>'right'</code>也可选<code>'left'</code>，缺省则为两侧极限。</p>
+<h3 id="2-5-符号微积分"><a href="#2-5-符号微积分" class="headerlink" title="2.5 符号微积分"></a>2.5 符号微积分</h3><p><code>limit(f,x,a,&#39;right&#39;)</code> 计算f(x)在x=a处极限，x缺省则为默认变量，a缺省则默认为0，<code>&#39;right&#39;</code>也可选<code>&#39;left&#39;</code>，缺省则为两侧极限。</p>
 <p>使用该函数计算左右导数。例如<code>limit((subs(f_p,x,x+d)-f_p)/d,d,0)</code></p>
 <p><code>g = diff(f,v,n)</code> 计算f(x)关于v的n阶导数，v缺省则为默认变量，n缺省则为一阶</p>
 <p><code>fjac=jacobian(f,v)</code>对矩阵表达式求其雅可比矩阵，f与v需要定义成函数向量与自变量向量，若雅可比矩阵<code>fjac</code>为方阵，可使用<code>detjac=det(fjac)</code>来获得雅可比行列式的抽象表达式（符号型表达式）</p>
-<p><code>r=taylor(g,x,a,'Order',10)</code>可获得函数g在x=a点的9阶泰勒展开表达式，x缺省则为默认变量，a缺省则默认为0，不指定阶数则默认为5阶展开。</p>
+<p><code>r=taylor(g,x,a,&#39;Order&#39;,10)</code>可获得函数g在x=a点的9阶泰勒展开表达式，x缺省则为默认变量，a缺省则默认为0，不指定阶数则默认为5阶展开。</p>
 <p><code>symsum(f,v,a,b)</code> 对f(v)从a到b求级数和</p>
-<h2 id="lecture-3-matlab符号计算二">Lecture 3 MATLAB符号计算（二）</h2>
-<p><span class="math display">\[(arctan(x))&#39;=\frac{1}{1+x^2}\]</span></p>
-<p><span class="math display">\[(arctanh(x))&#39;=\frac{1}{1-x^2}\]</span></p>
-<p><span class="math display">\[(arcsin(x))&#39;=\frac{1}{\sqrt{1+x^2}}\]</span></p>
-<p><span class="math display">\[(arcsinh(x))&#39;=\frac{1}{\sqrt{1-x^2}}\]</span></p>
-<h3 id="符号对象的识别">3.1 符号对象的识别</h3>
-<p><code>size()</code>返回矩阵行列数</p>
+<h2 id="Lecture-3-MATLAB符号计算（二）"><a href="#Lecture-3-MATLAB符号计算（二）" class="headerlink" title="Lecture 3 MATLAB符号计算（二）"></a>Lecture 3 MATLAB符号计算（二）</h2><script type="math/tex; mode=display">(arctan(x))'=\frac{1}{1+x^2}</script><script type="math/tex; mode=display">(arctanh(x))'=\frac{1}{1-x^2}</script><script type="math/tex; mode=display">(arcsin(x))'=\frac{1}{\sqrt{1+x^2}}</script><script type="math/tex; mode=display">(arcsinh(x))'=\frac{1}{\sqrt{1-x^2}}</script><h3 id="3-1-符号对象的识别"><a href="#3-1-符号对象的识别" class="headerlink" title="3.1 符号对象的识别"></a>3.1 符号对象的识别</h3><p><code>size()</code>返回矩阵行列数</p>
 <p><code>class()</code>显示变量类型</p>
-<p><code>isa(matrix,'char')</code>返回1或0，确定输入是否具有指定数据类型</p>
+<p><code>isa(matrix,&#39;char&#39;)</code>返回1或0，确定输入是否具有指定数据类型</p>
 <p><code>whos para1 para2</code>列表显示所有内存变量类别</p>
-<h3 id="符号转双精度或符号型小数">3.2 符号转双精度或符号型小数</h3>
-<p><code>reset(symengine)</code> 符号运算设置重置</p>
+<h3 id="3-2-符号转双精度或符号型小数"><a href="#3-2-符号转双精度或符号型小数" class="headerlink" title="3.2 符号转双精度或符号型小数"></a>3.2 符号转双精度或符号型小数</h3><p><code>reset(symengine)</code> 符号运算设置重置</p>
 <p><code>vpa(x,n)</code> 对x截取n位有效数字（仍是sym），n缺省则按当前digits位数</p>
 <p><code>digit(n)</code> 设置vpa截断位数n，可以用<code>digit</code>显示当前截断位数</p>
 <p><code>eval(x)</code> sym型转化成命令计算双精度结果</p>
-<h3 id="符号表达式的基本操作">3.3 符号表达式的基本操作</h3>
-<p><code>collect(equation, variable)</code> 合并同类项</p>
+<h3 id="3-3-符号表达式的基本操作"><a href="#3-3-符号表达式的基本操作" class="headerlink" title="3.3 符号表达式的基本操作"></a>3.3 符号表达式的基本操作</h3><p><code>collect(equation, variable)</code> 合并同类项</p>
 <p><code>expand(equation)</code> 多项式展开</p>
-<p><code>simplify(equation)</code>简化函数符号表达式，可选参数<code>step</code>调整简化步数。使用时注意有时需要设置<code>'IgnoreAnalyticConstraints',true</code> 忽视复数根</p>
+<p><code>simplify(equation)</code>简化函数符号表达式，可选参数<code>step</code>调整简化步数。使用时注意有时需要设置<code>&#39;IgnoreAnalyticConstraints&#39;,true</code> 忽视复数根</p>
 <p><code>[N,D]=numden(equation)</code> (Numerator and denominator of a symbolic expression)通分为分子N和分母D</p>
 <p><code>pretty(equation)</code> 美化（并不美观）</p>
-<p><code>[r,s]=subexpr(equation)</code> 提取公子式（<span class="math inline">\(r(s)\)</span>=equation）</p>
+<p><code>[r,s]=subexpr(equation)</code> 提取公子式（$r(s)$=equation）</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 特征向量分解</span></span><br><span class="line">syms a b c d</span><br><span class="line">A = [a b;c d];</span><br><span class="line">[V,D] = eig(A);</span><br><span class="line">[RVD,w] = subexpr([V;D])</span><br></pre></td></tr></table></figure>
 <p><code>subs(eqation,old,new)</code> variable可以由<code>tuple</code>输入完成批量代换，对应返回高维数组，数据类型相同时可以由<code>vector</code>输入</p>
 <p><code>int(function,variable,lower,upper)</code> 符号函数计算定积分，上下限缺省时为不定积分</p>
-<p><code>h1 = fplot(x(t),y(t),t_range)</code> 例如t_range=[0,2*pi]传入上下界的向量，h1是<strong>绘图句柄</strong>，可以用<code>set(h1,'Color','r','LineWidth',5)</code>设置绘图具体参数</p>
+<p><code>h1 = fplot(x(t),y(t),t_range)</code> 例如t_range=[0,2<em>pi]传入上下界的向量，h1是<em>*绘图句柄</em></em>，可以用<code>set(h1,&#39;Color&#39;,&#39;r&#39;,&#39;LineWidth&#39;,5)</code>设置绘图具体参数</p>
 <p><code>h1 = ezplot(y(1),[x_range,y_range])</code></p>
-<h3 id="微分方程组的符号解法">3.4 微分方程组的符号解法</h3>
-<p>声明符号变量时需要指明是符号函数<code>syms x y(x)</code></p>
-<p><code>S=dsolve([eq1,eq2],condition)</code>常微分方程理论解，返回解可能有常数C1,C2等。具体每一个解可以通过<span class="math inline">\(S.name\)</span>得到。在对常数进行赋值时，可以借助<code>symvar(S)</code>来获得对应的常数符号。</p>
-<h3 id="傅里叶变换">3.5 傅里叶变换</h3>
-<p>进行时频分析，决定信号在什么频率上更强。</p>
-<p><span class="math display">\[F(\omega)=\int_{-\infty}^{+\infty} f(t)e^{-j\omega t}dt\]</span></p>
-<p>逆变换定义</p>
-<p><span class="math display">\[f(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}d\omega\]</span></p>
-<p>Dirac function</p>
-<p>在<span class="math inline">\(\omega\not ={0}\)</span>处<span class="math inline">\(F(\omega)\equiv 0\)</span>，而在<span class="math inline">\(\omega=0\)</span>处“无穷大”</p>
-<p><span class="math display">\[\delta(x)=\lim_{a\rightarrow 0^+}\frac{1}{a\sqrt{\pi}}e^{\frac{-x^2}{a^2}}\]</span></p>
-<p><code>fourier(function,time,w)</code> 时间域到频率域</p>
+<h3 id="3-4-微分方程组的符号解法"><a href="#3-4-微分方程组的符号解法" class="headerlink" title="3.4 微分方程组的符号解法"></a>3.4 微分方程组的符号解法</h3><p>声明符号变量时需要指明是符号函数<code>syms x y(x)</code></p>
+<p><code>S=dsolve([eq1,eq2],condition)</code>常微分方程理论解，返回解可能有常数C1,C2等。具体每一个解可以通过$S.name$得到。在对常数进行赋值时，可以借助<code>symvar(S)</code>来获得对应的常数符号。</p>
+<h3 id="3-5-傅里叶变换"><a href="#3-5-傅里叶变换" class="headerlink" title="3.5 傅里叶变换"></a>3.5 傅里叶变换</h3><p>进行时频分析，决定信号在什么频率上更强。</p>
+<script type="math/tex; mode=display">F(\omega)=\int_{-\infty}^{+\infty} f(t)e^{-j\omega t}dt</script><p>逆变换定义</p>
+<script type="math/tex; mode=display">f(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}d\omega</script><p>Dirac function</p>
+<p>在$\omega\not ={0}$处$F(\omega)\equiv 0$，而在$\omega=0$处“无穷大”</p>
+<script type="math/tex; mode=display">\delta(x)=\lim_{a\rightarrow 0^+}\frac{1}{a\sqrt{\pi}}e^{\frac{-x^2}{a^2}}</script><p><code>fourier(function,time,w)</code> 时间域到频率域</p>
 <p><code>ifourier(function,w,time)</code> 频率域到时间域</p>
-<h4 id="傅里叶变换的一些性质">傅里叶变换的一些性质</h4>
-<p><span class="math display">\[F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}dt\]</span></p>
-<p><strong>平移性质:</strong></p>
-<p>对于有平移混淆的信号（信号相似，有时间差），可以借助傅里叶变换平移性质，即模相等的性质取消平易混淆 <span class="math display">\[|\mathscr{L}(f(t-t_0))|=|\mathscr{L}(f(t))|\]</span></p>
-<p><strong>导数性质:</strong></p>
-<p><span class="math display">\[\mathscr{L}(f&#39;(t))=i\omega F(\omega)\]</span></p>
-<p>其中<span class="math inline">\(\mathscr{L}(f(t))=F(\omega)\)</span></p>
+<h4 id="傅里叶变换的一些性质"><a href="#傅里叶变换的一些性质" class="headerlink" title="傅里叶变换的一些性质"></a>傅里叶变换的一些性质</h4><script type="math/tex; mode=display">F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}dt</script><p><strong>平移性质:</strong></p>
+<p>对于有平移混淆的信号（信号相似，有时间差），可以借助傅里叶变换平移性质，即模相等的性质取消平易混淆</p>
+<script type="math/tex; mode=display">|\mathscr{L}(f(t-t_0))|=|\mathscr{L}(f(t))|</script><p><strong>导数性质:</strong></p>
+<script type="math/tex; mode=display">\mathscr{L}(f'(t))=i\omega F(\omega)</script><p>其中$\mathscr{L}(f(t))=F(\omega)$</p>
 <p><strong>卷积性质:</strong></p>
-<p>傅里叶变换下对卷积计算的复杂性降低（从<span class="math inline">\(O(n^4)\)</span>到<span class="math inline">\(O(n^2logn)\)</span>），用于解决反卷积问题</p>
-<h2 id="lecture-4-matlab符号计算三">Lecture 4 MATLAB符号计算（三）</h2>
-<h3 id="matlab的符号限制性假设">4.1 MATLAB的符号限制性假设</h3>
-<p>在使用<code>sym</code>或<code>syms</code>定义符号变量时，MATLAB启动MuPAD引擎并提供内存工作空间执行符号运算。若不带限定性假设，默认为复数。</p>
+<p>傅里叶变换下对卷积计算的复杂性降低（从$O(n^4)$到$O(n^2logn)$），用于解决反卷积问题</p>
+<h2 id="Lecture-4-MATLAB符号计算（三）"><a href="#Lecture-4-MATLAB符号计算（三）" class="headerlink" title="Lecture 4 MATLAB符号计算（三）"></a>Lecture 4 MATLAB符号计算（三）</h2><h3 id="4-1-MATLAB的符号限制性假设"><a href="#4-1-MATLAB的符号限制性假设" class="headerlink" title="4.1 MATLAB的符号限制性假设"></a>4.1 MATLAB的符号限制性假设</h3><p>在使用<code>sym</code>或<code>syms</code>定义符号变量时，MATLAB启动MuPAD引擎并提供内存工作空间执行符号运算。若不带限定性假设，默认为复数。</p>
 <p><code>syms a positive</code> 定义正实数变量</p>
-<p><code>assume(a,'positive')</code> 对已定义符号变量更改限制性假设，也可以添加表达式的限制性假设如<code>assume(imag(x)==0)</code>等形式</p>
+<p><code>assume(a,&#39;positive&#39;)</code> 对已定义符号变量更改限制性假设，也可以添加表达式的限制性假设如<code>assume(imag(x)==0)</code>等形式</p>
 <p><code>assumptions(x)</code> 查看变量x当前的限定性假设</p>
 <p><code>clear all</code> 或 <code>syms a clears</code> 清除全部或符号变量a的限制性假设</p>
 <p><code>assumeAlso()</code> 对符号变量增加限制性假设（不覆盖原有假设）</p>
-<h3 id="laplace变换">4.2 Laplace变换</h3>
-<p><span class="math display">\[F(s)=\int_0^{\infty}f(t)e^{-st}dt\]</span></p>
-<p>逆变换</p>
-<p><span class="math display">\[f(t)=\frac{1}{2\pi j}\int_{c-j\infty}^{c+j\infty}F(s)e^{st}ds\]</span></p>
-<p><code>laplace(ft,time,w)</code> 从时间域到频率域</p>
+<h3 id="4-2-Laplace变换"><a href="#4-2-Laplace变换" class="headerlink" title="4.2 Laplace变换"></a>4.2 Laplace变换</h3><script type="math/tex; mode=display">F(s)=\int_0^{\infty}f(t)e^{-st}dt</script><p>逆变换</p>
+<script type="math/tex; mode=display">f(t)=\frac{1}{2\pi j}\int_{c-j\infty}^{c+j\infty}F(s)e^{st}ds</script><p><code>laplace(ft,time,w)</code> 从时间域到频率域</p>
 <p><code>ilaplace(Fs,w,time)</code> 从频率域到时间域</p>
-<h3 id="z变换">4.3 Z变换</h3>
-<p><span class="math display">\[F(z)=\sum_{n=0}^\infty f(n)z^{-n}\]</span></p>
-<p>逆变换</p>
-<p><span class="math display">\[f(n)=\frac{1}{2\pi j}\oint_\Gamma F(z)z^{n-1}dz\]</span></p>
-<p>Z变换描述离散序列的复数频率域信息，可以把差分方程转化为代数方程。</p>
+<h3 id="4-3-Z变换"><a href="#4-3-Z变换" class="headerlink" title="4.3 Z变换"></a>4.3 Z变换</h3><script type="math/tex; mode=display">F(z)=\sum_{n=0}^\infty f(n)z^{-n}</script><p>逆变换</p>
+<script type="math/tex; mode=display">f(n)=\frac{1}{2\pi j}\oint_\Gamma F(z)z^{n-1}dz</script><p>Z变换描述离散序列的复数频率域信息，可以把差分方程转化为代数方程。</p>
 <p><code>ztrans(fn,time,z)</code> 从时间域到频率域</p>
 <p><code>iztrans(FZ,z,time)</code> 从频率域到时间域</p>
-<h3 id="符号卷积">4.4 符号卷积</h3>
-<p><span class="math display">\[(u*h)(t)=\int_0^t u(\tau)h(t-\tau)d\tau\]</span></p>
-<p>可以通过Laplace变换和逆变换的性质快速求出：</p>
-<p><span class="math display">\[(u*h)(t)=\mathscr{L}^{-1}(\mathscr{L}(u(t))·\mathscr{L}(h(t)))\]</span></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear all</span><br><span class="line">syms T t tao s</span><br><span class="line">ut=<span class="built_in">exp</span>(-t);ht=<span class="built_in">exp</span>(-t/T)/T;</span><br><span class="line">uh_tao=subs(ut,t,tao)*subs(ht,t,t-tao);</span><br><span class="line"><span class="comment">% 直接法</span></span><br><span class="line">yt1=int(uh_tao,tao,<span class="number">0</span>,t)</span><br><span class="line"><span class="comment">% 间接法</span></span><br><span class="line">yt21=ilaplace(laplace(ut,t,s)*laplace(ht,t,s),s,t)</span><br><span class="line">yt22=collect(yt21,(T<span class="number">-1</span>))<span class="comment">%合并同类项</span></span><br></pre></td></tr></table></figure>
-<h3 id="符号矩阵分析与计算数值矩阵">4.5 符号矩阵分析与计算（数值矩阵）</h3>
-<p><code>det(A)</code> 求行列式</p>
+<h3 id="4-4-符号卷积"><a href="#4-4-符号卷积" class="headerlink" title="4.4 符号卷积"></a>4.4 符号卷积</h3><script type="math/tex; mode=display">(u*h)(t)=\int_0^t u(\tau)h(t-\tau)d\tau</script><p>可以通过Laplace变换和逆变换的性质快速求出：</p>
+<script type="math/tex; mode=display">(u*h)(t)=\mathscr{L}^{-1}(\mathscr{L}(u(t))·\mathscr{L}(h(t)))</script><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">clear all</span><br><span class="line">syms T t tao s</span><br><span class="line">ut=<span class="built_in">exp</span>(-t);ht=<span class="built_in">exp</span>(-t/T)/T;</span><br><span class="line">uh_tao=subs(ut,t,tao)*subs(ht,t,t-tao);</span><br><span class="line"><span class="comment">% 直接法</span></span><br><span class="line">yt1=int(uh_tao,tao,<span class="number">0</span>,t)</span><br><span class="line"><span class="comment">% 间接法</span></span><br><span class="line">yt21=ilaplace(laplace(ut,t,s)*laplace(ht,t,s),s,t)</span><br><span class="line">yt22=collect(yt21,(T<span class="number">-1</span>))<span class="comment">%合并同类项</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-5-符号矩阵分析与计算（数值矩阵）"><a href="#4-5-符号矩阵分析与计算（数值矩阵）" class="headerlink" title="4.5 符号矩阵分析与计算（数值矩阵）"></a>4.5 符号矩阵分析与计算（数值矩阵）</h3><p><code>det(A)</code> 求行列式</p>
 <p><code>diag(A)</code> 取A对角元或利用向量形成对角矩阵</p>
 <p><code>expm(A)</code> 计算A的指数矩阵，需要将A特征值取指数复原</p>
 <p><code>inv(A)</code> 求逆矩阵</p>
@@ -398,39 +358,34 @@
 <p><code>tril(A)</code> 化A为下三角矩阵，也有<code>triu(A)</code>化为上三角矩阵</p>
 <p><code>[V D] = eig(A)</code> 计算A的特征值保存到D，特征向量保存到V</p>
 <p><code>[V J] = jordan(A)</code> 计算A的Jordan分解，AV=VJ</p>
-<p><code>[U S V] = svd(A)</code> 计算A的奇异值分解，A=USV'</p>
+<p><code>[U S V] = svd(A)</code> 计算A的奇异值分解，A=USV’</p>
 <p><code>[L U] = lu(A)</code> 计算A的LU分解，A=LU</p>
 <p><code>[Q R] = qr(A)</code> 计算A的QR分解，A=QR</p>
-<h3 id="一般方程组符号解">4.6 一般方程组符号解</h3>
-<p><code>[v1,v2,..] = solve(exp1,exp2,..,v1,v2,..)</code> 对任何代数方程组的符号解</p>
-<h3 id="符号计算结果可视化">4.7 符号计算结果可视化</h3>
-<ul>
+<h3 id="4-6-一般方程组符号解"><a href="#4-6-一般方程组符号解" class="headerlink" title="4.6 一般方程组符号解"></a>4.6 一般方程组符号解</h3><p><code>[v1,v2,..] = solve(exp1,exp2,..,v1,v2,..)</code> 对任何代数方程组的符号解</p>
+<h3 id="4-7-符号计算结果可视化"><a href="#4-7-符号计算结果可视化" class="headerlink" title="4.7 符号计算结果可视化"></a>4.7 符号计算结果可视化</h3><ul>
 <li><code>ezcountour(fun)</code> 画等位线</li>
 <li><code>ezcontourf(fun)</code> 画填色等位线</li>
 <li><code>ezplot(fun,[xmin,xmax])</code> 二维曲线绘图，可接受参数方程：<code>ezplot(funx,funy,[tmin,tmax])</code></li>
 <li><code>ezplot3(funx,funy,funz,[tmin,tmax])</code> 三维曲线绘图</li>
 <li><code>ezpolar(fun,[a,b])</code> 极坐标曲线</li>
-<li><code>ezsurf(funx,funy,funz,[smin,smax,tmin,tmax])</code> 空间曲面图，也可以对<span class="math inline">\(z=z(x,y),a&lt;x&lt;b,c&lt;y&lt;d\)</span>的形式：<code>ezsurf(z(x,y),[a,b,c,d])</code>以及<span class="math inline">\(z=z(x,y),a&lt;x,y&lt;b\)</span>的形式：<code>ezsurf(z(x,y),[a,b])</code></li>
+<li><code>ezsurf(funx,funy,funz,[smin,smax,tmin,tmax])</code> 空间曲面图，也可以对$z=z(x,y),a&lt;x&lt;b,c&lt;y&lt;d$的形式：<code>ezsurf(z(x,y),[a,b,c,d])</code>以及$z=z(x,y),a&lt;x,y&lt;b$的形式：<code>ezsurf(z(x,y),[a,b])</code></li>
 <li><code>ezsurfc(funx,funy,funz,[smin,smax,tmin,tmax])</code> 带等位线的曲面图</li>
 <li><code>ezmesh(funx,funy,funz,[smin,smax,tmin,tmax])</code> 三维网格绘图函数，用法同<code>ezsurf()</code></li>
 <li><code>ezmeshc(funx,funy,funz,[smin,smax,tmin,tmax])</code> 带等位线的网格图，用法同<code>ezsurfc()</code></li>
 </ul>
 <p><strong>积分互补性质：</strong> Week4 PPT 39</p>
-<h2 id="lecture-5-matlab数值数组与数组化编程">Lecture 5 MATLAB数值数组与数组化编程</h2>
-<h3 id="一维数组向量">5.1 一维数组（向量）</h3>
-<p><code>A = start:step:end</code> 创建行向量，while(start&lt;end): 添加start, start+=step</p>
+<h2 id="Lecture-5-MATLAB数值数组与数组化编程"><a href="#Lecture-5-MATLAB数值数组与数组化编程" class="headerlink" title="Lecture 5 MATLAB数值数组与数组化编程"></a>Lecture 5 MATLAB数值数组与数组化编程</h2><h3 id="5-1-一维数组（向量）"><a href="#5-1-一维数组（向量）" class="headerlink" title="5.1 一维数组（向量）"></a>5.1 一维数组（向量）</h3><p><code>A = start:step:end</code> 创建行向量，while(start&lt;end): 添加start, start+=step</p>
 <p><code>linspace(start,end,n)</code>创建一位数组，等价于<code>start:(end-start)/(n-1):end</code></p>
 <p>（步长为实数时，近似值向零取整，可以确保得到希望的步数，例如0:pi/4:pi一定能得到4个值）</p>
 <p><code>logspace(a,b,n)</code>创建等比数列，也即<code>10.^linspace(a,b,n)</code>，等价于<code>10.^(a:(b-a)/(n-1):b)</code></p>
 <p><code>ones(1,n)</code>生成1行n列的全为1的行向量，<code>one(n)</code>生成元素全为1的n阶方阵</p>
 <p><code>zeros(1,n), rand(1,n), randn(1,n)</code>生成全为零，0-1均匀分布随机，标准正态分布随机的行向量</p>
 <p><code>rng default</code>使随机状态回复到Matlab初始值（伪随机）</p>
-<p><code>A.'</code>转置，<code>conj(A)</code>共轭，<code>A'</code>共轭转置</p>
+<p><code>A.&#39;</code>转置，<code>conj(A)</code>共轭，<code>A&#39;</code>共轭转置</p>
 <p><code>ndims(A)</code>矩阵维数，<code>size(A,nd)</code>矩阵第nd维的规模（缺省nd则返回每一维的大小，类似<code>shape</code>）</p>
 <p><code>length(A)</code>矩阵最大维度规模（或向量长度）</p>
 <p><code>numel(A)</code>矩阵所含元素的总数目</p>
-<h3 id="矩阵二维数组">5.2 矩阵（二维数组）</h3>
-<p><code>load A</code> 读取当前文件夹下A.mat的矩阵</p>
+<h3 id="5-2-矩阵（二维数组）"><a href="#5-2-矩阵（二维数组）" class="headerlink" title="5.2 矩阵（二维数组）"></a>5.2 矩阵（二维数组）</h3><p><code>load A</code> 读取当前文件夹下A.mat的矩阵</p>
 <p><code>ones(m,n), zeros(m,n), rand(m,n), randn(m,n)</code>常用<code>zeros(m,n)</code>申请存储空间，缺省一维则生成方阵</p>
 <p><code>eye(n)</code>生成单位方阵</p>
 <p><code>magic(n)</code>生成n阶幻方（行列和相等）</p>
@@ -443,437 +398,297 @@
 <p><code>repmat(A,m,n)</code> 按行数复制m份，列数复制n份</p>
 <p><code>flipud(A), fliplr(A)</code> 上下、左右对称翻转</p>
 <p><code>rot90(A,n)</code> 矩阵A逆时针旋转n*90度</p>
-<h3 id="二维数组编址">5.3 二维数组编址</h3>
-<p><code>A(r,c)</code> 全下标编址，可以计算<code>A(i,j)=A((j-1)*M+i), j=ceil(k/M), i=k-(j-1)*M, A(k)=A(i,j)</code>，其中r和c可以接受向量。</p>
+<h3 id="5-3-二维数组编址"><a href="#5-3-二维数组编址" class="headerlink" title="5.3 二维数组编址"></a>5.3 二维数组编址</h3><p><code>A(r,c)</code> 全下标编址，可以计算<code>A(i,j)=A((j-1)*M+i), j=ceil(k/M), i=k-(j-1)*M, A(k)=A(i,j)</code>，其中r和c可以接受向量。</p>
 <p>计算时只需注意矩阵是列优先，按列存储的。</p>
 <p><code>A(ind)</code>访问ind包含的元素，得到规模与ind相同的向量，<code>A(:)</code>默认为列向量（ind类似定义为r=[2,3]，或L=A&lt;=0逻辑方式索引）</p>
 <p>注：A([1,end])是传入ind为[1,end]的两个单序号寻址，对应矩阵数组第一个和最后一个值</p>
 <p><code>[rowsub, colsub] = ind2sub([M N],IND)</code>得到IND对应的行列指标</p>
 <p><code>IND = sub2ind([M N], rowsub, colsub)</code>得到单序号IND</p>
-<h3 id="数组的运算">5.4 数组的运算</h3>
-<p>矩阵运算可以减少for循环，但使用时需要注意是矩阵乘除法还是数组乘除法。</p>
+<h3 id="5-4-数组的运算"><a href="#5-4-数组的运算" class="headerlink" title="5.4 数组的运算"></a>5.4 数组的运算</h3><p>矩阵运算可以减少for循环，但使用时需要注意是矩阵乘除法还是数组乘除法。</p>
 <p><code>bsxfun(@fun,A,B)</code> 对矩阵A和B使用fun</p>
 <p><code>all(vector)</code> 返回0或1，是否全部非零</p>
 <p><code>any(vector)</code> 返回0或1，是否存在非零</p>
 <p>注：对向量t用逻辑方法Lt = (t==0)会得到一个逻辑向量，常用于判断是否满足条件并进行定位操作</p>
-<p><code>ceil()</code> 向<span class="math inline">\(+\infty\)</span>取整</p>
+<p><code>ceil()</code> 向$+\infty$取整</p>
 <p><code>fix()</code> 向0取整</p>
-<p><code>floor()</code> 向<span class="math inline">\(-\infty\)</span>取整</p>
+<p><code>floor()</code> 向$-\infty$取整</p>
 <p><code>mod()</code> 取模，<code>rem()</code> 取余，x和y的符号不同时，rem函数结果的符号和x的一样，而mod和y一样。这是由于这两个函数的生成机制不同，rem函数采用fix函数，而mod函数采用了floor函数</p>
 <p><code>round()</code> 四舍五入</p>
 <p><code>sign()</code> 返回1或-1或0，符号函数</p>
 <p><code>[azimuth,elevation,r] = cart2sph(x,y,z)</code> 直角坐标转球坐标，反向有<code>sph2cart()</code></p>
 <p><code>[theta,rho] = cart2pol(x,y)</code> 直角坐标转极坐标，反向有<code>pol2cart()</code></p>
 <p><code>[theta,rho,z] = cart2pol(x,y,z)</code> 直角坐标转柱坐标，反向有<code>pol2cart()</code></p>
-<h2 id="lecture-6-matlab矩阵函数与程序设计初步">Lecture 6 MATLAB矩阵函数与程序设计初步</h2>
-<h3 id="矩阵的乘除运算">6.1 矩阵的乘除运算</h3>
-<p><code>A*B</code>要求满足矩阵乘法的行列要求</p>
-<p><code>A\B=inv(A)*B</code>或<code>A/B=A*inv(B)</code>可以解线性方程组<span class="math inline">\(Ax=b\)</span>也就是<code>x=A\b</code>，矩阵方程<span class="math inline">\(XA=B\)</span>可以用<code>X=B/A</code>来解出。超定方程（A列满秩）可以提供最小二乘解</p>
-<p>关于数组运算，<span class="math inline">\(&lt;C^S,+,.∗&gt;\)</span>构成复数集合<span class="math inline">\(\mathscr{C}^S\)</span>上的数组域</p>
-<p>关于矩阵运算，<span class="math inline">\(&lt;C^{M\times N},+&gt;\)</span>构成复数集合<span class="math inline">\(\mathscr{C}^{(M\times N)}\)</span>上的阿贝尔群</p>
-<h3 id="矩阵的幂运算与矩阵函数">6.2 矩阵的幂运算与矩阵函数</h3>
-<p>若<span class="math inline">\(A=Q·diag(\lambda_1,...,\lambda_n)·Q^{-1}\)</span>且特征值各异：</p>
-<p><code>b^A</code>为<span class="math inline">\(Q·diag(b^{\lambda_1},..,b^{\lambda_n})·Q^{-1}\)</span></p>
-<p><code>A^b</code>为<span class="math inline">\(Q·diag(\lambda_1^{b},..,\lambda_n^{b})·Q^{-1}\)</span></p>
-<p><code>expm(A)</code>为矩阵指数函数<span class="math inline">\(Q·diag(e^{\lambda_1},...,e^{\lambda_n})·Q^{-1}\)</span></p>
-<p><code>logm(A)</code>为矩阵对数函数<span class="math inline">\(Q·diag(\ln \lambda_1,...,\ln \lambda_n)·Q^{-1}\)</span></p>
-<p><code>sqrtm(A)</code>为矩阵平方根函数<span class="math inline">\(Q·diag(\sqrt{\lambda_1},...,\sqrt{\lambda_n})·Q^{-1}\)</span></p>
-<p><code>funm(A,Hfun)</code>为矩阵函数<span class="math inline">\(Q·diag(f(\lambda_1),...,f(\lambda_n))·Q^{-1}\)</span>，Hfun为函数句柄</p>
-<h3 id="matlab控制流">6.3 MATLAB控制流</h3>
-<p><code>if-elseif-else-end</code> end不可缺省</p>
+<h2 id="Lecture-6-MATLAB矩阵函数与程序设计初步"><a href="#Lecture-6-MATLAB矩阵函数与程序设计初步" class="headerlink" title="Lecture 6 MATLAB矩阵函数与程序设计初步"></a>Lecture 6 MATLAB矩阵函数与程序设计初步</h2><h3 id="6-1-矩阵的乘除运算"><a href="#6-1-矩阵的乘除运算" class="headerlink" title="6.1 矩阵的乘除运算"></a>6.1 矩阵的乘除运算</h3><p><code>A*B</code>要求满足矩阵乘法的行列要求</p>
+<p><code>A\B=inv(A)*B</code>或<code>A/B=A*inv(B)</code>可以解线性方程组$Ax=b$也就是<code>x=A\b</code>，矩阵方程$XA=B$可以用<code>X=B/A</code>来解出。超定方程（A列满秩）可以提供最小二乘解</p>
+<p>关于数组运算，$<C^S,+,.∗>$构成复数集合$\mathscr{C}^S$上的数组域</C^S,+,.∗></p>
+<p>关于矩阵运算，$<C^{M\times n},+>$构成复数集合$\mathscr{C}^{(M\times N)}$上的阿贝尔群</C^{M\times></p>
+<h3 id="6-2-矩阵的幂运算与矩阵函数"><a href="#6-2-矩阵的幂运算与矩阵函数" class="headerlink" title="6.2 矩阵的幂运算与矩阵函数"></a>6.2 矩阵的幂运算与矩阵函数</h3><p>若$A=Q·diag(\lambda_1,…,\lambda_n)·Q^{-1}$且特征值各异：</p>
+<p><code>b^A</code>为$Q·diag(b^{\lambda_1},..,b^{\lambda_n})·Q^{-1}$</p>
+<p><code>A^b</code>为$Q·diag(\lambda_1^{b},..,\lambda_n^{b})·Q^{-1}$</p>
+<p><code>expm(A)</code>为矩阵指数函数$Q·diag(e^{\lambda_1},…,e^{\lambda_n})·Q^{-1}$</p>
+<p><code>logm(A)</code>为矩阵对数函数$Q·diag(\ln \lambda_1,…,\ln \lambda_n)·Q^{-1}$</p>
+<p><code>sqrtm(A)</code>为矩阵平方根函数$Q·diag(\sqrt{\lambda_1},…,\sqrt{\lambda_n})·Q^{-1}$</p>
+<p><code>funm(A,Hfun)</code>为矩阵函数$Q·diag(f(\lambda_1),…,f(\lambda_n))·Q^{-1}$，Hfun为函数句柄</p>
+<h3 id="6-3-MATLAB控制流"><a href="#6-3-MATLAB控制流" class="headerlink" title="6.3 MATLAB控制流"></a>6.3 MATLAB控制流</h3><p><code>if-elseif-else-end</code> end不可缺省</p>
 <p><code>switch-case value-otherwise-end</code> value常用胞元数组</p>
 <p><code>for-end</code>以及<code>while-end</code>循环</p>
 <p><code>break</code>和<code>continue</code>同C++，死循环时可以在命令行用Ctrl+C停止运行</p>
 <p><code>pause</code>程序在该行暂停，可以用<code>pause(n)</code>暂停n秒。<code>keyboard</code>进入调试模式，键入<code>dbcont</code>恢复代码段的运行</p>
-<p><code>a = input('input a number')</code> 屏幕输出，并将输入值赋给a</p>
+<p><code>a = input(&#39;input a number&#39;)</code> 屏幕输出，并将输入值赋给a</p>
 <p><code>return</code>结束当前函数并返回上一级函数，若在主程序中则程序运行结束</p>
-<p><code>a = inputdlg('input a number)</code> 弹窗输入，返回值是胞元。另外有<code>listdlg</code>和<code>questdlg</code>进行列表和多选弹窗。</p>
+<p><code>a = inputdlg(&#39;input a number)</code> 弹窗输入，返回值是胞元。另外有<code>listdlg</code>和<code>questdlg</code>进行列表和多选弹窗。</p>
 <p><code>fminbnd(fx,a,b)</code>可以计算某个区间内的一个极小值，对于波动较大的函数，极小值不一定是最小值</p>
 <p><a href="#倍增区间极值搜索法">倍增区间极值搜索法</a>，将分割区间的长度不断变小，从而可以获得“更多的极小值”，每一次分割都将获取最小的一个极小值。在单调区间个数有限的假设下，分割越细，就越有可能获得最小值。</p>
 <p>最终当进一步分层后，获取的最小值在连续几次倍增后不变（或变化量极小），就退出循环，结束区间倍增，然后输出最终得到的最小值、最小值点以及最终倍增区间的个数。</p>
-<h3 id="胞元">6.4 胞元</h3>
-<p><code>B(1,2)</code> 援引，返回内容标签 如[3x3 double]</p>
+<h3 id="6-4-胞元"><a href="#6-4-胞元" class="headerlink" title="6.4 胞元"></a>6.4 胞元</h3><p><code>B(1,2)</code> 援引，返回内容标签 如[3x3 double]</p>
 <p><code>B{1,2}</code> 内容援引，返回具体内容</p>
-<h2 id="lecture-7-matlab数值微积分">Lecture 7 MATLAB数值微积分</h2>
-<h3 id="差分方法">7.1 差分方法</h3>
-<p><code>dx = diff(X)</code> 为向量或矩阵的向前差分运算，等价于<code>dx = X(2:n,:) - X(1:n-1,:)</code>，结果比X少一行</p>
+<h2 id="Lecture-7-MATLAB数值微积分"><a href="#Lecture-7-MATLAB数值微积分" class="headerlink" title="Lecture 7 MATLAB数值微积分"></a>Lecture 7 MATLAB数值微积分</h2><h3 id="7-1-差分方法"><a href="#7-1-差分方法" class="headerlink" title="7.1 差分方法"></a>7.1 差分方法</h3><p><code>dx = diff(X)</code> 为向量或矩阵的向前差分运算，等价于<code>dx = X(2:n,:) - X(1:n-1,:)</code>，结果比X少一行</p>
 <p><code>FX = gradient(F)</code> 为向量或矩阵的中心差分运算，等价于<code>FX(1)=F(2)-F(1),FX(end)=F(end)-F(end-1),FX(2:end-1)=0.5*(F(3:end)-F(1:end-2))</code>，结果与F长度相同。矩阵的一元梯度仅包括横向</p>
 <p><code>[FX,FY] = gradient(F)</code>二元梯度运算，FX为横向梯度（每一行右减左），FY为纵向梯度（每一列下减上）</p>
-<p>注：用realmin近似计算函数极限时，若分子分母都趋于<span class="math inline">\(\epsilon\)</span>且阶数较高时，MATLAB不能正常返回结果而是会生成NaN。近似导数计算时步长太小会出现毛刺现象。</p>
-<h3 id="数值求和与累积和">7.2 数值求和与累积和</h3>
-<p><code>sum(X,dim)</code> 矩阵求和，dim默认为1即按列方向求和，返回行向量</p>
+<p>注：用realmin近似计算函数极限时，若分子分母都趋于$\epsilon$且阶数较高时，MATLAB不能正常返回结果而是会生成NaN。近似导数计算时步长太小会出现毛刺现象。</p>
+<h3 id="7-2-数值求和与累积和"><a href="#7-2-数值求和与累积和" class="headerlink" title="7.2 数值求和与累积和"></a>7.2 数值求和与累积和</h3><p><code>sum(X,dim)</code> 矩阵求和，dim默认为1即按列方向求和，返回行向量</p>
 <p><code>Scs = cumsum(X)</code> 矩阵按列方向求累积和，返回同型矩阵</p>
-<h3 id="数值积分">7.3 数值积分</h3>
-<p>将定积分<span class="math inline">\(\int_a^bf(x)dx\)</span>积分区间划分为<span class="math inline">\(a=x_0&lt;x_1&lt;x_2&lt;...&lt;x_n=b\)</span>，对每一个节点分段<span class="math inline">\([x_i,x_{i+1}]\)</span>，分段积分<span class="math inline">\(\int_{x_i}^{x_{i+1}}f(x)dx\)</span>的近似</p>
-<h4 id="中矩形公式">中矩形公式</h4>
-<p><span class="math display">\[\int_{x_i}^{x_{i+1}}f(x)dx\approx f(\frac{x_i+x_{i+1}}{2})(x_{i+1}-x_i)\]</span></p>
-<h4 id="复合梯形公式">复合梯形公式</h4>
-<p><span class="math display">\[\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{f(x_i)+f(x_{i+1})}{2}(x_{i+1}-x_i)\]</span></p>
-<p><code>trapz(y)</code> 使用梯形公式方法对函数矩阵y按列方向求和，首尾元素求和时乘以权值0.5</p>
+<h3 id="7-3-数值积分"><a href="#7-3-数值积分" class="headerlink" title="7.3 数值积分"></a>7.3 数值积分</h3><p>将定积分$\int_a^bf(x)dx$积分区间划分为$a=x_0&lt;x_1&lt;x_2&lt;…&lt;x_n=b$，对每一个节点分段$[x_i,x_{i+1}]$，分段积分$\int_{x_i}^{x_{i+1}}f(x)dx$的近似</p>
+<h4 id="中矩形公式"><a href="#中矩形公式" class="headerlink" title="中矩形公式"></a>中矩形公式</h4><script type="math/tex; mode=display">\int_{x_i}^{x_{i+1}}f(x)dx\approx f(\frac{x_i+x_{i+1}}{2})(x_{i+1}-x_i)</script><h4 id="复合梯形公式"><a href="#复合梯形公式" class="headerlink" title="复合梯形公式"></a>复合梯形公式</h4><script type="math/tex; mode=display">\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{f(x_i)+f(x_{i+1})}{2}(x_{i+1}-x_i)</script><p><code>trapz(y)</code> 使用梯形公式方法对函数矩阵y按列方向求和，首尾元素求和时乘以权值0.5</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="built_in">pi</span>/<span class="number">8</span>; t = <span class="number">0</span>:d:<span class="built_in">pi</span>/<span class="number">2</span>; y=<span class="number">0.2</span>+<span class="built_in">sin</span>(t);</span><br><span class="line">s_ta = d*trapz(y);</span><br></pre></td></tr></table></figure>
 <p><code>trap(x,y)</code> 函数矩阵y按列方向求关于x的和，x为函数采样序列y对应的自变量列表，可以接受非均匀采样。</p>
 <p><code>cumtrapz(y)</code> 函数矩阵累积式按列方向求和，返回同型矩阵</p>
 <p><code>cumtrapz(x,y)</code> 函数矩阵累积式按列方向求和，x为指定自变量列表</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Y = [<span class="number">1</span> <span class="number">4</span> <span class="number">9</span> <span class="number">16</span> <span class="number">25</span>];</span><br><span class="line">Q = cumtrapz(Y);</span><br><span class="line"><span class="comment">%Q = 1×5</span></span><br><span class="line"><span class="comment">%         0    2.5000    9.0000   21.5000   42.0000</span></span><br></pre></td></tr></table></figure>
-<h4 id="辛普森公式">辛普森公式</h4>
-<p><span class="math display">\[\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{f(x_i)+4f(\frac{x_i+x_{i+1}}{2})+f(x_{i+1})}{6}(x_{i+1}-x_i)\]</span></p>
-<h4 id="monte-carlo法">Monte Carlo法</h4>
-<p><span class="math display">\[\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{\sum_{j=1}^Kf(x_{i,j})}{K}(x_{i+1}-x_i)\]</span></p>
-<p>其中<span class="math inline">\(\forall 1\leq j\leq K,x_{i,j}\in [x_i,x_{i+1}]\)</span>为子区间随机采样点，一般用均匀分布。</p>
-<p>Monte Carlo法除去计算数值积分外，也可以用于估计某些实数的值。例如<span class="math inline">\(\sqrt{2}\)</span>可以通过在<span class="math inline">\(X\sim U[0,2]\)</span>上多次取样本值，计算<span class="math inline">\(x^2\leq 2\)</span>的占比，理论值为<span class="math inline">\(\frac{\sqrt{2}}{2}\)</span></p>
-<h3 id="匿名函数">7.4 匿名函数</h3>
-<p><code>F = @(var) sin(var).*var</code> 一句话函数，F为函数句柄，括号内为参数</p>
-<h3 id="内建数值积分函数">7.5 内建数值积分函数</h3>
-<p><code>Q = integral(fun,xmin,xmax)</code> 匿名函数句柄以及积分上下限。可选参数<code>'AbsTol'</code>控制绝对误差（注意需要调小<code>'RelTol'</code>保证精度） <code>'ArrayValued'</code>被积函数是否为阵列函数，<code>'Waypoints'</code>指定积分路径</p>
-<h2 id="lecture-8-matlab微分方程数值解法">Lecture 8 MATLAB微分方程数值解法</h2>
-<h3 id="差分方程">8.1 差分方程</h3>
-<p>利用固定间隔的函数值构成的递推关系称为差分方程。</p>
-<p><span class="math display">\[f(x)=F(f(x-1),f(x-2),...,f(x-n))\]</span></p>
-<p>常系数线性差分方程的形式如下</p>
-<p><span class="math display">\[f(x)=a_1f(x-1)+a_2f(x-2)+...+a_nf(x-n)+g(x)\]</span></p>
-<p>若<span class="math inline">\(g(x)\equiv 0\)</span>则为常系数齐次线性差分方程，解法如下：</p>
-<p><span class="math display">\[f(x)=a_1f(x-1)+a_2f(x-2)+...+a_nf(x-n)\]</span></p>
-<p>解其特征方程<span class="math inline">\(\lambda^n-a_1\lambda^{n-1}-a_2\lambda^{n-2}-...-a_{n-1}\lambda-a_n=0\)</span></p>
-<p>若得到n个两两不同的实特征根<span class="math inline">\(\lambda_1&lt;\lambda_2&lt;...&lt;\lambda_n\)</span>，则差分方程的通解为 <span class="math display">\[f(x)=c_1\lambda_1^x+c_2\lambda_2^x+...+c_n\lambda_n^x\]</span></p>
-<h3 id="差分方程与微分方程">8.2 差分方程与微分方程</h3>
-<p>差分方程<span class="math inline">\(f(x+d)=(1+d)·f(x)\)</span>等价于</p>
-<p><span class="math display">\[f(x+d)-f(x)=d·f(x)\]</span></p>
-<p>则当<span class="math inline">\(d\leftarrow 0\)</span>时，问题等价于微分方程</p>
-<p><span class="math display">\[f&#39;(x)=\lim_{d\rightarrow 0}\frac{f(x+d)-f(x)}{d}=f(x)\]</span></p>
-<p><strong>结论：</strong> 小步长差分方程是微分方程的数值近似。</p>
-<p><span class="math display">\[f(x+d)=(1+d)·f(x)=f(x)+d·f(x)\]</span></p>
-<p>就是<span class="math inline">\(f&#39;(x)=f(x)\)</span>的一种简单的数值近似求解方法</p>
-<h3 id="欧拉法">8.3 欧拉法</h3>
-<p>假设微分方程为<span class="math inline">\(y&#39;(x)=f(x,y(x))\)</span>，初值条件<span class="math inline">\(y(x_0)=y^*\)</span></p>
-<p>则从初值条件<span class="math inline">\(y_0=f(x_0)=y^*\)</span>开始逐步迭代</p>
-<p><span class="math display">\[y_{n+1}=y_n+d·y&#39;(x_n) = y_n+d·f(x_n,y_n)\]</span></p>
-<h3 id="改进欧拉法">8.4 改进欧拉法</h3>
-<p>假设微分方程为<span class="math inline">\(y&#39;(x)=f(x,y(x))\)</span>，初值条件<span class="math inline">\(y(x_0)=y^*\)</span></p>
+<h4 id="辛普森公式"><a href="#辛普森公式" class="headerlink" title="辛普森公式"></a>辛普森公式</h4><script type="math/tex; mode=display">\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{f(x_i)+4f(\frac{x_i+x_{i+1}}{2})+f(x_{i+1})}{6}(x_{i+1}-x_i)</script><h4 id="Monte-Carlo法"><a href="#Monte-Carlo法" class="headerlink" title="Monte Carlo法"></a>Monte Carlo法</h4><script type="math/tex; mode=display">\int_{x_i}^{x_{i+1}}f(x)dx\approx \frac{\sum_{j=1}^Kf(x_{i,j})}{K}(x_{i+1}-x_i)</script><p>其中$\forall 1\leq j\leq K,x_{i,j}\in [x_i,x_{i+1}]$为子区间随机采样点，一般用均匀分布。</p>
+<p>Monte Carlo法除去计算数值积分外，也可以用于估计某些实数的值。例如$\sqrt{2}$可以通过在$X\sim U[0,2]$上多次取样本值，计算$x^2\leq 2$的占比，理论值为$\frac{\sqrt{2}}{2}$</p>
+<h3 id="7-4-匿名函数"><a href="#7-4-匿名函数" class="headerlink" title="7.4 匿名函数"></a>7.4 匿名函数</h3><p><code>F = @(var) sin(var).*var</code> 一句话函数，F为函数句柄，括号内为参数</p>
+<h3 id="7-5-内建数值积分函数"><a href="#7-5-内建数值积分函数" class="headerlink" title="7.5 内建数值积分函数"></a>7.5 内建数值积分函数</h3><p><code>Q = integral(fun,xmin,xmax)</code> 匿名函数句柄以及积分上下限。可选参数<code>&#39;AbsTol&#39;</code>控制绝对误差（注意需要调小<code>&#39;RelTol&#39;</code>保证精度） <code>&#39;ArrayValued&#39;</code>被积函数是否为阵列函数，<code>&#39;Waypoints&#39;</code>指定积分路径</p>
+<h2 id="Lecture-8-MATLAB微分方程数值解法"><a href="#Lecture-8-MATLAB微分方程数值解法" class="headerlink" title="Lecture 8 MATLAB微分方程数值解法"></a>Lecture 8 MATLAB微分方程数值解法</h2><h3 id="8-1-差分方程"><a href="#8-1-差分方程" class="headerlink" title="8.1 差分方程"></a>8.1 差分方程</h3><p>利用固定间隔的函数值构成的递推关系称为差分方程。</p>
+<script type="math/tex; mode=display">f(x)=F(f(x-1),f(x-2),...,f(x-n))</script><p>常系数线性差分方程的形式如下</p>
+<script type="math/tex; mode=display">f(x)=a_1f(x-1)+a_2f(x-2)+...+a_nf(x-n)+g(x)</script><p>若$g(x)\equiv 0$则为常系数齐次线性差分方程，解法如下：</p>
+<script type="math/tex; mode=display">f(x)=a_1f(x-1)+a_2f(x-2)+...+a_nf(x-n)</script><p>解其特征方程$\lambda^n-a_1\lambda^{n-1}-a_2\lambda^{n-2}-…-a_{n-1}\lambda-a_n=0$</p>
+<p>若得到n个两两不同的实特征根$\lambda_1&lt;\lambda_2&lt;…&lt;\lambda_n$，则差分方程的通解为</p>
+<script type="math/tex; mode=display">f(x)=c_1\lambda_1^x+c_2\lambda_2^x+...+c_n\lambda_n^x</script><h3 id="8-2-差分方程与微分方程"><a href="#8-2-差分方程与微分方程" class="headerlink" title="8.2 差分方程与微分方程"></a>8.2 差分方程与微分方程</h3><p>差分方程$f(x+d)=(1+d)·f(x)$等价于</p>
+<script type="math/tex; mode=display">f(x+d)-f(x)=d·f(x)</script><p>则当$d\leftarrow 0$时，问题等价于微分方程</p>
+<script type="math/tex; mode=display">f'(x)=\lim_{d\rightarrow 0}\frac{f(x+d)-f(x)}{d}=f(x)</script><p><strong>结论：</strong> 小步长差分方程是微分方程的数值近似。</p>
+<script type="math/tex; mode=display">f(x+d)=(1+d)·f(x)=f(x)+d·f(x)</script><p>就是$f’(x)=f(x)$的一种简单的数值近似求解方法</p>
+<h3 id="8-3-欧拉法"><a href="#8-3-欧拉法" class="headerlink" title="8.3 欧拉法"></a>8.3 欧拉法</h3><p>假设微分方程为$y’(x)=f(x,y(x))$，初值条件$y(x_0)=y^*$</p>
+<p>则从初值条件$y_0=f(x_0)=y^*$开始逐步迭代</p>
+<script type="math/tex; mode=display">y_{n+1}=y_n+d·y'(x_n) = y_n+d·f(x_n,y_n)</script><h3 id="8-4-改进欧拉法"><a href="#8-4-改进欧拉法" class="headerlink" title="8.4 改进欧拉法"></a>8.4 改进欧拉法</h3><p>假设微分方程为$y’(x)=f(x,y(x))$，初值条件$y(x_0)=y^*$</p>
 <p>改进的欧拉法对每一步迭代所导入的导数值进行预估和矫正：</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
 \begin{cases}
     \overline{y_{n+1}}=y_n+d\cdot f(x_n,y_n)\\
     y_{n+1}=y_n+\frac{d}{2}\cdot [f(x_n,y_n)+f(x_{n+1},\overline{y_{n+1}})]
-\end{cases}
-\]</span></p>
-<p>改进欧拉法同样也可以解一阶的微分方程组，只需要将未知函与导函数看成向量<span class="math inline">\(\vec{y}&#39;(x)=\vec{f}(x,\vec{y}(x))=\vec{f}(x,y_1(x),y_2(x),...,y_n(x)),\vec{y}(x_0)=\vec{y^*}\)</span></p>
-<h3 id="龙格-库塔法">8.5 龙格-库塔法</h3>
-<p>假设微分方程为<span class="math inline">\(y&#39;(x)=f(x,y(x))\)</span>，初值条件<span class="math inline">\(y(x_0)=y^*\)</span></p>
-<p>使用不同的增量位置代入并加权平均<span class="math inline">\(\sum_{i=1}^nc_i=1\)</span></p>
-<p><span class="math display">\[y_{n+1}=y_n+d\cdot \sum_{i=1}^rc_if(x_n,\lambda_id,y(x_n+\lambda_id))\]</span></p>
-<p>二阶龙格-库塔法的中点公式</p>
-<p><span class="math display">\[y_{n+1}=y_n+d\cdot f(x_n+\frac{d}{2},y_n+\frac{d}{2}f(x_n,y_n))\]</span></p>
-<h3 id="一阶微分方程组演化实例见ppt">8.6 一阶微分方程组演化实例（见PPT）</h3>
-<p>设矩阵<span class="math inline">\(A\)</span>有实特征值<span class="math inline">\(\lambda_1,\lambda_2\)</span>，并假设<span class="math inline">\(A\)</span>有两个线性无关的特征向量<span class="math inline">\(v_1,v_2\)</span>.过原点按<span class="math inline">\(v_1,v_2\)</span>方向做直线，即构成了两条演化轨迹（trajectory）的渐近线。若特征值<span class="math inline">\(\lambda&gt;0\)</span>，则在对应的特征向量方向上趋于无穷；若特征值<span class="math inline">\(\lambda=0\)</span>，则在对应方向上不作位移（静止不动或平行于另一条渐近线移动）；若特征值<span class="math inline">\(\lambda&lt;0\)</span>，则在对应方向趋于原点。</p>
-<h3 id="高阶微分方程">8.7 高阶微分方程</h3>
-<p><code>[t,y] = ode45(odefun,tspan,y0)</code> 4阶龙格库塔法，t和y返回时间与函数序列，odefun为导函数句柄，tspan为数值解法的时间区间，y0为初值列向量</p>
+\end{cases}</script><p>改进欧拉法同样也可以解一阶的微分方程组，只需要将未知函与导函数看成向量$\vec{y}’(x)=\vec{f}(x,\vec{y}(x))=\vec{f}(x,y_1(x),y_2(x),…,y_n(x)),\vec{y}(x_0)=\vec{y^*}$</p>
+<h3 id="8-5-龙格-库塔法"><a href="#8-5-龙格-库塔法" class="headerlink" title="8.5 龙格-库塔法"></a>8.5 龙格-库塔法</h3><p>假设微分方程为$y’(x)=f(x,y(x))$，初值条件$y(x_0)=y^*$</p>
+<p>使用不同的增量位置代入并加权平均$\sum_{i=1}^nc_i=1$</p>
+<script type="math/tex; mode=display">y_{n+1}=y_n+d\cdot \sum_{i=1}^rc_if(x_n,\lambda_id,y(x_n+\lambda_id))</script><p>二阶龙格-库塔法的中点公式</p>
+<script type="math/tex; mode=display">y_{n+1}=y_n+d\cdot f(x_n+\frac{d}{2},y_n+\frac{d}{2}f(x_n,y_n))</script><h3 id="8-6-一阶微分方程组演化实例（见PPT）"><a href="#8-6-一阶微分方程组演化实例（见PPT）" class="headerlink" title="8.6 一阶微分方程组演化实例（见PPT）"></a>8.6 一阶微分方程组演化实例（见PPT）</h3><p>设矩阵$A$有实特征值$\lambda_1,\lambda_2$，并假设$A$有两个线性无关的特征向量$v_1,v_2$.过原点按$v_1,v_2$方向做直线，即构成了两条演化轨迹（trajectory）的渐近线。若特征值$\lambda&gt;0$，则在对应的特征向量方向上趋于无穷；若特征值$\lambda=0$，则在对应方向上不作位移（静止不动或平行于另一条渐近线移动）；若特征值$\lambda&lt;0$，则在对应方向趋于原点。</p>
+<h3 id="8-7-高阶微分方程"><a href="#8-7-高阶微分方程" class="headerlink" title="8.7 高阶微分方程"></a>8.7 高阶微分方程</h3><p><code>[t,y] = ode45(odefun,tspan,y0)</code> 4阶龙格库塔法，t和y返回时间与函数序列，odefun为导函数句柄，tspan为数值解法的时间区间，y0为初值列向量</p>
 <p>高阶微分方程可以转化成一阶微分方程组。</p>
-<h2 id="lecture-9-matlab数值线性代数">Lecture 9 MATLAB数值线性代数</h2>
-<h3 id="矩阵的范数">9.1 矩阵的范数</h3>
-<p><code>norm(A)</code> 计算矩阵（或向量）A的2-范数，也称为谱范数</p>
-<p><span class="math display">\[||A||_2=\max_{||x||_2=1}||Ax||_2=\sqrt{\lambda_{\max}(A^TA)}\]</span></p>
-<p>其中向量<span class="math inline">\(x\)</span>的2-范数是欧式空间长度，<span class="math inline">\(\lambda_{\max}\)</span>为<span class="math inline">\(A^TA\)</span>的最大特征值，因此谱范数也等于<span class="math inline">\(A\)</span>的最大奇异值，但不一定是最大特征值（<span class="math inline">\(A^TA\)</span>半正定方阵，特征值非负）</p>
-<p><code>norm(A,'fro')</code> 计算矩阵<span class="math inline">\(A\)</span>的Frobenius范数，即拉成长向量再计算2-向量范数，常用于矩阵误差分析</p>
-<p><span class="math display">\[||A||_F=\sqrt{\sum_i(A^TA)_{i,i}}=\sqrt{trace(A^TA)}\]</span></p>
-<p><code>norm(A,1)</code> 计算矩阵（或向量）A的1-范数，也称为列范数</p>
-<p><span class="math display">\[||A||_1=\max_{||x||_1=1}||Ax||_1=\max_{1\leq j\leq n}\sum_{i=1}^m|a_{ij}|\]</span></p>
-<p>其中向量<span class="math inline">\(x\)</span>的1-范数为向量<span class="math inline">\(x\)</span>所有元素绝对值的和</p>
-<p><code>norm(A,inf)</code> 计算矩阵（或向量）A的<span class="math inline">\(\infty\)</span>-范数，也称为行范数</p>
-<p><span class="math display">\[||A||_{\infty}=\max_{||x||_\infty=1}||Ax||_\infty=\max_{1\leq i\leq m}\sum_{j=1}^n|a_{ij}|\]</span></p>
-<p>“由向量p-范数诱导得到的矩阵p-范数”</p>
-<p><code>sum(sum(A~=0.0))</code> 计算矩阵A的0-范数（不满足<span class="math inline">\(||kA||=|k|\cdot||A||\)</span>故不是传统意义下的范数），含义为矩阵A的非零元素的个数</p>
-<p><span class="math display">\[||A||_0=\# (A_{ij}\not ={0})\]</span></p>
-<p>0-范数是对矩阵稀疏性的一种直接和准确的度量，可以用于最优化问题中求稀疏解（但是算法多数不收敛）：</p>
-<p><span class="math display">\[\min\frac{1}{2}||Ax\cdot b||^2+\lambda||x||_0\]</span></p>
-<p><code>[U S V] = svd(A); norm(diag(S),1)</code> 计算矩阵A的核范数，定义为<span class="math inline">\(A\)</span>所有奇异值的和。对核范数的约束是低秩逼近与低秩求解最常用的方法。（对奇异值的0-范数换位1-范数）</p>
-<p><span class="math display">\[||A||_*=\sum_{i=1}^n\sqrt{\lambda_i(A^TA)}=trace(A)\]</span></p>
-<h3 id="矩阵变换与特征值分解">9.2 矩阵变换与特征值分解</h3>
-<p><code>[R,ci]=rref(A)</code> 实现初等变换将<span class="math inline">\(A\)</span>化为阶梯型矩阵，其中<code>R</code>存储了行阶梯型的矩阵，<code>ci</code>为阶梯元素（线性独立）的列指标</p>
-<p><code>null(A)</code> 得到<span class="math inline">\(A\)</span>的核空间的一组标准正交基</p>
-<p><code>orth(A)</code> 得到<span class="math inline">\(A\)</span>的像空间的一组标准正交基</p>
+<h2 id="Lecture-9-MATLAB数值线性代数"><a href="#Lecture-9-MATLAB数值线性代数" class="headerlink" title="Lecture 9 MATLAB数值线性代数"></a>Lecture 9 MATLAB数值线性代数</h2><h3 id="9-1-矩阵的范数"><a href="#9-1-矩阵的范数" class="headerlink" title="9.1 矩阵的范数"></a>9.1 矩阵的范数</h3><p><code>norm(A)</code> 计算矩阵（或向量）A的2-范数，也称为谱范数</p>
+<script type="math/tex; mode=display">||A||_2=\max_{||x||_2=1}||Ax||_2=\sqrt{\lambda_{\max}(A^TA)}</script><p>其中向量$x$的2-范数是欧式空间长度，$\lambda_{\max}$为$A^TA$的最大特征值，因此谱范数也等于$A$的最大奇异值，但不一定是最大特征值（$A^TA$半正定方阵，特征值非负）</p>
+<p><code>norm(A,&#39;fro&#39;)</code> 计算矩阵$A$的Frobenius范数，即拉成长向量再计算2-向量范数，常用于矩阵误差分析</p>
+<script type="math/tex; mode=display">||A||_F=\sqrt{\sum_i(A^TA)_{i,i}}=\sqrt{trace(A^TA)}</script><p><code>norm(A,1)</code> 计算矩阵（或向量）A的1-范数，也称为列范数</p>
+<script type="math/tex; mode=display">||A||_1=\max_{||x||_1=1}||Ax||_1=\max_{1\leq j\leq n}\sum_{i=1}^m|a_{ij}|</script><p>其中向量$x$的1-范数为向量$x$所有元素绝对值的和</p>
+<p><code>norm(A,inf)</code> 计算矩阵（或向量）A的$\infty$-范数，也称为行范数</p>
+<script type="math/tex; mode=display">||A||_{\infty}=\max_{||x||_\infty=1}||Ax||_\infty=\max_{1\leq i\leq m}\sum_{j=1}^n|a_{ij}|</script><p>“由向量p-范数诱导得到的矩阵p-范数”</p>
+<p><code>sum(sum(A~=0.0))</code> 计算矩阵A的0-范数（不满足$||kA||=|k|\cdot||A||$故不是传统意义下的范数），含义为矩阵A的非零元素的个数</p>
+<script type="math/tex; mode=display">||A||_0=\# (A_{ij}\not ={0})</script><p>0-范数是对矩阵稀疏性的一种直接和准确的度量，可以用于最优化问题中求稀疏解（但是算法多数不收敛）：</p>
+<script type="math/tex; mode=display">\min\frac{1}{2}||Ax\cdot b||^2+\lambda||x||_0</script><p><code>[U S V] = svd(A); norm(diag(S),1)</code> 计算矩阵A的核范数，定义为$A$所有奇异值的和。对核范数的约束是低秩逼近与低秩求解最常用的方法。（对奇异值的0-范数换位1-范数）</p>
+<script type="math/tex; mode=display">||A||_*=\sum_{i=1}^n\sqrt{\lambda_i(A^TA)}=trace(A)</script><h3 id="9-2-矩阵变换与特征值分解"><a href="#9-2-矩阵变换与特征值分解" class="headerlink" title="9.2 矩阵变换与特征值分解"></a>9.2 矩阵变换与特征值分解</h3><p><code>[R,ci]=rref(A)</code> 实现初等变换将$A$化为阶梯型矩阵，其中<code>R</code>存储了行阶梯型的矩阵，<code>ci</code>为阶梯元素（线性独立）的列指标</p>
+<p><code>null(A)</code> 得到$A$的核空间的一组标准正交基</p>
+<p><code>orth(A)</code> 得到$A$的像空间的一组标准正交基</p>
 <p><code>[VR,DR]=cdf2rdf(V,D)</code> 将复数对角型转换为实数块对角型(VR*DR/VR=A，了解)</p>
-<h3 id="matlab解线性方程组">9.3 MATLAB解线性方程组</h3>
-<p><code>A\b=inv(A)*B</code> 可解得<span class="math inline">\(x=A^{-1}b\)</span>的解，反斜杠效率高于<code>inv()</code>，无解问题或超定问题提供最小二乘解，不满秩且有解则随机提供一个解</p>
-<p>对于<span class="math inline">\(A\cdot x=b\)</span></p>
+<h3 id="9-3-MATLAB解线性方程组"><a href="#9-3-MATLAB解线性方程组" class="headerlink" title="9.3 MATLAB解线性方程组"></a>9.3 MATLAB解线性方程组</h3><p><code>A\b=inv(A)*B</code> 可解得$x=A^{-1}b$的解，反斜杠效率高于<code>inv()</code>，无解问题或超定问题提供最小二乘解，不满秩且有解则随机提供一个解</p>
+<p>对于$A\cdot x=b$</p>
 <ul>
-<li>线性正问题：已知<span class="math inline">\(A,x\)</span>求<span class="math inline">\(b\)</span>，复杂度为<span class="math inline">\(O(n^2)\)</span></li>
-<li>线性反问题：已知<span class="math inline">\(A,b\)</span>求<span class="math inline">\(x\)</span>，复杂度为<span class="math inline">\(O(n^3)\)</span></li>
+<li>线性正问题：已知$A,x$求$b$，复杂度为$O(n^2)$</li>
+<li>线性反问题：已知$A,b$求$x$，复杂度为$O(n^3)$</li>
 </ul>
-<h4 id="数值迭代法">9.3.1 数值迭代法</h4>
-<p>从线性方程组<span class="math inline">\(A\cdot x=b\)</span>出发，令<span class="math inline">\(A=M-N\)</span>，则</p>
-<p><span class="math display">\[x=M^{-1}Nx+M^{-1}b=Bx+f\]</span></p>
-<p>其中<span class="math inline">\(B=M^{-1}N,f=M^{-1}b\)</span></p>
+<h4 id="9-3-1-数值迭代法"><a href="#9-3-1-数值迭代法" class="headerlink" title="9.3.1 数值迭代法"></a>9.3.1 数值迭代法</h4><p>从线性方程组$A\cdot x=b$出发，令$A=M-N$，则</p>
+<script type="math/tex; mode=display">x=M^{-1}Nx+M^{-1}b=Bx+f</script><p>其中$B=M^{-1}N,f=M^{-1}b$</p>
 <p>则可以由迭代法求解：</p>
-<p><span class="math display">\[x^{(k+1)}=Bx^{(k)}+f\]</span></p>
-<p>这种算法在<span class="math inline">\(||B||&lt;1\)</span>的情况下可以保证收敛性</p>
-<h4 id="雅克比迭代法">9.3.2 雅克比迭代法</h4>
-<p>采用矩阵分裂记号，令<span class="math inline">\(M=D,N=L+U\)</span></p>
-<p><span class="math display">\[
-A=D-L-U
-\]</span></p>
-<p><code>D=diag(A);L=-tril(A)+D;U=-triu(A)+D</code></p>
+<script type="math/tex; mode=display">x^{(k+1)}=Bx^{(k)}+f</script><p>这种算法在$||B||&lt;1$的情况下可以保证收敛性</p>
+<h4 id="9-3-2-雅克比迭代法"><a href="#9-3-2-雅克比迭代法" class="headerlink" title="9.3.2 雅克比迭代法"></a>9.3.2 雅克比迭代法</h4><p>采用矩阵分裂记号，令$M=D,N=L+U$</p>
+<script type="math/tex; mode=display">
+A=D-L-U</script><p><code>D=diag(A);L=-tril(A)+D;U=-triu(A)+D</code></p>
 <p>则有</p>
-<p><span class="math display">\[
-x^{(k+1)}=D^{-1}(L+U)x^{(k)}+D^{-1}b
-\]</span></p>
-<h4 id="高斯-赛德尔迭代法">9.3.3 高斯-赛德尔迭代法</h4>
-<p>令<span class="math inline">\(M=D-L,N=U\)</span>则有</p>
-<p><span class="math display">\[
-x^{(k+1)}=(D-L)^{-1}Ux^{(k)}+(D-L)^{-1}b
-\]</span></p>
-<h4 id="基于变分法解线性方程组">9.3.4 基于变分法解线性方程组</h4>
-<p>若矩阵<span class="math inline">\(A\)</span>对称正定，定义</p>
-<p><span class="math display">\[
-\phi(x)=\frac{1}{2}&lt;Ax,x&gt;-&lt;b,x&gt;=\frac{1}{2}x^TAx-b^Tx
-\]</span></p>
-<p>则线性方程组<span class="math inline">\(Ax=b\)</span>的解集等于<span class="math inline">\(\underset{x\in \mathbb{R}^n}{\argmin}\phi(x)\)</span>的解集，将线性方程组求解问题转化为最优化问题的方法称为<strong>变分法</strong>，当<span class="math inline">\(A\)</span>正定时，最优化问题是一个凸问题，仅有一个全局最优解</p>
-<h4 id="变分-最速梯度下降法法">9.3.5 变分-最速梯度下降法法</h4>
-<p>光滑函数<span class="math inline">\(\phi(x)\)</span>在<span class="math inline">\(x=x^{(k)}\)</span>下降最快的方向为其负梯度方向</p>
-<p><span class="math display">\[
--\nabla\phi(x^{(k)})=-(Ax^{(k)}-b)=p^{(k)}
-\]</span></p>
-<p>则只需通过迭代<span class="math inline">\(x^{(k+1)}=x^{(k)}+\lambda p^{(k)}\)</span>直到收敛。最速下降法定义为</p>
-<p><span class="math display">\[
-\lambda^{(k)}=\underset{\lambda}{\argmin}\phi(x^{(k)}+\lambda p^{(k)})
-\]</span></p>
-<p>解得最速步长<span class="math inline">\(\lambda_k=\frac{&lt;p^{(k)},p^{(k)}&gt;}{&lt;Ap^{(k)},p^{(k)}&gt;}\)</span></p>
-<h4 id="变分-共轭梯度法了解">9.3.5 变分-共轭梯度法（了解）</h4>
-<p>与梯度下降法的主要区别在于每一步的移动方向<span class="math inline">\(p^{(k)}\)</span>会在<span class="math inline">\(span\left\{p^{(0)},...,p^{(k-1)}\right\}\)</span>中进行最优化的选取</p>
-<figure>
-<img src="/2019/10/28/20191026matlab/2019-12-27-16-19-24.png" alt="9.3.5"><figcaption>9.3.5</figcaption>
-</figure>
-<p><code>x=pcg(A,b)</code> Preconditioned conjugate gradients 实现带有简单病态预处理的共轭梯度法求解<span class="math inline">\(Ax=b\)</span>的问题，矩阵<span class="math inline">\(A\)</span>需要是对称正定的矩阵</p>
-<h2 id="lecture-10-matlab进阶程序设计与问题求解">Lecture 10 MATLAB进阶程序设计与问题求解</h2>
-<p><strong>Recap:</strong></p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=D^{-1}(L+U)x^{(k)}+D^{-1}b</script><h4 id="9-3-3-高斯-赛德尔迭代法"><a href="#9-3-3-高斯-赛德尔迭代法" class="headerlink" title="9.3.3 高斯-赛德尔迭代法"></a>9.3.3 高斯-赛德尔迭代法</h4><p>令$M=D-L,N=U$则有</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=(D-L)^{-1}Ux^{(k)}+(D-L)^{-1}b</script><h4 id="9-3-4-基于变分法解线性方程组"><a href="#9-3-4-基于变分法解线性方程组" class="headerlink" title="9.3.4 基于变分法解线性方程组"></a>9.3.4 基于变分法解线性方程组</h4><p>若矩阵$A$对称正定，定义</p>
+<script type="math/tex; mode=display">
+\phi(x)=\frac{1}{2}<Ax,x>-<b,x>=\frac{1}{2}x^TAx-b^Tx</script><p>则线性方程组$Ax=b$的解集等于$\underset{x\in \mathbb{R}^n}{\argmin}\phi(x)$的解集，将线性方程组求解问题转化为最优化问题的方法称为<strong>变分法</strong>，当$A$正定时，最优化问题是一个凸问题，仅有一个全局最优解</p>
+<h4 id="9-3-5-变分-最速梯度下降法法"><a href="#9-3-5-变分-最速梯度下降法法" class="headerlink" title="9.3.5 变分-最速梯度下降法法"></a>9.3.5 变分-最速梯度下降法法</h4><p>光滑函数$\phi(x)$在$x=x^{(k)}$下降最快的方向为其负梯度方向</p>
+<script type="math/tex; mode=display">
+-\nabla\phi(x^{(k)})=-(Ax^{(k)}-b)=p^{(k)}</script><p>则只需通过迭代$x^{(k+1)}=x^{(k)}+\lambda p^{(k)}$直到收敛。最速下降法定义为</p>
+<script type="math/tex; mode=display">
+\lambda^{(k)}=\underset{\lambda}{\argmin}\phi(x^{(k)}+\lambda p^{(k)})</script><p>解得最速步长$\lambda_k=\frac{<p^{(k)},p^{(k)}>}{<Ap^{(k)},p^{(k)}>}$</Ap^{(k)},p^{(k)}></p^{(k)},p^{(k)}></p>
+<h4 id="9-3-5-变分-共轭梯度法（了解）"><a href="#9-3-5-变分-共轭梯度法（了解）" class="headerlink" title="9.3.5 变分-共轭梯度法（了解）"></a>9.3.5 变分-共轭梯度法（了解）</h4><p>与梯度下降法的主要区别在于每一步的移动方向$p^{(k)}$会在$span\left\{p^{(0)},…,p^{(k-1)}\right\}$中进行最优化的选取</p>
+<p><img src="/2019/10/28/20191026matlab/2019-12-27-16-19-24.png" alt="9.3.5"></p>
+<p><code>x=pcg(A,b)</code> Preconditioned conjugate gradients 实现带有简单病态预处理的共轭梯度法求解$Ax=b$的问题，矩阵$A$需要是对称正定的矩阵</p>
+<h2 id="Lecture-10-MATLAB进阶程序设计与问题求解"><a href="#Lecture-10-MATLAB进阶程序设计与问题求解" class="headerlink" title="Lecture 10 MATLAB进阶程序设计与问题求解"></a>Lecture 10 MATLAB进阶程序设计与问题求解</h2><p><strong>Recap:</strong></p>
 <p>M脚本：代码的组合，一次运行可以将一串代码按照顺序依次运行</p>
 <p>M函数：单个返回值可以省略<code>[]</code>，只有一个函数的M函数可以不写end，函数申明行和函数体必须包含在内</p>
 <p><code>edit function_name</code> 查看函数源码</p>
-<h3 id="多种输入输出格式的函数设计">10.1 多种输入/输出格式的函数设计</h3>
-<p>H1后，空行表示分级，<code>help</code>只显示H1级的内容</p>
+<h3 id="10-1-多种输入-输出格式的函数设计"><a href="#10-1-多种输入-输出格式的函数设计" class="headerlink" title="10.1 多种输入/输出格式的函数设计"></a>10.1 多种输入/输出格式的函数设计</h3><p>H1后，空行表示分级，<code>help</code>只显示H1级的内容</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[S,L]</span>=<span class="title">exm060201</span><span class="params">(N,R,str)</span></span></span><br><span class="line"><span class="comment">% 下面的一行称为H1行，接下来的%层均help可见</span></span><br><span class="line"><span class="comment">% exm060201.m    The area and perimeter of a regular polygon (正多边形的面积和周长)</span></span><br><span class="line"><span class="comment">%       N       The number of sides</span></span><br><span class="line"><span class="comment">%       R       The circumradius</span></span><br><span class="line"><span class="comment">%       str     A line specification to determine line type/color</span></span><br><span class="line"><span class="comment">%       S       The area of the regular polygon</span></span><br><span class="line"><span class="comment">%       L       The perimeter of the regular polygon</span></span><br><span class="line"><span class="comment">% exm060201    %所有可行的用法</span></span><br><span class="line"><span class="comment">% exm060201(N)</span></span><br><span class="line"><span class="comment">% exm060201(N,R)</span></span><br><span class="line"><span class="comment">% exm060201(N,R,str)</span></span><br><span class="line"><span class="comment">% S=exm060201(...)   %返回值如果少一个，默认保留第一个</span></span><br><span class="line"><span class="comment">% [S,L]=exm060201(...)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%  Zhang Zhiyong 修改于 2013-12-20</span></span><br></pre></td></tr></table></figure>
 <p><code>nargin</code>为输入参数列表的个数，<code>nargout</code>为输出变量个数</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> nargin<span class="comment">%检查输入变量（参数列表的个数，如果不同，补值或报错）</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>,N=<span class="number">100</span>;R=<span class="number">1</span>;str=<span class="string">'-b'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>,R=<span class="number">1</span>;str=<span class="string">'-b'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>,str=<span class="string">'-b'</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>,;<span class="comment">%不进行任何操作并跳出switch分支,分号可省略</span></span><br><span class="line">    <span class="keyword">otherwise</span>,error(<span class="string">'输入量太多。'</span>);<span class="comment">%error意味弹出错误提示并中止程序运行</span></span><br><span class="line"><span class="keyword">end</span>;<span class="comment">%分号可省略</span></span><br><span class="line">t=<span class="number">0</span>:<span class="number">2</span>*<span class="built_in">pi</span>/N:<span class="number">2</span>*<span class="built_in">pi</span>;x=R*<span class="built_in">sin</span>(t);y=R*<span class="built_in">cos</span>(t);</span><br><span class="line"><span class="keyword">if</span> nargout==<span class="number">0</span><span class="comment">%无输出变量则只画空心圆图</span></span><br><span class="line">    <span class="built_in">plot</span>(x,y,str);</span><br><span class="line"><span class="keyword">elseif</span> nargout&gt;<span class="number">2</span><span class="comment">%输出变量过多则报错</span></span><br><span class="line">    error(<span class="string">'输出量太多。'</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="comment">%返回值如果少一个，默认保留第一个</span></span><br><span class="line">    S=N*R*R*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>/N)/<span class="number">2</span>;</span><br><span class="line">    L=<span class="number">2</span>*N*R*<span class="built_in">sin</span>(<span class="built_in">pi</span>/N);</span><br><span class="line">    fill(x,y,str)       <span class="comment">%画填色图</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h3 id="matlab主函数与子函数">10.2 MATLAB主函数与子函数</h3>
-<p>一个M文件中，可能会有多个函数，其中第一个称为主函数（与m文件名相同），后面的所有函数称为子函数。所有的子函数都可以被M文件内的脚本或主函数调用，但无法被其他M文件或命令行直接调用。因此，子函数是一种减少M文件数量，封装外部脚本不直接调用的函数的好方法。</p>
+<h3 id="10-2-MATLAB主函数与子函数"><a href="#10-2-MATLAB主函数与子函数" class="headerlink" title="10.2 MATLAB主函数与子函数"></a>10.2 MATLAB主函数与子函数</h3><p>一个M文件中，可能会有多个函数，其中第一个称为主函数（与m文件名相同），后面的所有函数称为子函数。所有的子函数都可以被M文件内的脚本或主函数调用，但无法被其他M文件或命令行直接调用。因此，子函数是一种减少M文件数量，封装外部脚本不直接调用的函数的好方法。</p>
 <p>同名函数调用顺序：子函数-&gt;MATLAB内建函数-&gt;其它M文件主函数</p>
-<h3 id="函数句柄">10.3 函数句柄</h3>
-<p><code>fun_handle=@fun</code> 创建函数句柄，用于函数传参，或作函数返回值（返回封装的子函数的句柄）</p>
+<h3 id="10-3-函数句柄"><a href="#10-3-函数句柄" class="headerlink" title="10.3 函数句柄"></a>10.3 函数句柄</h3><p><code>fun_handle=@fun</code> 创建函数句柄，用于函数传参，或作函数返回值（返回封装的子函数的句柄）</p>
 <p><code>fun=@(var1,var2) expression</code> 创建匿名函数，并赋值函数句柄</p>
 <p>函数句柄类似指针，既可以通过匿名函数定义，也可以由内建函数或自定义函数创建。调用子函数时，函数句柄可以“完全地代替”本身子函数的函数名，格式与子函数直接调用相同。但利用函数句柄多次调用可以大大节省调用的时间。</p>
-<p><code>which('fun_name')</code> 检查文件夹内有无函数定义</p>
+<p><code>which(&#39;fun_name&#39;)</code> 检查文件夹内有无函数定义</p>
 <p><code>isa(A,dataType)</code> 确定输入是否具有指定数据类型</p>
-<h3 id="函数极值问题">10.4 函数极值问题</h3>
-<p><code>[x,fval,exitflag]=fminbnd(fun,x1,x2)</code> 求一元函数fun在[x1,x2]的一个极小值，fun可以用字符串，匿名函数或函数句柄。返回值列表x为极小值点，fval为函数极小值，exitflag&gt;0代表此函数成功找到了一个极值点。</p>
+<h3 id="10-4-函数极值问题"><a href="#10-4-函数极值问题" class="headerlink" title="10.4 函数极值问题"></a>10.4 函数极值问题</h3><p><code>[x,fval,exitflag]=fminbnd(fun,x1,x2)</code> 求一元函数fun在[x1,x2]的一个极小值，fun可以用字符串，匿名函数或函数句柄。返回值列表x为极小值点，fval为函数极小值，exitflag&gt;0代表此函数成功找到了一个极值点。</p>
 <p><code>[x,fval,exitflag]=fminsearch(fun,x0)</code> 利用<strong>无导数方法</strong>（单纯形法）从x0（由列向量可定义为多个不同起点）出发，求多元函数fun在多维空间的一个极小值，fun建议使用多元匿名函数或多元函数句柄（输入值为向量）。返回值列表x为极小值点向量，fval为函数极小值</p>
 <p><code>ff=@(x) 100*(x(2)-x(1)^2)^2</code> 多元匿名函数的一个定义示例，即输入为向量</p>
 <p>注意上面两个函数都只能求局部最优解，不一定能够得到全局最优解。</p>
 <p><code>fminunc(ff,x0,options)</code> 多元函数局部无约束最小值函数（拟牛顿法），仅接受一种初值计算</p>
-<h3 id="单峰函数">10.5 单峰函数</h3>
-<p><strong>单峰函数</strong> <span class="math inline">\(\argmin_{x\in [a,b]}f(x)=\bar{x},\forall x\in [a,b]\)</span>，且<span class="math inline">\(f(x)\)</span>在<span class="math inline">\(x&lt;\bar{x}\)</span>单调递减，在<span class="math inline">\(x&gt;\bar{x}\)</span>单调递增</p>
+<h3 id="10-5-单峰函数"><a href="#10-5-单峰函数" class="headerlink" title="10.5 单峰函数"></a>10.5 单峰函数</h3><p><strong>单峰函数</strong> $\argmin_{x\in [a,b]}f(x)=\bar{x},\forall x\in [a,b]$，且$f(x)$在$x&lt;\bar{x}$单调递减，在$x&gt;\bar{x}$单调递增</p>
 <p>单峰函数先减后增（可以不连续不可导），凸函数是单峰函数，而单峰函数不一定是凸函数（羊角型）。</p>
-<p>从单峰函数极值点的两侧点<span class="math inline">\([a_0,b_0]\)</span>不断向内搜索，并且不断缩小左右端点的距离的方法被称为试探法（或三分法）</p>
-<h4 id="黄金分割法要求">10.5.1 黄金分割法（要求）</h4>
-<p>对于向内的试探法，从<span class="math inline">\([a_k,b_k]\)</span>开始，当<span class="math inline">\(a_1\approx 0.618a_k+0.382b_k,a_2\approx 0.382a_k+0.618b_k\)</span>时，探索的效率最高，这样的试探法就成为黄金分割法（0.618法）</p>
+<p>从单峰函数极值点的两侧点$[a_0,b_0]$不断向内搜索，并且不断缩小左右端点的距离的方法被称为试探法（或三分法）</p>
+<h4 id="10-5-1-黄金分割法（要求）"><a href="#10-5-1-黄金分割法（要求）" class="headerlink" title="10.5.1 黄金分割法（要求）"></a>10.5.1 黄金分割法（要求）</h4><p>对于向内的试探法，从$[a_k,b_k]$开始，当$a_1\approx 0.618a_k+0.382b_k,a_2\approx 0.382a_k+0.618b_k$时，探索的效率最高，这样的试探法就成为黄金分割法（0.618法）</p>
 <p>例如寻找最小值时，两个新节点选择函数值更大一个的和另一侧端点（想象一下画面理解：同一侧坡面和不同侧坡面的情形）</p>
-<h4 id="一元问题牛顿迭代法要求">10.5.2 一元问题牛顿迭代法（要求）</h4>
-<p>原理是一阶泰勒展开近似<span class="math inline">\(f(x)\approx f(x_0)+f&#39;(x_0)(x-x_0)\)</span></p>
-<p>若<span class="math inline">\(\exist \bar{x},f(\bar{x})=0\)</span>，给定任意一点<span class="math inline">\(x\)</span>有 <span class="math display">\[
-f(x)\approx f(\bar{x})+f&#39;(\bar{x})(x-\bar{x})=f&#39;(\bar{x})(x-\bar{x})
-\]</span> 移项后得到<span class="math inline">\(\bar{x}\approx x-\frac{f(x)}{f&#39;(x)}\)</span>，通过下式迭代可以计算<span class="math inline">\(f(x)=0\)</span>的解：</p>
-<p><span class="math display">\[x_{n+1}=x_n-\frac{f(x_n)}{f&#39;(x_n)}\]</span></p>
-<p>对于求局部最小值问题，因为<span class="math inline">\(\argmin_x f(x)\Leftrightarrow f&#39;(x)=0\)</span>，因此对应的牛顿迭代法只需改为导数方程问题：</p>
-<p><span class="math display">\[x_{n+1}=x_n-\frac{f&#39;(x_n)}{f&#39;&#39;(x_n)}\]</span></p>
-<h4 id="最速梯度下降法">10.5.3 最速梯度下降法</h4>
-<p>将一元最优化问题推广到多元问题<span class="math inline">\(\underset{x\in\mathbb{R}^n}{\argmin}\phi(x)\)</span>，其中<span class="math inline">\(\phi(x)\)</span>满足一定光滑性且其梯度除极值点外不为0向量。对于凸问题，只需迭代计算下降最快方向（负梯度）计算即可接近理论最小值：</p>
-<p><span class="math display">\[
-x^{(k+1)}=x^{(k)}+\lambda p^{(k)}
-\]</span></p>
-<p>多元问题下的最速下降法，最佳步长计算较困难，常用固定步长代替。判断多元问题是否为凸问题，即是要计算<span class="math inline">\(\phi(x)\)</span>对应的<strong>Hessian矩阵</strong>是否半正定</p>
-<h4 id="牛顿法解多元最小值问题了解">10.5.4 牛顿法解多元最小值问题（了解）</h4>
-<p>定义Hessian矩阵</p>
-<p><span class="math display">\[
+<h4 id="10-5-2-一元问题牛顿迭代法（要求）"><a href="#10-5-2-一元问题牛顿迭代法（要求）" class="headerlink" title="10.5.2 一元问题牛顿迭代法（要求）"></a>10.5.2 一元问题牛顿迭代法（要求）</h4><p>原理是一阶泰勒展开近似$f(x)\approx f(x_0)+f’(x_0)(x-x_0)$</p>
+<p>若$\exist \bar{x},f(\bar{x})=0$，给定任意一点$x$有</p>
+<script type="math/tex; mode=display">
+f(x)\approx f(\bar{x})+f'(\bar{x})(x-\bar{x})=f'(\bar{x})(x-\bar{x})</script><p>移项后得到$\bar{x}\approx x-\frac{f(x)}{f’(x)}$，通过下式迭代可以计算$f(x)=0$的解：</p>
+<script type="math/tex; mode=display">x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}</script><p>对于求局部最小值问题，因为$\argmin_x f(x)\Leftrightarrow f’(x)=0$，因此对应的牛顿迭代法只需改为导数方程问题：</p>
+<script type="math/tex; mode=display">x_{n+1}=x_n-\frac{f'(x_n)}{f''(x_n)}</script><h4 id="10-5-3-最速梯度下降法"><a href="#10-5-3-最速梯度下降法" class="headerlink" title="10.5.3 最速梯度下降法"></a>10.5.3 最速梯度下降法</h4><p>将一元最优化问题推广到多元问题$\underset{x\in\mathbb{R}^n}{\argmin}\phi(x)$，其中$\phi(x)$满足一定光滑性且其梯度除极值点外不为0向量。对于凸问题，只需迭代计算下降最快方向（负梯度）计算即可接近理论最小值：</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=x^{(k)}+\lambda p^{(k)}</script><p>多元问题下的最速下降法，最佳步长计算较困难，常用固定步长代替。判断多元问题是否为凸问题，即是要计算$\phi(x)$对应的<strong>Hessian矩阵</strong>是否半正定</p>
+<h4 id="10-5-4-牛顿法解多元最小值问题（了解）"><a href="#10-5-4-牛顿法解多元最小值问题（了解）" class="headerlink" title="10.5.4 牛顿法解多元最小值问题（了解）"></a>10.5.4 牛顿法解多元最小值问题（了解）</h4><p>定义Hessian矩阵</p>
+<script type="math/tex; mode=display">
 \nabla^2f(x,y)=
 \left[
 \begin{matrix}
-    \frac{\partial^2f}{\partial x^2} &amp; \frac{\partial^2f}{\partial x\partial y}\\
-    \frac{\partial^2f}{\partial x\partial y} &amp; \frac{\partial^2f}{\partial y^2}
+    \frac{\partial^2f}{\partial x^2} & \frac{\partial^2f}{\partial x\partial y}\\
+    \frac{\partial^2f}{\partial x\partial y} & \frac{\partial^2f}{\partial y^2}
 \end{matrix}
-\right]
-\]</span></p>
-<p>多元问题在使用最速梯度下降法求解时，由于相邻迭代的梯度方向正交，移动方向呈现锯齿形，收敛效果差，对于病态矩阵无健壮性。因此用下式迭代（Hessian必须可逆）：</p>
-<p><span class="math display">\[
-x^{(k+1)}=x^{(k)}-(\nabla^2f(x,y))^{-1}\nabla f(x,y)|_{x^{(k)}}
-\]</span></p>
-<h3 id="matlab解非线性方程组">10.6 MATLAB解非线性方程（组）</h3>
-<p><code>[x,fval] = fzero(fun,x0)</code> 以<code>x0</code>为初值，尝试寻找函数句柄或匿名函数的一个零点，<code>fval</code>为对应函数值。此解是<code>fun(x)</code>变号的位置，搜索算法并不能保证得到最近的零点。</p>
+\right]</script><p>多元问题在使用最速梯度下降法求解时，由于相邻迭代的梯度方向正交，移动方向呈现锯齿形，收敛效果差，对于病态矩阵无健壮性。因此用下式迭代（Hessian必须可逆）：</p>
+<script type="math/tex; mode=display">
+x^{(k+1)}=x^{(k)}-(\nabla^2f(x,y))^{-1}\nabla f(x,y)|_{x^{(k)}}</script><h3 id="10-6-MATLAB解非线性方程（组）"><a href="#10-6-MATLAB解非线性方程（组）" class="headerlink" title="10.6 MATLAB解非线性方程（组）"></a>10.6 MATLAB解非线性方程（组）</h3><p><code>[x,fval] = fzero(fun,x0)</code> 以<code>x0</code>为初值，尝试寻找函数句柄或匿名函数的一个零点，<code>fval</code>为对应函数值。此解是<code>fun(x)</code>变号的位置，搜索算法并不能保证得到最近的零点。</p>
 <p><code>[x,fval]=fsolve(fun,x0)</code> 以<code>x0</code>为初值(向量)，尝试寻找函数向量<code>fun</code>的一个零点，<code>fval</code>为对应函数向量值</p>
-<h2 id="lecture-11-matlab概率统计与曲线拟合">Lecture 11 MATLAB概率统计与曲线拟合</h2>
-<h3 id="常见分布的概率和密度函数">11.1 常见分布的概率和密度函数</h3>
-<h4 id="二项分布">11.1.1 二项分布</h4>
-<p><span class="math display">\[
-P(X=k)=\binom{N}{k}p^kq^{(N-k)},k=0,1,...,N
-\]</span></p>
-<p>即独立重复N次伯努利试验后，总发生次数为k的概率</p>
-<p><code>pk=binopdf(k,N,p)</code> 即<span class="math inline">\(P(X=k)\)</span></p>
-<p><code>dk=binocdf(k,N,p)</code> 即<span class="math inline">\(P(X\leq k)\)</span></p>
-<p><code>R=binornd(N,p,m,n)</code> 生成元素服从二项分布<span class="math inline">\(Bin(N,p)\)</span>的规模mxn的随机矩阵</p>
-<h4 id="正态分布">11.1.2 正态分布</h4>
-<p>服从正态分布<span class="math inline">\(N(\mu,\sigma^2)\)</span>的概率分布函数为</p>
-<p><span class="math display">\[
-\phi(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{-(x-\mu)^2}{2\sigma^2}\right\},x\in (-\infty,+\infty)
-\]</span></p>
-<p>对应的密度函数为<span class="math inline">\(\Phi(x)=\int_{-\infty}^x \phi(t)dt\)</span></p>
-<p><code>px=normpdf(x,Mu,Sigma)</code> 即<span class="math inline">\(\phi(x)\)</span></p>
-<p><code>px=normcdf(x,Mu,Sigma)</code> 即<span class="math inline">\(\Phi(x)\)</span></p>
-<p><code>R=normrnd(Mu,Sigma,m,n)</code> 生成元素服从正态分布<span class="math inline">\(N(\mu,\sigma^2)\)</span>的规模mxn的随机矩阵</p>
+<h2 id="Lecture-11-MATLAB概率统计与曲线拟合"><a href="#Lecture-11-MATLAB概率统计与曲线拟合" class="headerlink" title="Lecture 11 MATLAB概率统计与曲线拟合"></a>Lecture 11 MATLAB概率统计与曲线拟合</h2><h3 id="11-1-常见分布的概率和密度函数"><a href="#11-1-常见分布的概率和密度函数" class="headerlink" title="11.1 常见分布的概率和密度函数"></a>11.1 常见分布的概率和密度函数</h3><h4 id="11-1-1-二项分布"><a href="#11-1-1-二项分布" class="headerlink" title="11.1.1 二项分布"></a>11.1.1 二项分布</h4><script type="math/tex; mode=display">
+P(X=k)=\binom{N}{k}p^kq^{(N-k)},k=0,1,...,N</script><p>即独立重复N次伯努利试验后，总发生次数为k的概率</p>
+<p><code>pk=binopdf(k,N,p)</code> 即$P(X=k)$</p>
+<p><code>dk=binocdf(k,N,p)</code> 即$P(X\leq k)$</p>
+<p><code>R=binornd(N,p,m,n)</code> 生成元素服从二项分布$Bin(N,p)$的规模mxn的随机矩阵</p>
+<h4 id="11-1-2-正态分布"><a href="#11-1-2-正态分布" class="headerlink" title="11.1.2 正态分布"></a>11.1.2 正态分布</h4><p>服从正态分布$N(\mu,\sigma^2)$的概率分布函数为</p>
+<script type="math/tex; mode=display">
+\phi(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{\frac{-(x-\mu)^2}{2\sigma^2}\right\},x\in (-\infty,+\infty)</script><p>对应的密度函数为$\Phi(x)=\int_{-\infty}^x \phi(t)dt$</p>
+<p><code>px=normpdf(x,Mu,Sigma)</code> 即$\phi(x)$</p>
+<p><code>px=normcdf(x,Mu,Sigma)</code> 即$\Phi(x)$</p>
+<p><code>R=normrnd(Mu,Sigma,m,n)</code> 生成元素服从正态分布$N(\mu,\sigma^2)$的规模mxn的随机矩阵</p>
 <p><code>R=randn(m,n)</code> 生成元素服从标准正态分布的规模mxn的随机矩阵</p>
-<h4 id="其它分布">11.1.3 其它分布</h4>
-<p><code>pd=makedist('Poisson',lambda)</code> 建立一个特定的概率分布(ProbDist)对象，后可调用<code>pdf(pd,0:m)</code>获取<span class="math inline">\(k=0,1,...,m\)</span>的概率值或<code>cdf(pd,0:m)</code>同理</p>
-<h3 id="随机流的控制">11.2 随机流的控制</h3>
-<p><code>rng default</code> 初始默认的随机流状态（伪随机）</p>
+<h4 id="11-1-3-其它分布"><a href="#11-1-3-其它分布" class="headerlink" title="11.1.3 其它分布"></a>11.1.3 其它分布</h4><p><code>pd=makedist(&#39;Poisson&#39;,lambda)</code> 建立一个特定的概率分布(ProbDist)对象，后可调用<code>pdf(pd,0:m)</code>获取$k=0,1,…,m$的概率值或<code>cdf(pd,0:m)</code>同理</p>
+<h3 id="11-2-随机流的控制"><a href="#11-2-随机流的控制" class="headerlink" title="11.2 随机流的控制"></a>11.2 随机流的控制</h3><p><code>rng default</code> 初始默认的随机流状态（伪随机）</p>
 <p><code>rng shuffle</code> 根据时间变量设置随机流（真随机）</p>
 <p><code>rnd(seed)</code> 以非负整数seed(0~65535)为种子生成随机数</p>
 <p><code>rng(sd,generator)</code> 以特定的生成器生成随机数</p>
 <p><code>st=rng</code> 获得随机生成器构架(struct)并可用<code>rng(st)</code>再现</p>
 <p><code>rand(m,n)</code> 生成(0,1)间均匀分布的随机矩阵 <code>randn(m.n)</code>生成标准正态分布的随机矩阵</p>
 <p><code>randi([imin,imax],m,n)</code> 生成[imin,imax]内所有<strong>整数</strong>均匀分布的随机矩阵</p>
-<h3 id="统计分析命令">11.3 统计分析命令</h3>
-<p><code>min(X);max(X)</code> 计算矩阵各列的最大值或最小值，若要计算整个矩阵的最值可以用<code>max(max(X))</code>或<code>max(X(:))</code></p>
+<h3 id="11-3-统计分析命令"><a href="#11-3-统计分析命令" class="headerlink" title="11.3 统计分析命令"></a>11.3 统计分析命令</h3><p><code>min(X);max(X)</code> 计算矩阵各列的最大值或最小值，若要计算整个矩阵的最值可以用<code>max(max(X))</code>或<code>max(X(:))</code></p>
 <p><code>mean(X);median(X)</code> 计算矩阵各列的均值和中位数</p>
 <p><code>std(X);var(X)</code> 计算矩阵各列的样本标准差和样本方差即<code>ddof=1</code>，若要<code>ddof=0</code>可以通过<code>std(X,1)</code>得到</p>
 <p><code>cov(X)</code> 计算矩阵各列所组成列向量计算出的协方差矩阵</p>
 <p><code>corrcoef(A)</code> 计算矩阵A各列所组成列向量的相关系数，或<code>corrcoef(A,B)</code>计算两个向量之间的相关矩阵</p>
-<h3 id="多项式拟合">11.4 多项式拟合</h3>
-<p><span class="math display">\[
-y=a_1x^n+a_2x^{n-1}+...+a_nx+a_{n+1}
-\]</span></p>
-<p>利用函数曲线上采样点<span class="math inline">\((x_i,y_i)\)</span>拟合确定系数<span class="math inline">\(a_i\)</span>的问题，一般用逼近或插值方法拟合</p>
+<h3 id="11-4-多项式拟合"><a href="#11-4-多项式拟合" class="headerlink" title="11.4 多项式拟合"></a>11.4 多项式拟合</h3><script type="math/tex; mode=display">
+y=a_1x^n+a_2x^{n-1}+...+a_nx+a_{n+1}</script><p>利用函数曲线上采样点$(x_i,y_i)$拟合确定系数$a_i$的问题，一般用逼近或插值方法拟合</p>
 <p><code>p=polyfit(x,y,n)</code> 通过数组x和y的数据进行拟合，阶数为n，返回多项式系数p（降幂）</p>
 <p><code>yy=polyval(p,x)</code> 多项式系数回代，一般用2-范数（平分残差），1-范数（绝对值残差）或无穷范数（一致逼近残差）分析拟合情况</p>
 <p><code>polyfit</code>函数的方法也即解最小二乘问题</p>
-<p><span class="math display">\[
-\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_2
-\]</span></p>
-<p>构造设计阵<span class="math inline">\(X\)</span>即可将问题写作<span class="math inline">\(Y=Xa\)</span>，其解为<code>a=X\Y</code>，注意一般设定维数小于样本个数</p>
+<script type="math/tex; mode=display">
+\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_2</script><p>构造设计阵$X$即可将问题写作$Y=Xa$，其解为<code>a=X\Y</code>，注意一般设定维数小于样本个数</p>
 <p><strong>Ridge Regression</strong> 2-范数惩罚系数，使参数尽可能小</p>
-<p><span class="math display">\[
-\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_2^2+\lambda ||a||_2^2
-\]</span></p>
-<p><strong>LASSO</strong> 1-范数惩罚，易得稀疏解</p>
-<p><span class="math display">\[
-\min_{a_i}\frac{1}{2}||y-(a_1x^n+...+a_nx+a_{n+1})||_2^2+\lambda ||a||_1
-\]</span></p>
-<p><strong>LAR</strong> 最小绝对残差模型，对离群值处理更优</p>
-<p><span class="math display">\[
-\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_1
-\]</span></p>
-<h3 id="cftool工具箱的使用">11.5 cftool工具箱的使用</h3>
-<p>权值的选择，相当于解<span class="math inline">\(\underset{a}{\min}||W(Xa-b)||_2\)</span></p>
-<p><strong>傅里叶（三角）函数拟合</strong> <span class="math inline">\(y\approx a_0+\sum_k a_kcos(wx)+b_ksin(wx)\)</span></p>
-<p><strong>高斯函数拟合</strong> <span class="math inline">\(y\approx \sum_k a_k \exp\left\{-(\frac{x-b_k}{c_k})^2\right\}\)</span></p>
-<p><strong>有理式拟合</strong> <span class="math inline">\(y\approx\frac{p_1x^m+...+p_mx+p_{m+1}}{x^n+...+q_{n-1}x+q_{n}}\)</span></p>
+<script type="math/tex; mode=display">
+\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_2^2+\lambda ||a||_2^2</script><p><strong>LASSO</strong> 1-范数惩罚，易得稀疏解</p>
+<script type="math/tex; mode=display">
+\min_{a_i}\frac{1}{2}||y-(a_1x^n+...+a_nx+a_{n+1})||_2^2+\lambda ||a||_1</script><p><strong>LAR</strong> 最小绝对残差模型，对离群值处理更优</p>
+<script type="math/tex; mode=display">
+\min_{a_i}||y-(a_1x^n+...+a_nx+a_{n+1})||_1</script><h3 id="11-5-cftool工具箱的使用"><a href="#11-5-cftool工具箱的使用" class="headerlink" title="11.5 cftool工具箱的使用"></a>11.5 cftool工具箱的使用</h3><p>权值的选择，相当于解$\underset{a}{\min}||W(Xa-b)||_2$</p>
+<p><strong>傅里叶（三角）函数拟合</strong> $y\approx a_0+\sum_k a_kcos(wx)+b_ksin(wx)$</p>
+<p><strong>高斯函数拟合</strong> $y\approx \sum_k a_k \exp\left\{-(\frac{x-b_k}{c_k})^2\right\}$</p>
+<p><strong>有理式拟合</strong> $y\approx\frac{p_1x^m+…+p_mx+p_{m+1}}{x^n+…+q_{n-1}x+q_{n}}$</p>
 <p><strong>非参数拟合</strong> Cubic Spline</p>
 <p>对于噪声，可以人工去除离群点，或用<code>smooth</code>五点均值滤波，也可以使用工具箱的Robust方法，如<code>LAR</code>最小绝对残差</p>
-<h2 id="lecture-12-matlab数字信号与声音处理">Lecture 12 MATLAB数字信号与声音处理</h2>
-<h3 id="函数信息与数字信号">12.1 函数信息与数字信号</h3>
-<p>数字信号是离散定义的，如声音信号有每秒若干次的采样，强度也有一个固定精度的取值。数字化信号一般需要抽样、量化和编码。</p>
+<h2 id="Lecture-12-MATLAB数字信号与声音处理"><a href="#Lecture-12-MATLAB数字信号与声音处理" class="headerlink" title="Lecture 12 MATLAB数字信号与声音处理"></a>Lecture 12 MATLAB数字信号与声音处理</h2><h3 id="12-1-函数信息与数字信号"><a href="#12-1-函数信息与数字信号" class="headerlink" title="12.1 函数信息与数字信号"></a>12.1 函数信息与数字信号</h3><p>数字信号是离散定义的，如声音信号有每秒若干次的采样，强度也有一个固定精度的取值。数字化信号一般需要抽样、量化和编码。</p>
 <p>波形信号通过拟合、插值，往往代表这一种具有光滑性与周期性的函数。</p>
 <p>声音信号则往往有多种频段的信息，对应的连续傅里叶变换在部分区段或位点出现更大的系数</p>
 <p>一维数字信号还可能是分片光滑函数或分片常函数，也可能是符合某种特定分布的随机函数</p>
-<p>含噪信号定义为<span class="math inline">\(y=f(x)+\epsilon\)</span>，噪声有多种，如高斯加性噪声则满足<span class="math inline">\(\epsilon\sim N(0,\sigma^2)\)</span></p>
+<p>含噪信号定义为$y=f(x)+\epsilon$，噪声有多种，如高斯加性噪声则满足$\epsilon\sim N(0,\sigma^2)$</p>
 <p><strong>平均平方误差(MSE)</strong> Mean Square Error</p>
-<p><span class="math display">\[
-\sum[y-f(x)]^2
-\]</span></p>
-<p><strong>信噪比</strong> Signal to Noise Ratio</p>
-<p><span class="math display">\[
-10\cdot\log_{10}(\frac{\sum f^2(x)}{\sum[y-f(x)]^2}) (dB)
-\]</span></p>
-<p><code>snr(s,n)</code> s为信号，n为误差（也即y-s）</p>
-<h3 id="均值滤波">12.2 均值滤波</h3>
-<p>对于一些理想的0均值噪声，其幅度明显小于信号本身的强度（SNR&gt;10），故采用均值方法对带噪信号进行光滑化处理就可以得到近似的恢复</p>
-<p><code>f1=smooth(y)</code>五点均值滤波(MA5)，返回的是列向量，或<code>f1=conv(y,ones(1,5)*1/5, 'same')</code></p>
-<p><code>f2=conv(y,[1/16,1/4,3/8,1/4,1/16], 'same')</code>五点加权滤波</p>
+<script type="math/tex; mode=display">
+\sum[y-f(x)]^2</script><p><strong>信噪比</strong> Signal to Noise Ratio</p>
+<script type="math/tex; mode=display">
+10\cdot\log_{10}(\frac{\sum f^2(x)}{\sum[y-f(x)]^2}) (dB)</script><p><code>snr(s,n)</code> s为信号，n为误差（也即y-s）</p>
+<h3 id="12-2-均值滤波"><a href="#12-2-均值滤波" class="headerlink" title="12.2 均值滤波"></a>12.2 均值滤波</h3><p>对于一些理想的0均值噪声，其幅度明显小于信号本身的强度（SNR&gt;10），故采用均值方法对带噪信号进行光滑化处理就可以得到近似的恢复</p>
+<p><code>f1=smooth(y)</code>五点均值滤波(MA5)，返回的是列向量，或<code>f1=conv(y,ones(1,5)*1/5, &#39;same&#39;)</code></p>
+<p><code>f2=conv(y,[1/16,1/4,3/8,1/4,1/16], &#39;same&#39;)</code>五点加权滤波</p>
 <p>更大的滤波范围会导致图像过度平滑</p>
-<h3 id="离散傅里叶变换">12.3 离散傅里叶变换</h3>
-<p>一维离散傅里叶变换定义</p>
-<p><span class="math display">\[
-Y(k)=\sum_{i=1}^nX(i)e^{\frac{(-2\pi j)(i-1)(k-1)}{n}},1\leq k\leq n
-\]</span></p>
-<p>特别地，当<span class="math inline">\(k=1\)</span>时，<span class="math inline">\(Y(1)=\sum_{i=1}^nX(i)\)</span>称为离散傅里叶变换的低频系数，其余系数称为高频傅里叶系数。低频系数表达了函数的总和，高频系数在不同程度刻画函数的变化情况。</p>
-<p>离散傅里叶变换实际上是将序列<span class="math inline">\(X(i)\)</span>假想为以n为周期的无限长周期序列，进而可以利用有限个特定频率采样完成其频率表示</p>
+<h3 id="12-3-离散傅里叶变换"><a href="#12-3-离散傅里叶变换" class="headerlink" title="12.3 离散傅里叶变换"></a>12.3 离散傅里叶变换</h3><p>一维离散傅里叶变换定义</p>
+<script type="math/tex; mode=display">
+Y(k)=\sum_{i=1}^nX(i)e^{\frac{(-2\pi j)(i-1)(k-1)}{n}},1\leq k\leq n</script><p>特别地，当$k=1$时，$Y(1)=\sum_{i=1}^nX(i)$称为离散傅里叶变换的低频系数，其余系数称为高频傅里叶系数。低频系数表达了函数的总和，高频系数在不同程度刻画函数的变化情况。</p>
+<p>离散傅里叶变换实际上是将序列$X(i)$假想为以n为周期的无限长周期序列，进而可以利用有限个特定频率采样完成其频率表示</p>
 <p><code>fft(X)</code> 通过上式计算向量X的离散傅里叶变换</p>
 <p>离散傅里叶逆变换定义</p>
-<p><span class="math display">\[
-X(i)=\frac{1}{n}\sum_{k=1}^nY(k)e^{\frac{(2\pi j)(i-1)(k-1)}{n}},1\leq i\leq n
-\]</span></p>
-<p><code>ifft(Y)</code>通过上式计算离散傅里叶逆变换</p>
-<p>离散傅里叶变换可以刻画傅里叶级数的系数？正交基只对某维度影响？例题<span class="math inline">\(f(x)=sin(x)\)</span>傅里叶系数是稀疏的，在中间部分可以直接设为0达到去噪的效果。</p>
-<h3 id="硬阈值和软阈值">12.4 硬阈值和软阈值</h3>
-<p>硬阈值算子</p>
-<p><span class="math display">\[
+<script type="math/tex; mode=display">
+X(i)=\frac{1}{n}\sum_{k=1}^nY(k)e^{\frac{(2\pi j)(i-1)(k-1)}{n}},1\leq i\leq n</script><p><code>ifft(Y)</code>通过上式计算离散傅里叶逆变换</p>
+<p>离散傅里叶变换可以刻画傅里叶级数的系数？正交基只对某维度影响？例题$f(x)=sin(x)$傅里叶系数是稀疏的，在中间部分可以直接设为0达到去噪的效果。</p>
+<h3 id="12-4-硬阈值和软阈值"><a href="#12-4-硬阈值和软阈值" class="headerlink" title="12.4 硬阈值和软阈值"></a>12.4 硬阈值和软阈值</h3><p>硬阈值算子</p>
+<script type="math/tex; mode=display">
 T_\lambda(y)=
 \begin{cases}
     y,|y|\geq\lambda\\
-    0,|y|&lt;\lambda
-\end{cases}
-\]</span></p>
-<p>对y的傅里叶系数做硬阈值算子处理相当于求解问题<span class="math inline">\(\underset{x}{\min}\frac{1}{2}||x-y||_2^2+\frac{1}{2}\lambda^2||\hat{x}||_0\)</span></p>
+    0,|y|<\lambda
+\end{cases}</script><p>对y的傅里叶系数做硬阈值算子处理相当于求解问题$\underset{x}{\min}\frac{1}{2}||x-y||_2^2+\frac{1}{2}\lambda^2||\hat{x}||_0$</p>
 <p>软阈值算子</p>
-<p><span class="math display">\[
-\Tau_\lambda(y)=sign(y)\cdot\max(|y|-\lambda,0)
-\]</span></p>
-<p>对y的傅里叶系数做软阈值算子处理相当于求解问题<span class="math inline">\(\underset{x}{\min}\frac{1}{2}||x-y||_2^2+\frac{1}{2}\lambda^2||\hat{x}||_1\)</span></p>
+<script type="math/tex; mode=display">
+\Tau_\lambda(y)=sign(y)\cdot\max(|y|-\lambda,0)</script><p>对y的傅里叶系数做软阈值算子处理相当于求解问题$\underset{x}{\min}\frac{1}{2}||x-y||_2^2+\frac{1}{2}\lambda^2||\hat{x}||_1$</p>
 <p>硬阈值算子对分片光滑函数效果较差（只处理了判定域内的部分），软阈值方法更好，但仍然不如五点均值，是因为函数不具备全局光滑性或周期性，导致傅里叶系数的稀疏度不足</p>
-<h3 id="数字信号去噪问题">12.5 数字信号去噪问题</h3>
-<p>去噪方法通常基于噪声类型和强度以及真实信号值的函数特性。常见的噪声除<strong>高斯噪声</strong>外，还有<strong>冲击噪声</strong>（随机的部分采样值出现与真实信号无关的错误函数值），可以通过中值滤波器进行判断和调整</p>
-<p><strong>泊松噪声</strong>是一种比较难处理的非加性噪声，在每点设<span class="math inline">\(\lambda=k\cdot real\)</span>并基于参数为<span class="math inline">\(\lambda\)</span>的泊松分布下获取一个整数值<span class="math inline">\(Y\)</span>，带噪信号对应的信号值为<span class="math inline">\(\frac{Y}{k}\)</span></p>
+<h3 id="12-5-数字信号去噪问题"><a href="#12-5-数字信号去噪问题" class="headerlink" title="12.5 数字信号去噪问题"></a>12.5 数字信号去噪问题</h3><p>去噪方法通常基于噪声类型和强度以及真实信号值的函数特性。常见的噪声除<strong>高斯噪声</strong>外，还有<strong>冲击噪声</strong>（随机的部分采样值出现与真实信号无关的错误函数值），可以通过中值滤波器进行判断和调整</p>
+<p><strong>泊松噪声</strong>是一种比较难处理的非加性噪声，在每点设$\lambda=k\cdot real$并基于参数为$\lambda$的泊松分布下获取一个整数值$Y$，带噪信号对应的信号值为$\frac{Y}{k}$</p>
 <p>傅里叶变换对于三角函数去噪效果极佳，因为三角函数在此变换系数满足完美稀疏，对于分片光滑函数效果则一般，根据目标函数特性选择合适变换及约束（正则化）方法很关键</p>
-<h3 id="声音信号处理">12.6 声音信号处理</h3>
-<p><code>info=audioinfo('filepath')</code> 获取声音文件的主要特性</p>
-<p><code>[y,fs]=audioread('filepath')</code> 读取声音文件的数字信号和采样率。采样率即一秒内有多少个采样点组成信号，y常有两列分别对应左右声道，取值在[-1,1]之间</p>
+<h3 id="12-6-声音信号处理"><a href="#12-6-声音信号处理" class="headerlink" title="12.6 声音信号处理"></a>12.6 声音信号处理</h3><p><code>info=audioinfo(&#39;filepath&#39;)</code> 获取声音文件的主要特性</p>
+<p><code>[y,fs]=audioread(&#39;filepath&#39;)</code> 读取声音文件的数字信号和采样率。采样率即一秒内有多少个采样点组成信号，y常有两列分别对应左右声道，取值在[-1,1]之间</p>
 <p><code>ys=y(1:k*fs,1)</code> 截取前k秒的左声道信号</p>
 <p><code>sound(ys,fs)</code> 按采样率fs播放ys声音信号</p>
-<p><code>audiowrite('filename',ys,fs)</code> 将声音信号ys按采样率fs写入文件</p>
+<p><code>audiowrite(&#39;filename&#39;,ys,fs)</code> 将声音信号ys按采样率fs写入文件</p>
 <p><code>clear sound</code> 结束播放</p>
-<p>响度、振幅、音色等等，乐理中A4定义为440Hz，半音之间频率差异为<span class="math inline">\(2^{1/12}\)</span>倍，一般可以通过短时傅里叶变化最大模所在的频率对音乐进行音调分析</p>
+<p>响度、振幅、音色等等，乐理中A4定义为440Hz，半音之间频率差异为$2^{1/12}$倍，一般可以通过短时傅里叶变化最大模所在的频率对音乐进行音调分析</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ub = <span class="built_in">length</span>(ys)<span class="number">-4410</span>; <span class="comment">% 窗口个数</span></span><br><span class="line">height = <span class="built_in">zeros</span>(ub,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:ub</span><br><span class="line">    temp = ys(<span class="built_in">i</span>:<span class="built_in">i</span>+<span class="number">4410</span>);</span><br><span class="line">    tempf = fft(temp);</span><br><span class="line">    [maxv, maxp]=<span class="built_in">max</span>(<span class="built_in">abs</span>(tempf));</span><br><span class="line">    height(<span class="built_in">i</span>) = maxp; <span class="comment">% 最大模的频率</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">plot</span>(<span class="number">1</span>:ub,height);</span><br></pre></td></tr></table></figure>
 <p><strong>音叉音生成</strong> 使用特定的包络线函数控制振幅变化</p>
 <p><code>mod = sin(t/44100*pi)</code> 半周期三角函数包络线，用<code>mod.*ys</code>即可控制振幅</p>
-<h2 id="lecture-13-matlab多项式运算与数据可视化一">Lecture 13 MATLAB多项式运算与数据可视化（一）</h2>
-<h3 id="多项式表示和运算">13.1 多项式表示和运算</h3>
-<p>降幂排序<span class="math inline">\(a(x)=a_1x^n+a_2x^{n-1}+...+a_nx+a_{n+1}\)</span>存储为系数向量<code>a=[a1,a2,...,an+1]</code></p>
+<h2 id="Lecture-13-MATLAB多项式运算与数据可视化（一）"><a href="#Lecture-13-MATLAB多项式运算与数据可视化（一）" class="headerlink" title="Lecture 13 MATLAB多项式运算与数据可视化（一）"></a>Lecture 13 MATLAB多项式运算与数据可视化（一）</h2><h3 id="13-1-多项式表示和运算"><a href="#13-1-多项式表示和运算" class="headerlink" title="13.1 多项式表示和运算"></a>13.1 多项式表示和运算</h3><p>降幂排序$a(x)=a_1x^n+a_2x^{n-1}+…+a_nx+a_{n+1}$存储为系数向量<code>a=[a1,a2,...,an+1]</code></p>
 <p>多项式乘法和离散卷积的联系：</p>
-<p><span class="math inline">\((x^2+1)(x-1)=x^3-x^2+x-1\)</span>相当于计算系数的离散卷积<span class="math inline">\([1,0,1]*[1,-1]=[1,-1,1,-1]\)</span></p>
+<p>$(x^2+1)(x-1)=x^3-x^2+x-1$相当于计算系数的离散卷积$[1,0,1]*[1,-1]=[1,-1,1,-1]$</p>
 <p>一种卷积计算方式的理解（错车）</p>
-<ol type="1">
+<ol>
 <li>反转向量</li>
 <li>另一个向量逐格移动，上下相乘并加和得到卷积结果</li>
 </ol>
-<p>如<span class="math inline">\([1,0,2]*[1,-1]\)</span>对应<span class="math inline">\([2,0,1]\)</span>和<span class="math inline">\([1,-1]\)</span>的“错车”，求得<span class="math inline">\([1,-1,2,-2]\)</span></p>
+<p>如$[1,0,2]*[1,-1]$对应$[2,0,1]$和$[1,-1]$的“错车”，求得$[1,-1,2,-2]$</p>
 <p><code>c=conv(a,b)</code> 获取多项式相乘系数</p>
 <p><code>[q,r]=deconv(b,a)</code> 多项式带余除法，q为商r为余式</p>
-<p><code>[r,p,k]=residue(b,a)</code> 即为<span class="math inline">\(\frac{b(x)}{a(x)}=\sum\frac{r_i}{x-p_i}+k(x)\)</span>，其中r为留数向量，p为极点向量，k为余式系数行向量</p>
-<p><code>r=roots(a)</code> 求多项式<span class="math inline">\(a(x)\)</span>的所有根（含重根和复根），返回列向量</p>
+<p><code>[r,p,k]=residue(b,a)</code> 即为$\frac{b(x)}{a(x)}=\sum\frac{r_i}{x-p_i}+k(x)$，其中r为留数向量，p为极点向量，k为余式系数行向量</p>
+<p><code>r=roots(a)</code> 求多项式$a(x)$的所有根（含重根和复根），返回列向量</p>
 <p><code>a=poly(r)</code> 当r为行向量时返回根为r的多项式；当r为方阵时返回r的特征多项式（用于计算特征值）</p>
 <p><code>V=polyval(p,X)</code> p为多项式的稀疏行向量，X为任意规模矩阵，将X每一个元素代入并获得数值矩阵p(X)</p>
 <p><code>V=polyvalm(p,X)</code> 以矩阵X为整体的多项式代入结果的矩阵</p>
-<p><code>poly2str(a,'s')</code> 将以a向量元素为系数，s为自变量生成多项式字符串，按降幂排列</p>
-<p>快速构造有形如<span class="math inline">\(p(x)=x^3+ax^2+bx+c\)</span>特征多项式的方阵：<span class="math inline">\(\begin{pmatrix}-a&amp;-b&amp;-c\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\)</span></p>
+<p><code>poly2str(a,&#39;s&#39;)</code> 将以a向量元素为系数，s为自变量生成多项式字符串，按降幂排列</p>
+<p>快速构造有形如$p(x)=x^3+ax^2+bx+c$特征多项式的方阵：$\begin{pmatrix}-a&amp;-b&amp;-c\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}$</p>
 <p><code>diag(v,k)</code> 将向量v的元素放置在第k条对角线上，k&gt;0时为上方</p>
-<h3 id="有限长向量卷积">13.2 有限长向量卷积</h3>
-<p>已知<span class="math inline">\(a=[a_1,a_2,...,a_n],b=[b_1,b_2,...,b_m]\)</span></p>
-<p><span class="math display">\[
-(a*b)_k=\sum_{i=1}^{k-1}a_ib_{k-i},2\leq k\leq m+n
-\]</span></p>
-<p>这里补充定义<span class="math inline">\(\forall i&gt;n,a_i=0,\forall j&gt;m,b_j=0\)</span></p>
-<p><code>conv(a,b,'same')</code> 返回长度与a相同的卷积结果，即取卷积结果中间n个元素的结果（默认选后面的）</p>
-<p><code>conv(a,b,'valid')</code> 返回长度等于n-m-1的卷积结果，即仅包含b的全部元素参与卷积的中间项</p>
+<h3 id="13-2-有限长向量卷积"><a href="#13-2-有限长向量卷积" class="headerlink" title="13.2 有限长向量卷积"></a>13.2 有限长向量卷积</h3><p>已知$a=[a_1,a_2,…,a_n],b=[b_1,b_2,…,b_m]$</p>
+<script type="math/tex; mode=display">
+(a*b)_k=\sum_{i=1}^{k-1}a_ib_{k-i},2\leq k\leq m+n</script><p>这里补充定义$\forall i&gt;n,a_i=0,\forall j&gt;m,b_j=0$</p>
+<p><code>conv(a,b,&#39;same&#39;)</code> 返回长度与a相同的卷积结果，即取卷积结果中间n个元素的结果（默认选后面的）</p>
+<p><code>conv(a,b,&#39;valid&#39;)</code> 返回长度等于n-m-1的卷积结果，即仅包含b的全部元素参与卷积的中间项</p>
 <p><code>[q,r] = deconv(u,v)</code> 反卷积函数，即<code>u = conv(v,q)+r</code></p>
-<h3 id="离散数据的可视化">13.3 离散数据的可视化</h3>
-<p><code>hist(x,nbins)</code> 直方图绘制</p>
+<h3 id="13-3-离散数据的可视化"><a href="#13-3-离散数据的可视化" class="headerlink" title="13.3 离散数据的可视化"></a>13.3 离散数据的可视化</h3><p><code>hist(x,nbins)</code> 直方图绘制</p>
 <p><code>stem(X,Y)</code> 将数据序列Y绘制为从沿x轴的基线延伸的针状图</p>
-<p><code>plot(x,y,'r.','Name','Value')</code> 以x为横坐标序列，y为纵坐标序列，'s'表示线性与线色的字符串；允许X或Y为矩阵，对应绘出多条曲线；允许x缺省，以y的下标作为x绘图；允许一句命令内绘制多条曲线</p>
+<p><code>plot(x,y,&#39;r.&#39;,&#39;Name&#39;,&#39;Value&#39;)</code> 以x为横坐标序列，y为纵坐标序列，’s’表示线性与线色的字符串；允许X或Y为矩阵，对应绘出多条曲线；允许x缺省，以y的下标作为x绘图；允许一句命令内绘制多条曲线</p>
 <p><strong>线型：</strong><code>-</code>实线；<code>:</code>虚点线；<code>--</code>虚划线；<code>o</code>空心圆圈；<code>.</code>实心点；<code>+</code>十字符；<code>*</code>星字符</p>
 <p><strong>线色：</strong><code>b</code>蓝色；<code>g</code>绿色；<code>r</code>红色；<code>c</code>青色；<code>m</code>品红；<code>y</code>黄色；<code>k</code>黑色；<code>w</code>白色</p>
 <p><strong>可控的调用格式：</strong><code>MarkerSize</code>点大小；<code>Color</code>颜色；<code>LineStyle</code>线型；<code>LineWidth</code>线宽；<code>Marker</code>点形状；<code>MarkerEdgeColor</code>点边界色彩；<code>MarkerFaceColor</code>点域色彩</p>
@@ -888,89 +703,66 @@ T_\lambda(y)=
 <p><code>xticks;yticks</code> 设置横坐标与纵坐标刻度线位置或刻度间距</p>
 <p>字符串设置：<code>\fontname{Courier New}</code>设置字体；<code>\fontsize{14}</code>设置字体大小；<code>\bf</code>粗体；<code>\it</code>斜体；<code>\sl</code>另外一种斜体；<code>\rm</code>罗马？</p>
 <p>Latex标识（略）</p>
-<p><code>plotyy(x,y,x,s,'stem','plot')</code> 双纵坐标视图</p>
-<h2 id="lecture-14-matlab数字图像处理初步">Lecture 14 MATLAB数字图像处理初步</h2>
-<h3 id="数字图像与矩阵">14.1 数字图像与矩阵</h3>
-<p>灰度图像对应一个二维矩阵<span class="math inline">\(f(x,y),1\leq x\leq M, 1\leq y\leq N\)</span>，其中(M,N)为图像尺寸，而<span class="math inline">\(f(x,y)\)</span>为图像的灰度。坐标类似矩阵定义，如左下(256,1),右上(1,256)</p>
-<p>彩色图像存储方式为RGB存储模式，红绿蓝分别对应一种亮度（灰度）值，记为<span class="math inline">\(f(x,y,z),1\leq x\leq M, 1\leq y\leq N,z\in \left\{1,2,3\right\}\)</span></p>
-<p><code>info = imfinfo('filename')</code> 获取灰度或彩色图像文件的基本信息</p>
-<p><code>A = imread('filename')</code> 获取灰度或彩色图像的信息并存储在矩阵中</p>
+<p><code>plotyy(x,y,x,s,&#39;stem&#39;,&#39;plot&#39;)</code> 双纵坐标视图</p>
+<h2 id="Lecture-14-MATLAB数字图像处理初步"><a href="#Lecture-14-MATLAB数字图像处理初步" class="headerlink" title="Lecture 14 MATLAB数字图像处理初步"></a>Lecture 14 MATLAB数字图像处理初步</h2><h3 id="14-1-数字图像与矩阵"><a href="#14-1-数字图像与矩阵" class="headerlink" title="14.1 数字图像与矩阵"></a>14.1 数字图像与矩阵</h3><p>灰度图像对应一个二维矩阵$f(x,y),1\leq x\leq M, 1\leq y\leq N$，其中(M,N)为图像尺寸，而$f(x,y)$为图像的灰度。坐标类似矩阵定义，如左下(256,1),右上(1,256)</p>
+<p>彩色图像存储方式为RGB存储模式，红绿蓝分别对应一种亮度（灰度）值，记为$f(x,y,z),1\leq x\leq M, 1\leq y\leq N,z\in \left\{1,2,3\right\}$</p>
+<p><code>info = imfinfo(&#39;filename&#39;)</code> 获取灰度或彩色图像文件的基本信息</p>
+<p><code>A = imread(&#39;filename&#39;)</code> 获取灰度或彩色图像的信息并存储在矩阵中</p>
 <p><code>imshow(A)</code> 弹出Figure并显示图像A，默认最小值为0，最大值为1，0~255的<code>double</code>图像可以标准化图示如<code>imshow(A/255)</code>，或者指定<code>imshow(A,[low,high])</code></p>
 <p>数字图像的默认存储格式为<code>uint8</code>，但在进行数值计算时会被自动转化成<code>double</code>，而在图示前矩阵强制转换为<code>uint8</code>。</p>
-<h3 id="彩色图像通道分离与图像存储">14.2 彩色图像通道分离与图像存储</h3>
-<p>RGB格式彩色图像矩阵第三维顺序对应红色、绿色、蓝色通道的灰度。</p>
+<h3 id="14-2-彩色图像通道分离与图像存储"><a href="#14-2-彩色图像通道分离与图像存储" class="headerlink" title="14.2 彩色图像通道分离与图像存储"></a>14.2 彩色图像通道分离与图像存储</h3><p>RGB格式彩色图像矩阵第三维顺序对应红色、绿色、蓝色通道的灰度。</p>
 <p><code>C = rgb2gray(A)</code> 根据彩色图像A的整体亮度均匀转化为灰度图像C</p>
-<p><code>imwrite(A,'filename')</code> 将任意灰度或彩色图像矩阵存入对应文件，注意<code>double</code>型矩阵存储时范围为0~1</p>
-<h3 id="彩色图像的颜色编码更换">14.3 彩色图像的颜色编码更换</h3>
-<p>色调(Hue),饱和度(Saturation),明度(Value)模型HSV是另一种存储方式。</p>
+<p><code>imwrite(A,&#39;filename&#39;)</code> 将任意灰度或彩色图像矩阵存入对应文件，注意<code>double</code>型矩阵存储时范围为0~1</p>
+<h3 id="14-3-彩色图像的颜色编码更换"><a href="#14-3-彩色图像的颜色编码更换" class="headerlink" title="14.3 彩色图像的颜色编码更换"></a>14.3 彩色图像的颜色编码更换</h3><p>色调(Hue),饱和度(Saturation),明度(Value)模型HSV是另一种存储方式。</p>
 <p><code>B = rgb2hsv(A)</code> 将RGB模型的矩阵A化为HSV型的矩阵B</p>
 <p><code>C = hsv2rgb(B)</code> 将HSV模型的矩阵转化为RGB模型的矩阵</p>
 <p>若A为<code>uint8</code>型的数据就会自动转为<code>double</code>并除以255，再进行对应的色彩空间变换。HSV的指标范围为0~1</p>
-<h3 id="数字图像的尺寸处理">14.4 数字图像的尺寸处理</h3>
-<p><code>imresize(RGB, [numrows,numcols])</code> 若<code>numrows</code>或<code>numcols</code>设为NaN则为等比例放大或缩小。默认使用<strong>双三次差值</strong>的方法放大图像</p>
+<h3 id="14-4-数字图像的尺寸处理"><a href="#14-4-数字图像的尺寸处理" class="headerlink" title="14.4 数字图像的尺寸处理"></a>14.4 数字图像的尺寸处理</h3><p><code>imresize(RGB, [numrows,numcols])</code> 若<code>numrows</code>或<code>numcols</code>设为NaN则为等比例放大或缩小。默认使用<strong>双三次差值</strong>的方法放大图像</p>
 <p><code>RGB(rows,cols,:)</code> 按<code>rows</code>和<code>cols</code>的索引位置截取图像。可以使用<code>start:-1:end</code>实现翻转的效果，或<code>start:2:end</code>实现下采样</p>
 <p><code>[x,y,z] = sphere(100)</code>获取单位球面坐标，<code>warp(x,y,z,RGB)</code> displays the image on the surface (X,Y,Z)</p>
-<h3 id="数字图像的亮度和对比度">14.5 数字图像的亮度和对比度</h3>
-<p>若<code>int8</code>型的灰度图像二维矩阵A，设置常整数<span class="math inline">\(c\in(-255,255)\)</span>，用A+c完成亮度调整。A+c超过255时自动设置为255，小于0则自动设置为0</p>
-<p>设<code>uint8</code>型的灰度图像二维矩阵A，设置正常数<span class="math inline">\(c&gt;0\)</span>和0~255之间的整数k，则<span class="math inline">\(c\times(A-k)+k\)</span>表示为以k为灰度中心，对比放大/缩小c倍。（通常对比度定义为最大最小灰度比值，k=0），结果仍为uint8型数据</p>
+<h3 id="14-5-数字图像的亮度和对比度"><a href="#14-5-数字图像的亮度和对比度" class="headerlink" title="14.5 数字图像的亮度和对比度"></a>14.5 数字图像的亮度和对比度</h3><p>若<code>int8</code>型的灰度图像二维矩阵A，设置常整数$c\in(-255,255)$，用A+c完成亮度调整。A+c超过255时自动设置为255，小于0则自动设置为0</p>
+<p>设<code>uint8</code>型的灰度图像二维矩阵A，设置正常数$c&gt;0$和0~255之间的整数k，则$c\times(A-k)+k$表示为以k为灰度中心，对比放大/缩小c倍。（通常对比度定义为最大最小灰度比值，k=0），结果仍为uint8型数据</p>
 <p>亮度和对比度类似“均值”移动和“方差”改变</p>
-<h3 id="图像的直方图显示与均衡化">14.6 图像的直方图显示与均衡化</h3>
-<p><code>imhist(A)</code> 绘制图像的灰度直方图，统计各灰度出现频率</p>
+<h3 id="14-6-图像的直方图显示与均衡化"><a href="#14-6-图像的直方图显示与均衡化" class="headerlink" title="14.6 图像的直方图显示与均衡化"></a>14.6 图像的直方图显示与均衡化</h3><p><code>imhist(A)</code> 绘制图像的灰度直方图，统计各灰度出现频率</p>
 <p><code>B = histeq(A)</code> 矩阵A进行灰度均衡化（增大对比度）</p>
-<h3 id="图像背景提取与计算了解">14.7 图像背景提取与计算（了解）</h3>
-<p><code>imopen</code> 基于图像的开运算算法，核心是对图像的腐蚀再膨胀的运算（提取邻域内最暗点并代替领域，提取邻域内最亮点并代替领域）</p>
+<h3 id="14-7-图像背景提取与计算（了解）"><a href="#14-7-图像背景提取与计算（了解）" class="headerlink" title="14.7 图像背景提取与计算（了解）"></a>14.7 图像背景提取与计算（了解）</h3><p><code>imopen</code> 基于图像的开运算算法，核心是对图像的腐蚀再膨胀的运算（提取邻域内最暗点并代替领域，提取邻域内最亮点并代替领域）</p>
 <p><code>imsubstract</code> 图像相减</p>
 <p><code>imabsdiff</code> 前景值不论非负都保留</p>
 <p><code>immultiply</code> 图像乘法</p>
-<h3 id="二维离散傅里叶变换">14.8 二维离散傅里叶变换</h3>
-<p>二维离散傅里叶变换可以理解为一维离散傅里叶变换的张量积，或理解按照两个方向分别作一次一维傅里叶变换。</p>
-<p><span class="math display">\[
-F(u,v)=\sum\sum f(x,y)\exp\left\{\frac{-2\pi j(x-1)(u-1)}{m}+\frac{-2\pi j(y-1)(v-1)}{n}\right\}
-\]</span></p>
-<p><span class="math inline">\(F(1,1)\)</span>称为离散傅里叶变换的低频系数，其余系数为高频傅里叶系数。低频系数表达了函数的区域总和，高频系数在不同程度刻画函数的变化情况</p>
+<h3 id="14-8-二维离散傅里叶变换"><a href="#14-8-二维离散傅里叶变换" class="headerlink" title="14.8 二维离散傅里叶变换"></a>14.8 二维离散傅里叶变换</h3><p>二维离散傅里叶变换可以理解为一维离散傅里叶变换的张量积，或理解按照两个方向分别作一次一维傅里叶变换。</p>
+<script type="math/tex; mode=display">
+F(u,v)=\sum\sum f(x,y)\exp\left\{\frac{-2\pi j(x-1)(u-1)}{m}+\frac{-2\pi j(y-1)(v-1)}{n}\right\}</script><p>$F(1,1)$称为离散傅里叶变换的低频系数，其余系数为高频傅里叶系数。低频系数表达了函数的区域总和，高频系数在不同程度刻画函数的变化情况</p>
 <p><code>fft2(X)</code> 计算矩阵或图像X的二维傅里叶变换</p>
 <p><code>ifft2(Y)</code> 计算离散傅里叶变换逆变换</p>
 <p><code>fftshift(FA)</code> 将零频分量移到频谱中心（平移傅里叶变换函数将大值置于中部）</p>
 <p>傅里叶变换对于自然图像往往不具有稀疏性。对于小块亮度函数，其频谱线会集中在坐标轴，并且保持旋转不变性。</p>
-<h3 id="二维离散余弦变换">14.9 二维离散余弦变换</h3>
-<p>二维离散余弦变换与二维离散傅里叶变换类似，但不同点为余弦变换是实变换，并且更贴近于真实图像的频谱分析需求（因为真实图像在二维空间往往并不具有周期性）</p>
-<p><span class="math display">\[
-C(u,v)=a(u)b(v)\sum_{x=1}^m\sum_{y=1}^n f(x,y)cos\frac{(2x-1)(u-1)\pi}{2m}cos\frac{(2y-1)(v-1)\pi}{2n}
-\]</span></p>
-<p>其中<span class="math inline">\(a(u)=\sqrt{2/m},u\neq 1,a(1)=\sqrt{1/m}\)</span>以及<span class="math inline">\(b(v)=\sqrt{2/n},v\neq 1,b(1)=\sqrt{1/n}\)</span></p>
-<p><span class="math inline">\(C(1,1)\)</span>称为离散余弦变换的低频系数，其余系数为高频余弦系数。</p>
+<h3 id="14-9-二维离散余弦变换"><a href="#14-9-二维离散余弦变换" class="headerlink" title="14.9 二维离散余弦变换"></a>14.9 二维离散余弦变换</h3><p>二维离散余弦变换与二维离散傅里叶变换类似，但不同点为余弦变换是实变换，并且更贴近于真实图像的频谱分析需求（因为真实图像在二维空间往往并不具有周期性）</p>
+<script type="math/tex; mode=display">
+C(u,v)=a(u)b(v)\sum_{x=1}^m\sum_{y=1}^n f(x,y)cos\frac{(2x-1)(u-1)\pi}{2m}cos\frac{(2y-1)(v-1)\pi}{2n}</script><p>其中$a(u)=\sqrt{2/m},u\neq 1,a(1)=\sqrt{1/m}$以及$b(v)=\sqrt{2/n},v\neq 1,b(1)=\sqrt{1/n}$</p>
+<p>$C(1,1)$称为离散余弦变换的低频系数，其余系数为高频余弦系数。</p>
 <p><code>dct2(X)</code> 计算矩阵或图像X的二维离散余弦变换</p>
 <p><code>idct2(Y)</code> 离散余弦逆变换</p>
-<h3 id="图像去噪声问题">14.10 图像去噪声问题</h3>
-<p>与信号去噪问题相似，图像去噪问题即图像对应的目标函数受到了一些未知的退化变换，得到了一幅带有噪点的不准确图像。去噪问题即利用图像的内在性质与噪声分布的特点，完成目标清晰图像的估计与获取的过程。</p>
-<p><code>imnoise(A,'gaussian',mu,sigma)</code> 对图像A添加高斯噪声，均值<span class="math inline">\(\mu\)</span>，方差<span class="math inline">\(255^2\sigma\)</span>，<code>imnoise</code>可以自动将结果化为<code>uint8</code>型</p>
-<h4 id="均值滤波-1">14.10.1 均值滤波</h4>
-<p><code>imfilter(B,filter,'symmetric','same')</code> 需要先定义<code>filter</code>向量，如<code>filter = 1/25 * ones(5)</code></p>
+<h3 id="14-10-图像去噪声问题"><a href="#14-10-图像去噪声问题" class="headerlink" title="14.10 图像去噪声问题"></a>14.10 图像去噪声问题</h3><p>与信号去噪问题相似，图像去噪问题即图像对应的目标函数受到了一些未知的退化变换，得到了一幅带有噪点的不准确图像。去噪问题即利用图像的内在性质与噪声分布的特点，完成目标清晰图像的估计与获取的过程。</p>
+<p><code>imnoise(A,&#39;gaussian&#39;,mu,sigma)</code> 对图像A添加高斯噪声，均值$\mu$，方差$255^2\sigma$，<code>imnoise</code>可以自动将结果化为<code>uint8</code>型</p>
+<h4 id="14-10-1-均值滤波"><a href="#14-10-1-均值滤波" class="headerlink" title="14.10.1 均值滤波"></a>14.10.1 均值滤波</h4><p><code>imfilter(B,filter,&#39;symmetric&#39;,&#39;same&#39;)</code> 需要先定义<code>filter</code>向量，如<code>filter = 1/25 * ones(5)</code></p>
 <p><strong>峰值信噪比(PSNR)</strong> 基于图像函数误差定义信噪比，可以对图像的恢复质量进行数值上的分析</p>
-<p><span class="math display">\[
-PSNR=10\cdot\lg(\frac{255^2\cdot\#\text{points}}{\sum [y-f(x)]^2})
-\]</span></p>
-<p><code>psnr(pic,realpic)</code> 计算PSNR</p>
-<h4 id="中值滤波">14.10.2 中值滤波</h4>
-<p><code>imnoise(A,'salt &amp; pepper',0.1)</code> 设置10%的随机像点为椒盐噪声</p>
+<script type="math/tex; mode=display">
+PSNR=10\cdot\lg(\frac{255^2\cdot\#\text{points}}{\sum [y-f(x)]^2})</script><p><code>psnr(pic,realpic)</code> 计算PSNR</p>
+<h4 id="14-10-2-中值滤波"><a href="#14-10-2-中值滤波" class="headerlink" title="14.10.2 中值滤波"></a>14.10.2 中值滤波</h4><p><code>imnoise(A,&#39;salt &amp; pepper&#39;,0.1)</code> 设置10%的随机像点为椒盐噪声</p>
 <p>认为在椒盐噪声噪点周围，大多数信息是准确的，可以在噪点附近一定范围内取灰度值的中位数来估计灰度。</p>
 <p><code>C = medfilt2(B,[3,3])</code> 3x3的中值滤波</p>
-<h4 id="图像区域填充问题">14.10.3 图像区域填充问题</h4>
-<p>图像整块缺失时，利用逐步填充的思想，利用已知或未擦除区域对剩余区域进行估计。反复进行中值滤波，真实值会渐渐渗透到填充区内部，从而达到图像填充的理想效果</p>
-<h4 id="图像模糊的退化模型">14.10.4 图像模糊的退化模型</h4>
-<p>MATLAB内置有一系列预设好的<code>filter</code>，可以通过<code>fspecial</code>函数创建模糊核</p>
-<p><code>kernel = fspecial('disk',10)</code> 对焦不准模糊核，半径为10</p>
-<p><code>kernel = fspecial('motion',15,90)</code> 移动模糊核，向上平移15格</p>
-<p><code>imfilter(A,kernel,'replicate')</code> 复制型边界条件</p>
-<p><code>imfilter(A,kernel,'circular')</code> 周期型边界条件</p>
+<h4 id="14-10-3-图像区域填充问题"><a href="#14-10-3-图像区域填充问题" class="headerlink" title="14.10.3 图像区域填充问题"></a>14.10.3 图像区域填充问题</h4><p>图像整块缺失时，利用逐步填充的思想，利用已知或未擦除区域对剩余区域进行估计。反复进行中值滤波，真实值会渐渐渗透到填充区内部，从而达到图像填充的理想效果</p>
+<h4 id="14-10-4-图像模糊的退化模型"><a href="#14-10-4-图像模糊的退化模型" class="headerlink" title="14.10.4 图像模糊的退化模型"></a>14.10.4 图像模糊的退化模型</h4><p>MATLAB内置有一系列预设好的<code>filter</code>，可以通过<code>fspecial</code>函数创建模糊核</p>
+<p><code>kernel = fspecial(&#39;disk&#39;,10)</code> 对焦不准模糊核，半径为10</p>
+<p><code>kernel = fspecial(&#39;motion&#39;,15,90)</code> 移动模糊核，向上平移15格</p>
+<p><code>imfilter(A,kernel,&#39;replicate&#39;)</code> 复制型边界条件</p>
+<p><code>imfilter(A,kernel,&#39;circular&#39;)</code> 周期型边界条件</p>
 <p><code>deconvreg(B,kernel)</code> 图像反卷积函数</p>
 <p><code>deconvblind(B,kernel)</code> 盲反卷积函数，此处kernel为初值</p>
-<h2 id="lecture-15-matlab数据可视化二">Lecture 15 MATLAB数据可视化（二）</h2>
-<h3 id="绘图参数设置">15.1 绘图参数设置</h3>
-<p><code>subplot(m,n,k)</code> 设定的mxn子图中的第k个位置绘图（行优先）</p>
-<p><code>subplot('position',[left,bottom,width,height])</code> 指定位置绘图，0~1，左下为0，右上为1</p>
+<h2 id="Lecture-15-MATLAB数据可视化（二）"><a href="#Lecture-15-MATLAB数据可视化（二）" class="headerlink" title="Lecture 15 MATLAB数据可视化（二）"></a>Lecture 15 MATLAB数据可视化（二）</h2><h3 id="15-1-绘图参数设置"><a href="#15-1-绘图参数设置" class="headerlink" title="15.1 绘图参数设置"></a>15.1 绘图参数设置</h3><p><code>subplot(m,n,k)</code> 设定的mxn子图中的第k个位置绘图（行优先）</p>
+<p><code>subplot(&#39;position&#39;,[left,bottom,width,height])</code> 指定位置绘图，0~1，左下为0，右上为1</p>
 <p><code>[x,y] = ginput(n)</code> 采用鼠标点击的方法获取二维图形坐标，返回n个，以列向量方式存储</p>
-<p><code>plot3(X,Y,Z,'s')</code> 三维坐标绘图</p>
+<p><code>plot3(X,Y,Z,&#39;s&#39;)</code> 三维坐标绘图</p>
 <p><code>view([longtitude,latitude])</code> 0度，东经为正，北纬为正，或通过<code>view([x,y,z])</code>控制观察点位置</p>
 <p><code>[X,Y] = meshigrid(x,y)</code> 生成以x,y为横纵坐标的网格，分别存储在X和Y中（矩阵）</p>
 <p><code>surf(X,Y,Z,C)</code> 三维曲面，若X与Y缺省则以Z的两个维度下标代替，C为颜色函数，默认色彩按曲面高度决定每个点颜色，C指定为大小与Z相同的矩阵，或指定为RGB三元组的m×n×3数组</p>
@@ -978,7 +770,7 @@ PSNR=10\cdot\lg(\frac{255^2\cdot\#\text{points}}{\sum [y-f(x)]^2})
 <p><code>colormap (h1,parula)</code> 对子图<code>h1=subplot(1,2,1)</code>选定预设的色图</p>
 <p><code>shading options</code> options可选参数<code>faceted</code>一致颜色并显示边缘，<code>flat</code>一致颜色，<code>interp</code>用双线性插值使四顶点颜色连续变化</p>
 <p><code>alpha(v)</code> 设置透明度，0为完全透明，1完全不透明</p>
-<p><code>light('Name',value)</code> 灯光设置：<code>'color',[1,0,0]</code>色光设置，<code>'style'</code>可选<code>'infinite'</code>平行光或<code>'local'</code>点光源，<code>'position'</code>光源位置</p>
+<p><code>light(&#39;Name&#39;,value)</code> 灯光设置：<code>&#39;color&#39;,[1,0,0]</code>色光设置，<code>&#39;style&#39;</code>可选<code>&#39;infinite&#39;</code>平行光或<code>&#39;local&#39;</code>点光源，<code>&#39;position&#39;</code>光源位置</p>
 <p><code>lighting options</code> 照明模式，options可选参数<code>flat</code>均匀分布，<code>gouraud</code>先对顶点颜色插补再对面色插补，<code>phong</code>顶点法线插值，再计算各像素反光，<code>none</code>关闭</p>
 <p><code>material[ka,kd,ks,n,ns]</code> 光反射材质的环境/漫反射/镜面反射强度/镜面反射指数/镜面反射颜色反射率</p>
 <p><code>material options</code> options可选参数<code>shiny</code>使对象比较明亮，镜面反射额较大，<code>dull</code>使对象比较暗淡，漫反射额较大，<code>metal</code>使对象有金属光泽，<code>defalut</code>缺省值</p>
@@ -986,26 +778,22 @@ PSNR=10\cdot\lg(\frac{255^2\cdot\#\text{points}}{\sum [y-f(x)]^2})
 <p><code>hidden on/off</code> 控制网格叠压图形的透视</p>
 <p><code>pcolor(X,Y,Z)</code> 伪彩图绘制，二维图片用颜色表现第三维</p>
 <p><code>contour(X,Y,Z)</code> 创建一个包含矩阵Z的等值线的等高线图</p>
-<p><code>[C,h] = contourf(X,Y,Z,n,'k:')</code> 带颜色填充的等位线图，n为分级个数</p>
+<p><code>[C,h] = contourf(X,Y,Z,n,&#39;k:&#39;)</code> 带颜色填充的等位线图，n为分级个数</p>
 <p><code>clabel(C,h)</code> 对<code>contour</code>对象添加标识</p>
 <p>四维信息：三维曲面+颜色</p>
 <p><code>slice(X,Y,Z,V,sx,sy,sz)</code> 绘制切片图，X,Y,Z,V为同型三维矩阵，表示一组点的各维度坐标和颜色函数值。切片方向与坐标面平行，每一个sx,sy,sz的取值都会带来一个新的切片绘制。</p>
 <p><code>comet(x,y,p)</code>或<code>comet3(x,y,z,p)</code> 彗星线，其长度为<code>p*length(y)</code>或<code>p*length(z)</code></p>
 <p><code>spinmap(t,inc)</code> 色图变幻，t为变化时间，inc标识变幻的速度</p>
-<h3 id="动画">15.2 动画</h3>
-<p><code>M(i)=getframe</code> 从当前绘图窗口保存图形到结构体数组，i为帧序号</p>
-<p><code>M(i)=struct('cdata',[],'colormap',[])</code> 包含<code>cdata</code>和<code>colormap</code>两个域</p>
+<h3 id="15-2-动画"><a href="#15-2-动画" class="headerlink" title="15.2 动画"></a>15.2 动画</h3><p><code>M(i)=getframe</code> 从当前绘图窗口保存图形到结构体数组，i为帧序号</p>
+<p><code>M(i)=struct(&#39;cdata&#39;,[],&#39;colormap&#39;,[])</code> 包含<code>cdata</code>和<code>colormap</code>两个域</p>
 <p><code>movie(M,k,fps)</code> 将画面按顺序以每秒<code>fps</code>帧（默认12）的速度播放，重复k次</p>
 <p><code>drawnow</code> 将动态的绘图显示在绘图窗口，用<code>pause(n)</code>可以辅助控制两次绘图之间的时间差</p>
-<p><code>imwrite(I,map,'shuxueshiyan.gif','gif','Loopcount',inf,'DelayTime',0.5)</code> 保存gif，第一帧需要设置<code>'Loopcount',inf</code>，其后只需要设置<code>'WriteMode','append'</code></p>
-<h2 id="附录">附录</h2>
-<h3 id="倍增区间极值搜索法">倍增区间极值搜索法</h3>
-<p><code>fminbnd(fx,a,b)</code>可以计算某个区间内的一个极小值，对于波动较大的函数，极小值不一定是最小值</p>
+<p><code>imwrite(I,map,&#39;shuxueshiyan.gif&#39;,&#39;gif&#39;,&#39;Loopcount&#39;,inf,&#39;DelayTime&#39;,0.5)</code> 保存gif，第一帧需要设置<code>&#39;Loopcount&#39;,inf</code>，其后只需要设置<code>&#39;WriteMode&#39;,&#39;append&#39;</code></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="倍增区间极值搜索法"><a href="#倍增区间极值搜索法" class="headerlink" title="倍增区间极值搜索法"></a>倍增区间极值搜索法</h3><p><code>fminbnd(fx,a,b)</code>可以计算某个区间内的一个极小值，对于波动较大的函数，极小值不一定是最小值</p>
 <p>倍增区间极值搜索法，将分割区间的长度不断变小，从而可以获得“更多的极小值”，每一次分割都将获取最小的一个极小值。在单调区间个数有限的假设下，分割越细，就越有可能获得最小值。</p>
 <p>最终当进一步分层后，获取的最小值在连续几次倍增后不变（或变化量极小），就退出循环，结束区间倍增，然后输出最终得到的最小值、最小值点以及最终倍增区间的个数。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[xmin,fmin,n]</span>=<span class="title">exm060101</span><span class="params">(fx,a,b,Nt)</span></span></span><br><span class="line"><span class="comment">%fx为函数,a,b为左右端点，Nt为子区间细分的过程中极小值点重复超过多少次即可停止细分</span></span><br><span class="line"><span class="comment">%xmin和ymin代表最小值所在的横坐标和纵坐标，n为获得最小值时分割的子区间数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%求fx在(a,b)一个极小值，f0记录最小值，第一个返回值（最小值点）舍去</span></span><br><span class="line">[~,f0]=fminbnd(fx,a,b);</span><br><span class="line">n=<span class="number">1</span>;<span class="comment">%初始区间没有分割，共1个区间</span></span><br><span class="line">jj=<span class="number">1</span>;<span class="comment">%同一最小值的重复出现次数</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span> <span class="comment">%无限的循环（需要带有条件的break跳出循环）</span></span><br><span class="line">n=<span class="number">2</span>*n;<span class="comment">%循环区间数X2</span></span><br><span class="line">d=(b-a)/n;<span class="comment">%区间长度/2</span></span><br><span class="line">    x=a:d:b;</span><br><span class="line">ii=<span class="number">0</span>;<span class="comment">%本轮循环（本次精度）极小值的数量</span></span><br><span class="line">xc=<span class="built_in">zeros</span>(<span class="number">1</span>,n);fc=xc;<span class="comment">%本次循环极值点与极值的点的数组</span></span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span>:n<span class="comment">%</span></span><br><span class="line">        [w,f,eflag]=fminbnd(fx,x(k),x(k+<span class="number">1</span>));</span><br><span class="line">        <span class="comment">%子区间取极值点，w为点，f为值，flag为是否找到</span></span><br><span class="line">        <span class="keyword">if</span> eflag&gt;<span class="number">0</span></span><br><span class="line">            ii=ii+<span class="number">1</span>;<span class="comment">%极小值数量+1</span></span><br><span class="line">            xc(ii)=w;</span><br><span class="line">            fc(ii)=f;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    xc = xc(<span class="number">1</span>:ii);fc = fc(<span class="number">1</span>:ii);</span><br><span class="line">    [fmin,kk]=<span class="built_in">min</span>(fc);<span class="comment">%最小值fmin，位置kk</span></span><br><span class="line">    xmin=xc(kk);</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">abs</span>(f0-fmin)&lt;<span class="number">1e-6</span> <span class="comment">%足够小的最小值</span></span><br><span class="line">        jj=jj+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> jj&gt;Nt</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">elseif</span> f0-fmin&gt;<span class="number">1e-6</span></span><br><span class="line">        f0=fmin;<span class="comment">%确立新最小值</span></span><br><span class="line">        jj=<span class="number">1</span>;<span class="comment">%reset重复次数</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h3 id="hilbert矩阵的创建">Hilbert矩阵的创建</h3>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">1000</span> <span class="comment">%阶数</span></span><br><span class="line">n = <span class="built_in">repmat</span>(<span class="number">1</span>:N,N,<span class="number">1</span>);</span><br><span class="line">m = n';</span><br><span class="line">A = <span class="number">1.</span>/(n+m<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Hilbert矩阵的创建"><a href="#Hilbert矩阵的创建" class="headerlink" title="Hilbert矩阵的创建"></a>Hilbert矩阵的创建</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">1000</span> <span class="comment">%阶数</span></span><br><span class="line">n = <span class="built_in">repmat</span>(<span class="number">1</span>:N,N,<span class="number">1</span>);</span><br><span class="line">m = n';</span><br><span class="line">A = <span class="number">1.</span>/(n+m<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -1068,7 +856,7 @@ PSNR=10\cdot\lg(\frac{255^2\cdot\#\text{points}}{\sum [y-f(x)]^2})
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-1-matlab软件入门"><span class="nav-text">Lecture 1 MATLAB软件入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab特点"><span class="nav-text">1.1 MATLAB特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量与特殊数值"><span class="nav-text">1.2 变量与特殊数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-text">1.3 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复数"><span class="nav-text">1.4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令窗功能"><span class="nav-text">1.5 命令窗功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-2-matlab编辑器与符号计算一"><span class="nav-text">Lecture 2 MATLAB编辑器与符号计算（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算结果显示形式"><span class="nav-text">2.1 运算结果显示形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索路径原则"><span class="nav-text">2.2 搜索路径原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号对象"><span class="nav-text">2.3 符号对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号表达式"><span class="nav-text">2.4 符号表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号微积分"><span class="nav-text">2.5 符号微积分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-3-matlab符号计算二"><span class="nav-text">Lecture 3 MATLAB符号计算（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号对象的识别"><span class="nav-text">3.1 符号对象的识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号转双精度或符号型小数"><span class="nav-text">3.2 符号转双精度或符号型小数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号表达式的基本操作"><span class="nav-text">3.3 符号表达式的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微分方程组的符号解法"><span class="nav-text">3.4 微分方程组的符号解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#傅里叶变换"><span class="nav-text">3.5 傅里叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#傅里叶变换的一些性质"><span class="nav-text">傅里叶变换的一些性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-4-matlab符号计算三"><span class="nav-text">Lecture 4 MATLAB符号计算（三）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab的符号限制性假设"><span class="nav-text">4.1 MATLAB的符号限制性假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#laplace变换"><span class="nav-text">4.2 Laplace变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#z变换"><span class="nav-text">4.3 Z变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号卷积"><span class="nav-text">4.4 符号卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号矩阵分析与计算数值矩阵"><span class="nav-text">4.5 符号矩阵分析与计算（数值矩阵）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般方程组符号解"><span class="nav-text">4.6 一般方程组符号解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号计算结果可视化"><span class="nav-text">4.7 符号计算结果可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-5-matlab数值数组与数组化编程"><span class="nav-text">Lecture 5 MATLAB数值数组与数组化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维数组向量"><span class="nav-text">5.1 一维数组（向量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵二维数组"><span class="nav-text">5.2 矩阵（二维数组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组编址"><span class="nav-text">5.3 二维数组编址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的运算"><span class="nav-text">5.4 数组的运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-6-matlab矩阵函数与程序设计初步"><span class="nav-text">Lecture 6 MATLAB矩阵函数与程序设计初步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的乘除运算"><span class="nav-text">6.1 矩阵的乘除运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的幂运算与矩阵函数"><span class="nav-text">6.2 矩阵的幂运算与矩阵函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab控制流"><span class="nav-text">6.3 MATLAB控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#胞元"><span class="nav-text">6.4 胞元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-7-matlab数值微积分"><span class="nav-text">Lecture 7 MATLAB数值微积分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#差分方法"><span class="nav-text">7.1 差分方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值求和与累积和"><span class="nav-text">7.2 数值求和与累积和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值积分"><span class="nav-text">7.3 数值积分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中矩形公式"><span class="nav-text">中矩形公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合梯形公式"><span class="nav-text">复合梯形公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#辛普森公式"><span class="nav-text">辛普森公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#monte-carlo法"><span class="nav-text">Monte Carlo法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数"><span class="nav-text">7.4 匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建数值积分函数"><span class="nav-text">7.5 内建数值积分函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-8-matlab微分方程数值解法"><span class="nav-text">Lecture 8 MATLAB微分方程数值解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#差分方程"><span class="nav-text">8.1 差分方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差分方程与微分方程"><span class="nav-text">8.2 差分方程与微分方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉法"><span class="nav-text">8.3 欧拉法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进欧拉法"><span class="nav-text">8.4 改进欧拉法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#龙格-库塔法"><span class="nav-text">8.5 龙格-库塔法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一阶微分方程组演化实例见ppt"><span class="nav-text">8.6 一阶微分方程组演化实例（见PPT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶微分方程"><span class="nav-text">8.7 高阶微分方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-9-matlab数值线性代数"><span class="nav-text">Lecture 9 MATLAB数值线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的范数"><span class="nav-text">9.1 矩阵的范数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵变换与特征值分解"><span class="nav-text">9.2 矩阵变换与特征值分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab解线性方程组"><span class="nav-text">9.3 MATLAB解线性方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值迭代法"><span class="nav-text">9.3.1 数值迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#雅克比迭代法"><span class="nav-text">9.3.2 雅克比迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯-赛德尔迭代法"><span class="nav-text">9.3.3 高斯-赛德尔迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于变分法解线性方程组"><span class="nav-text">9.3.4 基于变分法解线性方程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变分-最速梯度下降法法"><span class="nav-text">9.3.5 变分-最速梯度下降法法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变分-共轭梯度法了解"><span class="nav-text">9.3.5 变分-共轭梯度法（了解）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-10-matlab进阶程序设计与问题求解"><span class="nav-text">Lecture 10 MATLAB进阶程序设计与问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多种输入输出格式的函数设计"><span class="nav-text">10.1 多种输入&#x2F;输出格式的函数设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab主函数与子函数"><span class="nav-text">10.2 MATLAB主函数与子函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数句柄"><span class="nav-text">10.3 函数句柄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数极值问题"><span class="nav-text">10.4 函数极值问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单峰函数"><span class="nav-text">10.5 单峰函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黄金分割法要求"><span class="nav-text">10.5.1 黄金分割法（要求）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一元问题牛顿迭代法要求"><span class="nav-text">10.5.2 一元问题牛顿迭代法（要求）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最速梯度下降法"><span class="nav-text">10.5.3 最速梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#牛顿法解多元最小值问题了解"><span class="nav-text">10.5.4 牛顿法解多元最小值问题（了解）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab解非线性方程组"><span class="nav-text">10.6 MATLAB解非线性方程（组）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-11-matlab概率统计与曲线拟合"><span class="nav-text">Lecture 11 MATLAB概率统计与曲线拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见分布的概率和密度函数"><span class="nav-text">11.1 常见分布的概率和密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二项分布"><span class="nav-text">11.1.1 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态分布"><span class="nav-text">11.1.2 正态分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它分布"><span class="nav-text">11.1.3 其它分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机流的控制"><span class="nav-text">11.2 随机流的控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计分析命令"><span class="nav-text">11.3 统计分析命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式拟合"><span class="nav-text">11.4 多项式拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cftool工具箱的使用"><span class="nav-text">11.5 cftool工具箱的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-12-matlab数字信号与声音处理"><span class="nav-text">Lecture 12 MATLAB数字信号与声音处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数信息与数字信号"><span class="nav-text">12.1 函数信息与数字信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值滤波"><span class="nav-text">12.2 均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散傅里叶变换"><span class="nav-text">12.3 离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬阈值和软阈值"><span class="nav-text">12.4 硬阈值和软阈值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字信号去噪问题"><span class="nav-text">12.5 数字信号去噪问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声音信号处理"><span class="nav-text">12.6 声音信号处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-13-matlab多项式运算与数据可视化一"><span class="nav-text">Lecture 13 MATLAB多项式运算与数据可视化（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式表示和运算"><span class="nav-text">13.1 多项式表示和运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限长向量卷积"><span class="nav-text">13.2 有限长向量卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散数据的可视化"><span class="nav-text">13.3 离散数据的可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-14-matlab数字图像处理初步"><span class="nav-text">Lecture 14 MATLAB数字图像处理初步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字图像与矩阵"><span class="nav-text">14.1 数字图像与矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彩色图像通道分离与图像存储"><span class="nav-text">14.2 彩色图像通道分离与图像存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#彩色图像的颜色编码更换"><span class="nav-text">14.3 彩色图像的颜色编码更换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字图像的尺寸处理"><span class="nav-text">14.4 数字图像的尺寸处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字图像的亮度和对比度"><span class="nav-text">14.5 数字图像的亮度和对比度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像的直方图显示与均衡化"><span class="nav-text">14.6 图像的直方图显示与均衡化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像背景提取与计算了解"><span class="nav-text">14.7 图像背景提取与计算（了解）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维离散傅里叶变换"><span class="nav-text">14.8 二维离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维离散余弦变换"><span class="nav-text">14.9 二维离散余弦变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像去噪声问题"><span class="nav-text">14.10 图像去噪声问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均值滤波-1"><span class="nav-text">14.10.1 均值滤波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中值滤波"><span class="nav-text">14.10.2 中值滤波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像区域填充问题"><span class="nav-text">14.10.3 图像区域填充问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像模糊的退化模型"><span class="nav-text">14.10.4 图像模糊的退化模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lecture-15-matlab数据可视化二"><span class="nav-text">Lecture 15 MATLAB数据可视化（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图参数设置"><span class="nav-text">15.1 绘图参数设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-text">15.2 动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#倍增区间极值搜索法"><span class="nav-text">倍增区间极值搜索法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hilbert矩阵的创建"><span class="nav-text">Hilbert矩阵的创建</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1-MATLAB软件入门"><span class="nav-text">Lecture 1 MATLAB软件入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-MATLAB特点"><span class="nav-text">1.1 MATLAB特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-变量与特殊数值"><span class="nav-text">1.2 变量与特殊数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-运算符"><span class="nav-text">1.3 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-复数"><span class="nav-text">1.4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-命令窗功能"><span class="nav-text">1.5 命令窗功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2-MATLAB编辑器与符号计算（一）"><span class="nav-text">Lecture 2 MATLAB编辑器与符号计算（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-运算结果显示形式"><span class="nav-text">2.1 运算结果显示形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-搜索路径原则"><span class="nav-text">2.2 搜索路径原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-符号对象"><span class="nav-text">2.3 符号对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-符号表达式"><span class="nav-text">2.4 符号表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-符号微积分"><span class="nav-text">2.5 符号微积分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3-MATLAB符号计算（二）"><span class="nav-text">Lecture 3 MATLAB符号计算（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-符号对象的识别"><span class="nav-text">3.1 符号对象的识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-符号转双精度或符号型小数"><span class="nav-text">3.2 符号转双精度或符号型小数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-符号表达式的基本操作"><span class="nav-text">3.3 符号表达式的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-微分方程组的符号解法"><span class="nav-text">3.4 微分方程组的符号解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-傅里叶变换"><span class="nav-text">3.5 傅里叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#傅里叶变换的一些性质"><span class="nav-text">傅里叶变换的一些性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-4-MATLAB符号计算（三）"><span class="nav-text">Lecture 4 MATLAB符号计算（三）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-MATLAB的符号限制性假设"><span class="nav-text">4.1 MATLAB的符号限制性假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Laplace变换"><span class="nav-text">4.2 Laplace变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Z变换"><span class="nav-text">4.3 Z变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-符号卷积"><span class="nav-text">4.4 符号卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-符号矩阵分析与计算（数值矩阵）"><span class="nav-text">4.5 符号矩阵分析与计算（数值矩阵）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-一般方程组符号解"><span class="nav-text">4.6 一般方程组符号解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-符号计算结果可视化"><span class="nav-text">4.7 符号计算结果可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-5-MATLAB数值数组与数组化编程"><span class="nav-text">Lecture 5 MATLAB数值数组与数组化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-一维数组（向量）"><span class="nav-text">5.1 一维数组（向量）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-矩阵（二维数组）"><span class="nav-text">5.2 矩阵（二维数组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-二维数组编址"><span class="nav-text">5.3 二维数组编址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-数组的运算"><span class="nav-text">5.4 数组的运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-6-MATLAB矩阵函数与程序设计初步"><span class="nav-text">Lecture 6 MATLAB矩阵函数与程序设计初步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-矩阵的乘除运算"><span class="nav-text">6.1 矩阵的乘除运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-矩阵的幂运算与矩阵函数"><span class="nav-text">6.2 矩阵的幂运算与矩阵函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-MATLAB控制流"><span class="nav-text">6.3 MATLAB控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-胞元"><span class="nav-text">6.4 胞元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-MATLAB数值微积分"><span class="nav-text">Lecture 7 MATLAB数值微积分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-差分方法"><span class="nav-text">7.1 差分方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-数值求和与累积和"><span class="nav-text">7.2 数值求和与累积和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-数值积分"><span class="nav-text">7.3 数值积分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中矩形公式"><span class="nav-text">中矩形公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合梯形公式"><span class="nav-text">复合梯形公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#辛普森公式"><span class="nav-text">辛普森公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Monte-Carlo法"><span class="nav-text">Monte Carlo法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-匿名函数"><span class="nav-text">7.4 匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-内建数值积分函数"><span class="nav-text">7.5 内建数值积分函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-8-MATLAB微分方程数值解法"><span class="nav-text">Lecture 8 MATLAB微分方程数值解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-差分方程"><span class="nav-text">8.1 差分方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-差分方程与微分方程"><span class="nav-text">8.2 差分方程与微分方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-欧拉法"><span class="nav-text">8.3 欧拉法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-改进欧拉法"><span class="nav-text">8.4 改进欧拉法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-龙格-库塔法"><span class="nav-text">8.5 龙格-库塔法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-6-一阶微分方程组演化实例（见PPT）"><span class="nav-text">8.6 一阶微分方程组演化实例（见PPT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-7-高阶微分方程"><span class="nav-text">8.7 高阶微分方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-9-MATLAB数值线性代数"><span class="nav-text">Lecture 9 MATLAB数值线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-矩阵的范数"><span class="nav-text">9.1 矩阵的范数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-矩阵变换与特征值分解"><span class="nav-text">9.2 矩阵变换与特征值分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-MATLAB解线性方程组"><span class="nav-text">9.3 MATLAB解线性方程组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-1-数值迭代法"><span class="nav-text">9.3.1 数值迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-2-雅克比迭代法"><span class="nav-text">9.3.2 雅克比迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-3-高斯-赛德尔迭代法"><span class="nav-text">9.3.3 高斯-赛德尔迭代法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-4-基于变分法解线性方程组"><span class="nav-text">9.3.4 基于变分法解线性方程组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-5-变分-最速梯度下降法法"><span class="nav-text">9.3.5 变分-最速梯度下降法法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-5-变分-共轭梯度法（了解）"><span class="nav-text">9.3.5 变分-共轭梯度法（了解）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-10-MATLAB进阶程序设计与问题求解"><span class="nav-text">Lecture 10 MATLAB进阶程序设计与问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-多种输入-输出格式的函数设计"><span class="nav-text">10.1 多种输入&#x2F;输出格式的函数设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-MATLAB主函数与子函数"><span class="nav-text">10.2 MATLAB主函数与子函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-函数句柄"><span class="nav-text">10.3 函数句柄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-4-函数极值问题"><span class="nav-text">10.4 函数极值问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-5-单峰函数"><span class="nav-text">10.5 单峰函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-5-1-黄金分割法（要求）"><span class="nav-text">10.5.1 黄金分割法（要求）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-5-2-一元问题牛顿迭代法（要求）"><span class="nav-text">10.5.2 一元问题牛顿迭代法（要求）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-5-3-最速梯度下降法"><span class="nav-text">10.5.3 最速梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-5-4-牛顿法解多元最小值问题（了解）"><span class="nav-text">10.5.4 牛顿法解多元最小值问题（了解）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-6-MATLAB解非线性方程（组）"><span class="nav-text">10.6 MATLAB解非线性方程（组）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-11-MATLAB概率统计与曲线拟合"><span class="nav-text">Lecture 11 MATLAB概率统计与曲线拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-常见分布的概率和密度函数"><span class="nav-text">11.1 常见分布的概率和密度函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-1-1-二项分布"><span class="nav-text">11.1.1 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-1-2-正态分布"><span class="nav-text">11.1.2 正态分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-1-3-其它分布"><span class="nav-text">11.1.3 其它分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-随机流的控制"><span class="nav-text">11.2 随机流的控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-3-统计分析命令"><span class="nav-text">11.3 统计分析命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-4-多项式拟合"><span class="nav-text">11.4 多项式拟合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-5-cftool工具箱的使用"><span class="nav-text">11.5 cftool工具箱的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-12-MATLAB数字信号与声音处理"><span class="nav-text">Lecture 12 MATLAB数字信号与声音处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-函数信息与数字信号"><span class="nav-text">12.1 函数信息与数字信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-均值滤波"><span class="nav-text">12.2 均值滤波</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-离散傅里叶变换"><span class="nav-text">12.3 离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-4-硬阈值和软阈值"><span class="nav-text">12.4 硬阈值和软阈值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-5-数字信号去噪问题"><span class="nav-text">12.5 数字信号去噪问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-6-声音信号处理"><span class="nav-text">12.6 声音信号处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-13-MATLAB多项式运算与数据可视化（一）"><span class="nav-text">Lecture 13 MATLAB多项式运算与数据可视化（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-1-多项式表示和运算"><span class="nav-text">13.1 多项式表示和运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-2-有限长向量卷积"><span class="nav-text">13.2 有限长向量卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-3-离散数据的可视化"><span class="nav-text">13.3 离散数据的可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-14-MATLAB数字图像处理初步"><span class="nav-text">Lecture 14 MATLAB数字图像处理初步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-1-数字图像与矩阵"><span class="nav-text">14.1 数字图像与矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-2-彩色图像通道分离与图像存储"><span class="nav-text">14.2 彩色图像通道分离与图像存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3-彩色图像的颜色编码更换"><span class="nav-text">14.3 彩色图像的颜色编码更换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-4-数字图像的尺寸处理"><span class="nav-text">14.4 数字图像的尺寸处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-5-数字图像的亮度和对比度"><span class="nav-text">14.5 数字图像的亮度和对比度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-6-图像的直方图显示与均衡化"><span class="nav-text">14.6 图像的直方图显示与均衡化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-7-图像背景提取与计算（了解）"><span class="nav-text">14.7 图像背景提取与计算（了解）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-8-二维离散傅里叶变换"><span class="nav-text">14.8 二维离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-9-二维离散余弦变换"><span class="nav-text">14.9 二维离散余弦变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-10-图像去噪声问题"><span class="nav-text">14.10 图像去噪声问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#14-10-1-均值滤波"><span class="nav-text">14.10.1 均值滤波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-10-2-中值滤波"><span class="nav-text">14.10.2 中值滤波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-10-3-图像区域填充问题"><span class="nav-text">14.10.3 图像区域填充问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-10-4-图像模糊的退化模型"><span class="nav-text">14.10.4 图像模糊的退化模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-15-MATLAB数据可视化（二）"><span class="nav-text">Lecture 15 MATLAB数据可视化（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#15-1-绘图参数设置"><span class="nav-text">15.1 绘图参数设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-2-动画"><span class="nav-text">15.2 动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#倍增区间极值搜索法"><span class="nav-text">倍增区间极值搜索法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert矩阵的创建"><span class="nav-text">Hilbert矩阵的创建</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
