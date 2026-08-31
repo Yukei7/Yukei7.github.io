@@ -1,6 +1,6 @@
-# Yuqi Yan
+A personal website built with Astro.
 
-Personal website built with Astro.
+Template from: https://github.com/JustGoodUI/ovidius-astro-theme
 
 ## Local development
 

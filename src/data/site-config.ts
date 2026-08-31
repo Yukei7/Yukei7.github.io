@@ -49,6 +49,16 @@ const siteConfig: SiteConfig = {
             text: 'GitHub',
             href: 'https://github.com/Yukei7',
             icon: 'github'
+        },
+        {
+            text: 'LinkedIn',
+            href: 'https://www.linkedin.com/in/yukei7/',
+            icon: 'linkedin'
+        },
+        {
+            text: 'Instagram',
+            href: 'https://www.instagram.com/yukeiyim',
+            icon: 'instagram'
         }
     ],
     hero: {
