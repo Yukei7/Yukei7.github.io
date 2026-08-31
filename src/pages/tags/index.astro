@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import siteConfig from '../../data/site-config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+const tags = new Map<string, { name: string; slug: string; count: number }>();
+
+for (const post of posts) {
+    if (!post.data.tag || !post.data.tagSlug) continue;
+    const key = post.data.tagSlug;
+    if (!tags.has(key)) {
+        tags.set(key, { name: post.data.tag, slug: key, count: 0 });
+    }
+    tags.get(key)!.count += 1;
+}
+
+const tagList = Array.from(tags.values()).sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout title="Tags" description={`Browse post tags on ${siteConfig.title}`}>
+    <main class="px-4 py-12 grow sm:px-8 sm:py-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="mb-8 text-4xl font-bold text-slate-900 sm:text-5xl">Tags</h1>
+            <div class="flex flex-wrap gap-3">
+                {tagList.map((tag) => (
+                    <a
+                        class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-slate-700 transition hover:border-primary hover:text-primary"
+                        href={`/tags/${tag.slug}/`}
+                    >
+                        <span>{tag.name}</span>
+                        <span class="text-sm text-slate-500">{tag.count}</span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </main>
+</BaseLayout>

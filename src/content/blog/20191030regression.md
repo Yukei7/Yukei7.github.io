@@ -1,0 +1,1020 @@
+---
+title: "应用回归分析"
+excerpt: "应用回归分析课程内容整理，参考教材：Applied Linear Statistical Models 5e by Kutner"
+publishDate: "2019-10-29"
+updatedDate: "2020-03-19"
+category: "Maths"
+categorySlug: "Maths"
+tag: "Regression"
+tagSlug: "Regression"
+permalink: "/2019/10/30/20191030regression/"
+isFeatured: false
+---
+<p><img src="/2019/10/30/20191030regression/regression.png" alt="title"><br>应用回归分析课程内容整理，参考教材：Applied Linear Statistical Models 5e by Kutner<br><a id="more"></a></p>
+<h2 id="Chap1-Linear-Regression-with-One-Predictor-Variable"><a href="#Chap1-Linear-Regression-with-One-Predictor-Variable" class="headerlink" title="Chap1 Linear Regression with One Predictor Variable"></a>Chap1 Linear Regression with One Predictor Variable</h2><p>Outline:</p>
+<ul>
+<li>Relations between variables</li>
+<li>Concepts in Regression Models<ul>
+<li>random error</li>
+<li>residuals</li>
+</ul>
+</li>
+<li>Simple Linear Regression Model with Distribution of Error Terms Unspecified<ul>
+<li>Least square estimators(LSEs)</li>
+<li>Properties of LSEs</li>
+</ul>
+</li>
+<li>Normal Error Regression Model</li>
+</ul>
+<h3 id="1-1-Relations-between-Variables"><a href="#1-1-Relations-between-Variables" class="headerlink" title="1.1 Relations between Variables"></a>1.1 Relations between Variables</h3><p><strong>Functional Relation:</strong> $Y=f(X)$</p>
+<p><strong>Statistical Realtion:</strong> $Y=f(X)+\epsilon$</p>
+<h3 id="1-2-Concepts-in-Regression-models"><a href="#1-2-Concepts-in-Regression-models" class="headerlink" title="1.2 Concepts in Regression models"></a>1.2 Concepts in Regression models</h3><p>A regression model is a formal means of expressing the two essential ingredients of a statistical relation:</p>
+<ol>
+<li>A tendency of the response variable $Y$ to vary with the predictor variable $X$ in a systematic fashion (There is a probability distribution of $Y$ for each level of $X$)</li>
+<li>A scattering of points around the curve of statistical relationship (The means of these probability distributions vary in some systematic fashion with $X$)</li>
+</ol>
+<p><img src="/2019/10/30/20191030regression/2019-10-29-14-48-16.png" alt="1.2"></p>
+<script type="math/tex; mode=display">Y=\alpha+\beta X+\epsilon,\quad\epsilon\sim N(0,\sigma^2)</script><p><strong>Two distinct goals:</strong></p>
+<ol>
+<li>(Estimation) Understanding the relationship between predictor variables and response variables</li>
+<li>(Prediction) Predicting the future response given the new observed predictors</li>
+</ol>
+<p><strong>Note:</strong> Always need to consider scope of the model, and statistical relationship generally does not imply causality.</p>
+<h3 id="1-3-Simple-Linear-Regression-Model-with-Distribution-of-Error-Terms-Unspecified"><a href="#1-3-Simple-Linear-Regression-Model-with-Distribution-of-Error-Terms-Unspecified" class="headerlink" title="1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified"></a>1.3 Simple Linear Regression Model with Distribution of Error Terms Unspecified</h3><script type="math/tex; mode=display">Y_i=\beta_0+\beta_1 X_i+\epsilon_i,i=1,2,...,n</script><p>where $\epsilon_i\sim N(0,\sigma^2)$, $\epsilon_i$ and $\epsilon_j$ are uncorrelated. $X_i$ is a fixed known constant and $\beta_0,\beta_1,\sigma^2$ are unknown parameters.</p>
+<p>The response $Y_i$ = deterministic term + random term, which implies that $Y_i$ is a random variable:</p>
+<script type="math/tex; mode=display">E(Y_i)=\beta_0+\beta_1 X_i,\quad Var(Y_i)=\sigma^2,\quad cov(Y_i,Y_j)=cov(\epsilon_i,\epsilon_j)=0</script><p>Alternative form:</p>
+<script type="math/tex; mode=display">Y_i=(\beta_0+\beta_1\bar{X})+\beta_1(X_i-\bar{X})+\epsilon_i</script><h3 id="1-4-Data-for-Regression-Analysis"><a href="#1-4-Data-for-Regression-Analysis" class="headerlink" title="1.4 Data for Regression Analysis"></a>1.4 Data for Regression Analysis</h3><ul>
+<li>Obeservational Data</li>
+<li>Experimental Data</li>
+<li>Completely Randomized Design</li>
+</ul>
+<h3 id="1-5-Overview-of-Steps-in-Regression-Analysis"><a href="#1-5-Overview-of-Steps-in-Regression-Analysis" class="headerlink" title="1.5 Overview of Steps in Regression Analysis"></a>1.5 Overview of Steps in Regression Analysis</h3><p><img src="/2019/10/30/20191030regression/2019-10-29-15-11-39.png" alt="1.5"></p>
+<h3 id="1-6-Estimation-of-Regression-Function"><a href="#1-6-Estimation-of-Regression-Function" class="headerlink" title="1.6 Estimation of Regression Function"></a>1.6 Estimation of Regression Function</h3><h4 id="1-6-1-Method-of-Least-Squares"><a href="#1-6-1-Method-of-Least-Squares" class="headerlink" title="1.6.1 Method of Least Squares"></a>1.6.1 Method of Least Squares</h4><p>We are aiming to make $Y_i$ and $\beta_0+\beta_1 X_i$ close for all $i$, here we use <em>Least Squares Estimation</em>, which is</p>
+<script type="math/tex; mode=display">Q(b_0,b_1)=\min_{\beta_0,\beta_1}\sum_{i=1}^n\epsilon_i^2=\min_{\beta_0,\beta_1}\sum_{i=1}^n(Y_i-\beta_0-\beta_1 X_i)^2</script><script type="math/tex; mode=display">SS_{XX}=\sum_{i=1}^n(X_i-\bar{X})^2=\sum_{i=1}^nX_i^2-n\bar{X}^2</script><script type="math/tex; mode=display">SS_{YY}=\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^nY_i^2-n\bar{Y}^2</script><script type="math/tex; mode=display">SS_{XY}=\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})=\sum_{i=1}^nX_iY_i-n\bar{X}\bar{Y}</script><p>Then find the least square estimators $b_0,b_1$ that minimize $Q$</p>
+<script type="math/tex; mode=display">\frac{\partial Q}{\partial\beta_0}=\frac{\partial Q}{\partial\beta_1}=0</script><p>Then we can find the estimators</p>
+<script type="math/tex; mode=display">b_1=\frac{SS_{XY}}{SS_{XX}},\quad b_0=\bar{Y}-b_1\bar{X}</script><p>True regression line is $Y=\beta_0+\beta_1X$, we have $\hat{Y}=b_0+b_1X$, and $E(b_0)=\beta_0,E(b_1)=\beta_1$</p>
+<p><strong>Residual:</strong> the difference between the observed and fitted predicted value. $e_i=Y_i-\hat{Y_i}=Y_i-(b_0+b_1X_i)$.</p>
+<p><strong>Model error:</strong> $\epsilon_i=Y_i-E(Y_i)=Y_i-(\beta_0+\beta_1X_i)$</p>
+<p><strong>Sum of Squared Residuals:</strong> $SSE=\sum_{i=1}^ne_i^2=\sum_{i=1}^n(Y_i-\hat{Y_i})^2$</p>
+<p>The fitted values are calculated by</p>
+<script type="math/tex; mode=display">\hat{Y_i}=b_0+b_1X_i=(\bar{Y}-\frac{SS_{XY}}{SS_{XX}}\bar{X})+\frac{SS_{XY}}{SS_{XX}}X_i=\bar{Y}+\frac{SS_{XY}}{SS_{XX}}(X_i-\bar{X})</script><h4 id="1-6-2-Properties-of-Fitted-Regression-Line"><a href="#1-6-2-Properties-of-Fitted-Regression-Line" class="headerlink" title="1.6.2 Properties of Fitted Regression Line"></a>1.6.2 Properties of Fitted Regression Line</h4><ol>
+<li>$\sum_{i=1}^ne_i=0$</li>
+<li>$\sum_{i=1}^ne_i^2$ is minimized</li>
+<li>$\sum_{i=1}^nY_i=\sum_{i=1}^n\hat{Y_i}$</li>
+<li>$\sum_{i=1}^nX_ie_i=0$</li>
+<li>$\sum_{i=1}^n\hat{Y_i}e_i=0$</li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>(1) $\sum_{i=1}^ne_i=\sum_{i=1}^n[Y_i-\bar{Y}-b_1(X_i-\bar{X})]=0\Rightarrow$ (3) $\sum_{i=1}^nY_i=\sum_{i=1}^n\hat{Y_i}$</p>
+<p>(4) $\sum_{i=1}^nX_ie_i=\sum_{i=1}^n(X_i-\bar{X})e_i=\sum_{i=1}^n(X_i-\bar{X})[Y_i-\bar{Y}-b_1(X_i-\bar{X})]=SS_{XY}-b_1SS_{XX}=0$</p>
+<p>(5) $\sum_{i=1}^n\hat{Y_i}e_i=\sum_{i=1}^ne_i[\bar{Y}+b_1(X_i-\bar{X})]=\bar{Y}\sum_{i=1}^ne_i+b_1\sum_{i=1}^ne_i(X_i-\bar{X})=0$</p>
+<h3 id="1-7-Estimation-of-Error-Terms-Variance-sigma-2"><a href="#1-7-Estimation-of-Error-Terms-Variance-sigma-2" class="headerlink" title="1.7 Estimation of Error Terms Variance $\sigma^2$"></a>1.7 Estimation of Error Terms Variance $\sigma^2$</h3><script type="math/tex; mode=display">\sigma^2=Var(\epsilon)=E(\epsilon^2)</script><p>$\epsilon$ is unobservable, so we use residual $e$ to estimate $\epsilon$</p>
+<script type="math/tex; mode=display">s^2=\frac{1}{n-2}\sum_{i=1}^ne_i^2=\frac{1}{n-2}\sum_{i=1}^n(Y_i-\hat{Y_i})^2=\frac{SSE}{n-2}=MSE</script><p><strong>Properties of Estimators:</strong></p>
+<p>Under linear regression model in which the errors have expectation zero and are uncorrelated and have equal variance $\sigma^2$.</p>
+<ol>
+<li>Least squares estimators $b_0$ and $b_1$ are linear combinations of $\left\{Y_i\right\}$</li>
+<li>(Gauss-Markov theorem) Least squares estimators $b_0$ and $b_1$ are BLUE (best linear unbiased estimators) of $\beta_0$ and $\beta_1$ respectively</li>
+<li>MSE is an unbiased estimator of $\sigma^2$, i.e.$E(MSE)=\sigma^2$</li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>1- Linear combinations of $Y_i$</p>
+<script type="math/tex; mode=display">b_1=\frac{SS_{XY}}{SS_{XX}}=\frac{\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})}{SS_{XX}}=\sum_{i=1}^n\frac{(X_i-\bar{X})}{SS_{XX}}Y_i=\sum_{i=1}^nk_iY_i</script><script type="math/tex; mode=display">b_0=\bar{Y}-b_1\bar{X}=\sum_{i=1}^n(\frac{1}{n}-k_i\bar{X})Y_i=\sum_{i=1}^nl_iY_i</script><p>here we have</p>
+<script type="math/tex; mode=display">k_i=\frac{X_i-\bar{X}}{SS_{XX}}</script><script type="math/tex; mode=display">l_i=\frac{1}{n}-k_i\bar{X}</script><p>2- Best Linear Unbiased Estimator</p>
+<p>Denote $k_i=\frac{X_i-\bar{X}}{SS_{XX}}$, note that $\sum_{i=1}^nk_i=0,\sum_{i=1}^nk_iX_i=1,\sum_{i=1}^nk_i^2=\frac{1}{SS_{XX}}$.</p>
+<p>$E(b_1)=\sum_{i=1}^nk_iE(Y_i)=\sum_{i=1}^nk_i(\beta_0+\beta_1X_i)=\beta_0\sum_{i=1}^nk_i+\beta_1\sum_{i=1}^nk_iX_i=\beta_1$</p>
+<p>$E(b_0)=E(\bar{Y}-b_1\bar{X})=(\beta_0+\beta_1\bar{X})-\beta_1\bar{X}=\beta_0$</p>
+<p>So $b_0$ and $b_1$ are unbiased estimators of $\beta_0$ and $\beta_1$.</p>
+<p>$var(b_1)=\sum_{i=1}^nk_i^2var(Y_i)=\sigma^2\sum_{i=1}^nk_i^2=\frac{\sigma^2}{SS_{XX}}$</p>
+<p>$cov(b_1,Y_i)=cov(\sum_{i=1}^nk_iY_i,Y_i)=cov(k_iY_i,Y_i)=k_i\sigma^2$</p>
+<p>$cov(b_1,\bar{Y})=cov(b_1,\sum_{i=1}^n\frac{1}{n}Y_i)=\frac{1}{n}\sum_{i=1}^nk_i\sigma^2=0$</p>
+<p>$var(b_0)=var(\bar{Y}-b_1\bar{X})=var(\bar{Y})+\bar{X}^2var(b_1)-2\bar{X}cov(\bar{Y},b_1)=\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})$</p>
+<p>$cov(b_0,b_1)=cov(\bar{Y}-b_1\bar{X},b_1)=-\bar{X}var(b_1)=-\frac{\bar{X}}{SS_{XX}}\sigma^2$</p>
+<p>The variance matirx of $(b_0,b_1)$ is</p>
+<script type="math/tex; mode=display">
+\frac{\sigma^2}{SS_{XX}}\left(\begin{matrix}
+    \frac{1}{n}\sum_{i=1}^nX_i^2 & -\bar{X}\\
+    -\bar{X} & 1
+\end{matrix}\right)</script><p>Among all unbiased linear estimators of the form $\hat{\beta_1}=\sum c_iY_i$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    E(\hat{\beta_1}) &=\sum c_iE(Y_i)=\sum c_i(\beta_0+\beta_1X_i)\\
+    &=\beta_0\sum c_i+\beta_1\sum c_iX_i=\beta_1
+\end{aligned}</script><p>so that it must be the case that $\sum c_i=0$ and $\sum c_iX_i=1$.</p>
+<p>Define $d_i=c_i-k_i$, where $k_i=\frac{X_i-\bar{X}}{SS_{XX}}$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    var(\hat{\beta_1}) &= \sum c_i^2var(Y_i)=\sigma^2\sum(k_i+d_i)^2\\
+    &= \sigma^2(\sum k_i^2+\sum d_i^2 +2\sum k_id_i)
+\end{aligned}</script><p>Now by showing that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \sum k_id_i &= \sum k_i(c_i-k_i)=\sum k_ic_i-\sum k_i^2\\
+    &= \sum c_i(\frac{X_i-\bar{X}}{SS_{XX}})-\frac{1}{SS_{XX}}\\
+    &=\frac{\sum c_iX_i-\bar{X}\sum c_i-1}{SS_{XX}}=0
+\end{aligned}</script><p>So that</p>
+<script type="math/tex; mode=display">var(\hat{\beta_1})=var(b_1)+\sigma^2(\sum d_i^2)</script><p>when $d_i=0$, the variance is minimized.</p>
+<p>#TODO:Similarly, we can show $b_0$ is BLUE of $\beta_0$.</p>
+<p>3- $E(MSE)=\sigma^2$</p>
+<p>$e_i=Y_i-\hat{Y_i}=(Y_i-\bar{Y})-b_1(X_i-\bar{X})$</p>
+<p>$E(e_i)=E(Y_i-b_0-b_1X_i)=\beta_0+\beta_1X_i-\beta_0-\beta_1X_i=0$</p>
+<script type="math/tex; mode=display">\begin{aligned}
+var(e_i)&=var[Y_i-\bar{Y}-b_1(X_i-\bar{X})]\\
+&= var(Y_i)+var(\bar{Y})+(X_i-\bar{X})^2var(b_1)-2cov(Y_i,\bar{Y})\\
+&\quad-2(X_i-\bar{X})[cov(Y_i,b_1)-cov(\bar{Y},b_1)]\\
+&=\sigma^2+\frac{\sigma^2}{n}+\frac{(X_i-\bar{X})^2\sigma^2}{SS_{XX}}-\frac{2\sigma^2}{n}-\frac{2(X_i-\bar{X})^2\sigma^2}{SS_{XX}}\\
+&=\frac{(n-1)\sigma^2}{n}-\frac{(X_i-\bar{X})^2\sigma^2}{SS_{XX}}
+\end{aligned}</script><p>$E(SSE)=\sum_{i=1}^nE(e_i^2)=\sum_{i=1}^nvar(e_i)=(n-1)\sigma^2-\sigma^2=(n-2)\sigma^2$</p>
+<p>$E(MSE)=\frac{E(SSE)}{n-2}=\sigma^2$</p>
+<p><strong>Note:</strong> For any $i\not ={j}$, $\epsilon_i$ and $\epsilon_j$ are uncorrelated, but $e_i$ and $e_j$ are correlated.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    0 &= var(\sum_{i=1}^ne_i)=\sum_{i=1}^nvar(e_i)+\sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)\\
+    &\Rightarrow \sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)=-\sum_{i=1}^n var(e_i)=-(n-2)\sigma^2
+\end{aligned}</script><p>It can be proved that</p>
+<script type="math/tex; mode=display">cov(e_i,e_j)=-\frac{\sigma^2}{n}-\frac{(X_i-\bar{X})(X_j-\bar{X})\sigma^2}{SS_{XX}}</script><script type="math/tex; mode=display">0=[\sum_{i=1}^n(X_i-\bar{X})]^2=SS_{XX}+\sum_{i,j=1,j\not ={i}}^n(X_i-\bar{X})(X_j-\bar{X})</script><p>So that</p>
+<script type="math/tex; mode=display">\sum_{i,j=1,j\not ={i}}^n cov(e_i,e_j)=-(n-1)\sigma^2+\sigma^2=-(n-2)\sigma^2</script><h3 id="1-8-Normal-Error-Regression-Model"><a href="#1-8-Normal-Error-Regression-Model" class="headerlink" title="1.8 Normal Error Regression Model"></a>1.8 Normal Error Regression Model</h3><h4 id="1-8-1-Method-of-Least-Sqaures"><a href="#1-8-1-Method-of-Least-Sqaures" class="headerlink" title="1.8.1 Method of Least Sqaures"></a>1.8.1 Method of Least Sqaures</h4><script type="math/tex; mode=display">Y_i=\beta_0+\beta_1X_i+\epsilon_i,i=1,2,...,n</script><p>where $\epsilon_i$ are i.i.d and $\epsilon_i\sim N(0,\sigma^2)$, so that $Y_i\sim N(\beta_0+\beta_1X_i,\sigma^2)$ and $\left\{Y_i\right\}$ are independent</p>
+<script type="math/tex; mode=display">f(y_i)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{(y_i-(\beta_0+\beta_1X_i))^2}{2\sigma^2}\right\}</script><p>Likelihood:</p>
+<script type="math/tex; mode=display">L(\beta_0,\beta_1,\sigma^2)=\prod_{i=1}^nf(y_i)=(2\pi\sigma^2)^{-n/2}\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(y_i-(\beta_0+\beta_1X_i))^2\right\}</script><p>Use method of least square to find the Maximum Likelihood Estimators (MLEs):</p>
+<script type="math/tex; mode=display">(\hat{\beta_0},\hat{\beta_1})=\argmax_{\beta_0,\beta_1}(\ln L)=\argmin_{\beta_0,\beta_1}\sum_{i=1}^n[y_i-(\beta_0+\beta_1X_i)]^2=(b_0,b_1)</script><p>then the MLEs are</p>
+<script type="math/tex; mode=display">\hat{\beta_1}=b_1=\frac{SS_{XY}}{SS_{XX}}</script><script type="math/tex; mode=display">\hat{\beta_0}=b_0=\bar{Y}-\hat{\beta_1}\bar{X}</script><script type="math/tex; mode=display">\hat{\sigma}^2=\frac{1}{n}\sum(Y_i-\bar{Y_i})^2=\frac{SSE}{n}=\frac{n-2}{n}MSE</script><h4 id="1-8-2-Properties-of-MLEs"><a href="#1-8-2-Properties-of-MLEs" class="headerlink" title="1.8.2 Properties of MLEs"></a>1.8.2 Properties of MLEs</h4><p>1- MLEs of $\beta_0$ and $\beta_1$ are same with LSE estimators $b_0$ and $b_1$. They are linear combinations of $\left\{Y_i\right\}$</p>
+<p>2- MLEs of $\beta_0$ and $\beta_1$ are BLUEs and normal distributed</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}
+    \hat{\beta_0}\\\hat{\beta_1}
+\end{matrix}\right)
+\sim N\left(\left(
+    \begin{matrix}
+    \beta_0\\\beta_1
+    \end{matrix}\right),
+    \frac{\sigma^2}{SS_{XX}}
+    \left(\begin{matrix}
+    \frac{1}{n}\sum X_i^2 & -\bar{X}\\
+    -\bar{X} & 1
+    \end{matrix}\right)\right)</script><p>3- MLE of $\sigma^2$ is a biased estimator with</p>
+<script type="math/tex; mode=display">
+\frac{n\hat{\sigma}^2}{\sigma^2}=\frac{SSE}{\sigma^2}\sim\chi^2(n-2)\quad\text{and}\quad E(\hat{\sigma}^2)=\frac{n-2}{n}\sigma^2\rightarrow\sigma^2</script><p>3- $(\hat{\beta_0},\hat{\beta_1},\bar{Y})$ and $\sigma^2$ are independent.</p>
+<p><strong>Proof:</strong></p>
+<p>4- This can be derived by Fisher’s theorem</p>
+<script type="math/tex; mode=display">\mu_i=E(Y_i)=\beta_0+\beta_1X_i=\beta_0^*+\beta_1(X_i-\bar{X}),\beta_0^*=\beta_0+\beta_1\bar{X}</script><script type="math/tex; mode=display">\hat{\beta_0^*}=\bar{Y}\sim N(\beta_0^*,\sigma^2/n),\hat{\beta_1}=\frac{SS_{XY}}{SS_{XX}}\sim N(\beta_1,\sigma^2/SS_{XX})</script><p>then we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \sum(Y_i-\mu_i)^2 &=\sum(\hat{Y_i}-\mu_i)^2+\sum(Y_i-\hat{Y_i})^2\\
+    &= \sum[\hat{\beta_0^*}+\hat{\beta_1}(X_i-\bar{X})-\beta_0^*-\beta_1(X_i-\bar{X})]^2+SSE\\
+    &= n(\hat{\beta_0^*}-\beta_0^*)^2+(\hat{\beta_1}-\beta_1)^2SS_{XX}+n\hat{\sigma}^2\\
+\end{aligned}</script><p>With the Fisher’s theorem</p>
+<script type="math/tex; mode=display">Q/\sigma^2=Q_1/\sigma^2+Q_2/\sigma^2+Q_3/\sigma^2</script><script type="math/tex; mode=display">\chi^2_n=\chi^2_1+\chi^2_1+\chi^2_{n-2}</script><h2 id="Chap2-Inference-in-Regression-and-Correlation-Analysis"><a href="#Chap2-Inference-in-Regression-and-Correlation-Analysis" class="headerlink" title="Chap2 Inference in Regression and Correlation Analysis"></a>Chap2 Inference in Regression and Correlation Analysis</h2><p>Outline:</p>
+<ul>
+<li>Inferences Concerning $\beta_1,\beta_0$ and $EY$ in Normal Error Regression Model</li>
+<li>Prediction Interval of New Observation</li>
+<li>Confidence Band for Regression Line</li>
+<li>Analysis of Variance (ANOVA) approach to Regression Analysis</li>
+<li>General linear test approach</li>
+<li>Normal Correlation Models and Inferences</li>
+</ul>
+<h3 id="2-1-Inferences-Concerning-beta-1"><a href="#2-1-Inferences-Concerning-beta-1" class="headerlink" title="2.1 Inferences Concerning $\beta_1$"></a>2.1 Inferences Concerning $\beta_1$</h3><script type="math/tex; mode=display">Y_i=\beta_0+\beta_1X_i+\epsilon_i,i=1,2,...,n</script><p>with $\epsilon_i$ are i.i.d and $\epsilon_i\sim N(0,\sigma^2)$.</p>
+<script type="math/tex; mode=display">b_1\sim N(\beta_1,\frac{\sigma^2}{SS_{XX}})\Rightarrow \frac{b_1-\beta_1}{\sqrt{\sigma^2/SS_{XX}}}=\frac{b_1-\beta_1}{\sigma\left\{b_1\right\}}\sim N(0,1)</script><p>since</p>
+<script type="math/tex; mode=display">\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad b_1\perp MSE</script><script type="math/tex; mode=display">\Rightarrow\frac{(b_1-\beta_1)/\sqrt{\sigma^2/SS_{XX}}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}}/(n-2)}=\frac{b_1-\beta_1}{\sqrt{MSE/SS_{XX}}}=\frac{b_1-\beta_1}{s\left\{b_1\right\}}\sim t_{n-2}</script><p>where $\sigma\left\{b_1\right\}=\sqrt{\sigma^2/SS_{XX}},s\left\{b_1\right\}=\sqrt{MSE/SS_{XX}}$</p>
+<h3 id="2-2-Inferences-Concerning-beta-0"><a href="#2-2-Inferences-Concerning-beta-0" class="headerlink" title="2.2 Inferences Concerning $\beta_0$"></a>2.2 Inferences Concerning $\beta_0$</h3><script type="math/tex; mode=display">b_0=\bar{Y}-b_1\bar{X}\sim N\left(\beta_0,\sigma^2\frac{\sum X_i^2}{nSS_{XX}}\right)=N\left(\beta_0,\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})\right)</script><p>since</p>
+<script type="math/tex; mode=display">\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad b_0\perp MSE</script><script type="math/tex; mode=display">\Rightarrow\frac{(b_0-\beta_0)/\sqrt{\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}/(n-2)}}=\frac{b_0-\beta_0}{\sqrt{MSE(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}}=\frac{b_0-\beta_0}{s\left\{b_0\right\}}\sim t_{n-2}</script><p>where $\sigma\left\{b_0\right\}=\sqrt{\sigma^2(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})},s\left\{b_1\right\}=\sqrt{MSE(\frac{1}{n}+\frac{\bar{X}^2}{SS_{XX}})}$</p>
+<h3 id="2-3-Some-Considerations-on-Making-Inferences"><a href="#2-3-Some-Considerations-on-Making-Inferences" class="headerlink" title="2.3 Some Considerations on Making Inferences"></a>2.3 Some Considerations on Making Inferences</h3><ul>
+<li>Effects of departures from normality of the $Y_i$</li>
+<li>Spacing of the $X$ levels</li>
+<li>Power of Tests</li>
+</ul>
+<h3 id="2-4-Interval-Estimaton-of-E-left-Y-h-right"><a href="#2-4-Interval-Estimaton-of-E-left-Y-h-right" class="headerlink" title="2.4 Interval Estimaton of $E\left\{Y_h\right\}$"></a>2.4 Interval Estimaton of $E\left\{Y_h\right\}$</h3><p>Intersted in estimating the mean response for particular $X_h$</p>
+<script type="math/tex; mode=display">E\left\{Y_h\right\}=\beta_0+\beta_1X_h</script><p>The unbiased point estimator of $E\left\{Y_h\right\}$</p>
+<p>$\hat{Y_h}=b_0+b_1X_h=\bar{Y}+b_1(X_h-\bar{X})$</p>
+<p>$E(\hat{Y_h})=\beta_0+\beta_1X_h=E(Y_h)$</p>
+<p>$var(\hat{Y_h})=var(\bar{Y})+(X_h-\bar{X})^2var(b_1)=\sigma^2(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})$</p>
+<p>So we have</p>
+<script type="math/tex; mode=display">\hat{Y_h}=\bar{Y}+b_1(X_h-\bar{X})\sim N\left(\beta_0+\beta_1X_h,\sigma^2[\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)</script><p>since</p>
+<script type="math/tex; mode=display">\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad (b_0,b_1,\hat{Y_h})\perp MSE</script><script type="math/tex; mode=display">\Rightarrow \frac{(\hat{Y_h}-E(Y_h))/\sqrt{\sigma^2(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}{\sqrt{\frac{(n-2)MSE}{\sigma^2}/(n-2)}}=\frac{\hat{Y_h}-E(Y_h)}{\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}=\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\sim t_{n-2}</script><p>where $s\left\{\hat{Y_h}\right\}=\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}$</p>
+<h3 id="2-5-Prediction-of-New-Observation"><a href="#2-5-Prediction-of-New-Observation" class="headerlink" title="2.5 Prediction of New Observation"></a>2.5 Prediction of New Observation</h3><p>Intersted in predicting new observation when $X=X_h$</p>
+<script type="math/tex; mode=display">Y_{hn}=\beta_0+\beta_1X_h+\epsilon_{hn}</script><p>here $Y_{hn}\perp\left\{Y_1,…,Y_n\right\}$ and</p>
+<script type="math/tex; mode=display">Y_{hn}\sim N(\beta_0+\beta_1X_h,\sigma^2)</script><p>Prediction of $Y_{hn}$</p>
+<script type="math/tex; mode=display">\hat{Y_h}=b_0+b_1X_h\sim N\left(\beta_0+\beta_1X_h,\sigma^2[\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)</script><p>Prediction error</p>
+<script type="math/tex; mode=display">Y_{hn}-\hat{Y_h}\sim N\left(0,\sigma^2[1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}}]\right)</script><p>since</p>
+<script type="math/tex; mode=display">\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad (Y_{hn},\hat{Y_h})\perp MSE</script><script type="math/tex; mode=display">\Rightarrow \frac{Y_{hn}-\hat{Y_h}}{\sqrt{MSE(1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}}=\frac{Y_{hn}-\hat{Y_h}}{s\left\{Y_{hn}-\hat{Y_h}\right\}}=\frac{Y_{hn}-\hat{Y_h}}{s\left\{pred\right\}}\sim t_{n-2}</script><p>where $s\left\{pred\right\}=\sqrt{MSE(1+\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}=\sqrt{MSE+s^2\left\{\hat{Y_h}\right\}}$</p>
+<h3 id="2-6-Confidence-Band-for-Regression-Line"><a href="#2-6-Confidence-Band-for-Regression-Line" class="headerlink" title="2.6 Confidence Band for Regression Line"></a>2.6 Confidence Band for Regression Line</h3><p>The $(1-\alpha)\times100\%$ Confidence interval of $E(Y_h)=\beta_0+\beta_1X_h$</p>
+<script type="math/tex; mode=display">s\left\{\hat{Y_h}\right\}=\sqrt{MSE(\frac{1}{n}+\frac{(X_h-\bar{X})^2}{SS_{XX}})}</script><p>The Working-Hotelling Confidence Band</p>
+<p>Replace $t(1-\alpha/2,n-2)$ with Working-Hotelling value $W$ in each confidence interval</p>
+<script type="math/tex; mode=display">W=\sqrt{2F(1-\alpha;2,n-2)}\Rightarrow\hat{Y_h}\pm W\times s\left\{\hat{Y_h}\right\}</script><p>#TODO: It can be proved that</p>
+<script type="math/tex; mode=display">\max_{x_h}\left(\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\right)^2=\frac{(\bar{Y}-E\bar{Y})^2}{MSE/n}+\frac{(\hat{\beta_1}-\beta_1)^2}{MSE/SS_{XX}}</script><script type="math/tex; mode=display">\frac{1}{2}\max_{x_h}\left(\frac{\hat{Y_h}-E(Y_h)}{s\left\{\hat{Y_h}\right\}}\right)^2\sim F(2,n-2)</script><h3 id="2-7-ANOVA-Approach-to-Regression"><a href="#2-7-ANOVA-Approach-to-Regression" class="headerlink" title="2.7 ANOVA Approach to Regression"></a>2.7 ANOVA Approach to Regression</h3><script type="math/tex; mode=display">Y_i-\bar{Y}=(Y_i-\hat{Y_i})+(\hat{Y_i}-\bar{Y})</script><p><strong>ANOVA:</strong> Analysis of Variance, it can be described with the deviation of observation $Y_i$ around the fitted line (i.e.$Y_i-\hat{Y_i}$) and the deviation of fitted value $\hat{Y_i}$ around the mean (i.e.$\hat{Y_i}-\bar{Y}$).</p>
+<p><img src="/2019/10/30/20191030regression/2019-10-09-08-28-32.png" alt="2.7"></p>
+<h4 id="2-7-1-Partitioning-of-Total-Sum-of-Squares"><a href="#2-7-1-Partitioning-of-Total-Sum-of-Squares" class="headerlink" title="2.7.1 Partitioning of Total Sum of Squares"></a>2.7.1 Partitioning of Total Sum of Squares</h4><script type="math/tex; mode=display">\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2+\sum_{i=1}^n(Y_i-\hat{Y_i})^2+2\sum_{i=1}^n(Y_i-\hat{Y_i})(\hat{Y_i}-\bar{Y})</script><p>Because we have</p>
+<script type="math/tex; mode=display">\sum_{i=1}^n(Y_i-\hat{Y_i})(\hat{Y_i}-\bar{Y})=\sum_{i=1}^ne_i(\hat{Y_i}-\bar{Y})=\sum_{i=1}^ne_i\hat{Y_i}-\bar{Y}\sum_{i=1}^ne_i=0</script><p>then</p>
+<script type="math/tex; mode=display">\sum_{i=1}^n(Y_i-\bar{Y})^2=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2+\sum_{i=1}^n(Y_i-\hat{Y_i})^2\\</script><p><strong>SSTO:</strong> The total sum of squares</p>
+<script type="math/tex; mode=display">SSTO=\sum_{i=1}^n(Y_i-\bar{Y})^2</script><p><strong>SSR:</strong> The sum squares explained by regression</p>
+<script type="math/tex; mode=display">SSR=\sum_{i=1}^n(\hat{Y_i}-\bar{Y})^2=b_1^2SS_{XX}</script><p><strong>SSE:</strong> The sum squares explained by residual</p>
+<script type="math/tex; mode=display">SSE=\sum_{i=1}^n(Y_i-\hat{Y_i})^2</script><script type="math/tex; mode=display">SSTO=SSR+SSE</script><p>In normal error regression model, we have</p>
+<script type="math/tex; mode=display">b_1\sim N(\beta_1,\frac{\sigma^2}{SS_{XX}})\Rightarrow \frac{b_1-\beta_1}{\sqrt{\sigma^2/SS_{XX}}}\sim N(0,1)</script><script type="math/tex; mode=display">(b_0,b_1,\bar{Y})\perp SSE\Rightarrow SSR\perp SSE</script><p>Under $H_0:\beta_1=0$</p>
+<script type="math/tex; mode=display">\frac{SSE}{\sigma^2}=\frac{(n-2)MSE}{\sigma^2}\sim\chi^2_{n-2},\quad \frac{SSTO}{\sigma^2}\sim\chi_{n-1}^2</script><script type="math/tex; mode=display">\frac{SSR}{\sigma^2}=\frac{b_1^2SS_{XX}}{\sigma^2}=\left(\frac{b_1-0}{\sqrt{\sigma^2/SS_{XX}}}\right)^2\sim\chi^2_1</script><p>Generally,</p>
+<p>1- $\dfrac{SSE}{\sigma^2}\sim\chi^2_{n-2,0}$</p>
+<p>2- $\dfrac{SSR}{\sigma^2}=\dfrac{b_1^2}{\sigma^2/SS_{XX}}\sim\chi^2_{1,\delta}$, where $\delta=\dfrac{\beta_1^2}{\sigma^2/SS_{XX}}$, since $b_1\sim N\left(\beta_1,\frac{\sigma^2}{SS_{XX}}\right)$</p>
+<p>3- $SSR\perp SSE$</p>
+<p>So that $\dfrac{SSTO}{\sigma^2}\sim\chi^2_{n-1,\delta}$</p>
+<h4 id="2-7-2-Mean-Squares"><a href="#2-7-2-Mean-Squares" class="headerlink" title="2.7.2 Mean Squares"></a>2.7.2 Mean Squares</h4><script type="math/tex; mode=display">MSR=SSR/1</script><p>$E(MSR)=E(SSR)=E(b_1^2SS_{XX})=SS_{XX}(\frac{\sigma^2}{SS_{XX}}+\beta_1^2)=\sigma^2+\beta_1^2SS_{XX}$</p>
+<script type="math/tex; mode=display">MSE=\frac{SSE}{n-2}</script><p>$E(MSE)=\sigma^2$</p>
+<script type="math/tex; mode=display">F^*=\frac{SSR/1}{SSE/(n-2)}=\frac{MSR}{MSE}\sim F_{1,n-2,\delta=\beta_1^2SS_{XX}/\sigma^2}</script><h4 id="2-7-3-F-test"><a href="#2-7-3-F-test" class="headerlink" title="2.7.3 F test"></a>2.7.3 F test</h4><p><strong>Hypothesis:</strong> $H_0:\beta_1=0\quad v.s.\quad H_1:\beta_1\not ={0}$</p>
+<script type="math/tex; mode=display">F^*=\frac{MSR}{MSE}\stackrel{H_0}{\sim}F_{1,n-2}</script><p>When $H_0$ is false, $MSR&gt;MSE$. Reject $H_0$ when $F^*$ large.</p>
+<p><img src="/2019/10/30/20191030regression/2019-10-29-23-55-07.png" alt="2.7.3"></p>
+<h4 id="2-7-4-Equivalence-of-F-test-and-two-sided-t-test"><a href="#2-7-4-Equivalence-of-F-test-and-two-sided-t-test" class="headerlink" title="2.7.4 Equivalence of F test and two-sided t-test"></a>2.7.4 Equivalence of F test and two-sided t-test</h4><p><strong>Hypothesis:</strong> $H_0:\beta_1=0\quad v.s.\quad H_1:\beta_1\not ={0}$</p>
+<script type="math/tex; mode=display">F^*=\frac{MSR}{MSE}=\frac{b_1^2SS_{XX}}{MSE}=\left(\frac{b_1}{\sqrt{MSE/SS_{XX}}}\right)^2=(\frac{b_1}{s(b_1)})^2=(t^*)^2</script><p>In addition:</p>
+<script type="math/tex; mode=display">t^2_{n-2}\sim F_{1,n-2}\Rightarrow t^2_{1-\alpha/2;n-2}=F_{1-\alpha;1,n-2}</script><p>Equivalence of rejection regions:</p>
+<script type="math/tex; mode=display">F^*>F_{1-\alpha;1,n-2}\Leftrightarrow |t^*|>t^2_{1-\alpha/2;n-2}</script><h3 id="2-8-General-Linear-Test-Approach"><a href="#2-8-General-Linear-Test-Approach" class="headerlink" title="2.8 General Linear Test Approach"></a>2.8 General Linear Test Approach</h3><p><strong>Full/unrestricted model:</strong> $Y_i=\beta_0+\beta_1X_i+\epsilon_i$</p>
+<p><strong>Reduced/restricted model:</strong> $Y_i=\beta_0+\epsilon_i\quad Y_i\sim N(\beta_0,\sigma^2)$</p>
+<p><strong>Intuition:</strong> Compare the SSE’s of the two models to find out which model fits better. If SSE(F) not much smaller than SSE(R), full model doesn’t better explain Y.</p>
+<p><strong>Hypothesis:</strong> $H_0:\text{Reduced model}\quad v.s.\quad H_1:\text{Full model}$</p>
+<p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">F^*=\frac{(SSE(R)-SSE(F))/(df_R-df_F)}{SSE(F)/df_F}\stackrel{H_0}{\sim}F_{df_R-df_F,df_F}</script><p>since $SSE(R)=(SSE(R)-SSE(F))+SSE(F)$, the degree of freedom can be calculate with Fisher’s Theorem.</p>
+<p><strong>Note:</strong> General linear test is equal to ANOVA test</p>
+<p>$SSE(F)=SSE$</p>
+<p>$SSE(R)=\sum(Y_i-\hat{Y_i}(R))^2=\sum(Y_i-\bar{Y})^2=SSTO,df_R=n-1$</p>
+<script type="math/tex; mode=display">F^*=\frac{(SSE(R)-SSE(F))/(df_R-df_F)}{SSE(F)/df_F}=\frac{(SSTO-SSE)/1}{SSE/(n-2)}=\frac{MSR}{MSE}</script><h3 id="2-9-Descriptive-Measures-of-Linear-Association"><a href="#2-9-Descriptive-Measures-of-Linear-Association" class="headerlink" title="2.9 Descriptive Measures of Linear Association"></a>2.9 Descriptive Measures of Linear Association</h3><p><strong>Coefficient of Determination:</strong></p>
+<script type="math/tex; mode=display">R^2=\frac{SSR}{SSTO}</script><p>which is the proportion of total variation $Y$ explained by $X$</p>
+<p><strong>Pearson’s Correlation Coefficient:</strong></p>
+<script type="math/tex; mode=display">\rho=corr(X,Y)=\frac{cov(X,Y)}{\sqrt{var(X)var(Y)}}</script><p>which measures the strength of the linear relationship between two variables</p>
+<p>$\rho$ can be estimated by</p>
+<script type="math/tex; mode=display">r=\frac{\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})(Y_i-\bar{Y})}{\sqrt{\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2\frac{1}{n}\sum_{i=1}^n(Y_i-\bar{Y})^2}}=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}</script><p>For simple linear regression</p>
+<script type="math/tex; mode=display">b_1=\frac{SS_{XY}}{SS_{XX}}\Rightarrow R^2=\frac{SSR}{SSTO}=\frac{b_1^2SS_{XX}}{SS_{YY}}=\frac{SS_{XY}^2}{SS_{XX}SS_{YY}}</script><script type="math/tex; mode=display">r=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}=\sqrt{\frac{SS_{XX}}{SS_{YY}}}b_1=\frac{S_X}{S_Y}b_1</script><h3 id="2-11-Normal-correlation-model"><a href="#2-11-Normal-correlation-model" class="headerlink" title="2.11 Normal correlation model"></a>2.11 Normal correlation model</h3><p><strong>Note:</strong> In normal error regression model, we assume that the X values are known constants. A correlation model, takes each variable as random.</p>
+<h4 id="2-11-1-Bivariate-Normal-Distribution"><a href="#2-11-1-Bivariate-Normal-Distribution" class="headerlink" title="2.11.1 Bivariate Normal Distribution"></a>2.11.1 Bivariate Normal Distribution</h4><p>The normal correlation model for the case of two variables is based on the <em>bivariate normal distribution</em> $N(\mu_1,\mu_2,\sigma^2_1,\sigma^2_2,\rho)$.</p>
+<p><strong>Density function:</strong></p>
+<script type="math/tex; mode=display">f(Y_1,Y_2)=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho_{12}^2}}\exp \left\{-\frac{1}{2(1-\rho_{12}^2)}[(\frac{y_1-\mu_1}{\sigma_1})^2-2\rho_{12}(\frac{y_1-\mu_1}{\sigma_1})(\frac{y_2-\mu_2}{\sigma_2})+(\frac{y_2-\mu_2}{\sigma_2})^2]\right\}</script><p><strong>Marginal Distribution:</strong>$Y_1\sim N(\mu_1,\sigma_1^2), Y_2\sim N(\mu_2,\sigma_2^2)$</p>
+<p><strong>Conditional Probability:</strong></p>
+<script type="math/tex; mode=display">(Y_1|Y_2=y_2)\sim N(\mu_1+\rho_{12}\frac{\sigma_1}{\sigma_2}(y_2-\mu_2),\sigma_1^2(1-\rho_{12}^2))</script><h4 id="2-11-2-Inference-on-rho-12"><a href="#2-11-2-Inference-on-rho-12" class="headerlink" title="2.11.2 Inference on $\rho_{12}$"></a>2.11.2 Inference on $\rho_{12}$</h4><p>Under bivariate normal assumption, the MLE of $\rho_{12}$</p>
+<script type="math/tex; mode=display">\hat{\rho_{12}}=r_{12}=\frac{SS_{XY}}{\sqrt{SS_{XX}SS_{YY}}}</script><p>Interst in testing $H_0:\rho_{12}=0 \Leftrightarrow\beta_{12}=\beta_{21}=0$</p>
+<script type="math/tex; mode=display">\frac{r_{12}}{\sqrt{(1-r_{12}^2)/(n-2)}}=\frac{\frac{S_X}{S_Y}b_1}{\sqrt{\frac{SSE}{SSTO}/(n-2)}}=\frac{b_1}{\sqrt{MSE/SS_{XX}}}=\frac{b_1}{s(b_1)}\stackrel{H_0}{\sim}t_{n-2}</script><p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">t^*=\frac{r_{12}\sqrt{n-2}}{\sqrt{1-r_{12}^2}}</script><p><strong>Interval Estimation:</strong> (when $\rho_{12}\not ={0}$)</p>
+<script type="math/tex; mode=display">z'=\frac{1}{2}\ln(\frac{1+r_{12}}{1-r_{12}})\stackrel{approx}{\sim}N(\zeta,\frac{1}{n-3})</script><script type="math/tex; mode=display">\zeta=\frac{1}{2}\ln(\frac{1+\rho_{12}}{1-\rho_{12}})</script><p>CI for $\zeta=z’\pm z_{1-\alpha/2}\sqrt{\frac{1}{n-3}}=(c_1,c_2)$</p>
+<p>CI for $\rho_{12}=(\frac{e^{2c_1}-1}{e^{2c_1}+1},\frac{e^{2c_2}-1}{e^{2c_2}+1})$</p>
+<h4 id="2-11-3-Spearman’s-correlation-method"><a href="#2-11-3-Spearman’s-correlation-method" class="headerlink" title="2.11.3 Spearman’s correlation method"></a>2.11.3 Spearman’s correlation method</h4><p>Rank $(Y_{11},…,Y_{n1})$ from 1 to n and label:$(R_{11},…,R_{n1})$, rank $(Y_{12},…,Y_{n2})$ from 1 to n and label:$(R_{12},…,R_{n2})$.</p>
+<script type="math/tex; mode=display">r_s=\frac{\sum_{i=1}^n(R_{i1}-\bar{R_1})(R_{i2}-\bar{R_2})}{\sqrt{\sum_{i=1}^n(R_{i1}-\bar{R_1})^2\sum_{i=1}^n(R_{i2}-\bar{R_2})^2}}</script><p><strong>Hypothesis:</strong> $H_0$: No Association Between $Y_1,Y_2\quad$v.s.$\quad H_A$: Association Exists</p>
+<p><strong>Test Statistic(when there is no tie):</strong></p>
+<script type="math/tex; mode=display">t^*=\frac{r_s\sqrt{n-2}}{\sqrt{1-r_s^2}}\stackrel{H_0}{\sim}t(n-2)</script><h2 id="Chap3-Diagnostics-and-Remedial-Measures"><a href="#Chap3-Diagnostics-and-Remedial-Measures" class="headerlink" title="Chap3 Diagnostics and Remedial Measures"></a>Chap3 Diagnostics and Remedial Measures</h2><p>Outline:</p>
+<ul>
+<li>Diagnostics for prediction variable</li>
+<li>Diagnostics for residuals</li>
+<li>Remedial Measures</li>
+</ul>
+<h3 id="3-1-Diagnostics-for-prediction-variable"><a href="#3-1-Diagnostics-for-prediction-variable" class="headerlink" title="3.1 Diagnostics for prediction variable"></a>3.1 Diagnostics for prediction variable</h3><ul>
+<li>Scatterplot</li>
+<li>Dot plot or bar plot</li>
+<li>Histogram or stem-and-leaf plot</li>
+<li>Box plot</li>
+<li>Sequence plot</li>
+</ul>
+<h3 id="3-2-Residuals"><a href="#3-2-Residuals" class="headerlink" title="3.2 Residuals"></a>3.2 Residuals</h3><p>In a normal regression model we assume that</p>
+<script type="math/tex; mode=display">
+\epsilon_i=Y_i-E(Y_i)=Y_i-(\beta_0+\beta_1X_i)\stackrel{i.i.d}{\sim}N(0,\sigma^2)</script><p>And we define residuals as</p>
+<script type="math/tex; mode=display">
+e_i=Y_i-\hat{Y_i}=Y_i-(b_0+b_1X_i)=Y_i-\bar{Y}-b_1(X_i-\bar{X})</script><p>The properties of the residuals:</p>
+<ol>
+<li>$\sum_{i=1}^ne_i=\sum_{i=1}^nX_ie_i=\sum_{i=1}^n\hat{Y_i}e_i=0$</li>
+<li>$e_i$ are normal distributed but not independent. When n large, the dependency can be ignored.</li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>$e_i=Y_i-\hat{Y_i}\sim N(0,(1-h_{ii})\sigma^2),\quad cov(e_i,e_j)=-h_{ij}\sigma^2\not ={0},i\not ={j}$</p>
+<p>where $h_{ij}=\frac{1}{n}+\frac{(X_i-\bar{X})(X_j-\bar{X})}{SS_{XX}}$</p>
+<p>$\begin{aligned}var(e_i)&amp;=var(Y_i)+var(\bar{Y})+var(b_1)(X_i-\bar{X})^2-2cov(Y_i,\bar{Y})-2(X_i-\bar{X})cov(Y_i,b_1)\\&amp;=\sigma^2+\frac{\sigma^2}{n}+\frac{(X_i-\bar{X})^2\sigma^2}{SS_{XX}}-\frac{2\sigma^2}{n}-\frac{2(X_i-\bar{X})^2\sigma^2}{SS_{XX}}\\&amp;=\sigma^2(1-\frac{1}{n}-\frac{(X_i-\bar{X})^2}{SS_{XX}})\end{aligned}$</p>
+<h2 id="Chap-5-Matrix-Approach"><a href="#Chap-5-Matrix-Approach" class="headerlink" title="Chap 5 Matrix Approach"></a>Chap 5 Matrix Approach</h2><h3 id="5-1-Matrix-properties"><a href="#5-1-Matrix-properties" class="headerlink" title="5.1 Matrix properties"></a>5.1 Matrix properties</h3><p><strong>Trace:</strong> $tr(A)=\sum_i a_{ii}$</p>
+<script type="math/tex; mode=display">
+tr(A+B)=tr(A)+tr(B)ï¼Œtr(A)=tr(A^T)ï¼Œtr(AB)=tr(BA)</script><p><strong>Idempotent:</strong> $A^2=A\Rightarrow A^n=A$</p>
+<ol>
+<li>A idempotent matrix is always diagonalizable and its eigenvalues are either 0 or 1.<script type="math/tex; mode=display">
+\lambda x=Ax=A^2x=\lambda^2x\Rightarrow \lambda=0\text{ or }1</script></li>
+<li>For an idempotent matrix, $rank(A)=tr(A)$ or the number of non-zero eigenvalues of $A$</li>
+<li>For $A_1,A_2$ are idempotent matrices<script type="math/tex; mode=display">
+A_1+A_2 \text{ is idempotent }\Leftrightarrow A_1A_2=A_2A_1=0\\
+A_1-A_2 \text{ is idempotent }\Leftrightarrow A_1A_2=A_2A_1=A_2</script></li>
+<li>$A$ is idempotent $\Rightarrow I-A$ is idempotent</li>
+</ol>
+<h3 id="5-2-Basic-result"><a href="#5-2-Basic-result" class="headerlink" title="5.2 Basic result"></a>5.2 Basic result</h3><h4 id="5-2-1-Variance-Covariance-matrix"><a href="#5-2-1-Variance-Covariance-matrix" class="headerlink" title="5.2.1 Variance-Covariance matrix"></a>5.2.1 Variance-Covariance matrix</h4><p>Suppose the random vector $Y$ consitsting of three observations.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    var(Y)&=E\left\{[Y-E(Y)][Y-E(Y)]^T\right\}\\
+    &=\begin{bmatrix}
+        \sigma^2_1&\sigma_{12}&\sigma_{13}\\
+        \sigma_{21}&\sigma^2_2&\sigma_{23}\\
+        \sigma_{31}&\sigma_{32}&\sigma^2_3
+    \end{bmatrix}
+\end{aligned}</script><h4 id="5-2-2-Covariance-matrix"><a href="#5-2-2-Covariance-matrix" class="headerlink" title="5.2.2 Covariance matrix"></a>5.2.2 Covariance matrix</h4><p>Suppose the random vector $X$ consitsting of $m$ observations and $Y$ consisting of $n$ observations.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    cov(X,Y)&=E\left\{[X-E(X)][Y-E(Y)]^T\right\}\\
+    &=\begin{bmatrix}
+        \sigma_{11}&\cdots&\sigma_{1n}\\
+        \vdots&&\vdots\\
+        \sigma_{m1}&\cdots&\sigma_{mn}\\
+    \end{bmatrix}
+\end{aligned}</script><p>where $\sigma_{ij}=cov(X_i,Y_j)$</p>
+<h4 id="5-2-3-Expectation-and-variance"><a href="#5-2-3-Expectation-and-variance" class="headerlink" title="5.2.3 Expectation and variance"></a>5.2.3 Expectation and variance</h4><p>For constant matrices $A,B$ and random vector$Y$</p>
+<script type="math/tex; mode=display">
+E(AY)=AE(Y),var(AY)=Avar(Y)A^T\\
+cov(AY,BY)=Avar(Y)B^T</script><p>If $E(Y)=\mu,var(Y)=\Sigma=(\sigma_{ij})$, then</p>
+<script type="math/tex; mode=display">
+E(Y^TAY)=\mu^TA\mu+tr(A\Sigma)</script><p><strong>Proof:</strong></p>
+<script type="math/tex; mode=display">
+\quad E(Y^TAY)=\sum_{i,j}a_{ij}E(Y_iY_j)=\sum_{i,j}a_{ij}(\mu_j\mu_j+\sigma_{ij})=\mu^TA\mu+tr(A\Sigma)</script><h4 id="5-2-4-Multivariate-Normal-Distribution"><a href="#5-2-4-Multivariate-Normal-Distribution" class="headerlink" title="5.2.4 Multivariate Normal Distribution"></a>5.2.4 Multivariate Normal Distribution</h4><p>Multivariate Normal Density function of $Y\sim N(\mu,\Sigma)$:</p>
+<script type="math/tex; mode=display">
+f(Y)=(2\pi)^{-n/2}|\Sigma|^{-1/2}\exp[\frac{-1}{2}(Y-\mu)^T\Sigma^{-1}(Y-\mu)]</script><p>then $Y_i\sim N(\mu_i,\sigma^2_i),cov(Y_i,Y_j)=\sigma_{ij}$.</p>
+<p>Note: if $A$ is a full rank constant matrix, then $AY\sim N(A\mu,A\Sigma A^T)$</p>
+<h3 id="5-3-Matrix-Simple-Linear-Regression"><a href="#5-3-Matrix-Simple-Linear-Regression" class="headerlink" title="5.3 Matrix Simple Linear Regression"></a>5.3 Matrix Simple Linear Regression</h3><script type="math/tex; mode=display">
+Y_i=\beta_0+\beta_1X_i+\epsilon_i</script><p><strong>Design matrix</strong> is defined as $n\times p$ matrix, with n observations and p variables</p>
+<script type="math/tex; mode=display">
+Y=\begin{bmatrix}
+    Y_1\\Y_2\\\vdots\\Y_n
+\end{bmatrix},
+X=\begin{bmatrix}
+    1&X_1\\
+    1&X_2\\
+    \vdots&\vdots\\
+    1&X_n\\
+\end{bmatrix},
+\beta=\begin{bmatrix}
+    \beta_0\\\beta_1\\
+\end{bmatrix},
+\epsilon=\begin{bmatrix}
+    \epsilon_1\\\epsilon_2\\\vdots\\\epsilon_n\\
+\end{bmatrix}</script><p>then the Linear Regression Model can be written as $Y=X\beta+\epsilon$ and $Y\sim N(X\beta,\sigma^2I)$</p>
+<ol>
+<li>$\epsilon\sim N(0,\sigma^2I)$</li>
+<li>$E(Y)=X\beta +E(\epsilon)=X\beta$</li>
+<li>$var(Y)=var(\epsilon)=\sigma^2I$</li>
+</ol>
+<h4 id="5-3-1-Some-matrices-properties"><a href="#5-3-1-Some-matrices-properties" class="headerlink" title="5.3.1 Some matrices properties"></a>5.3.1 Some matrices properties</h4><script type="math/tex; mode=display">
+Y^TY=\sum_{i}Y_i^2,
+X^TX=\begin{bmatrix}
+    n&\sum_i X_i\\
+    \sum_i X_i&\sum_i X_i^2\\
+\end{bmatrix},
+X^TY=\begin{bmatrix}
+    \sum_i Y_i\\\sum_i X_iY_i
+\end{bmatrix}</script><p>Note: $\sum_i X_i^2=\sum_i(X_i-\bar{X})^2+n\bar{X}^2$, so that</p>
+<script type="math/tex; mode=display">
+|X^TX|=n\sum_i X_i^2-(\sum_i X_i)^2=nSS_{XX}</script><script type="math/tex; mode=display">
+\begin{aligned}
+    \Rightarrow (X^TX)^{-1}&=\frac{1}{nSS_{XX}}
+    \begin{bmatrix}
+        \sum_i X_i^2&-\sum_i X_i\\
+        -\sum_i X_i& n\\
+    \end{bmatrix}\\
+    &=\frac{1}{SS_{XX}}
+    \begin{bmatrix}
+        \frac{SS_{XX}}{n}+\bar{X}^2&-\bar{X}\\
+        -\bar{X}&1\\
+    \end{bmatrix}
+\end{aligned}</script><h4 id="5-3-2-Estimating-the-parameters"><a href="#5-3-2-Estimating-the-parameters" class="headerlink" title="5.3.2 Estimating the parameters"></a>5.3.2 Estimating the parameters</h4><p>Matrix derivation rules:</p>
+<script type="math/tex; mode=display">
+\frac{\partial A\beta}{\partial\beta}=A,\frac{\partial \beta^TA}{\partial\beta}=A^T,\frac{\partial\beta^TA\beta}{\partial\beta}=\beta^T(A+A^T)</script><p>L2-loss is defined as:</p>
+<script type="math/tex; mode=display">
+Q=(Y-X\beta)^T(Y-X\beta)=Y^TY-2Y^TX\beta+\beta^TX^TX\beta</script><p>Solve $\frac{\partial Q}{\partial \beta}=0$, which we obtain $X^TXb=X^TY\Rightarrow b=(X^TX)^{-1}X^TY$</p>
+<script type="math/tex; mode=display">
+E(b)=(X^TX)^{-1}X^TE(Y)=\beta</script><script type="math/tex; mode=display">
+\begin{aligned}
+    var(b)&=(X^TX)^{-1}X^Tvar(Y)[(X^TX)^{-1}X^T]^T\\
+    &=\sigma^2(X^TX)^{-1}
+\end{aligned}</script><p>so that $b\sim N(\beta,\sigma^2(X^TX)^{-1})$</p>
+<h4 id="5-3-3-Fitted-value"><a href="#5-3-3-Fitted-value" class="headerlink" title="5.3.3 Fitted value"></a>5.3.3 Fitted value</h4><script type="math/tex; mode=display">
+\hat{Y}_i=b_0+b_1X_i\Rightarrow \hat{Y}=Xb=X(X^TX)^{-1}X^TY</script><p><strong>Hat matirx:</strong></p>
+<script type="math/tex; mode=display">
+H=X(X^TX)^{-1}X^T</script><p>where $h_{ij}=\frac{1}{n}+\frac{(X_i-\bar{X})(X_j-\bar{X})}{SS_{XX}}$. </p>
+<p>Note: H is actually a projection matrix, which projects the observed value $Y$ onto the space that is spanned by the variables in $X$.</p>
+<script type="math/tex; mode=display">
+E(\hat{Y})=HE(Y)=HX\beta=X\beta,var(\hat{Y})=Hvar(Y)H^T=\sigma^2H</script><script type="math/tex; mode=display">
+\hat{Y}=HY\sim N(X\beta,\sigma^2H)</script><h4 id="5-3-4-Properties-of-hat-matrix"><a href="#5-3-4-Properties-of-hat-matrix" class="headerlink" title="5.3.4 Properties of hat matrix"></a>5.3.4 Properties of hat matrix</h4><ol>
+<li>Projection matrix: $HY=\hat{Y},HX=X,H\hat{Y}=\hat{Y},He=0$</li>
+<li>Symmetric: $H^T=H$</li>
+<li>Idempotent: $H^2=H$</li>
+</ol>
+<h4 id="5-3-5-Residuals"><a href="#5-3-5-Residuals" class="headerlink" title="5.3.5 Residuals"></a>5.3.5 Residuals</h4><script type="math/tex; mode=display">
+e_i=Y_i-\hat{Y}_i \Rightarrow e=Y-\hat{Y}=(I-H)Y</script><p>Note that the matrix $I-H$ is also symmetric and idempotent.</p>
+<script type="math/tex; mode=display">
+E(e)=(I-H)E(Y)=0</script><script type="math/tex; mode=display">
+var(e)=(I-H)\sigma^2I(I-H)^T=\sigma^2(I-H)</script><p>so that $e\sim N(0,\sigma^2(I-H))$</p>
+<h4 id="5-3-6-Analysis-of-Variance"><a href="#5-3-6-Analysis-of-Variance" class="headerlink" title="5.3.6 Analysis of Variance"></a>5.3.6 Analysis of Variance</h4><p>Note that $Y^TY=\sum Y_i^2,Y^TJY=(\sum_iY_i)^2$</p>
+<script type="math/tex; mode=display">
+SSTO=\sum(Y_i-\bar{Y})^2=\sum Y_i^2-\frac{1}{n}(\sum Y_i)^2</script><script type="math/tex; mode=display">
+SSE=\sum(Y_i-\hat{Y}_i)^2=e^Te</script><script type="math/tex; mode=display">
+SSR=SSTO-SSE</script><p>so that we have</p>
+<script type="math/tex; mode=display">
+SSTO=Y^T(I-\frac{1}{n}J)Y, rank(I-\frac{1}{n}J)=n-1</script><script type="math/tex; mode=display">
+SSE=Y^T(I-H)Y,rank(I-H)=n-2</script><script type="math/tex; mode=display">
+SSR=Y^T(H-\frac{1}{n}J)Y,rank(H-\frac{1}{n}J)=1</script><p>Note that $H,\frac{J}{n},I-\frac{J}{n},I-H,H-\frac{J}{n}$ are idempotent and symmetric</p>
+<script type="math/tex; mode=display">
+rank(H)=tr(X(X^TX)^{-1}X^T)=tr(I)=p</script><p>Quadratic forms for ANOVA:</p>
+<p>$SSTO=Y^T(I-\frac{1}{n}J)Y\sim \sigma^2\chi^2(n-1,\delta)$</p>
+<p>$SSE=Y^T(I-H)Y\sim\sigma^2\chi^2(n-2,0)$</p>
+<p>$SSR=Y^T(H-\frac{1}{n}J)Y\sim\chi^2(1,\delta)$</p>
+<p>where $\delta=\frac{1}{\sigma^2}(X\beta)^T(I-\frac{1}{n}J)X\beta=\frac{\beta_1^2}{\sigma^2/SS_{XX}}$</p>
+<p><strong>Cochran’s Theorem</strong>(Corollary): Let $X\sim N(\mu,\sigma^2I)$, A is symmetric with $rank(A)=r$, and $\delta=\mu^TA\mu/\sigma^2$ then</p>
+<script type="math/tex; mode=display">
+\frac{X^TAX}{\sigma^2}\sim\chi^2(r,\delta)\Leftrightarrow \text{A is idempotent}</script><p><strong>Proof:</strong> there exists $A$ satisfies $A^TA=A^T(I-H)A=I_{n-p}$ ???</p>
+<h4 id="5-3-7-Inference-in-Regression-Analysis"><a href="#5-3-7-Inference-in-Regression-Analysis" class="headerlink" title="5.3.7 Inference in Regression Analysis"></a>5.3.7 Inference in Regression Analysis</h4><p><strong>Parameters:</strong> use MSE to estimate $\sigma^2(b)$</p>
+<script type="math/tex; mode=display">
+s^2(b)=MSE(X^TX)^{-1}</script><p>Estimated mean response at $X=X_h$</p>
+<p>$X_h=[1,X_h]$ then $\hat{Y}_h=X_hb$</p>
+<script type="math/tex; mode=display">
+s^2(\hat{Y}_h)=MSE(X_h(X^TX)^{-1}X_h^T)</script><p>Predicted new response at $X=X_h$</p>
+<script type="math/tex; mode=display">
+s^2(pred)=MSE(1+X_h(X^TX)^{-1}X_h^T)</script><h2 id="Chap-6-Multiple-Regression-I"><a href="#Chap-6-Multiple-Regression-I" class="headerlink" title="Chap 6 Multiple Regression I"></a>Chap 6 Multiple Regression I</h2><p>Outline:</p>
+<ul>
+<li>Multiple regression models</li>
+<li>General linear regression model in matrix form</li>
+<li>Inference about regression parameters</li>
+<li>Estimation of mean response and prediction</li>
+<li>Diagnostic and Remedial Measures</li>
+</ul>
+<h3 id="6-1-Multiple-regression-models"><a href="#6-1-Multiple-regression-models" class="headerlink" title="6.1 Multiple regression models"></a>6.1 Multiple regression models</h3><ul>
+<li>Can include polynomial terms to deal with nonlinear realtions</li>
+<li>Can include product terms for interactions</li>
+<li>Can include dummy variables for categorical predictors</li>
+</ul>
+<p>First-order model with 2 numeric predictors:</p>
+<script type="math/tex; mode=display">
+Y_i=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\epsilon_i</script><p>here $X_1,X_2$ are additive and there is no interaction, $E(\epsilon_i)=0$</p>
+<p>Interaction model:</p>
+<script type="math/tex; mode=display">
+Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1X_2+\epsilon</script><p>here the effect of $X_1$ depends on level of $X_2$</p>
+<p>General linear regression model:</p>
+<script type="math/tex; mode=display">
+Y_i=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+...+\beta_{p-1}X_{i,p-1}+\epsilon_i</script><p>which defines a hyperplane in p-dimensions. Here we assumes the error terms have Normality, Independence and constant variance $\epsilon_i\sim NID(0,\sigma^2)$</p>
+<p>Other special types: dummy variables, polynomial terms, transformed response variable etc.</p>
+<h3 id="6-2-General-Linear-Regression-Model-in-Matrix-Form"><a href="#6-2-General-Linear-Regression-Model-in-Matrix-Form" class="headerlink" title="6.2 General Linear Regression Model in Matrix Form"></a>6.2 General Linear Regression Model in Matrix Form</h3><p><strong>Design matrix:</strong> same as Chap5, a $n\times p$ matrix</p>
+<script type="math/tex; mode=display">
+Y=
+\begin{bmatrix}
+    Y_1\\Y_2\\\vdots\\Y_n\\
+\end{bmatrix},
+X=
+\begin{bmatrix}
+    1 & X_{11} & \cdots & X_{1,p-1}\\
+    1 & X_{21} & \cdots & X_{2,p-1}\\
+    \vdots & \vdots & & \vdots \\
+    1 & X_{n1} & \cdots & X_{n,p-1}\\
+\end{bmatrix},
+\beta=
+\begin{bmatrix}
+    \beta_0\\\beta_1\\\vdots\\\beta_{p-1}\\
+\end{bmatrix},
+\epsilon=
+\begin{bmatrix}
+    \epsilon_1\\\epsilon_2\\\vdots\\\epsilon_n\\
+\end{bmatrix}</script><p>then we write $Y=X\beta+\epsilon$ and $E(Y)=X\beta, \sigma^2(Y)=\sigma^2I$</p>
+<h3 id="6-3-Estimation-of-Regression-Coefficients"><a href="#6-3-Estimation-of-Regression-Coefficients" class="headerlink" title="6.3 Estimation of Regression Coefficients"></a>6.3 Estimation of Regression Coefficients</h3><p><strong>Least Squares Estimation:</strong></p>
+<script type="math/tex; mode=display">
+Q=(Y-X\beta)^T(Y-X\beta)</script><p>Solve the equation $\frac{\partial Q}{\partial \beta}=0$ to obtain the estimator</p>
+<script type="math/tex; mode=display">
+b=(X^TX)^{-1}X^TY</script><p><strong>Maximum Likelihood Estimation:</strong></p>
+<script type="math/tex; mode=display">
+L(\beta,\sigma^2)=(2\pi\sigma^2)^{-n/2}\exp[\frac{-1}{2\sigma^2}(Y-X\beta)^T(Y-X\beta)]</script><p>which leads to the same estimation as LSE since minimize $L(\beta,\sigma^2)$ are equivalent to minimize $Q$.</p>
+<h3 id="6-4-Fitted-Values-and-Residuals"><a href="#6-4-Fitted-Values-and-Residuals" class="headerlink" title="6.4 Fitted Values and Residuals"></a>6.4 Fitted Values and Residuals</h3><p>Hat matrix $H=X(X^TX)^{-1}X^T$ and fitted values $\hat{Y}=X\beta=HY\sim N(X\beta,\sigma^2H)$</p>
+<p>Residuals $e=(I-H)Y\sim N(0,(I-H)\sigma^2)$</p>
+<p>The properties of hat matrix is mentioned in Chap5.(Projection matrix, symmetric and idempotent, rank equals to p)</p>
+<p>Denote that $H=(h_{ij})$, then</p>
+<ol>
+<li>$h_{ii}=\sum_j h_{ij}^2$</li>
+<li>$\sum_i h_{ii}=tr(H)=p$</li>
+<li>$\sum_i h_{ij}=\sum_j h_{ij}=1$</li>
+<li>$h_{ij}^2\leq h_{ii}h_{jj}$</li>
+<li>$h_{ii}\geq \frac{1}{n}$</li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>1- $H=H^2\Rightarrow h_{ii}=\sum_j h_{ij}h_{ji}=\sum_j h_{ij}^2$</p>
+<p>2- $\sum_i h_{ii}=tr(H)=tr(H^TH)=p$</p>
+<p>3- $HX=X$, compare the first column then we have $\sum_j h_{ij}=1$, then due to the symmetry of $H$, $\sum_i h_{ij}=\sum_j h_{ij}=1$</p>
+<p>4- $h_{ij}=X_i(X^TX)^{-1}X_j^T$, since $(X^TX)^{-1}$ is positive definite, define the inner product $<X_i,X_j>=X_i(X^TX)^{-1}X_j^T$, with Cauchy-Schwarts inequality, $h_{ij}=|<X_i,X_j>| \leq\sqrt{<X_i,X_i><X_j,X_j>}=\sqrt{h_{ii}h_{jj}}$</X_j,X_j></X_i,X_i></X_i,X_j></X_i,X_j></p>
+<p>5- Define $P=H-C$, where $C=\frac{1}{n}J$, then </p>
+<script type="math/tex; mode=display">
+P^2=H^2-HC-CH+C^2=H-HC-CH+C</script><p>$C$ is in the column space of $X$ since $span(1,…,1)\subset Col(X)$, $HC=C$. Also we know that $C=C(H+(I-H))$, $C(I-H)=0$ since $I-H$ projects onto $Col(X)^\perp$, then $C=CH$.</p>
+<p>$P^2=H-C=P$ so $P$ is also a projection matrix, $h_{ii}=p_{ii}+c_{ii}=p_{ii}+\frac{1}{n}$ which means that $h_{ii}\geq\frac{1}{n}$</p>
+<h3 id="6-5-Analysis-of-Variance"><a href="#6-5-Analysis-of-Variance" class="headerlink" title="6.5 Analysis of Variance"></a>6.5 Analysis of Variance</h3><p>Same as Chap5,</p>
+<script type="math/tex; mode=display">
+SSTO=Y^T(I-\frac{1}{n}J)Y, rank(I-\frac{1}{n}J)=n-1</script><script type="math/tex; mode=display">
+SSE=Y^T(I-H)Y,rank(I-H)=n-p</script><script type="math/tex; mode=display">
+SSR=Y^T(H-\frac{1}{n}J)Y,rank(H-\frac{1}{n}J)=p-1</script><p>Cochran’s Theorem(Ch6page25)</p>
+<script type="math/tex; mode=display">
+MSR=\frac{SSR}{p-1}=\frac{1}{p-1}Y^T(H-\frac{1}{n}J)Y</script><script type="math/tex; mode=display">
+MSE=\frac{SSE}{n-p}=\frac{1}{n-p}Y^T(I-H)Y</script><p>here $E(MSR)\geq E(MSE)=\sigma^2$ and equal when all $\beta_i=0$</p>
+<p><strong>Hypothesis:</strong> $H_0:\beta_1=…=\beta_{p-1}=0\quad\text{v.s.}\quad H_1:\text{not all }\beta_i=0$</p>
+<p><strong>Test Statistic:</strong></p>
+<script type="math/tex; mode=display">
+F^*=\frac{MSR}{MSE}=\frac{SSR/p-1}{SSE/n-p}\stackrel{H_0}{\sim}F(p-1,n-p)</script><p><strong>Adjusted R square:</strong></p>
+<script type="math/tex; mode=display">
+R_a^2=1-\frac{SSE/n-p}{SSTO/n-1}=1-\frac{MSE}{MSTO}</script><h3 id="6-6-Inferences-about-Regression-Parameters"><a href="#6-6-Inferences-about-Regression-Parameters" class="headerlink" title="6.6 Inferences about Regression Parameters"></a>6.6 Inferences about Regression Parameters</h3><h4 id="6-6-1-Independence-of-b-and-SSE"><a href="#6-6-1-Independence-of-b-and-SSE" class="headerlink" title="6.6.1 Independence of b and SSE"></a>6.6.1 Independence of b and SSE</h4><script type="math/tex; mode=display">
+e=(I-H)Y,b=(X^TX)^{-1}X^TY</script><script type="math/tex; mode=display">
+\begin{aligned}
+    cov(e,b)&=(I-H)\sigma^2(Y)[(X^TX)^{-1}X^TY]^T\\
+    &=\sigma^2(I-H)X(X^TX)^{-1}\\
+    &=0
+\end{aligned}</script><h4 id="6-6-2-Parameters-estimators"><a href="#6-6-2-Parameters-estimators" class="headerlink" title="6.6.2 Parameters estimators"></a>6.6.2 Parameters estimators</h4><p>Since $b=(X^TX)^{-1}X^TY\sim N(\beta,\sigma^2(X^TX)^{-1})$, the variance can be estimated by</p>
+<script type="math/tex; mode=display">
+s^2(b)=MSE(X^TX)^{-1}</script><p>Denote $A=(X^TX)^{-1}=(a_{ij})$, then $b_k\sim N(\beta_k,\sigma^2(b_k))$, with $\sigma^2(b_k)=a_{k+1,k+1}\sigma^2$, then the variance estimator is</p>
+<script type="math/tex; mode=display">
+s^2(b_k)=MSEa_{k+1,k+1}=SSEa_{k+1,k+1}/(n-p)</script><p>Since $b_k$ is independent with $SSE$,</p>
+<script type="math/tex; mode=display">
+\frac{b_k-\beta_k}{s(b_k)}=\frac{(b_k-\beta_k)/\sigma(b_k)}{\sqrt{\frac{SSE}{\sigma^2}/(n-p)}}\sim t(n-p)</script><p>then the CI for parameters can be constructed with</p>
+<script type="math/tex; mode=display">
+b_k\pm t(1-\frac{\alpha}{2};n-p)s(b_k)</script><p>the simultaneous CI’s for $g\leq p$</p>
+<script type="math/tex; mode=display">
+b_k\pm t(1-\frac{\alpha}{2g};n-p)s(b_k)</script><p><strong>Hypothesis:</strong> $H_0:\beta_k=0\quad\text{v.s.}\quad H_1:\beta_k\neq 0$</p>
+<p><strong>Test Statistic:</strong></p>
+<script type="math/tex; mode=display">
+t^*=\frac{b_k}{s(b_k)}\stackrel{H_0}{\sim}t(n-p)</script><h3 id="6-7-Estimating-mean-response-amp-New-observations"><a href="#6-7-Estimating-mean-response-amp-New-observations" class="headerlink" title="6.7 Estimating mean response &amp; New observations"></a>6.7 Estimating mean response &amp; New observations</h3><h4 id="6-7-1-Estimating-mean-response"><a href="#6-7-1-Estimating-mean-response" class="headerlink" title="6.7.1 Estimating mean response"></a>6.7.1 Estimating mean response</h4><p>Given set of levels of $X_1,…,X_{p-1}$</p>
+<script type="math/tex; mode=display">
+X_h=[1,X_{h1},...,X_{h,p-1}],\hat{Y_h}=X_hb</script><script type="math/tex; mode=display">
+E(\hat{Y}_h)=X_h\beta,\sigma^2(\hat{Y}_h)=\sigma^2X_h(X^TX)^{-1}X_H^T</script><p>the variance can be estimated by $s^2(\hat{Y}_h)=MSE(X_h(X^TX)^{-1}X_h^T)=X_hs^2(b)X_h^T$.</p>
+<p><strong>Note:</strong> We denote $X_h$ as a row vector, notice the difference beween here and textbook</p>
+<p>Similarly, we have $\hat{Y}_h\perp SSE$,</p>
+<script type="math/tex; mode=display">
+\frac{\hat{Y_h}-E(\hat{Y}_h)}{s(\hat{Y}_h)}=\frac{(\hat{Y}_h-E(\hat{Y}_h))/\sigma(\hat{Y}_h)}{\sqrt{\frac{SSE}{\sigma^2}/(n-p)}}\sim t(n-p)</script><p>CI for $E(\hat{Y}_h)$: $\hat{Y}_h\pm t(1-\frac{\alpha}{2};n-p)s(\hat{Y}_h)$</p>
+<p>CI for g $E(\hat{Y}_h$: $\hat{Y}_h\pm B\cdot s(\hat{Y}_h)$</p>
+<p>Confidence Region for Regression Surface: $\hat{Y}_h\pm W\cdot s(\hat{Y}_h)$</p>
+<p>where $B=t(1-\frac{\alpha}{2g};n-p),W=\sqrt{pF(1-\alpha;p,n-p)}$</p>
+<h4 id="6-7-2-Prediction-of-New-Observations"><a href="#6-7-2-Prediction-of-New-Observations" class="headerlink" title="6.7.2 Prediction of New Observations"></a>6.7.2 Prediction of New Observations</h4><p>Predicted new response at $X_{new}=X_h$</p>
+<p>$\hat{Y}_{h(new)}=X_hb\sim N(X_h\beta,\sigma^2X_h(X^TX)^{-1}X_h^T)$</p>
+<p>Prediction error $Y_{h(new)}-\hat{Y}_{h(new)}\sim N(0,\sigma^2(1+X_h(X^TX)^{-1}X_h^T))$</p>
+<p>the variance can be estimated by $s^2(pred)=MSE(1+X_h(X^TX)^{-1}X_h^T)$, such that</p>
+<script type="math/tex; mode=display">
+\frac{Y_{h(new)}-\hat{Y}_h}{s(pred)}\sim t(n-p)</script><p>The prediction interval of $Y_{h(new)}$ is</p>
+<script type="math/tex; mode=display">
+\hat{Y}_h\pm t(1-\frac{\alpha}{2};n-p)s(pred)</script><p><strong>Bonferroni:</strong> prediction interval for g $Y_{h(new)}$ is</p>
+<script type="math/tex; mode=display">
+\hat{Y}_h\pm B\cdot s(pred),B=t(1-\frac{\alpha}{2g};n-p)</script><h3 id="6-8-Diagnostics-and-Remedial-Measures"><a href="#6-8-Diagnostics-and-Remedial-Measures" class="headerlink" title="6.8 Diagnostics and Remedial Measures"></a>6.8 Diagnostics and Remedial Measures</h3><p>The methods are similar to simple linear regression. Here are some other different methods:</p>
+<h4 id="6-8-1-Scatterplot-matrix"><a href="#6-8-1-Scatterplot-matrix" class="headerlink" title="6.8.1 Scatterplot matrix"></a>6.8.1 Scatterplot matrix</h4><p>Summarizes bivariate relationships between $Y$ and $X_j$ as well as between $X_j$ and $X_k$</p>
+<h4 id="6-8-2-Correlation-Matrix"><a href="#6-8-2-Correlation-Matrix" class="headerlink" title="6.8.2 Correlation Matrix"></a>6.8.2 Correlation Matrix</h4><p>Displays all pairwise correlations</p>
+<h4 id="6-8-3-Residual-Plots"><a href="#6-8-3-Residual-Plots" class="headerlink" title="6.8.3 Residual Plots"></a>6.8.3 Residual Plots</h4><p>Plot $e$ vs $\hat{Y},X_j$ and missing variable. This is used for similar assessment of assumptions: Linear, Independence, Normality, Equal variance, omitted variables, outliers</p>
+<h3 id="6-9-Tests-for-Diagnosis"><a href="#6-9-Tests-for-Diagnosis" class="headerlink" title="6.9 Tests for Diagnosis"></a>6.9 Tests for Diagnosis</h3><ul>
+<li>Correlation test for normality</li>
+<li>Brown-Forsythe Test for Constancy of Error variance</li>
+<li>Breusch-Pagan Test for Constancy of Error variance</li>
+<li>F-test for Lack of fit</li>
+<li>Box-Cox Transformations</li>
+</ul>
+<h4 id="6-9-1-Breusch-Pagan-Test"><a href="#6-9-1-Breusch-Pagan-Test" class="headerlink" title="6.9.1 Breusch-Pagan Test"></a>6.9.1 Breusch-Pagan Test</h4><p><strong>Hypothesis:</strong> $H_0:\sigma^2(\epsilon_i)=\sigma^2\quad\text{v.s.}\quad H_1:\sigma^2(\epsilon_i)=\sigma^2h(\gamma_1X_{i1}+…+\gamma_kX_{ik})$</p>
+<p>Denote $SSE=\sum_i e_i^2$ from original regression, fit reression of $e_i^2$ on $X_{i1},…,X_{ik}$ and obtain $SS(Reg^*)$</p>
+<p><strong>Test Statistic:</strong></p>
+<script type="math/tex; mode=display">
+X_{BP}^2=\frac{SS(Reg^*)/2}{(\sum_i e_i^2/n)^2}\stackrel{H_0}{\sim}\chi_k^2</script><h4 id="6-9-2-Lack-of-Fit-Test"><a href="#6-9-2-Lack-of-Fit-Test" class="headerlink" title="6.9.2 Lack of Fit Test"></a>6.9.2 Lack of Fit Test</h4><p>This method is available when there are replicates in some X levels. Define X levels as $X_1,…,X_c$ with $n_j$ replicates respectively and $\sum_j nj=n$.</p>
+<p>(reduced) linear model</p>
+<p>$H_0:E(Y_i)=\beta_0+\beta_1X_{i1}+…+\beta_{p-1}X_{i,p-1}$</p>
+<p>(full) there are c parameters $\hat{\mu}_j=\bar{Y}_j$</p>
+<p>$H_1:E(Y_i)\neq\beta_0+\beta_1X_{i1}+…+\beta_{p-1}X_{i,p-1}$</p>
+<script type="math/tex; mode=display">
+SSE=SSE(R)=\sum_j\sum_i(Y_{ij}-\hat{Y}_{ij})^2,df_R=n-p</script><script type="math/tex; mode=display">
+SSPE=SSE(F)=\sum_j\sum_i(Y_{ij}-\bar{Y}_j)^2,df_F=n-c</script><script type="math/tex; mode=display">
+SSLE=SSE-SSPE=\sum_jn_j(\bar{Y}_j-\hat{Y}_{ij})^2</script><p><strong>Test Statistic:</strong></p>
+<script type="math/tex; mode=display">
+F^*=\frac{SSLE/c-p}{SSPE/n-c}\sim F(c-p,n-c)</script><p>when $H_0$ is rejected, a more complex model is required.</p>
+<h2 id="Chap-7-Multiple-Regression-II"><a href="#Chap-7-Multiple-Regression-II" class="headerlink" title="Chap 7 Multiple Regression II"></a>Chap 7 Multiple Regression II</h2><p>Outline:</p>
+<ul>
+<li>Extra Sums of Squares</li>
+<li>General Linear Test</li>
+<li>Partial Determination and Partion Correlation</li>
+<li>Standardized Version of the Multiple Regression Model</li>
+<li>Multicollinearity</li>
+</ul>
+<h3 id="7-1-Extra-Sums-of-Squares"><a href="#7-1-Extra-Sums-of-Squares" class="headerlink" title="7.1 Extra Sums of Squares"></a>7.1 Extra Sums of Squares</h3><p><strong>Basic Ideas:</strong> An extra sum of squares measures the marginal reduction in the error sum of squares when one or several predictor variables are added to the regression model, given that other predictor variables are already in the model.(or the increase in the regression sum of squares)</p>
+<p>For a given dataset, the total sum of squares <strong>(SSTO) remains the same</strong>. As we include more predictors, the regression sum of squares (SSR) increases and the error sum of squares (SSE) decreases.</p>
+<p>Define extra sum of squares:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    SSR(X_2|X_1)&=SSR(X_1,X_2)-SSR(X_1)\\
+    &=SSE(X_1)-SSE(X_1,X_2)
+\end{aligned}</script><p>According to the Fisher’s Theorem:</p>
+<script type="math/tex; mode=display">
+SSR(X_1,X_2)=SSR(X_1)+SSR(X_2|X_1)</script><script type="math/tex; mode=display">\sigma^2\chi^2(2,\delta_{R_2})=\sigma^2\chi^2(1,\delta_{R_1})+\sigma^2\chi^2(1,\delta_{R_2}-\delta_{R_1})</script><p>where $\delta_{R_1}=\frac{1}{\sigma^2}SS_{XX}\beta_1^2,\delta_{R_2}=\frac{1}{\sigma^2}\sum\sum SS_{kl}\beta_k\beta_l$</p>
+<p>and $\delta_{R_2}-\delta_{R_1}=0$, if $\beta_2=0$</p>
+<p><strong>Decomposition of SSR:</strong></p>
+<script type="math/tex; mode=display">
+SSR(X_1,X_2,X_3)=SSR(X_1)+SSR(X_2|X_1)+SSR(X_3|X_1,X_2)</script><script type="math/tex; mode=display">
+SSR(X_2,X_3|X_1)=SSR(X_2|X_1)+SSR(X_3|X_1,X_2)</script><h3 id="7-2-General-Linear-Test-with-Extra-Sums-of-Squares"><a href="#7-2-General-Linear-Test-with-Extra-Sums-of-Squares" class="headerlink" title="7.2 General Linear Test with Extra Sums of Squares"></a>7.2 General Linear Test with Extra Sums of Squares</h3><p><strong>Situation:</strong> To test whether a single or several coefficients are zeros.</p>
+<p>Example: First order model with 3 predictor variables</p>
+<p>Full Model: $Y_i=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\beta_3X_{i3}+\epsilon_i$</p>
+<p>Reduced Model: $Y_i=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\epsilon_i$</p>
+<p><strong>Hypothesis:</strong> $H_0:\beta_3=0 \quad v.s. \quad H_1:\beta_3\neq 0$</p>
+<p><strong>Test statistic:</strong></p>
+<script type="math/tex; mode=display">
+F^*=\frac{SSE(R)-SSE(F)}{df_R-df_F}/\frac{SSE(F)}{df_F}\stackrel{H_0}{\sim}F_{df_R-df_F,df_F}</script><p>for the first order model with 3 predictor variables,</p>
+<script type="math/tex; mode=display">
+F^*=\frac{SSR(X_3|X_1,X_2)}{1}/\frac{SSE(X_1,X_2,X_3)}{n-4}=\frac{MSR(X_3|X_1,X_2)}{MSE(X_1,X_2,X_3)}</script><p><strong>Rejection Region:</strong> $F^*\geq F(1-\alpha;1,n-4)$</p>
+<p>Similarly, to test whether several coefficients are zeros, the test statistic is:</p>
+<script type="math/tex; mode=display">
+F^*=\frac{SSR(X_2,X_3|X_1)}{2}/\frac{SSE(X_1,X_2,X_3)}{n-4}=\frac{MSR(X_2,X_3|X_1)}{MSE(X_1,X_2,X_3)}</script><p><strong>Note:</strong> T-test is also appropriate for testing whether single coefficient is zero.</p>
+<h3 id="7-3-Summary-of-Tests-Concerning-Regression-Coefficients"><a href="#7-3-Summary-of-Tests-Concerning-Regression-Coefficients" class="headerlink" title="7.3 Summary of Tests Concerning Regression Coefficients"></a>7.3 Summary of Tests Concerning Regression Coefficients</h3><h4 id="7-3-1-Test-whether-All-beta-k-0"><a href="#7-3-1-Test-whether-All-beta-k-0" class="headerlink" title="7.3.1 Test whether All $\beta_k=0$"></a>7.3.1 Test whether All $\beta_k=0$</h4><p>The overall F-test:</p>
+<script type="math/tex; mode=display">
+F^*=\frac{MSR}{MSE}</script><h4 id="7-3-2-Test-whether-Single-beta-k-0"><a href="#7-3-2-Test-whether-Single-beta-k-0" class="headerlink" title="7.3.2 Test whether Single $\beta_k=0$"></a>7.3.2 Test whether Single $\beta_k=0$</h4><p>The partial F-test:</p>
+<script type="math/tex; mode=display">
+F^*=\frac{MSR(X_k|X_1,...,X_{k-1},X_{k+1},...)}{MSE}</script><h4 id="7-3-4-Test-whether-Some-beta-k-0"><a href="#7-3-4-Test-whether-Some-beta-k-0" class="headerlink" title="7.3.4 Test whether Some $\beta_k=0$"></a>7.3.4 Test whether Some $\beta_k=0$</h4><p>The partial F-test:</p>
+<script type="math/tex; mode=display">
+F^*=\frac{MSR(X_q,...,X_{p-1}|X_1,...,X_{q-1})}{MSE}</script><h4 id="7-3-5-Other-Tests"><a href="#7-3-5-Other-Tests" class="headerlink" title="7.3.5 Other Tests"></a>7.3.5 Other Tests</h4><p><strong>Hypothesis:</strong> $H_0:\beta_1=\beta_2 \quad v.s. \quad H_1:\beta_1\neq \beta_2$</p>
+<p>Reduced Model: $Y_i=\beta_0+\beta_c(X_{i1}+X_{i2})+\beta_3X_{i3}+\epsilon_i$</p>
+<p><strong>Hypothesis:</strong> $H_0:\beta_1=3,\beta_3=5 \quad v.s. \quad H_1:\beta_1\neq 3\text{ or }\beta_2\neq 5$</p>
+<p>Reduced Model: $Y_i-3X_{i1}-5X_{i3}=\beta_0+\beta_2X_{i2}+\epsilon_i$</p>
+<h3 id="7-4-Coefficients-of-Partial-Determination"><a href="#7-4-Coefficients-of-Partial-Determination" class="headerlink" title="7.4 Coefficients of Partial Determination"></a>7.4 Coefficients of Partial Determination</h3><script type="math/tex; mode=display">
+R_{Y1|2}^2=\frac{SSE(X_2)-SSE(X_1,X_2)}{SSE(X_2)}</script><p>Thus, $R_{Y1|2}^2$ measures the proportionate reduction in the variation in $Y$ remaining after $X_2$ is included in the model.(extra information proportion in the rest variance)</p>
+<p>Similarly,</p>
+<script type="math/tex; mode=display">
+R_{Y3|12}^2=\frac{SSR(X_3|X_1,X_2)}{SSE(X_1,X_2)}</script><p>Coefficients of partial determination is between 0 and 1. square root of a coefficient partial determination is defined as:</p>
+<script type="math/tex; mode=display">
+R_{Y2|1}=sign(\beta_2)\sqrt{R_{Y2|1}^2}</script><p><strong>Note:</strong> A coefficient of partial determination can be interpreted as a coefficient of simple determination. Suppose we regress $Y$ on $X_2$ and obtain the residuals:</p>
+<script type="math/tex; mode=display">
+e_i(Y|X_2)=Y_i-\hat{Y_i}(X_2)</script><p>then we further regress $X_1$ on $X_2$ and obtain the residuals:</p>
+<script type="math/tex; mode=display">
+e_i(X_1|X_2)=X_{i1}-\hat{X_{i1}}(X_2)</script><p>The coefficient of simple determination $R^2$ for regressing $e_i(Y|X_2)$ on $e_i(X_1|X_2)$ equals $R_{Y1|2}^2$. </p>
+<p>Thus, this coefficient measures the relation between $Y$ and $X_1$ when both of these variables have been adjusted for their linear relationship to $X_2$.</p>
+<h3 id="7-5-Standardized-Regression-Model"><a href="#7-5-Standardized-Regression-Model" class="headerlink" title="7.5 Standardized Regression Model"></a>7.5 Standardized Regression Model</h3><p>Numerical precision errors (Roundoff Errors) can occur when $(X^TX)^{-1}$ is poorly conditioned near singular:</p>
+<ul>
+<li>colinearity</li>
+<li>when the predictor variables have substantially different magnitudes</li>
+</ul>
+<p>Standardized process can make it easier to compare effects of different predictors measured on different measurement scales.</p>
+<h4 id="7-5-1-Correlation-Transformation"><a href="#7-5-1-Correlation-Transformation" class="headerlink" title="7.5.1 Correlation Transformation"></a>7.5.1 Correlation Transformation</h4><script type="math/tex; mode=display">
+X_{ik}^*=\frac{X_{ik}-\bar{X_k}}{s_k},\quad s_k=\sqrt{\frac{\sum(X_{ik}-\bar{X_k})^2}{n-1}}\\
+Y_i^*=\frac{Y_i-\bar{Y}}{s_y},\quad s_y=\sqrt{\frac{\sum(Y_i-\bar{Y})^2}{n-1}}</script><h4 id="7-5-2-Standardized-Regression-Model"><a href="#7-5-2-Standardized-Regression-Model" class="headerlink" title="7.5.2 Standardized Regression Model"></a>7.5.2 Standardized Regression Model</h4><script type="math/tex; mode=display">
+Y_i^*=\beta_1^*X_{i1}^*+...+\beta_{p-1}^*X_{i,p-1}^*+\epsilon_i^*</script><p><strong>No intercept parameter:</strong> The least squares or maximum likelihood calculations always would lead to an estimation intercept term of zero.</p>
+<p><strong>Note:</strong></p>
+<p>1- Properties of $(X^<em>)^TX^</em>$</p>
+<script type="math/tex; mode=display">
+X^*=\left(
+\begin{matrix}
+    X_{11}^* & \cdots & X_{1,p-1}^*\\
+    X_{21}^* & \cdots & X_{2,p-1}^*\\
+    \vdots &&\vdots\\
+    X_{n1}^* & \cdots & X_{n,p-1}^*
+\end{matrix}
+\right)</script><p>Note that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \sum X_{i1}^*X_{i2}^*&=\sum (\frac{X_{i1}-\bar{X_{1}}}{\sqrt{n-1}s_1})(\frac{X_{i2}-\bar{X_{2}}}{\sqrt{n-1}s_2})\\
+    &=\frac{\sum (X_{i1}-\bar{X_1})(X_{i2}-\bar{X_2})}{[\sum (X_{i1}-\bar{X_1})^2\sum (X_{i2}-\bar{X_2})^2]^{1/2}}
+\end{aligned}</script><p>which equals to $r_{12}$.</p>
+<p>2- Relation between $r_{XX},r_{XY}$ and $X^<em>,Y^</em>$</p>
+<script type="math/tex; mode=display">
+r_{XX}=\left(
+\begin{matrix}
+    1&r_{12}&\cdots&r_{1,p-1}\\
+    r_{21}&1&\cdots&r_{2,p-1}\\
+    \vdots&\vdots&&\vdots\\
+    r_{p-1,1}&r_{p-1,2}&\cdots&1
+\end{matrix}
+\right)</script><p>$r_{XX}$ is called <em>the correlation matrix of the X variables</em>, which has elements the coefficients of simple correlation between all pairs of the X variables.</p>
+<script type="math/tex; mode=display">
+r_{XY}=\left(
+    \begin{matrix}
+        r_{Y1}\\r_{Y2}\\\vdots\\r_{Y,p-1}
+    \end{matrix}
+\right)</script><p>$r_{XY}$ is a vactor containing the coefficients of simple correlation between the response variable Y and each of the X variables.</p>
+<p>Then $(X^<em>)^TX^</em>=r_{XX}$, $(X^<em>)^TY^</em>=r_{XY}$.</p>
+<p>3- Relationship between original coefficient and transformed coefficient</p>
+<script type="math/tex; mode=display">
+\beta_k=(\frac{s_y}{s_k})\beta_k^*, k=1,...,p-1\\
+\beta_0=\bar{Y}-\beta_1\bar{X_1}-...-\beta_{p-1}\bar{X_{p-1}}</script><h2 id="Chap-8-Quantitative-and-Qualitative-Predictors"><a href="#Chap-8-Quantitative-and-Qualitative-Predictors" class="headerlink" title="Chap 8 Quantitative and Qualitative Predictors"></a>Chap 8 Quantitative and Qualitative Predictors</h2><p>Outline:</p>
+<ul>
+<li>Quantitative predictors</li>
+<li>Qualitative predictors</li>
+<li>Polynomial Regression Models</li>
+<li>Interaction Regression Models</li>
+</ul>
+<h3 id="8-1-Polynomial-Regression-Models"><a href="#8-1-Polynomial-Regression-Models" class="headerlink" title="8.1 Polynomial Regression Models"></a>8.1 Polynomial Regression Models</h3><p><strong>Situation:</strong></p>
+<ol>
+<li>True relation between response and predictor is polynomial</li>
+<li>True relation is complex nonlinear function that can be approximated by polynomial in specific range of X-levels</li>
+</ol>
+<p><strong>Second Order Model with One Predictor:</strong></p>
+<script type="math/tex; mode=display">
+E(Y)=\beta_0+\beta_1x+\beta_2x^2</script><p>where $x=X-\bar{X}$</p>
+<ul>
+<li>$X$ is centered due to the possible high correlation between $X$ and $X^2$ (why?)</li>
+<li>$\beta_0$ is the mean response when $x=0$</li>
+<li>$\beta_1$ is called the linear effect</li>
+<li>$\beta_2$ is called the quadratic effect</li>
+</ul>
+<p><strong>Second Order Model with Two Predictors:</strong></p>
+<script type="math/tex; mode=display">
+E(Y)=\beta_0+\beta_1x_1+\beta_2x_2+\beta_{11}x_1^2+\beta_{22}x_2^2+\beta_{12}x_1x_2</script><ul>
+<li>$\beta_{12}$ is called the interaction effect coefficient</li>
+</ul>
+<ol>
+<li>Fitting with LSE (as multiple regression)</li>
+<li>Determine the order with some tests<ol>
+<li>Extra Sums of Squares (one coefficient t-test or F-test)</li>
+<li>General Linear Test (F-test)</li>
+</ol>
+</li>
+<li>Use coding in fitting models(centered/scaled) predictors to reduce multicollinearity</li>
+<li>Back-transform on original scale</li>
+</ol>
+<h3 id="8-2-Interaction-Regression-Models"><a href="#8-2-Interaction-Regression-Models" class="headerlink" title="8.2 Interaction Regression Models"></a>8.2 Interaction Regression Models</h3><p><strong>Interaction:</strong> effect(slope) of one predictor variable depends on the level of other predictor variables (a unit increase in it depends on other variables)</p>
+<h3 id="8-3-Qualitative-Predictors"><a href="#8-3-Qualitative-Predictors" class="headerlink" title="8.3 Qualitative Predictors"></a>8.3 Qualitative Predictors</h3><p><strong>Dummy variable:</strong> Represent effects of levels of the catigorical variables on response. For $c$ categories, create $c-1$ dummy variables, leaving one level as the reference category(avoid singular matrix)</p>
+<p>For example, we have region category. We use dummy $X_2$ represent Region1, dummy $X_3$ represent Region2 and Region3 as reference</p>
+<script type="math/tex; mode=display">
+E(Y)=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_3</script><p>Controlling for experience:</p>
+<ul>
+<li>$\beta_2$ difference between Region1 and 3 (t-test or partial F-test)</li>
+<li>$\beta_3$ difference between Region2 and 3 (t-test or partial F-test)</li>
+<li>$\beta_2-\beta_3$ difference between Region1 and 2 (General linear test)</li>
+<li>$\beta_2=\beta_3=0\Rightarrow$ No differences among Region 1,2,3 with respect to $Y$ (Extra Sums of Squares)</li>
+</ul>
+<p><strong>Allocated Codes:</strong> Denote exact “weights” for each category</p>
+<p><strong>Indicator Variables:</strong> make no assumptions about the spacing of the classes and rely on the data to show the differential effects that occur</p>
+<p>If we want to model interactions Between Qualitative and Quantitative Predictors, create cross-product terms between Quantitative Predictor and each of the $c-1$ dummy variables (test: General Linear Test)</p>
+<h2 id="Chap-9-Model-Selection-and-Validation"><a href="#Chap-9-Model-Selection-and-Validation" class="headerlink" title="Chap 9 Model Selection and Validation"></a>Chap 9 Model Selection and Validation</h2><p>Outline:</p>
+<ul>
+<li>Model-building process</li>
+<li>Criteria for model selection</li>
+<li>Search procedures for model selection<ul>
+<li>Best subsets algorithm</li>
+<li>Stepwise, forward</li>
+</ul>
+</li>
+<li>Model validation</li>
+</ul>
+<h3 id="9-1-Overview-of-model-building-process"><a href="#9-1-Overview-of-model-building-process" class="headerlink" title="9.1 Overview of model-building process"></a>9.1 Overview of model-building process</h3><ol>
+<li>Data collection and preparation</li>
+<li>Reduction of explanatory or predictor variables</li>
+<li>Model refinement and selection</li>
+<li>Model validation</li>
+</ol>
+<p><strong>Data Collection</strong> requirements vary with the nature of the study.</p>
+<p><strong>Controlled Experiments</strong> experimental units assigned to X-levels by experimenter.</p>
+<p>(1) Purely Controlled Experiments: Researcher only uses predictors that were assigned to units.</p>
+<p>(2) Controlled Experiments with Covariates: Researcher has information (additional predictors) associated with units.</p>
+<p><strong>Observational Studies</strong> units have X-levels associated with them (not assigned by researcher)</p>
+<p>(1) Confirmatory Studies: new explanatory variables (primary variables), the explanatory variables that reflect existing knowledge (control variables) and the response variables</p>
+<p>(2) Exporatory Studies: Set of petential predictors belived that some or all are associated with Y</p>
+<p><strong>Reduction of Explanatory Variables</strong> depends on types of the study</p>
+<ul>
+<li>Purely Controlled Experiments: rarely any need to reduce</li>
+<li>Controlled Experiments with Covariates: remove any covariates that do not reduce the error variance</li>
+<li>Confirmatory Studies: must to keep all control variables to compare with previous research, should keep all primary variables as well</li>
+<li>Exploratory Studies: need to fit parsimonious model that explains much of the variation in Y, while keeping model as basic as possible</li>
+</ul>
+<h3 id="9-2-Surgical-unit-example"><a href="#9-2-Surgical-unit-example" class="headerlink" title="9.2 Surgical unit example"></a>9.2 Surgical unit example</h3><h3 id="9-3-Model-Selection-Criteria"><a href="#9-3-Model-Selection-Criteria" class="headerlink" title="9.3 Model Selection Criteria"></a>9.3 Model Selection Criteria</h3><ul>
+<li>Likelihood of data (not sufficient, can always be improved by adding more parameters)</li>
+<li>Explicit penalization of the number of parameters in the model (AIC,BIC,etc.)</li>
+<li>Implicit penalization through cross validation</li>
+<li>Bayesian regularization (putting certain prior distribution on each model)</li>
+</ul>
+<p>To find appropriate subset size: adjusted-$R^2$, $C_p$, PRESS, AIC, SBC</p>
+<p>To find best model for a fixed size: $R^2$</p>
+<h4 id="9-3-1-R-2-and-adjusted-R-2"><a href="#9-3-1-R-2-and-adjusted-R-2" class="headerlink" title="9.3.1 $R^2$ and adjusted-$R^2$"></a>9.3.1 $R^2$ and adjusted-$R^2$</h4><p>$p=#\left\{\text{parameters in current model}\right\}$</p>
+<script type="math/tex; mode=display">
+R_p^2=\frac{SSR_p}{SSTO}=1-\frac{SSE_p}{SSTO}</script><script type="math/tex; mode=display">
+R_{a,p}^2=1-\frac{SSE_p/(n-p)}{SSTP/(n-1)}=1-\frac{MSE_p}{SSTO/(n-1)}</script><h4 id="9-3-2-Mallows’-C-p"><a href="#9-3-2-Mallows’-C-p" class="headerlink" title="9.3.2 Mallows’ $C_p$"></a>9.3.2 Mallows’ $C_p$</h4><p>Squared error for estimation $\mu_i$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    (\hat{Y}_i-\mu_i)^2 &= (\hat{Y}_i-E(\hat{Y}_i)+E(\hat{Y}_i)-\mu_i)^2\\
+    &=Bias^2+(\hat{Y}_i-E(\hat{Y}_i))^2+[E(\hat{Y}_i)-\mu_i][\hat{Y}_i-E(\hat{Y}_i)]
+\end{aligned}</script><p>It can be shown that the expected value is:</p>
+<script type="math/tex; mode=display">
+E\left\{\hat{Y}_i-\mu_i\right\}^2=(E(\hat{Y}_i)-\mu_i)^2+\sigma^2(\hat{Y}_i)=Bias^2+\sigma^2_Y</script><p>The total mean squared error for all $n$ fitted values $\hat{Y}_i$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \sum_{i=1}^n [(E(\hat{Y}_i)-\mu_i)^2+\sigma^2(\hat{Y}_i)]&=\sum_{i=1}^n [(E(\hat{Y}_i)-\mu_i)^2]+\sum_{i=1}^n \sigma^2(\hat{Y}_i)\\
+    &=\sum Bias^2+\sum\sigma^2_Y
+\end{aligned}</script><p>The crieterion measure $\Gamma_p$</p>
+<script type="math/tex; mode=display">
+\Gamma_p=\frac{\sum Bias^2+\sum \sigma^2_Y}{\sigma^2}</script><p>Consider the current model with $p-1$ predictors, we can show that</p>
+<script type="math/tex; mode=display">
+E(SSE_p)=\sum Bias^2 + (n-p)\sigma^2</script><p>To estimate $\Gamma_p$, $\sigma^2,\sigma^2_Y,Bias^2$ need to be estimated</p>
+<script type="math/tex; mode=display">
+\hat{\sigma}^2=MSE(X_1,X_2,...,X_{p-1})=MSE_p</script><script type="math/tex; mode=display">
+\hat{\sum Bias^2}=SSE_p-(n-p)MSE_p</script><p>$C_p$ is the estimation of $\Gamma_p$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    C_p&=\frac{(SSE_p-(n-p)MSE_p)+pMSE_p}{MSE_p}\\
+    &=\frac{SSE_p}{MSE_p}-(n-2p)
+\end{aligned}</script><p>The model has no bias:</p>
+<script type="math/tex; mode=display">
+\Gamma_p=\frac{0+p\sigma^2}{\sigma^2}=p,E(C_p)\approx p</script><h4 id="9-3-3-AIC-and-BIC"><a href="#9-3-3-AIC-and-BIC" class="headerlink" title="9.3.3 AIC and BIC"></a>9.3.3 AIC and BIC</h4><script type="math/tex; mode=display">
+\ln L_p(\pmb{\beta},\sigma^2)=\frac{-n}{2}\ln(2\pi)-\frac{n}{2}\ln(\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^n(Y_i-\mu_i)</script><p>where $\mu_i=\beta_0+\beta_1X_{1i}+…+\beta_{p-1}X_{p-1,i}$</p>
+<script type="math/tex; mode=display">
+\ln L_p(\hat{\pmb{\beta}},\hat{\sigma}^2)=\frac{-n}{2}\ln(2\pi)-\frac{n}{2}-\frac{n}{2}\ln\left(\frac{SSE_p}{n}\right)</script><p>AIC adn BIC criterion are based on minimizing: $-2\log(L)+penalty$</p>
+<script type="math/tex; mode=display">
+AIC_p=n\ln\left(\frac{SSE_p}{n}\right)+2p\\
+BIC_p=n\ln\left(\frac{SSE_p}{n}\right)+[\ln(n)]p</script><h4 id="9-3-4-PRESS-p"><a href="#9-3-4-PRESS-p" class="headerlink" title="9.3.4 $PRESS_p$"></a>9.3.4 $PRESS_p$</h4><p>The PREdiction Sum of Squares quantifies how well the fitted values can predict the observed responses</p>
+<script type="math/tex; mode=display">
+PRESS_p=\sum_{i=1}^n(Y_i-\hat{Y}_{i(i)})^2</script><p>where $\hat{Y}_{i(i)}$ is the fitted value for $i^{th}$ case when it was not used in fitting model.($\hat{Y}_{-i}$) It’s leave-one-out cross validation.</p>
+<h3 id="9-4-Automatic-search-procedures-for-model-selection"><a href="#9-4-Automatic-search-procedures-for-model-selection" class="headerlink" title="9.4 Automatic search procedures for model selection"></a>9.4 Automatic search procedures for model selection</h3><h4 id="9-4-1-Best-subset-search"><a href="#9-4-1-Best-subset-search" class="headerlink" title="9.4.1 Best subset search"></a>9.4.1 Best subset search</h4><p>Consider all the possible subset. For each of the model, evaluate the criteria. Time-saving algorithms have been developed, which require the calculation of only a small fraction of all possible models.(if $p&gt;30$, it still requires excessive computer time)</p>
+<h4 id="9-4-2-Backward-Elimination"><a href="#9-4-2-Backward-Elimination" class="headerlink" title="9.4.2 Backward Elimination"></a>9.4.2 Backward Elimination</h4><p>Select a significance level to stay in the model (SLS). Start with all the variables, fit the full model with all possible predictors.</p>
+<p>Consider the predictor with lowest t-statistic (highest p-value), if $p&gt;SLS$ then remove the predictor and re-fit the model. Continue until all predictors have p-value below SLS.</p>
+<h4 id="9-4-3-Forward-Selection"><a href="#9-4-3-Forward-Selection" class="headerlink" title="9.4.3 Forward Selection"></a>9.4.3 Forward Selection</h4><p>Select a significance level to enter the model (SLE). Start with no variables, add one variable with highest t-statistic (only if p-value &lt; SLE). Continue until no new predictors have $p\leq SLE$</p>
+<h4 id="9-4-4-Stepwise-Regression"><a href="#9-4-4-Stepwise-Regression" class="headerlink" title="9.4.4 Stepwise Regression"></a>9.4.4 Stepwise Regression</h4><h3 id="9-5-Model-Validation"><a href="#9-5-Model-Validation" class="headerlink" title="9.5 Model Validation"></a>9.5 Model Validation</h3><h2 id="Chap-10-Diagnostic-for-Multiple-Linear-Regression"><a href="#Chap-10-Diagnostic-for-Multiple-Linear-Regression" class="headerlink" title="Chap 10 Diagnostic for Multiple Linear Regression"></a>Chap 10 Diagnostic for Multiple Linear Regression</h2><p>Ouline:</p>
+<ul>
+<li>Model Adequacy for a Predictor Variable</li>
+<li>Identifying outlying Y</li>
+<li>Identifying outlying X</li>
+<li>Identifying Infuential Cases</li>
+<li>Multicollinearity Diagnostic</li>
+</ul>
+<h3 id="10-1-Model-Adequacy-for-a-Predictor-Variable"><a href="#10-1-Model-Adequacy-for-a-Predictor-Variable" class="headerlink" title="10.1 Model Adequacy for a Predictor Variable"></a>10.1 Model Adequacy for a Predictor Variable</h3><p>Added-variable plots consider the emarginal role of a predictor variable $X_k$, given that the other predictor variables under consideration are already in the model. Both $Y$ and $X_k$ are regressed against the other predictor variables in the regression model and the residuals are obtained for each.</p>
+<p>Suppose we are concerned about the nature of the regression effect for $X_1$, we regress $Y$ on $X_2$</p>
+<script type="math/tex; mode=display">
+\hat{Y}_i(X_2)=b_0+b_2X_{i2}\\
+e_i(Y|X_2)=Y_i-\hat{Y}_i(X_2)</script><p>then we regress $X_1$ on $X_2$</p>
+<script type="math/tex; mode=display">
+\hat{X}_{i1}(X_2)=b_0^*+b_2^*X_{i2}\\
+e_i(X_1|X_2)=X_{i1}-\hat{X}_{i1}(X_2)</script><p>The added variable plot for $X_1$ consists of a plot of $e(Y|X_2)$ against $e(X_1|X_2)$, which represents the relationship beween $Y$ and $X_1$, adjusted for $X_2$</p>
+<ul>
+<li>$R^2_{Y1|2}$ equals to $R^2$ for regressing $e_i(Y|X_2)$ on $e_i(X_1|X_2)$</li>
+<li>Slope of the regression through the origin of $e_i(Y|X_2)$ on $e_i(X_1|X_2)$ is the partial regression coefficient $b_1$</li>
+</ul>
+<h3 id="10-2-Identifying-outlying-Y"><a href="#10-2-Identifying-outlying-Y" class="headerlink" title="10.2 Identifying outlying Y"></a>10.2 Identifying outlying Y</h3><script type="math/tex; mode=display">
+Y=X\beta+\epsilon,\epsilon\sim N(0,\sigma^2I)</script><p>The fitted model hat matrix $H=X(X^TX)^{-1}X^T$, then the residuals are $e=Y-\hat{Y}=(I-H)Y$</p>
+<script type="math/tex; mode=display">
+E(e)=(I-H)E(Y)=(I-H)X\beta=X\beta-X\beta=0</script><script type="math/tex; mode=display">
+\sigma^2(e)=(I-H)\sigma^2I(I-H)^T=\sigma^2(I-H)</script><p>$\Rightarrow e\sim N(0,\sigma^2(I-H))$</p>
+<h4 id="10-2-1-Studendized-residuals"><a href="#10-2-1-Studendized-residuals" class="headerlink" title="10.2.1 Studendized residuals"></a>10.2.1 Studendized residuals</h4><p>Let $h_{ij}=(i,j)^{th}$ element of $H=X(X^TX)^{-1}X^T$, $h_{ii}=X_i^T(X^TX)^{-1}X_i$, $h_{ij}=X_i^T(X^TX)^{-1}X_j$, where $X_i=[1,X_{i1} … X_{i,p-1}]^T$</p>
+<script type="math/tex; mode=display">
+\sigma^2(e_i)=\sigma^2(1-h_{ii}),s^2(e_i)=MSE(1-h_{ii})</script><script type="math/tex; mode=display">
+\sigma(e_i,e_j)=-h_{ij}\sigma^2,s(e_i,e_j)=-h_{ij}MSE</script><p>Studendized residual</p>
+<script type="math/tex; mode=display">
+\frac{e_i}{s(e_i)}=\frac{e_i}{\sqrt{MSE(1-h_{ii})}}</script><h4 id="10-2-2-Studentized-Deleted-Residuals"><a href="#10-2-2-Studentized-Deleted-Residuals" class="headerlink" title="10.2.2 Studentized Deleted Residuals"></a>10.2.2 Studentized Deleted Residuals</h4><script type="math/tex; mode=display">
+d_i=Y_i-\hat{Y_i}_{(-i)}</script><p>where $\hat{Y_i}_{(-i)}$ is the fitted value when regression is fit on the other $n-1$ cases</p>
+<script type="math/tex; mode=display">
+b_{(-i)}=(X_{(-i)}^TX_{(-i)})^{-1}X_{(-i)}^TY_{(-i)}\sim N(\beta,\sigma^2(X_{(-i)}^TX_{(-i)})^{-1})</script><p>then $\hat{Y_i}_{(-i)}=x_i^Tb_{(-i)}$, here $x_i^T$ is the row vector of $X$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    var(d_i)&=var(Y_i)+var(\hat{Y_i}_{(-i)})\\
+    &=\sigma^2[1+x_i^T(X_{(-i)}^TX_{(-i)})^{-1}x_i]\\
+    s^2(d_i)&=MSE_{(-i)}[1+x_i^T(X_{(-i)}^TX_{(-i)})^{-1}x_i]
+\end{aligned}</script><p>Studentized deleted residual</p>
+<script type="math/tex; mode=display">
+t_i=\frac{d_i}{s(d_i)}=\frac{e_i}{\sqrt{MSE_{(-i)}(1-h_{ii})}}</script><p>If there are no outlying observations,</p>
+<script type="math/tex; mode=display">
+t_i=\frac{e_i\sqrt{n-p-1}}{\sqrt{SSE(1-h_{ii})-e_i^2}}\sim t(n-p-1)</script><p><strong>Note:</strong> We can calculate $d_i$ and $t_i$ in a single model fit with</p>
+<script type="math/tex; mode=display">
+d_i=Y_i-\hat{Y_i}_{(-1)}=\frac{e_i}{1-h_{ii}}</script><script type="math/tex; mode=display">
+var(d_i)=\frac{var(e_i)}{(1-h_{ii})^2}=\frac{\sigma^2}{1-h_{ii}},s^2(d_i)=\frac{MSE_{(-i)}}{1-h_{ii}}</script><script type="math/tex; mode=display">
+SSE_{(-i)}=SSE-\frac{e_i^2}{1-h_{ii}}</script><script type="math/tex; mode=display">
+(n-p-1)MSE_{(-i)}=(n-p)MSE-\frac{e_i^2}{1-h_{ii}}</script><p>so that $MSE_{(-i)}=\dfrac{SSE}{n-p-1}-\dfrac{e_i^2}{(1-h_{ii})(n-p-1)}$</p>
+<p><strong>PREdicton Sum of Squares:</strong></p>
+<script type="math/tex; mode=display">
+PRESS_p=\sum_{i=1}^nd_i^2=\sum_{i=1}^n(\frac{e_i}{1-h_{ii}})^2</script><h3 id="10-3-Outlying-X-Cases"><a href="#10-3-Outlying-X-Cases" class="headerlink" title="10.3 Outlying X-Cases"></a>10.3 Outlying X-Cases</h3><p>Hat matrix $H=X(X^TX)^{-1}X^T=(h_{ij})$, let $x_i^T=[1,X_i]$, then</p>
+<script type="math/tex; mode=display">
+(X^TX)^{-1}=\frac{1}{SS_{XX}}
+\left[\begin{matrix}
+    \frac{SS_{XX}}{n}+\bar{X}^2 & -\bar{X}\\
+    -\bar{X} & 1
+\end{matrix}\right]</script><script type="math/tex; mode=display">
+h_{ij}=x_i^T(X^TX)^{-1}x_j=\frac{1}{n}+\frac{(X_i-\bar{X})(X_j-\bar{X})}{SS_{XX}}</script><script type="math/tex; mode=display">
+h_{ii}=x_i^T(X^TX)^{-1}x_i=\frac{1}{n}+\frac{(X_i-\bar{X})^2}{SS_{XX}}</script><p>Some properties of hat matrix:</p>
+<ul>
+<li>$\sum h_{ii}=trace(H)=p$</li>
+<li>$HX=X\Rightarrow\sum_{i=1}^n h_{ij}=\sum_{j=1}^n h_{ij}=1$</li>
+<li>$H=HH\Rightarrow h_{ii}=\sum_{i=1}^n h_{ij}h_{ji}\geq 0$</li>
+<li>$(I-H)^2=I-H\Rightarrow 1-h_{ii}=\sum_{j=1}^n (I_{ij}-h_{ij})^2\geq 0$</li>
+</ul>
+<p><strong>Leverage Values:</strong></p>
+<script type="math/tex; mode=display">
+h_{ii}=x_i^T(X^TX)^{-1}x_i</script><p>Leverage of ith case $h_{ii}$ measures the distance beween the $X_i$ value and the mean of the $X$ values. The closer the case to the “center” of the sampled X-levels, the smaller the leverage is.</p>
+<p>Large leverage values: $h_{ii}&gt;2p/n$</p>
+<p>Also, $h_{ii}$ is a measure of how much $Y_i$ is contributing to the prediction $\hat{Y_i}$. Case with large leverages have the potential to “pull” the regression equation toward their observed Y-values.</p>
+<h3 id="10-4-Identifying-Influential-Cases"><a href="#10-4-Identifying-Influential-Cases" class="headerlink" title="10.4 Identifying Influential Cases"></a>10.4 Identifying Influential Cases</h3><p>Type of unusual observations:</p>
+<ul>
+<li>Unusual Y value has little influence</li>
+<li>High leverage has no influence</li>
+<li>Combination of dicrepancy (unusual Y value) and leverage (unusual X value) results in strong influence</li>
+</ul>
+<h4 id="10-4-1-Difference-between-the-fitted-values-DFFITS"><a href="#10-4-1-Difference-between-the-fitted-values-DFFITS" class="headerlink" title="10.4.1 Difference between the fitted values (DFFITS)"></a>10.4.1 Difference between the fitted values (DFFITS)</h4><script type="math/tex; mode=display">
+DFFITS_i=\frac{\hat{Y_i}-\hat{Y_i}_{(-i)}}{\sqrt{MSE_{(-i)}h_{ii}}}=t_i\left(\frac{h_{ii}}{1-h_{ii}}\right)^{1/2}</script><p>where $h_{ii}$ is estimated sd of $\hat{Y}_i$</p>
+<script type="math/tex; mode=display">
+t_i=\frac{d_i}{s(d_i)}=\frac{e_i}{\sqrt{MSE_{(-i)}(1-h_{ii})}}=\frac{e_i\sqrt{n-p-1}}{\sqrt{SSE(1-h_{ii})}-e_i^2}</script><p>DFFITS measures the influence on single fitted value:</p>
+<ul>
+<li>for small data sets, influential if $|DFFITS|&gt;1$</li>
+<li>for large data sets, influential if $|DFFITS|&gt;2\sqrt{p/n}$</li>
+</ul>
+<h4 id="10-4-2-Influence-on-all-fitted-values-Cook’s-Distance"><a href="#10-4-2-Influence-on-all-fitted-values-Cook’s-Distance" class="headerlink" title="10.4.2 Influence on all fitted values (Cook’s Distance)"></a>10.4.2 Influence on all fitted values (Cook’s Distance)</h4><script type="math/tex; mode=display">
+\begin{aligned}
+    D_i&=\frac{\sum(\hat{Y_j}-\hat{Y_j}_{(-i)})^2}{pMSE}=\frac{(\hat{Y}-\hat{Y}_{-i})^T(\hat{Y}-\hat{Y}_{-i})}{pMSE}\\
+    &=\frac{e_i^2}{pMSE}\left[\frac{h_{ii}}{(1-h_{ii})^2}\right]\\
+    &=\frac{h_{ii}}{p(1-h_{ii})}\widetilde{e}_i^2
+\end{aligned}</script><p>where $\widetilde{e}_i=\frac{e_i}{\sqrt{MSE(1-h_{ii})}}$ is studentized residual</p>
+<p>Problem cases are $D_i&gt;F(0.5;p,n-p)$</p>
+<h4 id="10-4-3-Influence-on-the-Regression-Coefficients-DFBETAS"><a href="#10-4-3-Influence-on-the-Regression-Coefficients-DFBETAS" class="headerlink" title="10.4.3 Influence on the Regression Coefficients (DFBETAS)"></a>10.4.3 Influence on the Regression Coefficients (DFBETAS)</h4><script type="math/tex; mode=display">
+(DFBETAS)_{k(-i)}=\frac{b_k-b_{k(-i)}}{\sqrt{MSE_{(-i)}c_{kk}}}</script><p>where $c_{kk}$ is the k-th diagnal element of $(X^TX)^{-1}$</p>
+<p>Problem cases are $DFBETAS&gt;1$ for small data sets, $DFBETAS&gt;2/\sqrt{n}$ for large data sets</p>
+<h3 id="10-5-Multicollinearity"><a href="#10-5-Multicollinearity" class="headerlink" title="10.5 Multicollinearity"></a>10.5 Multicollinearity</h3><ul>
+<li>Standard errors of regression coefficients increase</li>
+<li>Individual regression coefficients are not significant</li>
+<li>Point estimates of regression coefficients are wrong sign</li>
+</ul>
+<p>Considering the standardized regression model, we have $X_{ik}^*=\frac{1}{\sqrt{n-1}}(\frac{X_{ik}-\bar{X_k}}{s_k})$</p>
+<script type="math/tex; mode=display">
+(X^*)^TX^*=r_{XX},\sigma^2(b^*)=(\sigma^*)^2r_{XX}^{-1}</script><p>then $\sigma^2(b_k^<em>)=(\sigma^</em>)^2(VIF)_k$, where $(VIF)_k$ is the k-th diagonal element of $r_{XX}^{-1}$</p>
+<p><strong>Variance Inflation Factor(VIF):</strong></p>
+<script type="math/tex; mode=display">
+(VIF)_k=\frac{1}{1-R_k^2}</script><p>where $R_k^2$ is the coefficient of determination when $X_k$ is regressed on the $p-2$ other $X$ variables (how much variance of $X_k$ is explained by the other variables). $1\leq VIF\leq\infty$</p>
+<p>$\max((VIF)_1,…,(VIF)_{p-1})&gt;10$ indicates there is serious multicollinearity problem</p>
+<h2 id="Chap-11-Remedial-Measures"><a href="#Chap-11-Remedial-Measures" class="headerlink" title="Chap 11 Remedial Measures"></a>Chap 11 Remedial Measures</h2><p>Outline:</p>
+<ul>
+<li>Weighted Least Squares(unequal error variance)</li>
+<li>Ridge Regression(multicollinearity)</li>
+<li>Robust Regression(influential cases)</li>
+<li>Lowess &amp; Regression Trees(nonparametric)</li>
+<li>Bootstrapping(evaluating precision)</li>
+</ul>
+<h3 id="11-1-Weighted-Least-Squares"><a href="#11-1-Weighted-Least-Squares" class="headerlink" title="11.1 Weighted Least Squares"></a>11.1 Weighted Least Squares</h3><p>Since the unequal variance, we set different weights on each variable $w_i=\frac{1}{\sigma_i^2}$</p>
+<script type="math/tex; mode=display">
+L(\beta)=\prod\sqrt{\frac{w_i}{2\pi}}\exp[-\frac{1}{2}\sum w_i(Y_i-\beta_0-...-\beta_{p-1}X_{i,p-1})^2]</script><p>To maximize $L(\beta)$, we need to minimize $Q_w=\sum w_i(Y_i-\beta_0-…-\beta_{p-1}X_{i,p-1})^2$</p>
+<p>Set up the weight matrix:</p>
+<script type="math/tex; mode=display">
+W=
+\begin{bmatrix}
+    w_1&0&\cdots&0\\
+    0&w_2&\cdots&0\\
+    \vdots&\vdots&\ddots&\vdots\\
+    0&0&\cdots&w_n
+\end{bmatrix}</script><p>$\sigma^2(Y)=\sigma^2(\epsilon)=W^{-1}$</p>
+<p>Normal equations: $(X^TWX)b_w=X^TWY$</p>
+<script type="math/tex; mode=display">
+b_w=(X^TWX)^{-1}X^TWY=AY,A=(X^TWX)^{-1}X^TW</script><script type="math/tex; mode=display">
+E(b_w)=\beta,\sigma^2(b_w)=(X^TWX)^{-1}</script><p>When the variances are unknown, we need to estimate the variance:</p>
+<ul>
+<li>Estimation of variance function or standard deviation function(Breusch-Pagan Test)</li>
+<li>Use Replicates or Near Replicates(sample variance of replicates)</li>
+<li>Use squared residuals or absolute residuals from OLS to model their levels as funcions of predictor variables(regress absolute residuals on X and use the fitted value)</li>
+</ul>
+<h4 id="11-2-Ridge-Regression"><a href="#11-2-Ridge-Regression" class="headerlink" title="11.2 Ridge Regression"></a>11.2 Ridge Regression</h4><p>Standardized Regression:</p>
+<script type="math/tex; mode=display">r_{XX}b=r_{YX}</script><p>Ridge Estimator:</p>
+<script type="math/tex; mode=display">(r_{XX}+cI)b^R=r_{YX}</script><p>which is equivalent to minimize</p>
+<script type="math/tex; mode=display">
+Q=\sum [Y_i^*-(\beta_1^*X_{i1}^*+...+\beta_{p-1}^*X_{i,p-1}^*)]^2+c[\sum (\beta_j^*)^2]</script><p>Then we can obtain $VIF$ by</p>
+<script type="math/tex; mode=display">
+\sigma^2(b^R)=\sigma^2((r_{XX}+cI)^{-1}r_{YX})=(r_{XX}+cI)^{-1}r_{XX}(r_{XX}+cI)^{-1}</script><p>$VIF_k$ is the k-th diagonal element of $(r_{XX}+cI)^{-1}r_{XX}(r_{XX}+cI)^{-1}$</p>
+<h4 id="11-3-Robust-Regression"><a href="#11-3-Robust-Regression" class="headerlink" title="11.3 Robust Regression"></a>11.3 Robust Regression</h4><ul>
+<li>Least Absolute Residuals(LAR) or Least Absolute Deviation(LAD): Choose the coefficients that minimize sum of absolute deviations</li>
+<li>Iteratively Reweighted Leaste Squares(IRLS)</li>
+</ul>
+<p><strong>Median Absolute Deviation</strong> (Robust estimate of $\sigma$)</p>
+<p>$median|\frac{\xi-\mu}{\sigma}|=\Phi^{-1}(0.75)\approx 0.6745$</p>
+<p>since $median|Z|=c \Leftrightarrow P(-c\leq Z\leq c)=0.5$</p>
+<script type="math/tex; mode=display">
+MAD = \frac{1}{\Phi^{-1}(0.75)}median(|e_i-median(e_i)|)</script><script type="math/tex; mode=display">
+u_i=\frac{e_i}{\hat{\sigma}_R}=\frac{e_i}{MAD}</script><h2 id="Chap-14-Logistic-Regression-with-Binary-Response"><a href="#Chap-14-Logistic-Regression-with-Binary-Response" class="headerlink" title="Chap 14 Logistic Regression with Binary Response"></a>Chap 14 Logistic Regression with Binary Response</h2><p>Outline:</p>
+<ul>
+<li>Odds Ratio</li>
+<li>Modeling binary outcome variables</li>
+<li>The Logsitic Model</li>
+<li>Inferences about regression parameters</li>
+</ul>
+<h3 id="14-1-Odds-Ratio"><a href="#14-1-Odds-Ratio" class="headerlink" title="14.1 Odds Ratio"></a>14.1 Odds Ratio</h3><p>A binary response variable $Y$ which takes on the values 0 or 1. The parameter of interst is $\pi=P(Y=1)$</p>
+<p><strong>Odds:</strong> $Odds(\pi)=\frac{\pi}{1-\pi}=\frac{P(Y=1)}{1-P(Y=1)}$</p>
+<p>we can see $Odds&lt;1\Leftrightarrow\pi&lt;0.5$</p>
+<p><strong>Odds ratio:</strong> We are usually intersted in comparing the probability of $Y=1$ across two groups</p>
+<script type="math/tex; mode=display">
+\pi_1=P(Y=1|group1)\\
+\pi_2=P(Y=1|group2)</script><h3 id="14-2-Modeling-binary-outcome-variables"><a href="#14-2-Modeling-binary-outcome-variables" class="headerlink" title="14.2 Modeling binary outcome variables"></a>14.2 Modeling binary outcome variables</h3><h3 id="14-3-The-Logistic-Model"><a href="#14-3-The-Logistic-Model" class="headerlink" title="14.3 The Logistic Model"></a>14.3 The Logistic Model</h3><p>Sample: independent $Y_1,Y_2,…,Y_n.Y_i\sim B(1,\pi_i)$</p>
+<p>Logistic mean response function:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \pi_i=E(Y_i)&=\frac{\exp(\beta_0+\beta_1X_{i1}+...+\beta_{p-1}X_{i,p-1})}{1+\exp(\beta_0+\beta_1X_{i1}+...+\beta_{p-1}X_{i,p-1})}\\
+    &=[1+\exp(-\beta_0-\beta_1X_{i1}-...-\beta_{p-1}X_{i,p-1})]^{-1}
+\end{aligned}</script><p>which can be linearized using logit transformation:</p>
+<script type="math/tex; mode=display">
+\ln(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_{i1}+...+\beta_{p-1}X_{i,p-1}</script><h4 id="14-3-1-Simple-Logsitic-Model"><a href="#14-3-1-Simple-Logsitic-Model" class="headerlink" title="14.3.1 Simple Logsitic Model"></a>14.3.1 Simple Logsitic Model</h4><p>$Y_i$ are independent Bernoulli random variables with mean $\pi_i=E(Y_i)$</p>
+<script type="math/tex; mode=display">
+\ln(\frac{\pi_i}{1-\pi_i})=\beta_0+\beta_1X_i</script><h4 id="14-3-2-Multiple-Logistic-Model"><a href="#14-3-2-Multiple-Logistic-Model" class="headerlink" title="14.3.2 Multiple Logistic Model"></a>14.3.2 Multiple Logistic Model</h4><p>Suppose there are $n$ observations and $p-1$ variables, then the design matrix has $n\times p$ size.</p>
+<script type="math/tex; mode=display">
+\pi=\frac{\exp(\beta_0+\beta_1X_{i1}+...+\beta_{p-1}X_{i,p-1})}{1+\exp(\beta_0+\beta_1X_{i1}+...+\beta_{p-1}X_{i,p-1})}=\frac{\exp(X_i^T)\beta}{1+\exp(X_i^T\beta)}</script><p>where</p>
+<script type="math/tex; mode=display">
+X_i=
+\begin{bmatrix}
+    1\\X_{i1}\\X_{i2}\\\vdots\\X_{i,p-1}
+\end{bmatrix},X=
+\begin{bmatrix}
+    X_1^T\\X_2^T\\\vdots\\X_n^T
+\end{bmatrix}</script><p>The log likelihood</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \log L&=
+\end{aligned}</script><h3 id="14-4-Inferences-about-Regression-Parameters"><a href="#14-4-Inferences-about-Regression-Parameters" class="headerlink" title="14.4 Inferences about Regression Parameters"></a>14.4 Inferences about Regression Parameters</h3><p>Maximum likelihood estimators for logistic regressioin are approximately normally distributed, with little or no bias.</p>
+<h4 id="14-4-1-Wald-Z-test"><a href="#14-4-1-Wald-Z-test" class="headerlink" title="14.4.1 Wald Z-test"></a>14.4.1 Wald Z-test</h4><p><strong>Hypothesis:</strong> $H_0:\beta_k=0\quad\text{v.s.}\quad H_1:\beta_k\neq 0$</p>
+<p><strong>Test statistics:</strong></p>
+<script type="math/tex; mode=display">
+z^*=\frac{b_k}{s(b_k)}</script><p>If $|z^*|&gt;z(1-\alpha/2)$, reject $H_0$</p>
+<p>CI for $\beta_k$: $b_k\pm z(1-\alpha/2)s(b_k)$</p>
+<p>CI for odds ratio $\exp(\beta_k)$: $\exp[b_k\pm z(1-\alpha/2)s(b_k)]$</p>
+<p>Bonferroni joint CIs for $g$ logistic parameters: $b_k\pm z(1-\alpha/(2g))s(b_k)$</p>
+<p><strong>Wald Chi-square:</strong></p>
+<p>$\xi\sim N(\mu,\Sigma)$ and we find $(\xi-\mu)^T\Sigma^{-1}(\xi-\mu)\sim\chi^2(k)$</p>
+<p>then we write</p>
+<script type="math/tex; mode=display">
+X_k^2=(\hat{\theta}-\theta_0)^T I_n(\hat{\theta})(\hat{\theta}-\theta_0)\sim\chi^2_k</script><h4 id="14-4-2-Likelihood-Ratio-Test"><a href="#14-4-2-Likelihood-Ratio-Test" class="headerlink" title="14.4.2 Likelihood Ratio Test"></a>14.4.2 Likelihood Ratio Test</h4><p>Testing a subset of parameters:</p>
+<script type="math/tex; mode=display">
+H_0:\beta_q=\beta_{q+1}=...=\beta_{p-1}=0\quad\text{v.s.}\quad H_1:\exist\beta_k\neq 0</script><p><strong>Review LRT:</strong></p>
+<p>$H_0:\theta\in\Theta_0\quad\text{v.s.}\quad H_1:\theta\in\Theta_1=\Theta\backslash\Theta_0$</p>
+<script type="math/tex; mode=display">
+\Lambda=\frac{\sup_{\theta\in\Theta_0}L(\theta)}{\sup_{\theta\in\Theta}L(\theta)}=\frac{L(\hat{\theta}|H_0)}{L(\hat{\theta})}</script><p>Under $H_0$, $-2\ln\Lambda=-2[\ln L(\hat{\theta}|H_0)-\ln L(\hat{\theta})]\sim\chi^2(k)$, where $k=\dim(\Theta)-\dim(\Theta_0)$</p>
+<h2 id="Final-Test-Review"><a href="#Final-Test-Review" class="headerlink" title="Final Test Review"></a>Final Test Review</h2><ul>
+<li>Hat matrix properties: traceH=p, projection</li>
+<li>partial determination</li>
+<li>Qualitative predictors</li>
+<li>regression with intersection</li>
+<li>VIF and correlation coefficient</li>
+<li>Six Criteria, stepwise(describe)</li>
+<li>Logistics (OR,Likelihood,Inference)</li>
+</ul>
+<p>Remedial Measures: collinearity, outlier, ommited?</p>
+<p>Hat matrix projection:</p>
+<p>$HX=[H1,HX_1,HX_2,HX_3]=[1,X_1,X_2,X_3]=X$. If new variable $X_4$ is added in, it doesn’t satisfy $HX=X$, unless $X_4$ is a linear combination of $1,X_1,X_2,X_3$</p>
